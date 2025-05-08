@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "libs/ui/src/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/libs/ui/src/components",
+    "utils": "@school-wits/utils",
+    "hooks": "@/libs/ui/src/hooks",
+    "ui": "@/libs/ui/src/components"
+  },
+  "iconLibrary": "lucide"
+}
