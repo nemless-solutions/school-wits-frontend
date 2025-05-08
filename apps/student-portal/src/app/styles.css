@@ -1,3 +1,13 @@
 @import "../../../../libs/ui/src/globals.css";
 @source "../../src/**/*.{ts,tsx,js,jsx}";
 @source "../../../../libs/ui/src/**/*.{ts,tsx,js,jsx}";
+
+.main-container {
+  @apply max-w-[1228px] mx-auto px-6;
+}
+
+@theme {
+  --color-primary: #1f6752;
+  --color-secondary: #1c1f41;
+  --color-secondary-foreground: #f5f5f5;
+}
