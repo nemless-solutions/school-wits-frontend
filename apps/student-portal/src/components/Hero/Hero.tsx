@@ -7,7 +7,7 @@ export function Hero() {
         <Image src="/images/hero.png" alt="hero" fill />
       </div>
       <div className="text-7xl main-container w-full">
-        <h1>
+        <h1 className="text-secondary">
           Hero Section <br />
           <span className="text-primary font-bold"> Contents</span>
         </h1>
