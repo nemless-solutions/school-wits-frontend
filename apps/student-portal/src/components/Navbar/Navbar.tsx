@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@school-wits/ui";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -40,8 +41,13 @@ export function Navbar() {
       <div className="main-container">
         <div className="flex items-center w-full justify-between">
           <Link href="/">
-            {/* <Image className="w-16 py-2" src={logo} alt="logo" /> */}
-            Logo
+            <Image
+              className="w-16"
+              src="/images/logo.png"
+              alt="logo"
+              width="100"
+              height="100"
+            />
           </Link>
           <ToggleButton
             activeLink={activeLink}

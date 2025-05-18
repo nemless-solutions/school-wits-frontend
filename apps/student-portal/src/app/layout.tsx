@@ -1,6 +1,13 @@
 import { Footer } from "@/components/Footer/Footer";
 import { Navbar } from "@/components/Navbar/Navbar";
+import { Inter, Roboto_Slab } from "next/font/google";
 import "./styles.css";
+
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  variable: "--font-roboto-slab",
+});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
   title: "Welcome to student-portal",
@@ -13,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${robotoSlab.variable} ${inter.className}`}>
       <body>
         <header>
           <Navbar />
