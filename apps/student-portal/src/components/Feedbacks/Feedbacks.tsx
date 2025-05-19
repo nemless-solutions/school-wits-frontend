@@ -36,15 +36,16 @@ export function Feedbacks() {
   return (
     <section className="">
       <div className="py-16 flex flex-col antialiased bg-blue-100 dark:bg-neutral-950 dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-        <h2 className="text-4xl font-bold mb-8 text-secondary text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-secondary text-center">
           Feedback <br />{" "}
-          <span className="text-primary text-3xl">That Speaks Volumes</span>
+          <span className="text-primary text-2xl md:text-3xl">
+            That Speaks Volumes
+          </span>
         </h2>
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
           speed="slow"
-          pauseOnHover={false}
           className="main-container"
         />
       </div>

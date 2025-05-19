@@ -1,4 +1,5 @@
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogHeader,
@@ -6,6 +7,7 @@ import {
   DialogTrigger,
 } from "@school-wits/ui";
 import Image from "next/image";
+import Link from "next/link";
 import grdaeIX_X from "../../../public/images/grade_IX-X.png";
 import gradeVI_VII from "../../../public/images/grade_VI-VII.png";
 import gradeVIII from "../../../public/images/grade_VIII.png";
@@ -48,11 +50,13 @@ export function GradeCards() {
   return (
     <section className="my-16">
       <div className="main-container">
-        <h2 className="text-4xl font-bold mb-8 text-secondary text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-secondary text-center">
           Grade-wise <br />{" "}
-          <span className="text-3xl text-primary">Learning Plans</span>
+          <span className="text-2xl md:text-3xl text-primary">
+            Learning Plans
+          </span>
         </h2>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {grades.map((grade, index) => (
             <Dialog key={index}>
               <DialogTrigger>
@@ -70,7 +74,7 @@ export function GradeCards() {
                       height={150}
                       width={150}
                     />
-                    <h3 className="text-2xl font-bold text-secondary font-roboto-slab">
+                    <h3 className="text-xl md:text-2xl font-bold text-secondary font-roboto-slab">
                       {grade.grade.split("-").join(" & ")}
                     </h3>
                   </div>
@@ -79,7 +83,7 @@ export function GradeCards() {
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>
-                    <span className="text-2xl font-medium text-center text-secondary">
+                    <span className="text-xl md:text-2xl font-medium text-center text-secondary">
                       Grade:{" "}
                       <span className="font-roboto-slab text-primary">
                         {grade.grade.split("-").join(" & ")}
@@ -94,18 +98,25 @@ export function GradeCards() {
                       height={130}
                       width={130}
                     />
-                    <div className="text-center text-xl font-semibold text-secondary">
+                    <div className="text-center text-lg md:text-xl font-semibold text-secondary">
                       <div>
                         Current Courses:{" "}
                         <span className="text-primary">
                           {grade.currentCourses}
                         </span>
                       </div>
-                      <div className="mt-3">
+                      <div className="mt-3 mb-5">
                         Courses beginning:{" "}
                         <span className="text-primary">
                           {grade.coursesBeginning}
                         </span>
+                      </div>
+                      <div>
+                        <Button asChild size="lg" className="rounded-full">
+                          <Link href={`/grades/${grade.grade.toLowerCase()}`}>
+                            Learn More
+                          </Link>
+                        </Button>
                       </div>
                     </div>
                   </div>

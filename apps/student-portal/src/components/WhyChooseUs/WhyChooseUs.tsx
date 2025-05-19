@@ -48,11 +48,13 @@ export function WhyChooseUs() {
   return (
     <section className="py-16">
       <div className="main-container">
-        <h2 className="text-4xl font-bold mb-16 text-secondary text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-16 text-secondary text-center">
           Why Students Love <br />
-          <span className="text-primary text-3xl">Learning with Us</span>
+          <span className="text-primary text-2xl md:text-3xl">
+            Learning with Us
+          </span>
         </h2>
-        <ul className="grid grid-cols-2 grid-rows-3 gap-4">
+        <ul className="grid md:grid-cols-2 md:grid-rows-3 gap-4">
           {whyChooseUs.map((item, index) => (
             <li key={index} className="group">
               <div className="relative p-6 border-[3px] border-primary/20 rounded-lg h-full">
@@ -62,10 +64,12 @@ export function WhyChooseUs() {
                 <div className="p-2 text-xl sm:text-2xl border-2 border-primary/40 rounded-md w-fit">
                   <item.Icon />
                 </div>
-                <h3 className="text-2xl font-semibold my-2 text-secondary">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold my-2 text-secondary">
                   {item.title}
                 </h3>
-                <p className="text-primary">{item.description}</p>
+                <p className="text-sm md:text-base text-primary">
+                  {item.description}
+                </p>
               </div>
             </li>
           ))}
