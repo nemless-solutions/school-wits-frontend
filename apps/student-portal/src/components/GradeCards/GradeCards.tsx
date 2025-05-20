@@ -1,3 +1,4 @@
+import { grades } from "@/constants";
 import {
   Button,
   Dialog,
@@ -8,43 +9,6 @@ import {
 } from "@school-wits/ui";
 import Image from "next/image";
 import Link from "next/link";
-import grdaeIX_X from "../../../public/images/grade_IX-X.png";
-import gradeVI_VII from "../../../public/images/grade_VI-VII.png";
-import gradeVIII from "../../../public/images/grade_VIII.png";
-
-const grades = [
-  {
-    grade: "VI-VII",
-    illustration: gradeVI_VII,
-    currentCourses: "15-28 June 2025",
-    coursesBeginning: "July 2025",
-    gradient: {
-      from: "#9ad7f5",
-      to: "#1995e3",
-    },
-  },
-  {
-    grade: "VIII",
-    illustration: gradeVIII,
-    currentCourses: "15-28 June 2025",
-    coursesBeginning: "July 2025",
-    gradient: {
-      from: "#8cedbf",
-      to: "#18a864",
-    },
-  },
-
-  {
-    grade: "IX-X",
-    illustration: grdaeIX_X,
-    currentCourses: "15-28 June 2025",
-    coursesBeginning: "July 2025",
-    gradient: {
-      from: "#e0d9ff",
-      to: "#5a3bd7",
-    },
-  },
-];
 
 export function GradeCards() {
   return (

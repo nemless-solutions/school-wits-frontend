@@ -9,7 +9,7 @@ import grdaeIX_X from "../../../public/images/grade_IX-X.png";
 import gradeVI_VII from "../../../public/images/grade_VI-VII.png";
 import gradeVIII from "../../../public/images/grade_VIII.png";
 import { NavItem } from "./NavItem";
-import { NavMenu } from "./Navmenu";
+import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
 
 export type NavItem =
