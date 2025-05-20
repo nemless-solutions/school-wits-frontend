@@ -1,48 +1,4 @@
-import { FaUserCheck } from "react-icons/fa";
-import { GoDesktopDownload } from "react-icons/go";
-import { IoMdCheckboxOutline } from "react-icons/io";
-import { LuMonitorPlay } from "react-icons/lu";
-import { MdAutoGraph } from "react-icons/md";
-import { PiExam } from "react-icons/pi";
-
-const whyChooseUs = [
-  {
-    Icon: LuMonitorPlay,
-    title: "Engaging Video Lessons",
-    description:
-      "Engaging video lessons designed to alleviate online learning monotony while ensuring balanced screen time.",
-  },
-  {
-    Icon: IoMdCheckboxOutline,
-    title: "Fun & Interactive Quizzes",
-    description:
-      "Interactive quizzes to reinforce learning and assess comprehension.",
-  },
-  {
-    Icon: PiExam,
-    title: "Real Exam Preparation",
-    description:
-      "Evaluation after completion of each topic with exam-style questions.",
-  },
-  {
-    Icon: GoDesktopDownload,
-    title: "Downloadable Materials",
-    description:
-      "Downloadable course contents for convenient review and self-paced learning.",
-  },
-  {
-    Icon: FaUserCheck,
-    title: "Expert Educators",
-    description:
-      "Passionate educators with extensive expertise to guide the student every step of the way.",
-  },
-  {
-    Icon: MdAutoGraph,
-    title: "Insightful Feedback & Tracking",
-    description:
-      "Prompt feedback and regular performance metrics for self-assessment and targeted enhancement, ensuring continual progress.",
-  },
-];
+import { whyChooseUs } from "@/constants";
 
 export function WhyChooseUs() {
   return (
