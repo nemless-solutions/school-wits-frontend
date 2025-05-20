@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="min-h-screen md:-mt-20 flex items-center bg-radial-[at_80%_55%] from-blue-50 to-blue-200 to-75%">
+    <section className="min-h-screen flex items-center bg-radial-[at_80%_55%] from-blue-50 to-blue-200 to-75%">
       <div className="main-container w-full">
         <div className="grid md:grid-cols-2 gap-y-4 justify-center">
           <div className="text-3xl sm:text-4xl md:text-5xl text-center md:text-start font-semibold flex flex-col justify-center items-center md:items-start gap-10">

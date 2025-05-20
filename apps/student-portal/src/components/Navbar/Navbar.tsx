@@ -1,61 +1,14 @@
 "use client";
 
+import { navItems } from "@/constants";
 import { Button } from "@school-wits/ui";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import grdaeIX_X from "../../../public/images/grade_IX-X.png";
-import gradeVI_VII from "../../../public/images/grade_VI-VII.png";
-import gradeVIII from "../../../public/images/grade_VIII.png";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
-
-export type NavItem =
-  | {
-      type: "link";
-      icon?: StaticImageData;
-      title: string;
-      link: string;
-      menu?: never;
-    }
-  | {
-      type: "menu";
-      icon?: StaticImageData;
-      title: string;
-      menu: NavItem[];
-      link?: never;
-    };
-
-const navItems: NavItem[] = [
-  { type: "link", title: "Home", link: "/" },
-  {
-    type: "menu",
-    title: "Courses",
-    menu: [
-      {
-        type: "link",
-        icon: gradeVI_VII,
-        title: "Grade VI-VII",
-        link: "/grades/vi-vii",
-      },
-      {
-        type: "link",
-        icon: gradeVIII,
-        title: "Grade VIII",
-        link: "/grades/viii",
-      },
-      {
-        type: "link",
-        icon: grdaeIX_X,
-        title: "Grade IX-X",
-        link: "/grades/ix-x",
-      },
-    ],
-  },
-  { type: "link", title: "About Us", link: "/about-us" },
-];
 
 export function Navbar() {
   const [showNav, setShowNav] = useState(false);

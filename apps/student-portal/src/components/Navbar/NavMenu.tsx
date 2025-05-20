@@ -8,7 +8,7 @@ import {
 } from "@school-wits/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { NavItem } from "./Navbar";
+import { NavItem } from "../../../types";
 
 interface NavMenuProps {
   title: string;
@@ -20,7 +20,7 @@ export function NavMenu({ title, content }: NavMenuProps) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-semibold text-base text-secondary !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[150px] md:pr-0">
+          <NavigationMenuTrigger className="font-semibold text-base text-secondary !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[150px] md:pr-0 cursor-pointer">
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
