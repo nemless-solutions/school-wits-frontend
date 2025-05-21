@@ -15,9 +15,10 @@ import { Course, NavItem } from "../../types";
 
 export const navItems: NavItem[] = [
   { type: "link", title: "Home", link: "/" },
+  { type: "link", title: "Courses", link: "/courses" },
   {
     type: "menu",
-    title: "Courses",
+    title: "Grades",
     menu: [
       {
         type: "link",
