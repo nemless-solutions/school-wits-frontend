@@ -1,5 +1,6 @@
 export type Course = {
   title: string;
+  image: StaticImageData;
   suitableFor: string;
   duration?: string;
   schedule?: string;
@@ -11,3 +12,19 @@ export type Course = {
   subjects?: string[];
   features: string[];
 };
+
+export type NavItem =
+  | {
+      type: "link";
+      icon?: StaticImageData;
+      title: string;
+      link: string;
+      menu?: never;
+    }
+  | {
+      type: "menu";
+      icon?: StaticImageData;
+      title: string;
+      menu: NavItem[];
+      link?: never;
+    };

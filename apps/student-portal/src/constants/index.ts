@@ -4,10 +4,44 @@ import { IoMdCheckboxOutline } from "react-icons/io";
 import { LuMonitorPlay } from "react-icons/lu";
 import { MdAutoGraph } from "react-icons/md";
 import { PiExam } from "react-icons/pi";
+import additionalMath from "../../public/images/additional-math.png";
+import allSubjects from "../../public/images/all-subjects.png";
 import grdaeIX_X from "../../public/images/grade_IX-X.png";
 import gradeVI_VII from "../../public/images/grade_VI-VII.png";
 import gradeVIII from "../../public/images/grade_VIII.png";
-import { Course } from "../../types";
+import math from "../../public/images/math.png";
+import python from "../../public/images/python.png";
+import { Course, NavItem } from "../../types";
+
+export const navItems: NavItem[] = [
+  { type: "link", title: "Home", link: "/" },
+  { type: "link", title: "Courses", link: "/courses" },
+  {
+    type: "menu",
+    title: "Grades",
+    menu: [
+      {
+        type: "link",
+        icon: gradeVI_VII,
+        title: "Grade VI-VII",
+        link: "/grades/vi-vii",
+      },
+      {
+        type: "link",
+        icon: gradeVIII,
+        title: "Grade VIII",
+        link: "/grades/viii",
+      },
+      {
+        type: "link",
+        icon: grdaeIX_X,
+        title: "Grade IX-X",
+        link: "/grades/ix-x",
+      },
+    ],
+  },
+  { type: "link", title: "About Us", link: "/about-us" },
+];
 
 export const grades = [
   {
@@ -118,6 +152,7 @@ export const courses: Record<string, Course[]> = {
   "vi-vii": [
     {
       title: "Must-Know Concepts of Mathematics",
+      image: math,
       suitableFor: "Grade VI/VII of session 2025-2026",
       duration: "15 June – 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
@@ -143,8 +178,8 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Basics of Computer Programming with Python",
+      image: python,
       suitableFor: "Grade VI/VII of session 2025-2026",
-
       mode: "Online live session | Requires a computer",
       schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
       fees: "BDT 5,000",
@@ -166,6 +201,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: " Beyond the Bell: Study Support",
+      image: allSubjects,
       suitableFor: "Grade VI/VII of session 2025-2026",
       duration: "5 July - 18 December 2025",
       mode: "In-person | 4 classes/week | 70 minutes each",
@@ -182,6 +218,7 @@ export const courses: Record<string, Course[]> = {
   viii: [
     {
       title: "Must-Know Concepts of Mathematics - Syllabus D (4024)",
+      image: math,
       suitableFor: "Grade VIII of session 2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
@@ -209,6 +246,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Must-Know Concepts of Additional Mathematics (4037)",
+      image: additionalMath,
       suitableFor: "Grade VIII of session 2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
@@ -233,6 +271,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Basics of Computer Programming with Python",
+      image: python,
       suitableFor: "Grade VIII of session 2025-2026",
       mode: "Online live session | Requires a computer",
       schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
@@ -255,6 +294,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Beyond the Bell: Study Support",
+      image: allSubjects,
       suitableFor: "Grade VIII of session 2025-2026",
       duration: "5 July - 18 December 2025",
       mode: "In-person | 3 classes/week per subject | 70 minutes each",
@@ -275,6 +315,7 @@ export const courses: Record<string, Course[]> = {
   "ix-x": [
     {
       title: " Must-Know Concepts of Mathematics - Syllabus D (4024)",
+      image: math,
       suitableFor: "Grade IX/X of session 2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
@@ -300,6 +341,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Must-Know Concepts of Additional Mathematics (4037)",
+      image: additionalMath,
       suitableFor: "Grade IX/X of session 2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
@@ -323,6 +365,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Basics of Computer Programming with Python",
+      image: python,
       suitableFor: "Grade IX/X of session 2025-2026",
       mode: "Online live session | Requires a computer",
       schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
@@ -345,6 +388,7 @@ export const courses: Record<string, Course[]> = {
     },
     {
       title: "Beyond the Bell: Study Support",
+      image: allSubjects,
       suitableFor: "Grade IX/X of session 2025-2026",
       duration: "5 July - 18 December 2025",
       mode: "In-person | 3 classes/week per subject | 70 minutes each",

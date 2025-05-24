@@ -3,10 +3,11 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@school-wits/ui";
+} from "../client-ui";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,10 +65,12 @@ export function GradeCards() {
                     />
                     <div className="text-center text-lg md:text-xl font-semibold text-secondary">
                       <div>
-                        Current Courses:{" "}
-                        <span className="text-primary">
-                          {grade.currentCourses}
-                        </span>
+                        <DialogDescription className="text-center text-lg md:text-xl font-semibold text-secondary">
+                          Current Courses:{" "}
+                          <span className="text-primary">
+                            {grade.currentCourses}
+                          </span>
+                        </DialogDescription>
                       </div>
                       <div className="mt-3 mb-5">
                         Courses beginning:{" "}

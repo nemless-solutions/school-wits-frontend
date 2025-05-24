@@ -4,7 +4,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@school-wits/ui";
+} from "../client-ui";
 import Image from "next/image";
 import featuredImage from "../../../public/images/featured-course.png";
 
