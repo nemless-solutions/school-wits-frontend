@@ -1,6 +1,6 @@
-import { Button } from "@school-wits/ui";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../client-ui";
 
 export function Hero() {
   return (

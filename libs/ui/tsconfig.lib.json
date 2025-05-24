@@ -11,10 +11,7 @@
     "rootDir": "src",
     "jsx": "react-jsx",
     "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
-    "lib": [
-      "dom",
-      "ES2015"
-    ]
+    "lib": ["dom", "ES2015"]
   },
   "exclude": [
     "out-tsc",
@@ -28,10 +25,10 @@
     "**/*.spec.jsx",
     "**/*.test.jsx"
   ],
-  "include": [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx"
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+  "references": [
+    {
+      "path": "../utils/tsconfig.lib.json"
+    }
   ]
 }

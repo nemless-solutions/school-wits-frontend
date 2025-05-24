@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@school-wits/utils";
 import React, { useEffect, useState } from "react";
 

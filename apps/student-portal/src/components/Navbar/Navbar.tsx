@@ -1,7 +1,7 @@
 "use client";
 
 import { navItems } from "@/constants";
-import { Button } from "@school-wits/ui";
+import { Button } from "../client-ui";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

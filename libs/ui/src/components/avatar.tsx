@@ -1,5 +1,3 @@
-"use client";
-
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from "@school-wits/utils";
 import * as React from "react";

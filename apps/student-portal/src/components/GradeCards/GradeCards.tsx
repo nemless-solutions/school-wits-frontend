@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@school-wits/ui";
+} from "../client-ui";
 import Image from "next/image";
 import Link from "next/link";
 

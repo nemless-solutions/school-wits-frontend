@@ -1,5 +1,5 @@
 import { feedbacks } from "@/constants";
-import { InfiniteMovingCards } from "@school-wits/ui";
+import { InfiniteMovingCards } from "../client-ui";
 
 export function Feedbacks() {
   return (
