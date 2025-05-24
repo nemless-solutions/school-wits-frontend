@@ -1,9 +1,9 @@
-import { FaUserCheck } from "react-icons/fa";
-import { GoDesktopDownload } from "react-icons/go";
-import { IoMdCheckboxOutline } from "react-icons/io";
-import { LuMonitorPlay } from "react-icons/lu";
-import { MdAutoGraph } from "react-icons/md";
-import { PiExam } from "react-icons/pi";
+import fileDownload from "../../public/icons/file-download.png";
+import graph from "../../public/icons/graph.png";
+import mentor from "../../public/icons/mentor.png";
+import quiz from "../../public/icons/quiz.png";
+import test from "../../public/icons/test.png";
+import videoPlayer from "../../public/icons/video-player.png";
 import additionalMath from "../../public/images/additional-math.png";
 import allSubjects from "../../public/images/all-subjects.png";
 import grdaeIX_X from "../../public/images/grade_IX-X.png";
@@ -79,38 +79,38 @@ export const grades = [
 
 export const whyChooseUs = [
   {
-    Icon: LuMonitorPlay,
-    title: "Engaging Video Lessons",
+    icon: videoPlayer,
+    title: "Binge-Worthy Lessons",
     description:
       "Engaging video lessons designed to alleviate online learning monotony while ensuring balanced screen time.",
   },
   {
-    Icon: IoMdCheckboxOutline,
-    title: "Fun & Interactive Quizzes",
+    icon: quiz,
+    title: "Quizzes That Click",
     description:
       "Interactive quizzes to reinforce learning and assess comprehension.",
   },
   {
-    Icon: PiExam,
-    title: "Real Exam Preparation",
+    icon: test,
+    title: "Ready for the Real Thing",
     description:
       "Evaluation after completion of each topic with exam-style questions.",
   },
   {
-    Icon: GoDesktopDownload,
-    title: "Downloadable Materials",
+    icon: fileDownload,
+    title: "Your Learning, On Your Terms",
     description:
       "Downloadable course contents for convenient review and self-paced learning.",
   },
   {
-    Icon: FaUserCheck,
-    title: "Expert Educators",
+    icon: mentor,
+    title: "Mentors Who Go All In",
     description:
       "Passionate educators with extensive expertise to guide the student every step of the way.",
   },
   {
-    Icon: MdAutoGraph,
-    title: "Insightful Feedback & Tracking",
+    icon: graph,
+    title: "Track It. Smash It. Repeat.",
     description:
       "Prompt feedback and regular performance metrics for self-assessment and targeted enhancement, ensuring continual progress.",
   },
