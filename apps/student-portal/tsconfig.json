@@ -27,16 +27,18 @@
   "include": [
     "../../apps/student-portal/.next/types/**/*.ts",
     "../../dist/apps/student-portal/.next/types/**/*.ts",
+    ".next/types/**/*.ts",
     "next-env.d.ts",
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    "../../dist/apps/student-portal/types/**/*.ts"
   ],
   "exclude": [
     "out-tsc",
     "dist",
+    "../../dist",
     "node_modules",
     "jest.config.ts",
     "src/**/*.spec.ts",
@@ -46,9 +48,5 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "references": [
-    {
-      "path": "../../libs/ui"
-    }
-  ]
+  "references": []
 }

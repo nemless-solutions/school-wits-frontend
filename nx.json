@@ -34,7 +34,6 @@
     }
   },
   "nxCloudId": "681bb940f938731d801a2ddd",
-  "neverConnectToCloud": true,
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
