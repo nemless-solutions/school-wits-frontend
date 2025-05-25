@@ -1,8 +1,6 @@
 import { GradePageHeader } from "@/components/GradePageHeader/GradePageHeader";
-import { courses, grades } from "@/constants";
-import Image from "next/image";
+import { grades } from "@/constants";
 import { notFound } from "next/navigation";
-import { Course } from "../../../../types";
 
 export default async function GradeDetails({
   params,
@@ -17,7 +15,7 @@ export default async function GradeDetails({
   if (!gradeStyles) notFound();
 
   const { grade: gradeName, illustration, gradient } = gradeStyles;
-  const gradeCourses = courses[grade.toLowerCase()];
+  // const gradeCourses = courses[grade.toLowerCase()];
 
   return (
     <>
@@ -43,7 +41,7 @@ export default async function GradeDetails({
   );
 }
 
-function CourseCard({ course, cardBg }: { course: Course; cardBg: string }) {
+/* function CourseCard({ course, cardBg }: { course: Course; cardBg: string }) {
   return (
     <div
       style={{ background: `${cardBg}80` }}
@@ -65,3 +63,4 @@ function CourseCard({ course, cardBg }: { course: Course; cardBg: string }) {
     </div>
   );
 }
+ */
