@@ -27,16 +27,18 @@ export default async function GradeDetails({
         gradeintFrom={gradient.from}
         gradientTo={gradient.to}
       />
-      <section className="main-container my-16">
-        <h3 className="text-2xl md:text-3xl text-secondary font-semibold mb-8">
-          We Offer Following Courses
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {gradeCourses.map((course, index) => (
-            <CourseCard key={index} course={course} cardBg={gradient.from} />
-          ))}
-        </div>
-      </section>
+      {
+        <section className="main-container my-16">
+          <h3 className="text-2xl md:text-3xl text-secondary font-semibold mb-8">
+            We Offer Following Courses
+          </h3>
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {gradeCourses.map((course, index) => (
+              <CourseCard key={index} course={course} cardBg={gradient.from} />
+            ))}
+          </div> */}
+        </section>
+      }
     </>
   );
 }
@@ -60,36 +62,6 @@ function CourseCard({ course, cardBg }: { course: Course; cardBg: string }) {
       <p>Regular Fees: {course.fees}</p>
       <p className="font-semibold">Early Bird:</p>
       <p className="text-2xl font-semibold text-primary">{course.earlyBird}</p>
-      {/* <p className="font-semibold">{course.mode}</p>
-      <p className="font-semibold">{course?.schedule}</p>
-      <p>{course.overview}</p>
-      <p className="text-start ml-4">
-        {course.subjects ? "Subjects" : "Topics"}:
-      </p>
-      <ul className="flex flex-col gap-1 ml-8">
-        {course.subjects
-          ? course.subjects?.map((subject, index) => (
-              <li className="flex items-center gap-2" key={index}>
-                <RiCheckboxMultipleBlankFill className="text-primary" />
-                {subject}
-              </li>
-            ))
-          : course.topics?.map((topic, index) => (
-              <li className="flex items-center gap-2" key={index}>
-                <RiCheckboxMultipleBlankFill className="text-primary" />
-                {topic}
-              </li>
-            ))}
-      </ul>
-      <p className="text-start ml-4">Features</p>
-      <ul className="flex flex-col gap-1 ml-8">
-        {course.features.map((feature, index) => (
-          <li className="flex items-center gap-2" key={index}>
-            <FaCheckCircle className="text-green-500" />
-            {feature}
-          </li>
-        ))}
-      </ul> */}
     </div>
   );
 }
