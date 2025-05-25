@@ -7,19 +7,19 @@ export function Footer() {
     <div className="bg-slate-900 py-20">
       <div className="main-container">
         <div className="flex justify-center">
-          <div className="flex gap-4">
+          <div>
             <Image
-              className="bg-neutral-200 w-20 h-20 object-cover rounded-xs"
-              src="/images/logo.png"
+              className="bg-neutral-200 p-2 w-[210px] h-[60px] rounded-xs"
+              src="/images/logo-lg.png"
               alt="logo"
-              width="100"
-              height="100"
+              width={100}
+              height={100}
             />
-            <p className="font-roboto-slab uppercase font-medium text-3xl tracking-[6px] text-neutral-200">
+            {/* <p className="font-roboto-slab uppercase font-medium text-3xl tracking-[6px] text-neutral-200">
               School
               <br />
               Wits
-            </p>
+            </p> */}
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-16 text-neutral-300">

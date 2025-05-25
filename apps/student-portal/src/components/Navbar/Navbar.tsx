@@ -1,11 +1,11 @@
 "use client";
 
 import { navItems } from "@/constants";
-import { Button } from "../client-ui";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "../client-ui";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
@@ -32,8 +32,8 @@ export function Navbar() {
         <div className="flex items-center w-full justify-between">
           <Link href="/">
             <Image
-              className="w-12 sm:w-16"
-              src="/images/logo.png"
+              className="w-[100px] md:w-[180px] object-cover"
+              src="/images/logo-lg.png"
               alt="logo"
               width="100"
               height="100"

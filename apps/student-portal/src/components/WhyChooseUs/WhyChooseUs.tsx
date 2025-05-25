@@ -1,4 +1,5 @@
 import { whyChooseUs } from "@/constants";
+import Image from "next/image";
 
 export function WhyChooseUs() {
   return (
@@ -14,11 +15,17 @@ export function WhyChooseUs() {
           {whyChooseUs.map((item, index) => (
             <li key={index} className="group">
               <div className="relative p-6 border-[3px] border-primary/20 rounded-lg h-full">
-                <div className="absolute left-[-2px] w-[2px] h-[100px] opacity-0 top-[50%] bg-gradient-to-b from-transparent via-secondary to-transparent group-hover:opacity-100 group-hover:top-[10%] duration-200"></div>
-                <div className="absolute right-[-2px] w-[2px] h-[100px] opacity-0 bottom-[50%] bg-gradient-to-b from-transparent via-secondary to-transparent group-hover:opacity-100 group-hover:bottom-[10%] duration-200"></div>
+                <div className="absolute left-[-2px] w-[2px] h-[100px] opacity-0 top-[50%] bg-gradient-to-b from-transparent via-secondary to-transparent group-hover:opacity-100 group-hover:top-[10%] duration-500"></div>
+                <div className="absolute right-[-2px] w-[2px] h-[100px] opacity-0 bottom-[50%] bg-gradient-to-b from-transparent via-secondary to-transparent group-hover:opacity-100 group-hover:bottom-[10%] duration-500"></div>
 
                 <div className="p-2 text-xl sm:text-2xl border-2 border-primary/40 rounded-md w-fit">
-                  <item.Icon />
+                  <Image
+                    className="w-8 h-8 object-cover"
+                    src={item.icon}
+                    alt={item.title}
+                    height={64}
+                    width={64}
+                  />
                 </div>
                 <h3 className="text-lg sm:text-xl md:text-2xl font-semibold my-2 text-secondary">
                   {item.title}
