@@ -6,10 +6,12 @@ import test from "../../public/icons/test.png";
 import videoPlayer from "../../public/icons/video-player.png";
 import additionalMath from "../../public/images/additional-math.png";
 import allSubjects from "../../public/images/all-subjects.png";
-import grdaeIX_X from "../../public/images/grade_IX-X.png";
-import gradeVI_VII from "../../public/images/grade_VI-VII.png";
-import gradeVIII from "../../public/images/grade_VIII.png";
+import backpack from "../../public/images/backpack.png";
+import graduationCap from "../../public/images/graduation-cap.png";
+import lamp from "../../public/images/lamp.png";
 import math from "../../public/images/math.png";
+import openBook from "../../public/images/open-book.png";
+import pencilRuler from "../../public/images/pencil-ruler.png";
 import python from "../../public/images/python.png";
 import { Course, NavItem } from "../../types";
 
@@ -22,21 +24,33 @@ export const navItems: NavItem[] = [
     menu: [
       {
         type: "link",
-        icon: gradeVI_VII,
-        title: "Grade VI-VII",
-        link: "/grades/vi-vii",
+        icon: backpack,
+        title: "Grade VI",
+        link: "/grades/vi",
       },
       {
         type: "link",
-        icon: gradeVIII,
+        icon: pencilRuler,
+        title: "Grade VII",
+        link: "/grades/vii",
+      },
+      {
+        type: "link",
+        icon: openBook,
         title: "Grade VIII",
         link: "/grades/viii",
       },
       {
         type: "link",
-        icon: grdaeIX_X,
-        title: "Grade IX-X",
-        link: "/grades/ix-x",
+        icon: lamp,
+        title: "Grade IX",
+        link: "/grades/ix",
+      },
+      {
+        type: "link",
+        icon: graduationCap,
+        title: "Grade X",
+        link: "/grades/x",
       },
     ],
   },
@@ -45,31 +59,40 @@ export const navItems: NavItem[] = [
 
 export const grades = [
   {
-    grade: "VI-VII",
-    illustration: gradeVI_VII,
-    currentCourses: "15-28 June 2025",
-    coursesBeginning: "July 2025",
+    grade: "VI",
+    illustration: backpack,
     gradient: {
-      from: "#9ad7f5",
-      to: "#1995e3",
+      from: "#b1e3fa",
+      to: "#38bdf8",
     },
   },
   {
-    grade: "VIII",
-    illustration: gradeVIII,
-    currentCourses: "15-28 June 2025",
-    coursesBeginning: "July 2025",
+    grade: "VII",
+    illustration: pencilRuler,
     gradient: {
       from: "#8cedbf",
       to: "#18a864",
     },
   },
-
   {
-    grade: "IX-X",
-    illustration: grdaeIX_X,
-    currentCourses: "15-28 June 2025",
-    coursesBeginning: "July 2025",
+    grade: "VIII",
+    illustration: openBook,
+    gradient: {
+      from: "#b1cdfa",
+      to: "#3b82f6",
+    },
+  },
+  {
+    grade: "IX",
+    illustration: lamp,
+    gradient: {
+      from: "#f5d298",
+      to: "#f59e0b",
+    },
+  },
+  {
+    grade: "X",
+    illustration: graduationCap,
     gradient: {
       from: "#e0d9ff",
       to: "#5a3bd7",
@@ -154,7 +177,7 @@ export const courses: Record<string, Course[]> = {
       title: "Must-Know Concepts of Mathematics",
       image: math,
       suitableFor: "Grade VI/VII of session 2025-2026",
-      duration: "15 June – 28 June 2025",
+      duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
       fees: "BDT 5,000",
       earlyBird: "BDT 4,500 before 10 June",
