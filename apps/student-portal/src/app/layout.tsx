@@ -1,5 +1,3 @@
-import { Footer } from "@/components/Footer/Footer";
-import { Navbar } from "@/components/Navbar/Navbar";
 import { Inter, Roboto_Slab } from "next/font/google";
 import "./styles.css";
 
@@ -21,15 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${robotoSlab.variable} ${inter.className}`}>
-      <body>
-        <header>
-          <Navbar />
-        </header>
-        <main>{children}</main>
-        <footer>
-          <Footer />
-        </footer>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
