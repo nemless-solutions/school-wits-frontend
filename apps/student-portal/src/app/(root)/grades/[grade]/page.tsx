@@ -1,5 +1,6 @@
 import { GradePageHeader } from "@/components/GradePageHeader/GradePageHeader";
 import { grades } from "@/constants";
+import { authFetch } from "@/libs/auth-fetch";
 import { notFound } from "next/navigation";
 
 export default async function GradeDetails({
@@ -11,8 +12,15 @@ export default async function GradeDetails({
   const gradeStyles = grades.find(
     (g) => g.grade.toLowerCase() === grade.toLowerCase()
   );
+  let data = [];
 
   if (!gradeStyles) notFound();
+
+  const res = await authFetch("https://backend.schoolwits.com/course");
+
+  if (res.ok) {
+    data = await res.json();
+  }
 
   const { grade: gradeName, illustration, gradient } = gradeStyles;
   // const gradeCourses = courses[grade.toLowerCase()];
@@ -35,6 +43,9 @@ export default async function GradeDetails({
               <CourseCard key={index} course={course} cardBg={gradient.from} />
             ))}
           </div> */}
+          {data.map((c: { title: string }, i: number) => (
+            <p key={i}>{c.title}</p>
+          ))}
         </section>
       }
     </>

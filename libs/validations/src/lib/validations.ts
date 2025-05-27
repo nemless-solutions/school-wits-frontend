@@ -16,5 +16,5 @@ export const signUpSchema = z.object({
   guardianContact: z.string(),
   curriculum: z.string(),
   grade: z.enum(["VI", "VII", "VIII", "IX", "X", "XI", "XII"]),
-  dateOfBirth: z.coerce.date(),
+  dateOfBirth: z.date(),
 });

@@ -6,7 +6,7 @@ import { cn } from "@school-wits/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   DefaultValues,
   FieldValues,
@@ -15,6 +15,7 @@ import {
   useForm,
   UseFormReturn,
 } from "react-hook-form";
+import { toast } from "react-toastify";
 import { ZodType } from "zod";
 import {
   Button,
@@ -45,47 +46,15 @@ interface Props<T extends FieldValues> {
 
 const _grades = grades.map((grade) => grade.grade.toUpperCase());
 
-const years = Array.from(
-  { length: 100 },
-  (_, i) => new Date().getFullYear() - i
-);
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
 export function AuthForm<T extends FieldValues>({
   type,
   schema,
   defaultValues,
   onSubmit,
 }: Props<T>) {
-  // const router = useRouter();
+  const router = useRouter();
 
   const isSignUp = type === "SIGN_UP";
-
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-
-  const currentMonth = new Date(selectedYear, selectedMonth);
-
-  const handleMonthChange = (monthIndex: number) => {
-    setSelectedMonth(monthIndex);
-  };
-
-  const handleYearChange = (year: number) => {
-    setSelectedYear(year);
-  };
 
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
@@ -95,24 +64,17 @@ export function AuthForm<T extends FieldValues>({
   const handleSubmit: SubmitHandler<T> = async (data) => {
     const result = await onSubmit(data);
 
-    console.log(data.dateOfBirth.toISOString());
+    if (result.success) {
+      toast.success(`Successfully ${isSignUp ? "signed up" : "signed in"}`);
 
-    /* if (result.success) {
-      toast({
-        title: "Success",
-        description: isSignIn
-          ? "You have successfully signed in."
-          : "You have successfully signed up.",
-      });
-
-      router.push("/");
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 1000);
     } else {
-      toast({
-        title: `Error ${isSignIn ? "signing in" : "signing up"}`,
-        description: result.error ?? "An error occurred.",
-        variant: "destructive",
-      });
-    } */
+      toast.error(
+        `${isSignUp ? "Sign up" : "Sign in"} failed. Please try again.`
+      );
+    }
   };
 
   return (
@@ -215,43 +177,17 @@ export function AuthForm<T extends FieldValues>({
                           </FormControl>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
-                          <div className="flex justify-between mb-2 gap-2">
-                            <select
-                              className="border p-1 rounded text-sm m-2"
-                              value={selectedMonth}
-                              onChange={(e) =>
-                                handleMonthChange(parseInt(e.target.value))
-                              }
-                            >
-                              {months.map((month, idx) => (
-                                <option value={idx} key={month}>
-                                  {month}
-                                </option>
-                              ))}
-                            </select>
-                            <select
-                              className="border p-1 rounded text-sm m-2"
-                              value={selectedYear}
-                              onChange={(e) =>
-                                handleYearChange(parseInt(e.target.value))
-                              }
-                            >
-                              {years.map((year) => (
-                                <option value={year} key={year}>
-                                  {year}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
                           <Calendar
                             mode="single"
                             selected={field.value}
                             onSelect={field.onChange}
                             disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
+                              date > new Date() || date < new Date("1990-01-01")
                             }
-                            month={currentMonth}
                             initialFocus
+                            captionLayout="dropdown"
+                            fromYear={1990}
+                            toYear={new Date().getFullYear()}
                           />
                         </PopoverContent>
                       </Popover>
@@ -265,6 +201,11 @@ export function AuthForm<T extends FieldValues>({
                               FIELD_TYPES[
                                 field.name as keyof typeof FIELD_TYPES
                               ]
+                            }
+                            autoComplete={
+                              field.name === "password"
+                                ? "current-password"
+                                : ""
                             }
                             {...field}
                           />
