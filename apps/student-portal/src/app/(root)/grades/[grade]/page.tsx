@@ -1,6 +1,6 @@
+import { auth } from "@/auth";
 import { GradePageHeader } from "@/components/GradePageHeader/GradePageHeader";
 import { grades } from "@/constants";
-import { authFetch } from "@/libs/auth-fetch";
 import { notFound } from "next/navigation";
 
 export default async function GradeDetails({
@@ -16,7 +16,13 @@ export default async function GradeDetails({
 
   if (!gradeStyles) notFound();
 
-  const res = await authFetch("https://backend.schoolwits.com/course");
+  const session = await auth();
+
+  const res = await fetch(`https://backend.schoolwits.com/course`, {
+    headers: {
+      Authorization: `Bearer ${session?.token}`,
+    },
+  });
 
   if (res.ok) {
     data = await res.json();

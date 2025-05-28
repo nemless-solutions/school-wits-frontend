@@ -28,3 +28,17 @@ export type NavItem =
       menu: NavItem[];
       link?: never;
     };
+
+interface AuthCredentials {
+  email: string;
+  password: string;
+  fullName: string;
+  contact: string;
+  fatherName: string;
+  motherName: string;
+  guardianEmail: string;
+  guardianContact: string;
+  curriculum: "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
+  grade: "VI" | "VII" | "VIII" | "IX" | "X" | "XI" | "XII";
+  dateOfBirth: Date;
+}

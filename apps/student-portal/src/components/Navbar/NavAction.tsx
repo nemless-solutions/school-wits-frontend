@@ -1,20 +1,20 @@
-import { useUser } from "@/context/userContext";
 import { getAbbreviation } from "@school-wits/utils";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Button } from "../client-ui";
 
 export function NavAction() {
-  const { user } = useUser();
+  const { data: session } = useSession();
 
-  if (user)
+  if (session?.user)
     return (
       <div className="flex items-center gap-2">
         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
           <p className="font-bold text-white">
-            {getAbbreviation(user.fullName)}
+            {getAbbreviation(session.user.name)}
           </p>
         </div>
-        <p>{user.fullName.split(" ")[0]}</p>
+        <p>{session.user.name?.split(" ")[0]}</p>
       </div>
     );
 
