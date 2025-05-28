@@ -1,6 +1,6 @@
-import { Footer } from "@/components/Footer/Footer";
-import { Navbar } from "@/components/Navbar/Navbar";
+import { SessionProvider } from "next-auth/react";
 import { Inter, Roboto_Slab } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import "./styles.css";
 
 const robotoSlab = Roboto_Slab({
@@ -21,15 +21,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${robotoSlab.variable} ${inter.className}`}>
-      <body>
-        <header>
-          <Navbar />
-        </header>
-        <main>{children}</main>
-        <footer>
-          <Footer />
-        </footer>
-      </body>
+      <SessionProvider>
+        <body>
+          {children}
+          <ToastContainer
+            position="top-center"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss={false}
+            theme="light"
+          />
+        </body>
+      </SessionProvider>
     </html>
   );
 }

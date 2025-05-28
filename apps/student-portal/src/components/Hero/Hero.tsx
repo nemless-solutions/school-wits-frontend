@@ -22,7 +22,7 @@ export function Hero() {
                 size="lg"
                 asChild
                 variant="outline"
-                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold"
+                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold px-10"
               >
                 <Link href="/">Learn More</Link>
               </Button>
@@ -30,9 +30,9 @@ export function Hero() {
                 size="lg"
                 asChild
                 variant="outline"
-                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold"
+                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold px-10"
               >
-                <Link href="/">Get Started</Link>
+                <Link href="/sign-up">Get Started</Link>
               </Button>
             </div>
           </div>

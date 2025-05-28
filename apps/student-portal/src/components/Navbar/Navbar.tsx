@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button } from "../client-ui";
+import { NavAction } from "./NavAction";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
@@ -70,11 +70,7 @@ export function Navbar() {
                   )
                 )}
               </ul>
-              <div className="flex items-center justify-center gap-x-3 mt-8 md:mt-0">
-                <Button asChild>
-                  <Link href="/sign-in">Log In</Link>
-                </Button>
-              </div>
+              <NavAction />
             </div>
           </div>
         </div>
