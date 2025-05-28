@@ -38,8 +38,8 @@ export function Hero() {
           </div>
           <div className="md:mt-20">
             <Image
-              className="w-full object-cover drop-shadow-[-10px_10px_10px_rgba(0,0,0,0.4)]"
-              src="/images/hero.jpg"
+              className="w-full object-cover drop-shadow-[-12px_12px_8px_rgba(0,0,0,0.6)]"
+              src="/images/hero.png"
               alt="hero-graphics"
               height={500}
               width={500}
