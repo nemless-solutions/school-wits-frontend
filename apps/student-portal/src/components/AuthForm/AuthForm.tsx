@@ -1,12 +1,19 @@
 "use client";
 
-import { curriculums, FIELD_NAMES, FIELD_TYPES, grades } from "@/constants";
+import {
+  curriculums,
+  FIELD_NAMES,
+  FIELD_TYPES,
+  grades,
+  terms,
+} from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@school-wits/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import {
   DefaultValues,
   FieldValues,
@@ -53,6 +60,7 @@ export function AuthForm<T extends FieldValues>({
   onSubmit,
 }: Props<T>) {
   const router = useRouter();
+  const [agree, setAgree] = useState(false);
 
   const isSignUp = type === "SIGN_UP";
 
@@ -110,7 +118,7 @@ export function AuthForm<T extends FieldValues>({
                 name={field as Path<T>}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="capitalize">
+                    <FormLabel className="capitalize font-semibold">
                       {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                     </FormLabel>
                     {field.name === "curriculum" ? (
@@ -217,14 +225,62 @@ export function AuthForm<T extends FieldValues>({
                 )}
               />
             ))}
+            {isSignUp && (
+              <div className="flex items-center space-x-2 mt-6">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  className="w-4 h-4 rounded-full"
+                  checked={agree}
+                  onChange={(e) => setAgree(e.target.checked)}
+                />
+                <label
+                  htmlFor="terms"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none"
+                >
+                  I agree to the terms and conditions outlined
+                </label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <span className="cursor-pointer underline font-semibold text-sm">
+                      here
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-auto p-4 bg-white/60 backdrop-blur-2xl"
+                    align="start"
+                  >
+                    <p className="text-xl font-bold">Terms</p>
+                    <p className="text-lg font-bold mb-4">
+                      By enrolling, you agree to the following terms:{" "}
+                    </p>
+                    <ul className="space-y-2 list-disc list-inside">
+                      {terms.map((t, i) => (
+                        <li key={i}>{t}</li>
+                      ))}
+                    </ul>
+                  </PopoverContent>
+                </Popover>
+              </div>
+            )}
+            <Button
+              type="submit"
+              size="lg"
+              className={isSignUp ? "mt-6" : "w-full my-4"}
+              disabled={isSignUp && !agree}
+            >
+              {isSignUp ? "Sign Up" : "Sign In"}
+            </Button>
+            <Button
+              type="button"
+              size="lg"
+              variant="outline"
+              className={isSignUp ? "mt-6" : "w-full"}
+              asChild
+            >
+              <Link href="/">Home</Link>
+            </Button>
           </div>
-          <Button
-            type="submit"
-            size="lg"
-            className={isSignUp ? "w-[250px] mt-6" : "w-full mt-6"}
-          >
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </Button>
         </form>
       </Form>
 

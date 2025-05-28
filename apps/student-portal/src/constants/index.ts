@@ -469,3 +469,14 @@ export const FIELD_TYPES = {
   email: "email",
   password: "password",
 };
+
+export const terms = [
+  "Arrive at least 10 minutes before class.",
+  "Bring essential materials (pen, pencil, eraser, ruler, etc.).",
+  "Take notes actively during lessons.",
+  "Maintain academic integrity during exams.",
+  "Follow proper classroom etiquette when asking or answering questions.",
+  "Sharing or distributing course materials is prohibited.",
+  "Class schedules are subject to change with prior notice.",
+  "Fees must be paid in full upfront, inclusive of bank charges for online transactions.",
+];

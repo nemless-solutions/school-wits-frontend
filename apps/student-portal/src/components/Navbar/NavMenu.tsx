@@ -20,7 +20,7 @@ export function NavMenu({ title, content }: NavMenuProps) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-semibold text-base text-secondary !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[150px] md:pr-0 cursor-pointer">
+          <NavigationMenuTrigger className="font-semibold text-base text-black !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[150px] md:pr-0 cursor-pointer">
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
