@@ -1,0 +1,9 @@
+@import "../../../../libs/ui/src/globals.css";
+@source "../../src/**/*.{ts,tsx,js,jsx}";
+@source "../../../../libs/ui/src/**/*.{ts,tsx,js,jsx}";
+
+@theme inline {
+  --color-primary: #004958;
+  --color-secondary: #1c1f41;
+  --color-secondary-foreground: #f5f5f5;
+}
