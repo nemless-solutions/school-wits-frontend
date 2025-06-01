@@ -76,48 +76,6 @@ export default function AboutUs() {
           </div>
         </div>
       ))}
-      {/* <div className="main-container">
-        <div className="main-container text-primary">
-          <div className="grid grid-cols-2 items-center gap-8">
-            <div className="relative h-full flex items-center justify-start">
-              <Image
-                src={start.icon}
-                alt="icon"
-                height={200}
-                width={200}
-                className="h-full w-auto absolute left-0 top-0 opacity-[5%] p-4"
-              />
-              <h3 className="text-2xl md:text-3xl font-semibold text-end text-neutral-800">
-                {start.header}
-              </h3>
-            </div>
-            <p className="text-lg text-justify py-32 text-neutral-700">
-              {start.description}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="bg-primary">
-        <div className="main-container">
-          <div className="grid grid-cols-2 items-center gap-8">
-            <p className="text-lg text-justify py-32 text-neutral-200">
-              {classes.description}
-            </p>
-            <div className="relative h-full flex items-center justify-end">
-              <Image
-                src={classes.icon}
-                alt="icon"
-                height={200}
-                width={200}
-                className="h-full w-auto absolute right-0 top-0 opacity-[5%] p-4"
-              />
-              <h3 className="text-2xl md:text-3xl font-semibold text-end text-neutral-50">
-                {classes.header}
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 }
