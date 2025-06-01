@@ -14,8 +14,8 @@
   --font-ibm-plex: var(--font-ibm-plex);
 }
 
-.bg-auth {
-  background-image: url("../../public/images//auth-image.jpg");
+.bg-classroom {
+  background-image: url("../../public/images/classroom-image.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
