@@ -2,6 +2,7 @@ import { getAbbreviation } from "@school-wits/utils";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 import { FaUserGraduate } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 import { MdDashboard } from "react-icons/md";
@@ -20,6 +21,7 @@ import {
 
 interface UserMenuProps {
   session: Session;
+  onClick?: Dispatch<SetStateAction<boolean>>;
 }
 
 const userMenuItems = [
@@ -43,7 +45,7 @@ const userMenuItems = [
   },
 ];
 
-export function UserMenu({ session }: UserMenuProps) {
+export function UserMenu({ session, onClick }: UserMenuProps) {
   const handleSignout = async function () {
     await signOut({ redirectTo: "/" });
   };
@@ -65,7 +67,7 @@ export function UserMenu({ session }: UserMenuProps) {
               </p>
             </div>
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent onClick={() => onClick && onClick(false)}>
             <ul className="w-[200px] font-semibold">
               {userMenuItems.map((item, index) => (
                 <li key={index}>

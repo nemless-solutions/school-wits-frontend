@@ -159,7 +159,7 @@ export function AuthForm<T extends FieldValues>({
                               value={g}
                               className="font-roboto-slab font-bold"
                             >
-                              {g}
+                              {g === "O" ? "O Level" : `Grade ${g}`}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -234,33 +234,30 @@ export function AuthForm<T extends FieldValues>({
                   checked={agree}
                   onChange={(e) => setAgree(e.target.checked)}
                 />
-                <label
-                  htmlFor="terms"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none"
-                >
-                  I agree to the terms and conditions outlined
+                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none">
+                  I agree to the terms and conditions outlined{" "}
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <span className="cursor-pointer underline font-semibold text-blue-700 text-sm">
+                        here
+                      </span>
+                    </PopoverTrigger>
+                    <PopoverContent
+                      className="w-auto max-w-screen p-4 bg-white/60 backdrop-blur-2xl"
+                      align="start"
+                    >
+                      <p className="text-xl font-bold">Terms</p>
+                      <p className="text-lg font-bold mb-4">
+                        By enrolling, you agree to the following terms:{" "}
+                      </p>
+                      <ul className="space-y-2 list-disc list-inside">
+                        {terms.map((t, i) => (
+                          <li key={i}>{t}</li>
+                        ))}
+                      </ul>
+                    </PopoverContent>
+                  </Popover>
                 </label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <span className="cursor-pointer underline font-semibold text-sm">
-                      here
-                    </span>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    className="w-auto p-4 bg-white/60 backdrop-blur-2xl"
-                    align="start"
-                  >
-                    <p className="text-xl font-bold">Terms</p>
-                    <p className="text-lg font-bold mb-4">
-                      By enrolling, you agree to the following terms:{" "}
-                    </p>
-                    <ul className="space-y-2 list-disc list-inside">
-                      {terms.map((t, i) => (
-                        <li key={i}>{t}</li>
-                      ))}
-                    </ul>
-                  </PopoverContent>
-                </Popover>
               </div>
             )}
             <Button

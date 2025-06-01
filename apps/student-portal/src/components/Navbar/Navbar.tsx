@@ -70,16 +70,19 @@ export function Navbar() {
                       key={index}
                       title={item.title}
                       content={item.menu}
+                      onClick={setShowNav}
                     />
                   )
                 )}
               </ul>
               {session?.user ? (
-                <UserMenu session={session} />
+                <UserMenu session={session} onClick={setShowNav} />
               ) : (
-                <Button asChild>
-                  <Link href="/sign-in">Log In</Link>
-                </Button>
+                <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                  <Button asChild>
+                    <Link href="/sign-in">Log In</Link>
+                  </Button>
+                </div>
               )}
             </div>
           </div>

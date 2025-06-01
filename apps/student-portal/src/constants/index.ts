@@ -8,7 +8,6 @@ import additionalMath from "../../public/images/additional-math.png";
 import allSubjects from "../../public/images/all-subjects.png";
 import backpack from "../../public/images/backpack.png";
 import graduationCap from "../../public/images/graduation-cap.png";
-import lamp from "../../public/images/lamp.png";
 import math from "../../public/images/math.png";
 import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
@@ -42,15 +41,9 @@ export const navItems: NavItem[] = [
       },
       {
         type: "link",
-        icon: lamp,
-        title: "Grade IX",
-        link: "/grades/ix",
-      },
-      {
-        type: "link",
         icon: graduationCap,
-        title: "Grade X",
-        link: "/grades/x",
+        title: "O Level",
+        link: "/grades/o",
       },
     ],
   },
@@ -83,15 +76,7 @@ export const grades = [
     },
   },
   {
-    grade: "IX",
-    illustration: lamp,
-    gradient: {
-      from: "#f5d298",
-      to: "#f59e0b",
-    },
-  },
-  {
-    grade: "X",
+    grade: "O",
     illustration: graduationCap,
     gradient: {
       from: "#e0d9ff",
