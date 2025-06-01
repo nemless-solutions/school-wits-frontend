@@ -11,5 +11,21 @@
   --color-secondary: #1c1f41;
   --color-secondary-foreground: #f5f5f5;
   --font-roboto-slab: var(--font-roboto-slab);
-  --font-inter: var(--font-inter);
+  --font-ibm-plex: var(--font-ibm-plex);
+}
+
+.bg-auth {
+  background-image: url("../../public/images//auth-image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.feedbacks li {
+  background: #09667986;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.feedbacks li span {
+  color: whitesmoke;
 }

@@ -14,32 +14,32 @@ export function Hero() {
                 <span className=""> Less &apos;Meh&apos;</span>
               </h1>
               <p className=" text-lg md:text-xl mt-4 max-w-[400px]">
-                Discover the future of e-learning with School Wits!
+                Discover the future of e-learning with{" "}
+                <span className="font-bold">School Wits!</span>
               </p>
             </div>
             <div className="text-black flex gap-4">
               <Button
-                size="lg"
                 asChild
                 variant="outline"
-                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold"
+                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold px-6"
               >
-                <Link href="/">Learn More</Link>
+                <Link href="/courses">Browse Courses</Link>
               </Button>
               <Button
                 size="lg"
                 asChild
                 variant="outline"
-                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold"
+                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold px-10"
               >
-                <Link href="/">Get Started</Link>
+                <Link href="/sign-up">Get Started</Link>
               </Button>
             </div>
           </div>
           <div className="md:mt-20">
             <Image
-              className="w-full object-cover drop-shadow-[-10px_10px_10px_rgba(0,0,0,0.4)]"
-              src="/images/hero.jpg"
+              className="w-full object-cover drop-shadow-[-12px_12px_8px_rgba(0,0,0,0.6)]"
+              src="/images/hero.png"
               alt="hero-graphics"
               height={500}
               width={500}
