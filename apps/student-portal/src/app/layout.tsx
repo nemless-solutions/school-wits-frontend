@@ -1,5 +1,5 @@
 import { SessionProvider } from "next-auth/react";
-import { Inter, Roboto_Slab } from "next/font/google";
+import { IBM_Plex_Sans, Roboto_Slab } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "./styles.css";
 
@@ -7,7 +7,11 @@ const robotoSlab = Roboto_Slab({
   subsets: ["latin"],
   variable: "--font-roboto-slab",
 });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const ibmPlex = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-ibm-plex",
+});
 
 export const metadata = {
   title: "Welcome to student-portal",
@@ -20,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${robotoSlab.variable} ${inter.className}`}>
+    <html lang="en" className={`${robotoSlab.variable} ${ibmPlex.className}`}>
       <SessionProvider>
         <body>
           {children}

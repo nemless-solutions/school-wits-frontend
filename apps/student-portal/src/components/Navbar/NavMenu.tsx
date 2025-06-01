@@ -8,14 +8,16 @@ import {
 } from "@school-wits/ui";
 import Image from "next/image";
 import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 import { NavItem } from "../../../types";
 
 interface NavMenuProps {
   title: string;
   content: NavItem[];
+  onClick?: Dispatch<SetStateAction<boolean>>;
 }
 
-export function NavMenu({ title, content }: NavMenuProps) {
+export function NavMenu({ title, content, onClick }: NavMenuProps) {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -23,7 +25,7 @@ export function NavMenu({ title, content }: NavMenuProps) {
           <NavigationMenuTrigger className="font-semibold text-base text-black !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[150px] md:pr-0 cursor-pointer">
             {title}
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent onClick={() => onClick && onClick(false)}>
             <ul className="w-[200px] font-semibold">
               {content.map((item, index) => (
                 <li key={index}>
@@ -37,11 +39,8 @@ export function NavMenu({ title, content }: NavMenuProps) {
                           height={50}
                           alt={item.title}
                         />
-                        <span className="block">
-                          {item.title.split(" ")[0]}{" "}
-                          <span className="font-roboto-slab text-primary">
-                            {item.title.split(" ")[1]}
-                          </span>
+                        <span className="font-roboto-slab text-primary font-semibold">
+                          {item.title}
                         </span>
                       </div>
                     </Link>
