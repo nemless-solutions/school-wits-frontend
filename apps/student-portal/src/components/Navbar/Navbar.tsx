@@ -1,18 +1,22 @@
 "use client";
 
 import { navItems } from "@/constants";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NavAction } from "./NavAction";
+import { Button } from "../client-ui";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
+import { UserMenu } from "./UserMenu";
 
 export function Navbar() {
   const [showNav, setShowNav] = useState(false);
   const activeLink = usePathname();
+
+  const { data: session } = useSession();
 
   useEffect(() => {
     if (showNav) {
@@ -36,7 +40,7 @@ export function Navbar() {
               src="/images/logo-lg.png"
               alt="logo"
               width="100"
-              height="100"
+              height="25"
             />
           </Link>
           <ToggleButton
@@ -70,7 +74,13 @@ export function Navbar() {
                   )
                 )}
               </ul>
-              <NavAction />
+              {session?.user ? (
+                <UserMenu session={session} />
+              ) : (
+                <Button asChild>
+                  <Link href="/sign-in">Log In</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>

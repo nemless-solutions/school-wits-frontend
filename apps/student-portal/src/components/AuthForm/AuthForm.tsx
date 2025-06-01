@@ -266,6 +266,7 @@ export function AuthForm<T extends FieldValues>({
             <Button
               type="submit"
               size="lg"
+              variant="success"
               className={isSignUp ? "mt-6" : "w-full my-4"}
               disabled={isSignUp && !agree}
             >
@@ -274,7 +275,6 @@ export function AuthForm<T extends FieldValues>({
             <Button
               type="button"
               size="lg"
-              variant="outline"
               className={isSignUp ? "mt-6" : "w-full"}
               asChild
             >

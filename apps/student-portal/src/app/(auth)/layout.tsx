@@ -8,7 +8,7 @@ export default function AuthLayout({
 }) {
   return (
     <main className="bg-auth h-screen overflow-y-clip flex items-center justify-center">
-      <div className="main-container max-h-[90vh] bg-white/60 backdrop-blur-xl overflow-y-auto rounded-lg">
+      <div className="main-container max-h-[90vh] bg-white/70 backdrop-blur-xl overflow-y-auto rounded-lg">
         <div className="flex justify-center">
           <div className="py-10">
             <Image

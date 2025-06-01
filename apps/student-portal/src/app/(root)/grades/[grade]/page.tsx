@@ -28,6 +28,8 @@ export default async function GradeDetails({
     data = await res.json();
   }
 
+  console.log(data);
+
   const { grade: gradeName, illustration, gradient } = gradeStyles;
   // const gradeCourses = courses[grade.toLowerCase()];
 
@@ -49,9 +51,9 @@ export default async function GradeDetails({
               <CourseCard key={index} course={course} cardBg={gradient.from} />
             ))}
           </div> */}
-          {data.map((c: { title: string }, i: number) => (
+          {/* {data.map((c: { title: string }, i: number) => (
             <p key={i}>{c.title}</p>
-          ))}
+          ))} */}
         </section>
       }
     </>
