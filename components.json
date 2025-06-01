@@ -13,7 +13,7 @@
   "aliases": {
     "components": "@/libs/ui/src/components",
     "utils": "@school-wits/utils",
-    "hooks": "@/libs/ui/src/hooks",
+    "hooks": "@/libs/hooks/src/lib",
     "ui": "@/libs/ui/src/components"
   },
   "iconLibrary": "lucide"

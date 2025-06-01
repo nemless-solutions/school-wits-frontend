@@ -6,11 +6,7 @@
     "emitDeclarationOnly": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -21,12 +17,8 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@school-wits/ui": [
-        "../../libs/ui"
-      ]
+      "@/*": ["./src/*"],
+      "@school-wits/ui": ["../../libs/ui"]
     },
     "outDir": "dist",
     "rootDir": "src",
@@ -57,9 +49,6 @@
   "references": [
     {
       "path": "../../libs/ui"
-    },
-    {
-      "path": "../../libs/utils"
     },
     {
       "path": "../../libs/validations"

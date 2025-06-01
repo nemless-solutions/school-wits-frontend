@@ -1,4 +1,6 @@
 import { auth } from "@/auth";
+import { AppSidebar } from "@/components/AppSidebar/AppSidebar";
+import { SidebarProvider } from "@/components/client-ui";
 import { redirect } from "next/navigation";
 
 export default async function RootLayout({
@@ -10,5 +12,10 @@ export default async function RootLayout({
 
   if (!session) redirect("/sign-in");
 
-  return <main>{children}</main>;
+  return (
+    <SidebarProvider>
+      <AppSidebar session={session} />
+      {children}
+    </SidebarProvider>
+  );
 }

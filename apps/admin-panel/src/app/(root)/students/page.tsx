@@ -3,12 +3,13 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbSeparator,
   Separator,
   SidebarInset,
   SidebarTrigger,
 } from "@/components/client-ui";
 
-export default function Home() {
+export default function Students() {
   return (
     <SidebarInset>
       <header className="flex h-16 shrink-0 items-center gap-2 border-b">
@@ -20,11 +21,15 @@ export default function Home() {
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem>
+                <BreadcrumbLink>Students</BreadcrumbLink>
+              </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
       </header>
-      <main className="p-6">HOME</main>
+      <main className="p-6">students</main>
     </SidebarInset>
   );
 }
