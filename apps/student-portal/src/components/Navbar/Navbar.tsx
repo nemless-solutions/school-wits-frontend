@@ -1,7 +1,7 @@
 "use client";
 
 import { navItems } from "@/constants";
-import { useSession } from "next-auth/react";
+import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,11 +12,9 @@ import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
 import { UserMenu } from "./UserMenu";
 
-export function Navbar() {
+export function Navbar({ session }: { session: Session | null }) {
   const [showNav, setShowNav] = useState(false);
   const activeLink = usePathname();
-
-  const { data: session } = useSession();
 
   useEffect(() => {
     if (showNav) {
