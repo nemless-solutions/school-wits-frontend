@@ -1,7 +1,8 @@
-import { auth } from "@/auth";
 import { GradePageHeader } from "@/components/GradePageHeader/GradePageHeader";
 import { grades } from "@/constants";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import courseBg from "../../../../../public/images/course-bg.png";
 
 export default async function GradeDetails({
   params,
@@ -16,22 +17,15 @@ export default async function GradeDetails({
 
   if (!gradeStyles) notFound();
 
-  const session = await auth();
-
-  const res = await fetch(`https://backend.schoolwits.com/course`, {
-    headers: {
-      Authorization: `Bearer ${session?.token}`,
-    },
-  });
+  const res = await fetch(
+    `https://backend.schoolwits.com/course/grade/${grade}`
+  );
 
   if (res.ok) {
     data = await res.json();
   }
 
-  console.log(data);
-
   const { grade: gradeName, illustration, gradient } = gradeStyles;
-  // const gradeCourses = courses[grade.toLowerCase()];
 
   return (
     <>
@@ -41,45 +35,45 @@ export default async function GradeDetails({
         gradeintFrom={gradient.from}
         gradientTo={gradient.to}
       />
-      {
-        <section className="main-container my-16">
+      <section className="bg-neutral-100 py-16">
+        <div className="main-container">
           <h3 className="text-2xl md:text-3xl text-secondary font-semibold mb-8">
             We Offer Following Courses
           </h3>
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {gradeCourses.map((course, index) => (
-              <CourseCard key={index} course={course} cardBg={gradient.from} />
-            ))}
-          </div> */}
-          {/* {data.map((c: { title: string }, i: number) => (
-            <p key={i}>{c.title}</p>
-          ))} */}
-        </section>
-      }
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {data.map(
+              (
+                course: { title: string; fee: string; uid: string },
+                index: number
+              ) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg overflow-clip shadow-md/20 hover:shadow-lg/30 duration-200"
+                >
+                  <div className="relative">
+                    <div className="bg-black/40 absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                      <div className="text-2xl text-neutral-50 font-bold text-center">
+                        <p>{course.uid.split("-")[0].split(" ")[0]}</p>
+                        <p>{course.uid.split("-")[0].split(" ")[1]}</p>
+                        <p>{course.uid.split("-")[1]}</p>
+                      </div>
+                    </div>
+                    <Image src={courseBg} alt={course.title} />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold line-clamp-1">
+                      {course.title}
+                    </h3>
+                    <p className="text-success text-lg font-bold">
+                      BDT {course.fee}
+                    </p>
+                  </div>
+                </div>
+              )
+            )}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
-
-/* function CourseCard({ course, cardBg }: { course: Course; cardBg: string }) {
-  return (
-    <div
-      style={{ background: `${cardBg}80` }}
-      className="py-5 px-3 border-2 text-center flex flex-col gap-2 rounded-lg shadow-[-3px_3px_5px_rgba(0,0,0,0.2)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.3)] hover:bg-background duration-150 hover:-translate-y-0.5 select-none"
-    >
-      <h2 className="text-xl font-semibold text-primary">{course.title}</h2>
-      <p>{course.duration}</p>
-
-      <Image
-        className="mx-auto"
-        src={course.image}
-        alt={course.title}
-        height={150}
-        width={150}
-      />
-      <p>Regular Fees: {course.fees}</p>
-      <p className="font-semibold">Early Bird:</p>
-      <p className="text-2xl font-semibold text-primary">{course.earlyBird}</p>
-    </div>
-  );
-}
- */
