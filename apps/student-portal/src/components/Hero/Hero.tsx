@@ -20,13 +20,6 @@ export function Hero() {
             </div>
             <div className="text-black flex gap-4">
               <Button
-                asChild
-                variant="outline"
-                className="text-sm md:text-lg w-fit h-[45px] md:h-[55px] shadow-[-3px_3px_5px_rgba(0,0,0,0.4)] hover:shadow-[-6px_6px_5px_rgba(0,0,0,0.5)] hover:bg-background duration-150 hover:-translate-y-0.5 font-semibold px-6"
-              >
-                <Link href="/courses">Browse Courses</Link>
-              </Button>
-              <Button
                 size="lg"
                 asChild
                 variant="outline"

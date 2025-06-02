@@ -1,3 +1,6 @@
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import fileDownload from "../../public/icons/file-download.png";
 import graph from "../../public/icons/graph.png";
 import growth from "../../public/icons/growth.png";
@@ -21,7 +24,6 @@ import { Course, NavItem } from "../../types";
 
 export const navItems: NavItem[] = [
   { type: "link", title: "Home", link: "/" },
-  { type: "link", title: "Courses", link: "/courses" },
   {
     type: "menu",
     title: "Grades",
@@ -52,6 +54,7 @@ export const navItems: NavItem[] = [
       },
     ],
   },
+  { type: "link", title: "Contact Us", link: "/contact-us" },
   { type: "link", title: "About Us", link: "/about-us" },
 ];
 
@@ -87,6 +90,44 @@ export const grades = [
       from: "#e0d9ff",
       to: "#5a3bd7",
     },
+  },
+];
+
+export const lessonHighlights = [
+  {
+    subject: "Mathematics",
+    title: "Unlock the language of logic.",
+    description:
+      "Dive into the world of numbers, patterns, and problem-solving. Our Mathematics lessons break down complex concepts into easy steps that build your confidence, one equation at a time.",
+    videoLink: "https://youtu.be/Ou34deDjinw",
+  },
+  {
+    subject: "Physics",
+    title: "Discover how the universe works.",
+    description:
+      "From motion to magnetism, Physics helps you see the science behind everyday life. Explore real-world applications through clear explanations and visual learning.",
+    videoLink: "https://youtu.be/RhygCOU_3zw",
+  },
+  {
+    subject: "Chemistry",
+    title: "Meet the magic of matter.",
+    description:
+      "Chemistry is more than lab coats and test tubes — it's the science of change. Learn how atoms, elements, and reactions shape everything around you.",
+    videoLink: "https://youtu.be/o6CW0inttWU",
+  },
+  {
+    subject: "Biology",
+    title: "Understand life, from cells to systems.",
+    description:
+      "Biology opens up the living world. Explore how your body works, how ecosystems interact, and how life continues through fascinating biological processes.",
+    videoLink: "https://youtu.be/ecijTio-ZzU",
+  },
+  {
+    subject: "Additional Mathematics",
+    title: "Challenge your mind beyond the basics.",
+    description:
+      "Additional Mathematics deepens your understanding of functions, calculus, and algebra. Ideal for advanced learners ready to tackle higher-level math with clarity and confidence.",
+    videoLink: "https://youtu.be/mArhcXX5UWw",
   },
 ];
 
@@ -516,3 +557,42 @@ export const aboutUs = [
       "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
   },
 ];
+
+export const contactUs = {
+  contacts: [
+    {
+      Icon: MdEmail,
+      title: "Reach Out Via Email",
+      link: "help@schoolwits.com",
+      description: "mailto:help@schoolwits.com",
+      button: "Send Email",
+    },
+    {
+      Icon: BsFillTelephoneFill,
+      title: "Speak With Us Directly",
+      link: "tel:+8801898898984",
+      description: "+880-1898-898984",
+      button: "Call Us",
+    },
+  ],
+  socials: [
+    {
+      Icon: FaFacebookF,
+      title: "Facebook",
+      link: "https://www.facebook.com/share/16Wg6y8ELd/",
+      button: "Like",
+    },
+    {
+      Icon: FaInstagram,
+      title: "Instagram",
+      link: "https://www.instagram.com/schoolwits?igsh=dDQ3MzY0OXZ4b2hr",
+      button: "Follow",
+    },
+    {
+      Icon: FaYoutube,
+      title: "YouTube",
+      link: "https://youtube.com/@schoolwits?feature=shared",
+      button: "Subscribe",
+    },
+  ],
+};

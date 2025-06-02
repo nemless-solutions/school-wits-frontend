@@ -6,9 +6,9 @@ export function GradeCards() {
   return (
     <section className="my-20">
       <div className="main-container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-secondary text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-primary text-center">
           Grade-wise <br />{" "}
-          <span className="text-2xl md:text-3xl text-primary">
+          <span className="text-2xl md:text-3xl text-secondary/70">
             Learning Plans
           </span>
         </h2>

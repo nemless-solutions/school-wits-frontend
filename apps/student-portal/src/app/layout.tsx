@@ -24,7 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${robotoSlab.variable} ${ibmPlex.className}`}>
+    <html
+      lang="en"
+      className={`${robotoSlab.variable} ${ibmPlex.className} antialiased`}
+    >
       <SessionProvider>
         <body>
           {children}
