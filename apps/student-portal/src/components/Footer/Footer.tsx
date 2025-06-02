@@ -15,11 +15,6 @@ export function Footer() {
               width={100}
               height={100}
             />
-            {/* <p className="font-roboto-slab uppercase font-medium text-3xl tracking-[6px] text-neutral-200">
-              School
-              <br />
-              Wits
-            </p> */}
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-16 text-neutral-300">

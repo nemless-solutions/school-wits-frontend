@@ -35,8 +35,8 @@ export function LessonHighlights() {
                 className="md:basis-1/2 lg:basis-1/3 my-20"
                 key={index}
               >
-                <div className="p-4 bg-white/5 border-2 border-white/10 rounded-lg shadow-[0px_8px_8px_0px_rgba(0,0,0,0.2)]">
-                  <p className="text-sm text-neutral-100 font-bold text-center">
+                <div className="p-4 bg-neutral-100 border-2 border-white/20 rounded-lg shadow-[0px_8px_8px_0px_rgba(0,0,0,0.2)]">
+                  <p className="text-sm text-primary/80 font-bold text-center uppercase line-clamp-1">
                     {item.subject}
                   </p>
                   <div className="relative w-full aspect-video my-4">
@@ -48,10 +48,10 @@ export function LessonHighlights() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="text-xl font-medium text-neutral-100 line-clamp-1">
+                    <h2 className="text-xl font-semibold text-primary line-clamp-1">
                       {item.title}
                     </h2>
-                    <p className="text-neutral-300 line-clamp-4">
+                    <p className="text-secondary line-clamp-4 leading-tight">
                       {item.description}
                     </p>
                   </div>

@@ -52,10 +52,14 @@ export default async function GradeDetails({
                 >
                   <div className="relative">
                     <div className="bg-black/40 absolute top-0 left-0 h-full w-full flex items-center justify-center">
-                      <div className="text-2xl text-neutral-50 font-bold text-center">
-                        <p>{course.uid.split("-")[0].split(" ")[0]}</p>
-                        <p>{course.uid.split("-")[0].split(" ")[1]}</p>
-                        <p>{course.uid.split("-")[1]}</p>
+                      <div className="font-bold text-center rounded-lg overflow-clip">
+                        <div className="bg-primary/75 p-2 text-xl text-neutral-200">
+                          <p>{course.uid.split("-")[0].split(" ")[0]}</p>
+                          <p>{course.uid.split("-")[0].split(" ")[1]}</p>
+                        </div>
+                        <p className="bg-secondary/75 p-1 text-2xl text-neutral-300">
+                          {course.uid.split("-")[1]}
+                        </p>
                       </div>
                     </div>
                     <Image src={courseBg} alt={course.title} />
