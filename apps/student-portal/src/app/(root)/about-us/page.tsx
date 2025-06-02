@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <section>
-      <div className="bg-primary pt-28 pb-24">
+    <div>
+      <section className="bg-primary pt-28 pb-24">
         <div className="main-container">
           <div className="grid md:grid-cols-2 items-center gap-8">
             <div>
@@ -31,9 +31,9 @@ export default function AboutUs() {
             ></iframe>
           </div>
         </div>
-      </div>
+      </section>
       {aboutUs.map((item, index) => (
-        <div key={index} className={index % 2 === 0 ? "" : "bg-primary"}>
+        <section key={index} className={index % 2 === 0 ? "" : "bg-primary"}>
           <div className="main-container">
             <div className="grid md:grid-cols-2 items-center gap-8 py-20 md:py-0 relative">
               <div
@@ -74,8 +74,8 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       ))}
-    </section>
+    </div>
   );
 }

@@ -1,3 +1,6 @@
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import fileDownload from "../../public/icons/file-download.png";
 import graph from "../../public/icons/graph.png";
 import growth from "../../public/icons/growth.png";
@@ -554,3 +557,42 @@ export const aboutUs = [
       "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
   },
 ];
+
+export const contactUs = {
+  contacts: [
+    {
+      Icon: MdEmail,
+      title: "Reach Out Via Email",
+      link: "help@schoolwits.com",
+      description: "mailto:help@schoolwits.com",
+      button: "Send Email",
+    },
+    {
+      Icon: BsFillTelephoneFill,
+      title: "Speak With Us Directly",
+      link: "tel:+8801898898984",
+      description: "+880-1898-898984",
+      button: "Call Us",
+    },
+  ],
+  socials: [
+    {
+      Icon: FaFacebookF,
+      title: "Facebook",
+      link: "https://www.facebook.com/share/16Wg6y8ELd/",
+      button: "Like",
+    },
+    {
+      Icon: FaInstagram,
+      title: "Instagram",
+      link: "https://www.instagram.com/schoolwits?igsh=dDQ3MzY0OXZ4b2hr",
+      button: "Follow",
+    },
+    {
+      Icon: FaYoutube,
+      title: "YouTube",
+      link: "https://youtube.com/@schoolwits?feature=shared",
+      button: "Subscribe",
+    },
+  ],
+};
