@@ -20,12 +20,3 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-
-.feedbacks li {
-  background: #09667986;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.feedbacks li span {
-  color: whitesmoke;
-}
