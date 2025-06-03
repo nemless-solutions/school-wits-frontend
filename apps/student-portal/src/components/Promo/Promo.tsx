@@ -15,9 +15,10 @@ export function Promo() {
           <div className="relative col-span-3">
             <div className="absolute -top-6 -left-6 w-20 aspect-square bg-primary rounded-full"></div>
             <div className="absolute -bottom-10 -right-10 w-28 aspect-square bg-secondary rounded-full"></div>
+            <div></div>
             <iframe
               className="w-full aspect-video rounded-xl relative z-10"
-              src="https://www.youtube.com/embed/D0UnqGm_miA?si=KBX7ti-v8GPX7YZ_"
+              src="https://www.youtube.com/embed/J-lW0RyWgVg?si=EXbFPDDNW3kWowVT"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

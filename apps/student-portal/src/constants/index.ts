@@ -131,6 +131,8 @@ export const lessonHighlights = [
   },
 ];
 
+export const promoVideoLink = "https://youtu.be/J-lW0RyWgVg";
+
 export const whyChooseUs = [
   {
     icon: videoPlayer,
@@ -563,8 +565,8 @@ export const contactUs = {
     {
       Icon: MdEmail,
       title: "Reach Out Via Email",
-      link: "help@schoolwits.com",
-      description: "mailto:help@schoolwits.com",
+      link: "mailto:help@schoolwits.com",
+      description: "help@schoolwits.com",
       button: "Send Email",
     },
     {
