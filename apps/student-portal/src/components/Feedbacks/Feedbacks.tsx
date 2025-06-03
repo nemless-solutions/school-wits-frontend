@@ -4,10 +4,10 @@ import { InfiniteMovingCards } from "../client-ui";
 export function Feedbacks() {
   return (
     <section className="">
-      <div className="py-16 flex flex-col antialiased bg-blue-100 dark:bg-neutral-950 dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-secondary text-center">
+      <div className="py-24 flex flex-col items-center justify-center relative overflow-hidden">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-primary text-center">
           Feedback <br />{" "}
-          <span className="text-primary text-2xl md:text-3xl">
+          <span className="text-2xl md:text-3xl text-secondary/70">
             That Speaks Volumes
           </span>
         </h2>

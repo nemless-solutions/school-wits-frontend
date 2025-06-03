@@ -1,14 +1,21 @@
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import fileDownload from "../../public/icons/file-download.png";
 import graph from "../../public/icons/graph.png";
+import growth from "../../public/icons/growth.png";
+import lightbulb from "../../public/icons/lightbulb.png";
 import mentor from "../../public/icons/mentor.png";
+import mission from "../../public/icons/mission.png";
 import quiz from "../../public/icons/quiz.png";
+import target from "../../public/icons/targeting.png";
 import test from "../../public/icons/test.png";
 import videoPlayer from "../../public/icons/video-player.png";
+import webinar from "../../public/icons/webinar.png";
 import additionalMath from "../../public/images/additional-math.png";
 import allSubjects from "../../public/images/all-subjects.png";
 import backpack from "../../public/images/backpack.png";
 import graduationCap from "../../public/images/graduation-cap.png";
-import lamp from "../../public/images/lamp.png";
 import math from "../../public/images/math.png";
 import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
@@ -17,7 +24,6 @@ import { Course, NavItem } from "../../types";
 
 export const navItems: NavItem[] = [
   { type: "link", title: "Home", link: "/" },
-  { type: "link", title: "Courses", link: "/courses" },
   {
     type: "menu",
     title: "Grades",
@@ -42,18 +48,13 @@ export const navItems: NavItem[] = [
       },
       {
         type: "link",
-        icon: lamp,
-        title: "Grade IX",
-        link: "/grades/ix",
-      },
-      {
-        type: "link",
         icon: graduationCap,
-        title: "Grade X",
-        link: "/grades/x",
+        title: "O Level",
+        link: "/grades/o",
       },
     ],
   },
+  { type: "link", title: "Contact Us", link: "/contact-us" },
   { type: "link", title: "About Us", link: "/about-us" },
 ];
 
@@ -83,20 +84,50 @@ export const grades = [
     },
   },
   {
-    grade: "IX",
-    illustration: lamp,
-    gradient: {
-      from: "#f5d298",
-      to: "#f59e0b",
-    },
-  },
-  {
-    grade: "X",
+    grade: "O",
     illustration: graduationCap,
     gradient: {
       from: "#e0d9ff",
       to: "#5a3bd7",
     },
+  },
+];
+
+export const lessonHighlights = [
+  {
+    subject: "Mathematics",
+    title: "Unlock the language of logic.",
+    description:
+      "Dive into the world of numbers, patterns, and problem-solving. Our Mathematics lessons break down complex concepts into easy steps that build your confidence, one equation at a time.",
+    videoLink: "https://youtu.be/Ou34deDjinw",
+  },
+  {
+    subject: "Physics",
+    title: "Discover how the universe works.",
+    description:
+      "From motion to magnetism, Physics helps you see the science behind everyday life. Explore real-world applications through clear explanations and visual learning.",
+    videoLink: "https://youtu.be/RhygCOU_3zw",
+  },
+  {
+    subject: "Chemistry",
+    title: "Meet the magic of matter.",
+    description:
+      "Chemistry is more than lab coats and test tubes — it's the science of change. Learn how atoms, elements, and reactions shape everything around you.",
+    videoLink: "https://youtu.be/o6CW0inttWU",
+  },
+  {
+    subject: "Biology",
+    title: "Understand life, from cells to systems.",
+    description:
+      "Biology opens up the living world. Explore how your body works, how ecosystems interact, and how life continues through fascinating biological processes.",
+    videoLink: "https://youtu.be/ecijTio-ZzU",
+  },
+  {
+    subject: "Additional Mathematics",
+    title: "Challenge your mind beyond the basics.",
+    description:
+      "Additional Mathematics deepens your understanding of functions, calculus, and algebra. Ideal for advanced learners ready to tackle higher-level math with clarity and confidence.",
+    videoLink: "https://youtu.be/mArhcXX5UWw",
   },
 ];
 
@@ -142,32 +173,44 @@ export const whyChooseUs = [
 export const feedbacks = [
   {
     quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
+      "I like how Sir breaks down each lecture and delivers it to us students. Especially the way he explains each lecture in a different and easier way every time — both elaborately and simply, depending on the student who is struggling.",
+    name: "Arshiya Azeen Athir",
+    title: "Grade: VIII",
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
-  },
-  {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
+      "School wits did a really great job. They are very patient. They teach a student until they understood properly.",
+    name: "Ravid Yusuf",
+    title: "Grade: VIII",
   },
   {
     quote:
-      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
+      "Through out the year it was very nice experience with School wits one thing I really liked was the friendly and the helpful  teacher he really made learning easier.",
+    name: "Shazia Noor",
+    title: "Grade: VIII",
   },
   {
     quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
+      "I really like how supportive and friendly the teacher is. He made sure everyone understood the lessons and was always ready to help. It made learning enjoyable and boosted my confidence a lot.",
+    name: "Anonymous",
+    title: "Grade: VIII",
+  },
+  {
+    quote:
+      "Due to the teacher , we rarely forget any answers because he tends to repeat the answers until we are fully aware of it.",
+    name: "Anonymous",
+    title: "Grade: VIII",
+  },
+  {
+    quote:
+      "Everything, including lecture videos, offline lectures were really great and comfortable, really got so much help from our Sir, thanks for a nice session.",
+    name: "Anonymous",
+    title: "Grade: VIII",
+  },
+  {
+    quote: "Takes more classes and gives time.",
+    name: "Tasfia Akter",
+    title: "Grade: VII",
   },
 ];
 
@@ -427,6 +470,129 @@ export const courses: Record<string, Course[]> = {
         "Worksheets & Quizzes",
         "Remedial sessions & Topic-end assessments with Exam-style questions",
       ],
+    },
+  ],
+};
+
+export const curriculums = [
+  {
+    title: "Cambridge IGCSE (CAIE)",
+    value: "CAMBRIDGE",
+  },
+  {
+    title: "Oxford AQA",
+    value: "OXFORD",
+  },
+  {
+    title: "Pearson Edexcel",
+    value: "PEARSON",
+  },
+  {
+    title: "International Baccalaureate (IB)",
+    value: "IB",
+  },
+];
+
+export const FIELD_NAMES = {
+  email: "Email",
+  password: "Password",
+  fullName: "Full name",
+  contact: "Contact Number",
+  fatherName: "Father's name",
+  motherName: "Mother's name",
+  guardianEmail: "Guardian's email",
+  guardianContact: "Guardian's contact",
+  curriculum: "Curriculum",
+  grade: "Grade",
+  dateOfBirth: "Date of birth",
+};
+
+export const FIELD_TYPES = {
+  fullName: "text",
+  email: "email",
+  password: "password",
+};
+
+export const terms = [
+  "Arrive at least 10 minutes before class.",
+  "Bring essential materials (pen, pencil, eraser, ruler, etc.).",
+  "Take notes actively during lessons.",
+  "Maintain academic integrity during exams.",
+  "Follow proper classroom etiquette when asking or answering questions.",
+  "Sharing or distributing course materials is prohibited.",
+  "Class schedules are subject to change with prior notice.",
+  "Fees must be paid in full upfront, inclusive of bank charges for online transactions.",
+];
+
+export const aboutUs = [
+  {
+    icon: lightbulb,
+    header: "It All Started With a Question...",
+    subHeader: "What if learning could spark curiosity, not stress?",
+    description:
+      "That simple question became the foundation of School Wits. We recognized how traditional education often left students feeling overwhelmed, disengaged, or uninspired. We set out to bridge the learning.",
+  },
+  {
+    icon: webinar,
+    header: "How Our Classes Work ?",
+    description:
+      "Our in-person classes offer a focused, tech-enabled environment - with limited seats to ensure personalized attention. Classrooms are equipped with modern tools like interactive flat panels, projectors, and integrated video lessons - making every learning experience dynamic, visual, and engaging. Students benefit from regular performance insights, helping them stay aware of their progress and continuously improve - while also allowing parents to stay informed and actively involved in their learning journey.",
+  },
+  {
+    icon: growth,
+    header: "How Are We Different ?",
+    description:
+      "School Wits isn't just a typical learning platform - it's a school of wits, where sharp minds grow sharper, and creativity leads the way. Here, learning isn't about cramming facts it's about discovering ideas, asking the right questions, and building the confidence to explore beyond textbooks.",
+  },
+  {
+    icon: mission,
+    header: "Our Mission",
+    description:
+      "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
+  },
+  {
+    icon: target,
+    header: "Our Vision",
+    description:
+      "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
+  },
+];
+
+export const contactUs = {
+  contacts: [
+    {
+      Icon: MdEmail,
+      title: "Reach Out Via Email",
+      link: "help@schoolwits.com",
+      description: "mailto:help@schoolwits.com",
+      button: "Send Email",
+    },
+    {
+      Icon: BsFillTelephoneFill,
+      title: "Speak With Us Directly",
+      link: "tel:+8801898898984",
+      description: "+880-1898-898984",
+      button: "Call Us",
+    },
+  ],
+  socials: [
+    {
+      Icon: FaFacebookF,
+      title: "Facebook",
+      link: "https://www.facebook.com/share/16Wg6y8ELd/",
+      button: "Like",
+    },
+    {
+      Icon: FaInstagram,
+      title: "Instagram",
+      link: "https://www.instagram.com/schoolwits?igsh=dDQ3MzY0OXZ4b2hr",
+      button: "Follow",
+    },
+    {
+      Icon: FaYoutube,
+      title: "YouTube",
+      link: "https://youtube.com/@schoolwits?feature=shared",
+      button: "Subscribe",
     },
   ],
 };

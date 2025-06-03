@@ -1,6 +1,7 @@
 "use client";
 
 import { navItems } from "@/constants";
+import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,8 +10,9 @@ import { Button } from "../client-ui";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
+import { UserMenu } from "./UserMenu";
 
-export function Navbar() {
+export function Navbar({ session }: { session: Session | null }) {
   const [showNav, setShowNav] = useState(false);
   const activeLink = usePathname();
 
@@ -36,7 +38,7 @@ export function Navbar() {
               src="/images/logo-lg.png"
               alt="logo"
               width="100"
-              height="100"
+              height="25"
             />
           </Link>
           <ToggleButton
@@ -66,15 +68,20 @@ export function Navbar() {
                       key={index}
                       title={item.title}
                       content={item.menu}
+                      onClick={setShowNav}
                     />
                   )
                 )}
               </ul>
-              <div className="flex items-center justify-center gap-x-3 mt-8 md:mt-0">
-                <Button asChild>
-                  <Link href="/sign-in">Log In</Link>
-                </Button>
-              </div>
+              {session?.user ? (
+                <UserMenu session={session} onClick={setShowNav} />
+              ) : (
+                <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                  <Button asChild>
+                    <Link href="/sign-in">Log In</Link>
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
