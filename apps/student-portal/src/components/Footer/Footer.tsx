@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 
 export function Footer() {
   return (
-    <div className="bg-primary py-20">
+    <div className="bg-slate-900 py-20">
       <div className="main-container">
         <div className="flex justify-center">
           <div>
@@ -18,7 +18,7 @@ export function Footer() {
             />
           </div>
         </div>
-        <div className="mt-12 text-neutral-200">
+        <div className="mt-12 text-neutral-300">
           <h3 className="text-center text-xl font-semibold mb-3">
             Contact Us Via
           </h3>
@@ -34,7 +34,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 text-neutral-200">
+        <div className="mt-12 text-neutral-300">
           <h3 className="text-center text-xl font-semibold mb-4">
             Follow Us On
           </h3>
@@ -42,7 +42,7 @@ export function Footer() {
             {contactUs.socials.map((s, i) => (
               <div key={i}>
                 <a
-                  className="text-3xl text-neutral-300 hover:text-white"
+                  className="text-3xl text-neutral-400 hover:text-white"
                   href={s.link}
                   target="_blank"
                   rel="noopener noreferrer"
