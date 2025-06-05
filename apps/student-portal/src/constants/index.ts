@@ -12,14 +12,10 @@ import target from "../../public/icons/targeting.png";
 import test from "../../public/icons/test.png";
 import videoPlayer from "../../public/icons/video-player.png";
 import webinar from "../../public/icons/webinar.png";
-import additionalMath from "../../public/images/additional-math.png";
-import allSubjects from "../../public/images/all-subjects.png";
 import backpack from "../../public/images/backpack.png";
 import graduationCap from "../../public/images/graduation-cap.png";
-import math from "../../public/images/math.png";
 import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
-import python from "../../public/images/python.png";
 import { Course, NavItem } from "../../types";
 
 export const navItems: NavItem[] = [
@@ -219,11 +215,12 @@ export const feedbacks = [
 export const courses: Record<string, Course[]> = {
   "vi-vii": [
     {
+      type: "current",
       title: "Must-Know Concepts of Mathematics",
-      image: math,
-      suitableFor: "Grade VI/VII of session 2025-2026",
+      session: "2025-2026",
       duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
+      mode: " In-person",
+      schedule: "10 classes | 60 minutes each",
       fees: "BDT 5,000",
       earlyBird: "BDT 4,500 before 10 June",
       overview:
@@ -245,11 +242,12 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "current",
       title: "Basics of Computer Programming with Python",
-      image: python,
-      suitableFor: "Grade VI/VII of session 2025-2026",
-      mode: "Online live session | Requires a computer",
-      schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
+      session: "2025-2026",
+      duration: "15 June - 28 June 2025",
+      mode: "Online | Requires a computer",
+      schedule: "10 sessions | 60 minutes each",
       fees: "BDT 5,000",
       earlyBird: "BDT 4,500 before 10 June",
       overview:
@@ -268,9 +266,9 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "regular",
       title: " Beyond the Bell: Study Support",
-      image: allSubjects,
-      suitableFor: "Grade VI/VII of session 2025-2026",
+      session: "2025-2026",
       duration: "5 July - 18 December 2025",
       mode: "In-person | 4 classes/week | 70 minutes each",
       fees: "BDT 10,000/month (Total: BDT 60,000)",
@@ -285,9 +283,9 @@ export const courses: Record<string, Course[]> = {
   ],
   viii: [
     {
+      type: "current",
       title: "Must-Know Concepts of Mathematics - Syllabus D (4024)",
-      image: math,
-      suitableFor: "Grade VIII of session 2025-2026",
+      session: "2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
       fees: "BDT 5,000",
@@ -313,9 +311,9 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "current",
       title: "Must-Know Concepts of Additional Mathematics (4037)",
-      image: additionalMath,
-      suitableFor: "Grade VIII of session 2025-2026",
+      session: "2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
       fees: "BDT 5,000",
@@ -338,9 +336,10 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "current",
       title: "Basics of Computer Programming with Python",
-      image: python,
-      suitableFor: "Grade VIII of session 2025-2026",
+      session: "2025-2026",
+      duration: "15 June - 28 June 2025",
       mode: "Online live session | Requires a computer",
       schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
       fees: "BDT 5,000",
@@ -361,9 +360,9 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "regular",
       title: "Beyond the Bell: Study Support",
-      image: allSubjects,
-      suitableFor: "Grade VIII of session 2025-2026",
+      session: "2025-2026",
       duration: "5 July - 18 December 2025",
       mode: "In-person | 3 classes/week per subject | 70 minutes each",
       fees: "BDT 4,000/month per subject",
@@ -380,11 +379,11 @@ export const courses: Record<string, Course[]> = {
       ],
     },
   ],
-  "ix-x": [
+  o: [
     {
+      type: "current",
       title: " Must-Know Concepts of Mathematics - Syllabus D (4024)",
-      image: math,
-      suitableFor: "Grade IX/X of session 2025-2026",
+      session: "2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
       fees: "BDT 5,000",
@@ -408,9 +407,9 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "current",
       title: "Must-Know Concepts of Additional Mathematics (4037)",
-      image: additionalMath,
-      suitableFor: "Grade IX/X of session 2025-2026",
+      session: "2025-2026",
       duration: "15 June - 28 June 2025",
       mode: " In-person | 10 classes | 60 minutes each",
       fees: "BDT 5,000",
@@ -432,9 +431,10 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "current",
       title: "Basics of Computer Programming with Python",
-      image: python,
-      suitableFor: "Grade IX/X of session 2025-2026",
+      session: "2025-2026",
+      duration: "15 June - 28 June 2025",
       mode: "Online live session | Requires a computer",
       schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
       fees: "BDT 5,000",
@@ -455,13 +455,14 @@ export const courses: Record<string, Course[]> = {
       ],
     },
     {
+      type: "regular",
       title: "Beyond the Bell: Study Support",
-      image: allSubjects,
-      suitableFor: "Grade IX/X of session 2025-2026",
+      session: "2025-2026",
       duration: "5 July - 18 December 2025",
       mode: "In-person | 3 classes/week per subject | 70 minutes each",
       fees: "BDT 4,000/month per subject",
       earlyBird: "BDT 1,000 off/subject in July (if registered before 30 June)",
+      note: "Covers half of the CAIE O-Level syllabus, to be completed in full by July 2026",
       subjects: [
         "Mathematics-Syllabus D (4024)",
         "Additional Mathematics (4037)",
