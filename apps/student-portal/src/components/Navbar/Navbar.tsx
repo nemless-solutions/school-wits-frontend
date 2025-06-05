@@ -35,7 +35,7 @@ export function Navbar({ session }: { session: Session | null }) {
           <Link href="/">
             <Image
               className="w-[100px] md:w-[180px] object-cover"
-              src="/images/logo-lg.png"
+              src="/images/logo-primary.png"
               alt="logo"
               width="100"
               height="25"

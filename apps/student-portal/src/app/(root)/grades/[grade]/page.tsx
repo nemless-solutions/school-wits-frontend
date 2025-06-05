@@ -25,15 +25,15 @@ export default async function GradeDetails({
     data = await res.json();
   }
 
-  const { grade: gradeName, illustration, gradient } = gradeStyles;
+  const { grade: gradeName, illustration } = gradeStyles;
 
   return (
     <>
       <GradePageHeader
         grade={gradeName}
         imageSrc={illustration}
-        gradeintFrom={gradient.from}
-        gradientTo={gradient.to}
+        gradeintFrom="#00495880"
+        gradientTo="#004958"
       />
       <section className="bg-neutral-100 py-16">
         <div className="main-container">

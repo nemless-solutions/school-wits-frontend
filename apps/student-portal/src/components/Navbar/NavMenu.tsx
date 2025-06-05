@@ -26,7 +26,7 @@ export function NavMenu({ title, content, onClick }: NavMenuProps) {
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent onClick={() => onClick && onClick(false)}>
-            <ul className="w-[200px] font-semibold">
+            <ul className="w-[280px] font-semibold">
               {content.map((item, index) => (
                 <li key={index}>
                   <NavigationMenuLink asChild>

@@ -70,7 +70,13 @@ export default function AboutUs() {
                 )}
               >
                 <p className="text-xl font-semibold mb-2">{item?.subHeader}</p>
-                <p className="text-lg text-justify">{item.description}</p>
+                <p className="text-lg text-justify">
+                  {item.description.split("school of wits")[0]}
+                  {item.description.split("school of wits").length > 1 && (
+                    <i>school of wits</i>
+                  )}
+                  {item.description.split("school of wits")[1]}
+                </p>
               </div>
             </div>
           </div>

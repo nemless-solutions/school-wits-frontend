@@ -49,7 +49,7 @@ export const navItems: NavItem[] = [
       {
         type: "link",
         icon: graduationCap,
-        title: "O Level",
+        title: "O Levels [Grade IX & X]",
         link: "/grades/o",
       },
     ],
@@ -181,26 +181,26 @@ export const feedbacks = [
   },
   {
     quote:
-      "School wits did a really great job. They are very patient. They teach a student until they understood properly.",
-    name: "Ravid Yusuf",
-    title: "Grade: VIII",
-  },
-  {
-    quote:
-      "Through out the year it was very nice experience with School wits one thing I really liked was the friendly and the helpful  teacher he really made learning easier.",
-    name: "Shazia Noor",
-    title: "Grade: VIII",
-  },
-  {
-    quote:
       "I really like how supportive and friendly the teacher is. He made sure everyone understood the lessons and was always ready to help. It made learning enjoyable and boosted my confidence a lot.",
     name: "Anonymous",
     title: "Grade: VIII",
   },
   {
     quote:
+      "School wits did a really great job. They are very patient. They teach a student until they understood properly.",
+    name: "Ravid Yusuf",
+    title: "Grade: VIII",
+  },
+  {
+    quote:
       "Due to the teacher , we rarely forget any answers because he tends to repeat the answers until we are fully aware of it.",
     name: "Anonymous",
+    title: "Grade: VIII",
+  },
+  {
+    quote:
+      "Through out the year it was very nice experience with School wits one thing I really liked was the friendly and the helpful  teacher he really made learning easier.",
+    name: "Shazia Noor",
     title: "Grade: VIII",
   },
   {
@@ -532,7 +532,7 @@ export const aboutUs = [
     header: "It All Started With a Question...",
     subHeader: "What if learning could spark curiosity, not stress?",
     description:
-      "That simple question became the foundation of School Wits. We recognized how traditional education often left students feeling overwhelmed, disengaged, or uninspired. We set out to bridge the learning.",
+      "That simple question became the foundation of School Wits. We recognized how traditional education often left students feeling overwhelmed, disengaged, or uninspired. We set out to bridge the gap between rigid systems and the dynamic potential of digital learning.",
   },
   {
     icon: webinar,
@@ -556,7 +556,7 @@ export const aboutUs = [
     icon: target,
     header: "Our Vision",
     description:
-      "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
+      "Our vision is to build a trusted global platform where students can unlock their full potential through personalized learning experiences and innovative teaching methods. We envision establishing Bangladesh as a global hub for quality education, shaping a generation of confident, skilled, and future-ready learners through cutting-edge digital schooling.",
   },
 ];
 
@@ -565,8 +565,8 @@ export const contactUs = {
     {
       Icon: MdEmail,
       title: "Reach Out Via Email",
-      link: "mailto:help@schoolwits.com",
-      description: "help@schoolwits.com",
+      link: "mailto:support@schoolwits.com",
+      description: "support@schoolwits.com",
       button: "Send Email",
     },
     {

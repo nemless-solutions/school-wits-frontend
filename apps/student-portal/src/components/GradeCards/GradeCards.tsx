@@ -12,15 +12,10 @@ export function GradeCards() {
             Learning Plans
           </span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {grades.map((g, i) => (
             <Link key={i} href={`/grades/${g.grade.toLowerCase()}`}>
-              <div
-                style={{
-                  background: `radial-gradient(circle at top right, ${g?.gradient?.from}, ${g?.gradient?.to})`,
-                }}
-                className="flex items-center justify-center rounded-lg cursor-pointer shadow-md/30 hover:shadow-lg/40 transition-all duration-150"
-              >
+              <div className="flex h-full items-center justify-center rounded-lg cursor-pointer shadow-md/30 hover:shadow-lg/40 transition-all duration-150 bg-gradient-to-bl from-primary/40 to-primary">
                 <div className="p-4">
                   <Image
                     className="drop-shadow-[-10px_10px_5px_rgba(0,0,0,0.5)]"
@@ -29,8 +24,13 @@ export function GradeCards() {
                     height={150}
                     width={150}
                   />
-                  <h3 className="text-xl mt-3 font-bold text-secondary font-roboto-slab text-center">
-                    {g.grade === "O" ? "O Level" : `Grade ${g.grade}`}
+                  <h3 className="text-xl mt-3 font-bold text-neutral-100 font-roboto-slab text-center">
+                    {g.grade === "O" ? "O Levels" : `Grade ${g.grade}`}{" "}
+                    {g.grade === "O" && (
+                      <>
+                        <br /> [Grade IX & X]
+                      </>
+                    )}
                   </h3>
                 </div>
               </div>

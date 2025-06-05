@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  curriculums,
-  FIELD_NAMES,
-  FIELD_TYPES,
-  grades,
-  terms,
-} from "@/constants";
+import { curriculums, FIELD_NAMES, FIELD_TYPES, terms } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@school-wits/utils";
 import { format } from "date-fns";
@@ -51,7 +45,7 @@ interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
 }
 
-const _grades = grades.map((grade) => grade.grade.toUpperCase());
+const _grades = ["VI", "VII", "VIII", "IX", "X"];
 
 export function AuthForm<T extends FieldValues>({
   type,
@@ -159,7 +153,7 @@ export function AuthForm<T extends FieldValues>({
                               value={g}
                               className="font-roboto-slab font-bold"
                             >
-                              {g === "O" ? "O Level" : `Grade ${g}`}
+                              Grade {g}
                             </SelectItem>
                           ))}
                         </SelectContent>
