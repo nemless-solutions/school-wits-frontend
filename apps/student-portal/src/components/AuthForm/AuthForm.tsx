@@ -70,7 +70,7 @@ export function AuthForm<T extends FieldValues>({
       toast.success(`Successfully ${isSignUp ? "signed up" : "signed in"}`);
 
       setTimeout(() => {
-        router.push("/");
+        router.push("/profile");
       }, 1000);
     } else {
       toast.error(

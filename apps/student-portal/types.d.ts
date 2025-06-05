@@ -1,9 +1,10 @@
 export type Course = {
+  type: "regular" | "current";
   title: string;
-  image: StaticImageData;
-  suitableFor: string;
-  duration?: string;
+  session: string;
+  duration: string;
   schedule?: string;
+  note?: string;
   mode: string;
   fees: string;
   earlyBird?: string;
