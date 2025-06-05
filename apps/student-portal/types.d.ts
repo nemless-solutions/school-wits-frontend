@@ -33,11 +33,11 @@ interface AuthCredentials {
   email: string;
   password: string;
   fullName: string;
-  contact: string;
   fatherName: string;
   motherName: string;
   guardianEmail: string;
   guardianContact: string;
+  currentSchool: string;
   curriculum: "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
   grade: "VI" | "VII" | "VIII" | "IX" | "X";
   dateOfBirth: Date;

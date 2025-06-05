@@ -18,7 +18,7 @@ export function Promo() {
             <div></div>
             <iframe
               className="w-full aspect-video rounded-xl relative z-10"
-              src="https://www.youtube.com/embed/J-lW0RyWgVg?si=EXbFPDDNW3kWowVT"
+              src="https://www.youtube.com/embed/PXOJTvJ0-GA?si=qvk7SMS5o3sNFKN_"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

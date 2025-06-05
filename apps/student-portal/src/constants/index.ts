@@ -504,6 +504,7 @@ export const FIELD_NAMES = {
   motherName: "Mother's name",
   guardianEmail: "Guardian's email",
   guardianContact: "Guardian's contact",
+  currentSchool: "Current School Name",
   curriculum: "Curriculum",
   grade: "Grade",
   dateOfBirth: "Date of birth",
