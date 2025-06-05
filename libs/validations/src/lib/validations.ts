@@ -15,6 +15,6 @@ export const signUpSchema = z.object({
   guardianEmail: z.string().email(),
   guardianContact: z.string(),
   curriculum: z.enum(["CAMBRIDGE", "OXFORD", "PEARSON", "IB"]),
-  grade: z.enum(["VI", "VII", "VIII", "O"]),
+  grade: z.enum(["VI", "VII", "VIII", "IX", "X"]),
   dateOfBirth: z.date(),
 });

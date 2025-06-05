@@ -5,27 +5,27 @@ import { MdEmail } from "react-icons/md";
 
 export function Footer() {
   return (
-    <div className="bg-slate-900 py-20">
+    <div className="bg-primary py-20">
       <div className="main-container">
         <div className="flex justify-center">
           <div>
             <Image
-              className="bg-neutral-200 p-2 w-[210px] h-[60px] rounded-xs"
-              src="/images/logo-lg.png"
+              className="p-2 w-[210px] h-[60px] rounded-xs"
+              src="/images/logo-white.png"
               alt="logo"
               width={100}
               height={100}
             />
           </div>
         </div>
-        <div className="mt-16 text-neutral-300">
+        <div className="mt-12 text-neutral-200">
           <h3 className="text-center text-xl font-semibold mb-3">
             Contact Us Via
           </h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <div className="flex items-center gap-2">
               <MdEmail className="text-xl" />
-              <a href="mailto:help@schoolwits.com">help@schoolwits.com</a>
+              <a href="mailto:support@schoolwits.com">support@schoolwits.com</a>
             </div>
             <div className="h-6 w-0.5 bg-white/40 sm:block hidden"></div>
             <div className="flex items-center gap-2">
@@ -34,7 +34,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 text-neutral-300">
+        <div className="mt-12 text-neutral-200">
           <h3 className="text-center text-xl font-semibold mb-4">
             Follow Us On
           </h3>
@@ -42,7 +42,7 @@ export function Footer() {
             {contactUs.socials.map((s, i) => (
               <div key={i}>
                 <a
-                  className="text-3xl text-neutral-400 hover:text-white"
+                  className="text-3xl text-neutral-300 hover:text-white"
                   href={s.link}
                   target="_blank"
                   rel="noopener noreferrer"

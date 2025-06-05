@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../public/images/logo-lg.png";
+import logo from "../../../public/images/logo-primary.png";
 
 export default function AuthLayout({
   children,

@@ -28,12 +28,21 @@ export function GradePageHeader({
           height={150}
           width={150}
         />
-        <h1 className="text-3xl md:text-4xl font-semibold mb-8 text-secondary text-center">
-          Grade{" "}
-          <span className="text-primary font-bold font-roboto-slab">
-            {grade.split("-").join(" & ")}
-          </span>
-        </h1>
+        {grade === "O" ? (
+          <h1 className="text-3xl md:text-4xl font-semibold mb-8 text-neutral-100 text-center">
+            O Levels{" "}
+            <span className="text-white font-bold font-roboto-slab">
+              [Grade IX & X]
+            </span>
+          </h1>
+        ) : (
+          <h1 className="text-3xl md:text-4xl font-semibold mb-8 text-neutral-100 text-center">
+            Grade{" "}
+            <span className="text-white font-bold font-roboto-slab">
+              {grade.split("-").join(" & ")}
+            </span>
+          </h1>
+        )}
       </div>
     </section>
   );

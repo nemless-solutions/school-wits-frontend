@@ -39,6 +39,6 @@ interface AuthCredentials {
   guardianEmail: string;
   guardianContact: string;
   curriculum: "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
-  grade: "VI" | "VII" | "VIII" | "O";
+  grade: "VI" | "VII" | "VIII" | "IX" | "X";
   dateOfBirth: Date;
 }

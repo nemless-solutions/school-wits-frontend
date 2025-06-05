@@ -14,7 +14,7 @@ export function Promo() {
           </div>
           <div className="relative col-span-3">
             <div className="absolute -top-6 -left-6 w-20 aspect-square bg-primary rounded-full"></div>
-            <div className="absolute -bottom-10 -right-10 w-28 aspect-square bg-secondary rounded-full"></div>
+            <div className="absolute -bottom-10 -right-10 w-28 aspect-square bg-primary rounded-full"></div>
             <div></div>
             <iframe
               className="w-full aspect-video rounded-xl relative z-10"
