@@ -20,6 +20,9 @@
     },
     {
       "path": "./libs/validations"
+    },
+    {
+      "path": "./apps/admin-panel"
     }
   ],
   "compilerOptions": {
