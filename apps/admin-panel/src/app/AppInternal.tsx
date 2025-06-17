@@ -1,32 +1,36 @@
+import { SidebarInset, SidebarProvider } from "@school-wits/ui";
 import { Route, Routes } from "react-router-dom";
-import { AppInternalLayout } from "../components/InternalLayout/AppInternalLayout";
-import { useAuth } from "../contexts/AuthContext";
+import { AppSidebar } from "../components/Sidebar/AppSidebar";
+import { SiteHeader } from "../components/SiteHeader/SiteHeader";
 import NotFound from "../pages/error/NotFound";
-import Unauthorized from "../pages/error/Unauthorized";
 import Home from "../pages/internal/Home";
 import Teachers from "../pages/internal/teachers/Teachers";
 
-export default function AppInternal() {
-  const { user } = useAuth();
-
-  if (
-    !user?.roles
-      ?.map((role: { id: number; name: string }) => role.name.toUpperCase())
-      .includes("ROLE_ADMIN")
-  ) {
-    return <Unauthorized />;
-  }
-
+export default function Page() {
   return (
-    <div>
-      <AppInternalLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/teachers" element={<Teachers />} />
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AppInternalLayout>
-    </div>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset className="h-[calc(100vh-20px)] overflow-hidden">
+        <SiteHeader />
+        <div className="flex flex-1 flex-col overflow-y-scroll">
+          <div className="@container/main flex flex-1 flex-col gap-2">
+            <div className="p-2 md:p-4">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/teachers" element={<Teachers />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

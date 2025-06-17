@@ -1,27 +1,22 @@
 import { AiOutlineHome } from "react-icons/ai";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { PiStudentDuotone } from "react-icons/pi";
-import { Link } from "../../types";
+import { SidebarLink } from "../../types";
 
-export const themes = {
-  light: ["light", "corporate", "cupcake", "valentine"],
-  dark: ["dim", "dracula", "dark", "black"],
-};
-
-export const sidebarLinks: Link[] = [
+export const sidebarLinks: SidebarLink[] = [
   {
     name: "Home",
     link: "/",
-    Icon: AiOutlineHome,
+    icon: AiOutlineHome,
   },
   {
     name: "Students",
-    Icon: PiStudentDuotone,
+    icon: PiStudentDuotone,
     link: "/students",
   },
   {
     name: "Teachers",
-    Icon: FaChalkboardTeacher,
+    icon: FaChalkboardTeacher,
     link: "/teachers",
   },
 ];

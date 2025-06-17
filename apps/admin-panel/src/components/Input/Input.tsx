@@ -9,7 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 // Used forward ref inorder to make sure that the react-hook-form works.
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, Icon, className = "", ...props }, ref) => {
+  ({ label, Icon, className, ...props }, ref) => {
     return (
       <div>
         {label && (
@@ -20,7 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             {...props}
-            className={`w-full rounded-lg bg-base-100 py-4 pl-6 pr-10 text-base-content outline-none placeholder:text-base-content/50 ${className}`}
+            className={`w-full rounded-lg bg-neutral-50 py-4 pl-6 pr-10 text-base-content outline-none ${className}`}
           />
           {Icon && (
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xl">

@@ -1,3 +1,5 @@
+import { Button } from "@school-wits/ui";
+import { Loader2Icon } from "lucide-react";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -57,8 +59,8 @@ export default function SignIn() {
   }, [data, isSuccess, navigate, setToken, setUser]);
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="rounded-xl bg-base-200">
+    <div className="flex items-center justify-center h-screen bg-neutral-300">
+      <div className="rounded-xl bg-neutral-200 shadow-lg">
         {/* ================= Logo ================ */}
         <div className="w-[250px] mx-auto mt-8">
           <img src={logo} alt="Logo" />
@@ -92,27 +94,19 @@ export default function SignIn() {
           </div>
 
           <div className="mb-5">
-            <button
-              className="w-full btn btn-primary"
-              disabled={isPending}
+            <Button
+              variant="success"
+              className="w-full h-[45px] text-base"
               type="submit"
+              disabled={isPending}
             >
               {isPending ? (
-                <span className="loading loading-spinner"></span>
+                <Loader2Icon className="animate-spin scale-150" />
               ) : (
-                <span>Sign In</span>
+                "Sign In"
               )}
-            </button>
+            </Button>
           </div>
-
-          {/* <div className="mt-6 text-center">
-            <p>
-              Don&apos;t have any account?{" "}
-              <Link to="/signup" className="text-secondary font-semibold">
-                Sign Up
-              </Link>
-            </p>
-          </div> */}
         </form>
       </div>
     </div>

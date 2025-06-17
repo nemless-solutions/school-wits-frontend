@@ -9,9 +9,9 @@ export type AxiosBody =
   | Blob
   | Buffer;
 
-type Link = {
+type SidebarLink = {
   name: string;
   link?: string;
   sublinks?: { name: string; link: string }[];
-  Icon?: IconType;
+  icon?: IconType;
 };
