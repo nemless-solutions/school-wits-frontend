@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "../../dist/apps/admin-panel",
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
     "jsx": "react-jsx",
     "lib": [
@@ -37,6 +37,9 @@
     "src/**/*.tsx"
   ],
   "references": [
+    {
+      "path": "../../libs/hooks"
+    },
     {
       "path": "../../libs/ui"
     },

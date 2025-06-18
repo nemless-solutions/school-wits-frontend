@@ -2,25 +2,27 @@
 
 import { Slot } from "@radix-ui/react-slot";
 import { useIsMobile } from "@school-wits/hooks";
+import { cn } from "@school-wits/utils";
+import { cva, VariantProps } from "class-variance-authority";
+import { PanelLeftIcon } from "lucide-react";
+import * as React from "react";
 import {
-  Button,
-  Input,
-  Separator,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./tooltip";
+import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  Skeleton,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@school-wits/ui";
-import { cn } from "@school-wits/utils";
-import { cva, VariantProps } from "class-variance-authority";
-import { PanelLeftIcon } from "lucide-react";
-import * as React from "react";
+} from "./sheet";
+import { Button } from "./button";
+import { Input } from "./input";
+import { Separator } from "./seperator";
+import { Skeleton } from "./skeleton";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
