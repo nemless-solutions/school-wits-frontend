@@ -14,7 +14,6 @@ import { z } from "zod";
 import { useGet } from "../../../api/api-calls";
 import { DataTable } from "../../../components/DataTable/DataTable";
 import { TableSkeleton } from "../../../components/TableSkeleton/TableSkeleton";
-import { useAuth } from "../../../contexts/AuthContext";
 
 export const schema = z.object({
   id: z.number(),
@@ -81,10 +80,7 @@ export default function Students() {
     },
   ];
 
-  const { token } = useAuth();
-  const { data, isSuccess, isPending } = useGet("user?roleName=ROLE_STUDENT", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const { data, isSuccess, isPending } = useGet("user?roleName=ROLE_STUDENT");
 
   return (
     <div>

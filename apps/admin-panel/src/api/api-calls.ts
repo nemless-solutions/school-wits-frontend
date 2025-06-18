@@ -6,11 +6,13 @@ import {
 } from "@tanstack/react-query";
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import { AxiosBody } from "../../types";
+import { useAuth } from "../contexts/AuthContext";
 
 const baseUrl = `${import.meta.env.VITE_API_BASE_URL}`;
 
 // GET method (from default baseurl)
 export function useGet(uri: string, options?: AxiosRequestConfig) {
+  const { token } = useAuth();
   const {
     data,
     refetch,
@@ -22,8 +24,9 @@ export function useGet(uri: string, options?: AxiosRequestConfig) {
     queryKey: [uri],
     queryFn: async () => {
       const res = await axios.get(`${baseUrl}/${uri}`, {
-        ...options,
+        headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
+        ...options,
       });
       return res.data;
     },
@@ -57,6 +60,7 @@ export function useExtenralGet(url: string, options?: AxiosRequestConfig) {
 
 // POST method
 export function usePost(uri: string, options?: AxiosRequestConfig) {
+  const { token } = useAuth();
   const {
     data,
     mutate,
@@ -68,8 +72,9 @@ export function usePost(uri: string, options?: AxiosRequestConfig) {
     mutationKey: [uri],
     mutationFn: async (body: AxiosBody) => {
       const res = await axios.post(`${baseUrl}/${uri}`, body, {
-        ...options,
+        headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
+        ...options,
       });
       return res.data;
     },
@@ -80,6 +85,7 @@ export function usePost(uri: string, options?: AxiosRequestConfig) {
 
 // PUT method
 export function usePatch(uri: string, options?: AxiosRequestConfig) {
+  const { token } = useAuth();
   const {
     data,
     mutate,
@@ -91,8 +97,9 @@ export function usePatch(uri: string, options?: AxiosRequestConfig) {
     mutationKey: [uri],
     mutationFn: async (body: AxiosBody) => {
       const res = await axios.patch(`${baseUrl}/${uri}`, body, {
-        ...options,
+        headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
+        ...options,
       });
       return res.data;
     },
@@ -103,6 +110,7 @@ export function usePatch(uri: string, options?: AxiosRequestConfig) {
 
 // DELETE method
 export function useDelete(uri: string, options?: AxiosRequestConfig) {
+  const { token } = useAuth();
   const {
     data,
     mutate,
@@ -114,8 +122,9 @@ export function useDelete(uri: string, options?: AxiosRequestConfig) {
     mutationKey: [uri],
     mutationFn: async (id) => {
       const res = await axios.delete(`${baseUrl}/${uri}/${id}`, {
-        ...options,
+        headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
+        ...options,
       });
       return res.data;
     },

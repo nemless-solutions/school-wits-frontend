@@ -15,9 +15,9 @@ import {
   useSidebar,
 } from "@school-wits/ui";
 import { getAbbreviation } from "@school-wits/utils";
+import { BiLogOut } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { IoMdLogOut } from "react-icons/io";
 
 export function NavUser({
   user,
@@ -83,7 +83,7 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem variant="destructive" onClick={onLogout}>
-              <IoMdLogOut />
+              <BiLogOut />
               <span className="ml-2">Log Out</span>
             </DropdownMenuItem>
           </DropdownMenuContent>

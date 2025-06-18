@@ -1,12 +1,8 @@
 import { useGet } from "../../api/api-calls";
 import { HomeCards } from "../../components/HomeCards/HomeCards";
-import { useAuth } from "../../contexts/AuthContext";
 
 export default function Home() {
-  const { token } = useAuth();
-  const { data, isPending } = useGet("user/admin/summary", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const { data, isPending } = useGet("user/admin/summary");
 
   const summary = [
     { title: "Total Students", amount: data?.numberOfStudents },

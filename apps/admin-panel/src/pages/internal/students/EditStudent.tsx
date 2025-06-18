@@ -1,14 +1,15 @@
 import { signUpSchema } from "@school-wits/validations";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { usePost } from "../../../api/api-calls";
+import { useGet, usePost } from "../../../api/api-calls";
 import { AuthForm } from "../../../components/Forms/StudentForm";
 
 export function EditStudent() {
-  /*   const { id } = useParams(); */
+  const { id } = useParams();
   const navigate = useNavigate();
   const { mutate, isPending, isError, isSuccess } = usePost("auth/register");
+  const { data, isPending: isPendingGet } = useGet(`user/${id}`);
 
   useEffect(() => {
     if (isError) {
@@ -21,25 +22,29 @@ export function EditStudent() {
 
   return (
     <div>
-      <AuthForm
-        type="SIGN_UP"
-        schema={signUpSchema.omit({ password: true }).partial()}
-        defaultValues={{
-          email: "",
-          fullName: "",
-          contact: "",
-          fatherName: "",
-          motherName: "",
-          guardianEmail: "",
-          guardianContact: "",
-          curriculum: "CAMBRIDGE",
-          grade: "VI",
-          dateOfBirth: new Date(),
-        }}
-        onSubmit={(data) => mutate(data)}
-        isLoading={isPending}
-        onCancel={() => navigate("/students")}
-      />
+      {isPendingGet ? (
+        <p>Loading...</p>
+      ) : (
+        <AuthForm
+          type="SIGN_UP"
+          schema={signUpSchema.omit({ password: true }).partial()}
+          defaultValues={{
+            email: data.email,
+            fullName: data.fullName,
+            contact: data.contact,
+            fatherName: data.fatherName,
+            motherName: data.motherName,
+            guardianEmail: data.guardianEmail,
+            guardianContact: data.guardianContact,
+            curriculum: data.curriculum,
+            grade: data.grade,
+            dateOfBirth: data.dateOfBirth,
+          }}
+          onSubmit={(data) => mutate(data)}
+          isLoading={isPending}
+          onCancel={() => navigate("/students")}
+        />
+      )}
     </div>
   );
 }
