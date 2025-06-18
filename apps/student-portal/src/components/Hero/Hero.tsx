@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../client-ui";
-import { GradeButton } from "./GradeButton";
 
 export function Hero() {
   return (
@@ -20,7 +19,6 @@ export function Hero() {
               </p>
             </div>
             <div className="text-black flex gap-4">
-              <GradeButton />
               <Button
                 size="lg"
                 asChild

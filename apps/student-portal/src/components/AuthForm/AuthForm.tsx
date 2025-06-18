@@ -70,7 +70,7 @@ export function AuthForm<T extends FieldValues>({
       toast.success(`Successfully ${isSignUp ? "signed up" : "signed in"}`);
 
       setTimeout(() => {
-        router.push("/");
+        router.push("/profile");
       }, 1000);
     } else {
       toast.error(
@@ -122,7 +122,7 @@ export function AuthForm<T extends FieldValues>({
                       >
                         <FormControl>
                           <SelectTrigger className="w-full bg-white/40">
-                            <SelectValue placeholder="Select a verified email to display" />
+                            <SelectValue placeholder="Select a curriculum" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -142,7 +142,7 @@ export function AuthForm<T extends FieldValues>({
                           <SelectTrigger className="w-full font-roboto-slab font-bold bg-white/40">
                             <SelectValue
                               className="font-roboto-slab"
-                              placeholder="Select a verified email to display"
+                              placeholder="Select your grade"
                             />
                           </SelectTrigger>
                         </FormControl>
@@ -153,7 +153,8 @@ export function AuthForm<T extends FieldValues>({
                               value={g}
                               className="font-roboto-slab font-bold"
                             >
-                              Grade {g}
+                              Grade {g}{" "}
+                              {g === "IX" || g === "X" ? "(O Levels)" : ""}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -212,6 +213,12 @@ export function AuthForm<T extends FieldValues>({
                             {...field}
                           />
                         </FormControl>
+                        {field.name === "currentSchool" && (
+                          <p>
+                            Write &quot;private&quot; if homeschooled or not
+                            enrolled
+                          </p>
+                        )}
                         <FormMessage />
                       </>
                     )}

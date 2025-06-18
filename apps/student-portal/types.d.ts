@@ -1,9 +1,10 @@
 export type Course = {
+  type: "regular" | "current";
   title: string;
-  image: StaticImageData;
-  suitableFor: string;
-  duration?: string;
+  session: string;
+  duration: string;
   schedule?: string;
+  note?: string;
   mode: string;
   fees: string;
   earlyBird?: string;
@@ -33,11 +34,11 @@ interface AuthCredentials {
   email: string;
   password: string;
   fullName: string;
-  contact: string;
   fatherName: string;
   motherName: string;
   guardianEmail: string;
   guardianContact: string;
+  currentSchool: string;
   curriculum: "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
   grade: "VI" | "VII" | "VIII" | "IX" | "X";
   dateOfBirth: Date;

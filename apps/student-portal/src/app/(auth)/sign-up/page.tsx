@@ -13,14 +13,14 @@ export default function SignUp() {
         email: "",
         password: "",
         fullName: "",
-        contact: "",
+        dateOfBirth: new Date(),
         fatherName: "",
         motherName: "",
         guardianEmail: "",
         guardianContact: "",
+       currentSchool: "",
         curriculum: "CAMBRIDGE",
         grade: "VI",
-        dateOfBirth: new Date(),
       }}
       onSubmit={signUp}
     />
