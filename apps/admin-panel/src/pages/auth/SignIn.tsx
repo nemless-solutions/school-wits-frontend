@@ -51,9 +51,11 @@ export default function SignIn() {
       ) {
         localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
         localStorage.setItem("loggedToken", JSON.stringify(loggedToken));
+        toast.success("Successfully signed in.");
+      } else {
+        toast.warning("You do not have admin privileges.");
       }
 
-      toast.success("Successfully signed in.");
       navigate("/");
     }
   }, [data, isSuccess, navigate, setToken, setUser]);

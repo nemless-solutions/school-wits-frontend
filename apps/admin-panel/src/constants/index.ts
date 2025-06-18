@@ -20,3 +20,42 @@ export const sidebarLinks: SidebarLink[] = [
     link: "/teachers",
   },
 ];
+
+export const curriculums = [
+  {
+    title: "Cambridge IGCSE (CAIE)",
+    value: "CAMBRIDGE",
+  },
+  {
+    title: "Oxford AQA",
+    value: "OXFORD",
+  },
+  {
+    title: "Pearson Edexcel",
+    value: "PEARSON",
+  },
+  {
+    title: "International Baccalaureate (IB)",
+    value: "IB",
+  },
+];
+
+export const FIELD_NAMES = {
+  email: "Email",
+  password: "Password",
+  fullName: "Full name",
+  contact: "Contact Number",
+  fatherName: "Father's name",
+  motherName: "Mother's name",
+  guardianEmail: "Guardian's email",
+  guardianContact: "Guardian's contact",
+  curriculum: "Curriculum",
+  grade: "Grade",
+  dateOfBirth: "Date of birth",
+};
+
+export const FIELD_TYPES = {
+  fullName: "text",
+  email: "email",
+  password: "password",
+};

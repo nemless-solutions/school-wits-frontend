@@ -38,7 +38,7 @@ export function DataTable<TData, TValue>({
   data: initialData,
   columns,
 }: DataTableProps<TData, TValue>) {
-  const [data, setData] = React.useState(() => initialData);
+  const [data] = React.useState(() => initialData);
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -127,7 +127,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-between px-4 mt-4">
+      <div className="flex items-center justify-between p-4 mt-4">
         <div className="flex w-fit items-center justify-center text-sm font-medium">
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount()}

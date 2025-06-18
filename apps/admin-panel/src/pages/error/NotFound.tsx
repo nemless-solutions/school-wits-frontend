@@ -1,3 +1,4 @@
+import { Button } from "@school-wits/ui";
 import { useNavigate } from "react-router-dom";
 
 export default function NotFound() {
@@ -8,12 +9,12 @@ export default function NotFound() {
       <div className="text-center flex flex-col gap-y-8">
         <h1 className="text-5xl font-semibold">404 - Not Found</h1>
         <h2 className="text-2xl">Requested Page Doesn't Exist</h2>
-        <button
+        <Button
           onClick={() => navigate("/")}
           className="mx-auto btn btn-primary"
         >
           Home
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function Unauthorized() {
   return (
     <div className="mx-auto max-w-screen-2xl px-4 md:px-6 2xl:px-10">
@@ -22,9 +20,9 @@ export default function Unauthorized() {
             <p>Or</p>
             <p>
               Try to{" "}
-              <Link to="/login" className="underline text-primary">
+              <a href="/login" className="underline text-primary">
                 login
-              </Link>{" "}
+              </a>{" "}
               with other account
             </p>
           </div>

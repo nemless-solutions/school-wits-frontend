@@ -27,6 +27,7 @@ export function useGet(uri: string, options?: AxiosRequestConfig) {
       });
       return res.data;
     },
+    refetchOnMount: "always",
   });
 
   return { data, refetch, fetchError, isError, isSuccess, isPending };

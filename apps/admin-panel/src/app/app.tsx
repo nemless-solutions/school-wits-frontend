@@ -1,5 +1,6 @@
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "../contexts/AuthContext";
+import Unauthorized from "../pages/error/Unauthorized";
 import AppExternal from "./AppExternal";
 import AppInternal from "./AppInternal";
 
@@ -16,7 +17,17 @@ export default function App() {
         closeOnClick
         rtl={false}
       />
-      {user ? <AppInternal /> : <AppExternal />}
+      {user ? (
+        user?.roles
+          .map((r: { name: string }) => r.name)
+          .includes("ROLE_ADMIN") ? (
+          <AppInternal />
+        ) : (
+          <Unauthorized />
+        )
+      ) : (
+        <AppExternal />
+      )}
     </div>
   );
 }
