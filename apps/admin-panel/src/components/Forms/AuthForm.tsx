@@ -39,6 +39,7 @@ interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
   isLoading?: boolean;
   onCancel?: () => void;
+  submitText?: string;
 }
 
 const _grades = ["VI", "VII", "VIII", "IX", "X"];
@@ -50,6 +51,7 @@ export function AuthForm<T extends FieldValues>({
   onSubmit,
   isLoading,
   onCancel,
+  submitText = "Submit",
 }: Props<T>) {
   const isSignUp = type === "SIGN_UP";
 
@@ -190,7 +192,7 @@ export function AuthForm<T extends FieldValues>({
               {isLoading ? (
                 <Loader2Icon className="animate-spin scale-150" />
               ) : (
-                "Create"
+                submitText
               )}
             </Button>
             <Button

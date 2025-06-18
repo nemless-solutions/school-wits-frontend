@@ -23,6 +23,7 @@ export function NavUser({
   user,
   onLogout,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   user: Record<string, any> | null;
   onLogout: () => void;
 }) {
@@ -76,13 +77,17 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="py-2">
                 <FaRegUser />
                 <span className="ml-2">Account</span>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive" onClick={onLogout}>
+            <DropdownMenuItem
+              variant="destructive"
+              className="py-2"
+              onClick={onLogout}
+            >
               <BiLogOut />
               <span className="ml-2">Log Out</span>
             </DropdownMenuItem>

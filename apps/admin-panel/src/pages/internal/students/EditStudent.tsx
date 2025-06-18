@@ -1,21 +1,23 @@
+import { Skeleton } from "@school-wits/ui";
 import { signUpSchema } from "@school-wits/validations";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useGet, usePost } from "../../../api/api-calls";
-import { AuthForm } from "../../../components/Forms/StudentForm";
+import { useGet, usePut } from "../../../api/api-calls";
+import { AuthForm } from "../../../components/Forms/AuthForm";
 
 export function EditStudent() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { mutate, isPending, isError, isSuccess } = usePost("auth/register");
-  const { data, isPending: isPendingGet } = useGet(`user/${id}`);
+  const { mutate, isPending, isError, isSuccess } = usePut(`user/${id}`);
+  const { refetch, data, isPending: isPendingGet } = useGet(`user/${id}`);
 
   useEffect(() => {
     if (isError) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again later.");
     } else if (isSuccess) {
-      toast.success("Student Created.");
+      toast.success("Student information updated.");
+      refetch();
       navigate("/students");
     }
   });
@@ -23,7 +25,20 @@ export function EditStudent() {
   return (
     <div>
       {isPendingGet ? (
-        <p>Loading...</p>
+        <div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[...Array(10)].map((_, i) => (
+              <div className="space-y-2">
+                <Skeleton className="w-[100px] h-8" />
+                <Skeleton className="w-full h-6" />
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-3 mt-8">
+            <Skeleton className="w-[100px] h-10" />
+            <Skeleton className="w-[100px] h-10" />
+          </div>
+        </div>
       ) : (
         <AuthForm
           type="SIGN_UP"
@@ -31,18 +46,19 @@ export function EditStudent() {
           defaultValues={{
             email: data.email,
             fullName: data.fullName,
-            contact: data.contact,
+            dateOfBirth: new Date(data.dateOfBirth),
             fatherName: data.fatherName,
             motherName: data.motherName,
             guardianEmail: data.guardianEmail,
             guardianContact: data.guardianContact,
+            currentSchool: data.currentSchool,
             curriculum: data.curriculum,
             grade: data.grade,
-            dateOfBirth: data.dateOfBirth,
           }}
           onSubmit={(data) => mutate(data)}
           isLoading={isPending}
           onCancel={() => navigate("/students")}
+          submitText="Update"
         />
       )}
     </div>

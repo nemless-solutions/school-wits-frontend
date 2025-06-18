@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usePost } from "../../../api/api-calls";
-import { AuthForm } from "../../../components/Forms/StudentForm";
+import { AuthForm } from "../../../components/Forms/AuthForm";
 
 export function CreateStudent() {
   const navigate = useNavigate();
@@ -32,18 +32,19 @@ export function CreateStudent() {
           email: "",
           password: "",
           fullName: "",
-          contact: "",
+          dateOfBirth: new Date(),
           fatherName: "",
           motherName: "",
           guardianEmail: "",
           guardianContact: "",
+          currentSchool: "",
           curriculum: "CAMBRIDGE",
           grade: "VI",
-          dateOfBirth: new Date(),
         }}
         onSubmit={(data) => mutate(data)}
         isLoading={isPending}
         onCancel={() => navigate("/students")}
+        submitText="Create"
       />
     </div>
   );

@@ -83,7 +83,7 @@ export function usePost(uri: string, options?: AxiosRequestConfig) {
   return { data, mutate, fetchError, isError, isSuccess, isPending };
 }
 
-// PUT method
+// PATCH method
 export function usePatch(uri: string, options?: AxiosRequestConfig) {
   const { token } = useAuth();
   const {
@@ -97,6 +97,31 @@ export function usePatch(uri: string, options?: AxiosRequestConfig) {
     mutationKey: [uri],
     mutationFn: async (body: AxiosBody) => {
       const res = await axios.patch(`${baseUrl}/${uri}`, body, {
+        headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
+        ...options,
+      });
+      return res.data;
+    },
+  });
+
+  return { data, mutate, fetchError, isError, isSuccess, isPending };
+}
+
+// PUT method
+export function usePut(uri: string, options?: AxiosRequestConfig) {
+  const { token } = useAuth();
+  const {
+    data,
+    mutate,
+    error: fetchError,
+    isError,
+    isSuccess,
+    isPending,
+  } = useMutation({
+    mutationKey: [uri],
+    mutationFn: async (body: AxiosBody) => {
+      const res = await axios.put(`${baseUrl}/${uri}`, body, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
         ...options,
