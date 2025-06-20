@@ -22,7 +22,7 @@ export const schema = z.object({
   email: z.string(),
 });
 
-export default function Teachers() {
+export function Teachers() {
   const columns: ColumnDef<z.infer<typeof schema>>[] = [
     {
       accessorKey: "id",

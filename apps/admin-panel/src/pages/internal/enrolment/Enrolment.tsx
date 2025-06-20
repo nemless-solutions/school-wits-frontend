@@ -1,16 +1,8 @@
 import { useQueryParams } from "@school-wits/hooks";
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@school-wits/ui";
+import { Button } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import { useEffect } from "react";
-import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../api/api-calls";
@@ -22,10 +14,10 @@ export const schema = z.object({
   uid: z.string(),
   fullName: z.string(),
   email: z.string(),
-  curriculum: z.string(),
+  grade: z.string(),
 });
 
-export function Students() {
+export function Enrolment() {
   const columns: ColumnDef<z.infer<typeof schema>>[] = [
     {
       accessorKey: "id",
@@ -40,8 +32,8 @@ export function Students() {
       header: "Name",
     },
     {
-      accessorKey: "curriculum",
-      header: "Curriculum",
+      accessorKey: "grade",
+      header: "Grade",
     },
     {
       accessorKey: "email",
@@ -50,34 +42,9 @@ export function Students() {
     {
       id: "actions",
       cell: ({ row }) => (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
-              size="icon"
-            >
-              <HiOutlineDotsVertical />
-              <span className="sr-only">Open menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-32">
-            <DropdownMenuItem asChild className="flex items-center gap-2">
-              <Link to={`${row.original.id}`}>
-                <FaEdit />
-                Edit
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              variant="destructive"
-              className="flex items-center gap-2"
-            >
-              <FaTrashAlt />
-              Delete
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Button asChild variant="secondary">
+          <Link to={`${row.original.id}`}>Manage</Link>
+        </Button>
       ),
     },
   ];

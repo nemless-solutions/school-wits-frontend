@@ -2,12 +2,14 @@ import { SidebarInset, SidebarProvider } from "@school-wits/ui";
 import { Route, Routes } from "react-router-dom";
 import { AppSidebar } from "../components/Sidebar/AppSidebar";
 import { SiteHeader } from "../components/SiteHeader/SiteHeader";
-import NotFound from "../pages/error/NotFound";
-import Home from "../pages/internal/Home";
+import { NotFound } from "../pages/error/NotFound";
+import { Enrolment } from "../pages/internal/enrolment/Enrolment";
+import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
+import { Home } from "../pages/internal/Home";
 import { CreateStudent } from "../pages/internal/students/CreateStudent";
 import { EditStudent } from "../pages/internal/students/EditStudent";
-import Students from "../pages/internal/students/Students";
-import Teachers from "../pages/internal/teachers/Teachers";
+import { Students } from "../pages/internal/students/Students";
+import { Teachers } from "../pages/internal/teachers/Teachers";
 
 export default function Page() {
   return (
@@ -31,6 +33,11 @@ export default function Page() {
                 <Route path="/students/add" element={<CreateStudent />} />
                 <Route path="/students/:id" element={<EditStudent />} />
                 <Route path="/teachers" element={<Teachers />} />
+                <Route path="/enrolments" element={<Enrolment />} />
+                <Route
+                  path="/enrolments/:userId"
+                  element={<ManageEnrolment />}
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

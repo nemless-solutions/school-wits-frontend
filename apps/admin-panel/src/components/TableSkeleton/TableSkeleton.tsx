@@ -20,8 +20,8 @@ export function TableSkeleton({ rows = 10, columns = 5 }: TableSkeletonProps) {
         <TableHeader>
           <TableRow>
             {[...Array(columns)].map((_, i) => (
-              <TableHead key={i}>
-                <Skeleton className="h-3 w-[100px]" />
+              <TableHead className="py-4" key={i}>
+                <Skeleton className="h-4 w-[100px]" />
               </TableHead>
             ))}
           </TableRow>
@@ -30,8 +30,8 @@ export function TableSkeleton({ rows = 10, columns = 5 }: TableSkeletonProps) {
           {[...Array(rows)].map((_, i) => (
             <TableRow key={i}>
               {[...Array(columns)].map((_, j) => (
-                <TableCell key={j}>
-                  <Skeleton className="h-5 w-[100px]" />
+                <TableCell className="py-4" key={j}>
+                  <Skeleton className="h-4 w-[100px]" />
                 </TableCell>
               ))}
             </TableRow>

@@ -14,7 +14,7 @@ type Inputs = {
   password: string;
 };
 
-export default function SignIn() {
+export function SignIn() {
   const { setUser, setToken } = useAuth();
   const navigate = useNavigate();
   const { mutate, data, fetchError, isError, isPending, isSuccess } =

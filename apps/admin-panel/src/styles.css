@@ -17,16 +17,3 @@
     scrollbar-width: none; /* Firefox */
   }
 }
-
-.overlay-animation {
-  animation: overlay 300ms ease-in-out;
-}
-
-@keyframes overlay {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100%;
-  }
-}

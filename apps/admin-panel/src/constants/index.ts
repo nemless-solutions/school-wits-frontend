@@ -1,3 +1,4 @@
+import { LucideBookPlus } from "lucide-react";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { PiStudentDuotone } from "react-icons/pi";
@@ -18,6 +19,11 @@ export const sidebarLinks: SidebarLink[] = [
     name: "Teachers",
     icon: FaChalkboardTeacher,
     link: "/teachers",
+  },
+  {
+    name: "Enrolments",
+    icon: LucideBookPlus,
+    link: "/enrolments",
   },
 ];
 

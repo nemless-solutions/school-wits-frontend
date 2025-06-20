@@ -1,7 +1,7 @@
 import { useGet } from "../../api/api-calls";
 import { HomeCards } from "../../components/HomeCards/HomeCards";
 
-export default function Home() {
+export function Home() {
   const { data, isPending } = useGet("user/admin/summary");
 
   const summary = [
