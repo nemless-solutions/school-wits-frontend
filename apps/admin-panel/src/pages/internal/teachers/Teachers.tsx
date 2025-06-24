@@ -75,7 +75,7 @@ export function Teachers() {
     },
   ];
 
-  const { data, isSuccess, isPending } = useGet("user?roleName=ROLE_TEACHER");
+  const { data, isSuccess, isFetching } = useGet("user?roleName=ROLE_TEACHER");
 
   return (
     <div className="">
@@ -91,7 +91,7 @@ export function Teachers() {
           </Link>
         </Button>
       </div>
-      {isPending ? (
+      {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (
         <DataTable data={data} columns={columns} />

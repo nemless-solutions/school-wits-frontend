@@ -1,7 +1,5 @@
-import { useQueryParams } from "@school-wits/hooks";
 import { Button } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -49,15 +47,7 @@ export function Enrolment() {
     },
   ];
 
-  const query = useQueryParams();
-  const { data, refetch, isSuccess, isPending } = useGet(
-    "user?roleName=ROLE_STUDENT"
-  );
-
-  useEffect(() => {
-    const reload_list = query.get("reload_list");
-    if (reload_list) refetch();
-  }, [refetch, query]);
+  const { data, isSuccess, isFetching } = useGet("user?roleName=ROLE_STUDENT");
 
   return (
     <div>
@@ -73,7 +63,7 @@ export function Enrolment() {
           </Link>
         </Button>
       </div>
-      {isPending ? (
+      {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (
         <DataTable data={data} columns={columns} />

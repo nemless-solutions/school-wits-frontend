@@ -1,4 +1,3 @@
-import { useQueryParams } from "@school-wits/hooks";
 import {
   Button,
   DropdownMenu,
@@ -8,7 +7,6 @@ import {
   DropdownMenuTrigger,
 } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { useEffect } from "react";
 import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -82,15 +80,7 @@ export function Students() {
     },
   ];
 
-  const query = useQueryParams();
-  const { data, refetch, isSuccess, isPending } = useGet(
-    "user?roleName=ROLE_STUDENT"
-  );
-
-  useEffect(() => {
-    const reload_list = query.get("reload_list");
-    if (reload_list) refetch();
-  }, [refetch, query]);
+  const { data, isSuccess, isFetching } = useGet("user?roleName=ROLE_STUDENT");
 
   return (
     <div>
@@ -106,7 +96,7 @@ export function Students() {
           </Link>
         </Button>
       </div>
-      {isPending ? (
+      {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (
         <DataTable data={data} columns={columns} />

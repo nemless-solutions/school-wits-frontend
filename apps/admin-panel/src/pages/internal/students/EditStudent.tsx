@@ -18,7 +18,7 @@ export function EditStudent() {
     } else if (isSuccess) {
       toast.success("Student information updated.");
       refetch();
-      navigate("/students?reload_list=true");
+      navigate("/students");
     }
   });
 

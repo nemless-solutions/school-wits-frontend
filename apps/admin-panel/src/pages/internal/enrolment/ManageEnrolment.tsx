@@ -1,100 +1,51 @@
-import { Skeleton, Switch } from "@school-wits/ui";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Skeleton,
+  Switch,
+} from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import z from "zod";
-import { useGet } from "../../../api/api-calls";
+import { useGet, usePut } from "../../../api/api-calls";
 import { DataTable } from "../../../components/DataTable/DataTable";
 import { TableSkeleton } from "../../../components/TableSkeleton/TableSkeleton";
 
-const dummyData = [
-  {
-    id: 1,
-    course: {
-      id: 1,
-      uid: "Mathematics-VI",
-      grade: "VI",
-      title: "Mathematics",
-      description: "Dummy description",
-      mode: "ONLINE",
-      type: "LONG",
-      fee: 100.0,
-      createdAt: "2025-06-05T15:40:59.805+00:00",
-    },
-    createdAt: "2025-06-20T18:43:50.746+00:00",
-    paid: false,
-  },
-  {
-    id: 2,
-    course: {
-      id: 2,
-      uid: "Physics-VI",
-      grade: "VI",
-      title: "Physics",
-      description: "Dummy description",
-      mode: "ONLINE",
-      type: "LONG",
-      fee: 100.0,
-      createdAt: "2025-06-05T15:40:59.805+00:00",
-    },
-    createdAt: "2025-06-20T18:43:50.746+00:00",
-    paid: false,
-  },
-  {
-    id: 3,
-    course: {
-      id: 3,
-      uid: "English-VI",
-      grade: "VI",
-      title: "English",
-      description: "Dummy description",
-      mode: "ONLINE",
-      type: "LONG",
-      fee: 100.0,
-      createdAt: "2025-06-05T15:40:59.805+00:00",
-    },
-    createdAt: "2025-06-20T18:43:50.746+00:00",
-    paid: true,
-  },
-  {
-    id: 4,
-    course: {
-      id: 4,
-      uid: "Bangla-VI",
-      grade: "VI",
-      title: "Bangla",
-      description: "Dummy description",
-      mode: "ONLINE",
-      type: "LONG",
-      fee: 100.0,
-      createdAt: "2025-06-05T15:40:59.805+00:00",
-    },
-    createdAt: "2025-06-20T18:43:50.746+00:00",
-    paid: false,
-  },
-];
-
 export const schema = z.object({
   id: z.number(),
-  course: z.object({ id: z.number(), uid: z.string(), title: z.string() }),
+  enrolledCourse: z.object({
+    id: z.number(),
+    uid: z.string(),
+    title: z.string(),
+  }),
   paid: z.boolean(),
 });
 
 const UserAccess = ({
-  user,
-  handleCheck,
+  enrolledCourse,
 }: {
-  user: z.infer<typeof schema>;
-  handleCheck: (checked: boolean) => void;
+  enrolledCourse: z.infer<typeof schema>;
 }) => {
-  const [isChecked, setIsChecked] = useState(user.paid);
+  const [isChecked, setIsChecked] = useState(enrolledCourse.paid);
+  const { mutate: grantAccess, isPending: grantPending } = usePut(
+    `enrolled_course/${enrolledCourse.id}?isApproved=true`
+  );
+  const { mutate: revokeAccess, isPending: revokePending } = usePut(
+    `enrolled_course/${enrolledCourse.id}?isApproved=false`
+  );
+
   return (
     <div className="py-2">
       <Switch
+        disabled={grantPending || revokePending}
         checked={isChecked}
         onCheckedChange={(checked) => {
           setIsChecked(checked);
-          handleCheck(checked);
+          if (checked) grantAccess({});
+          else revokeAccess({});
         }}
       />
     </div>
@@ -118,49 +69,70 @@ export function ManageEnrolment() {
     {
       id: "access",
       header: "Access",
-      cell: ({ row }) => (
-        <UserAccess
-          user={row.original}
-          handleCheck={(checked) => console.log(checked)} // todo: handle granting or revoking access
-        />
-      ),
+      cell: ({ row }) => <UserAccess enrolledCourse={row.original} />,
     },
   ];
 
   const { userId } = useParams();
   const { data, isPending } = useGet(`user/${userId}`);
+  const { data: enrolledCoursesData, isFetching } = useGet(
+    `enrolled_course/${userId}`
+  );
 
   return (
     <div>
       {isPending ? (
-        <div>
-          <div className="space-y-3">
-            <Skeleton className="w-[120px] h-6" />
-            <Skeleton className="w-[250px] h-6" />
-            <Skeleton className="w-[200px] h-6" />
-          </div>
-          <div className="mt-4 space-y-4">
-            <Skeleton className="w-[200px] h-6" />
-            <TableSkeleton rows={5} columns={4} />
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {[...Array(3)].map((_, i) => (
+            <Card className="@container/card" key={i}>
+              <CardHeader>
+                <CardDescription>
+                  <Skeleton className="w-[200px] h-5" />
+                </CardDescription>
+                <CardTitle>
+                  <Skeleton className="w-[70px] h-10" />
+                </CardTitle>
+              </CardHeader>
+            </Card>
+          ))}
         </div>
       ) : (
-        <div>
-          <div>
-            <p className="text-lg">
-              Student ID : <span className="font-bold">{data.id}</span>
-            </p>
-            <p className="text-lg">
-              Student Name : <span className="font-bold">{data.fullName}</span>
-            </p>
-            <p className="text-lg">
-              Student Grade : <span className="font-bold">{data.grade}</span>
-            </p>
-          </div>
-          <div className="mt-4 space-y-4">
-            <h2 className="text-lg">Enrolled Courses : </h2>
-            <DataTable data={dummyData} columns={columns} />
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <Card className="@container/card">
+            <CardHeader>
+              <CardDescription className="text-base">ID</CardDescription>
+              <CardTitle className="text-3xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                {data.id}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Card className="@container/card">
+            <CardHeader>
+              <CardDescription className="text-base">Name</CardDescription>
+              <CardTitle className="text-3xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                {data.fullName}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Card className="@container/card">
+            <CardHeader>
+              <CardDescription className="text-base">Grade</CardDescription>
+              <CardTitle className="text-3xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                {data.grade}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+        </div>
+      )}
+      {isFetching ? (
+        <div className="mt-4 space-y-4">
+          <Skeleton className="w-[200px] h-6" />
+          <TableSkeleton rows={5} columns={4} />
+        </div>
+      ) : (
+        <div className="mt-4 space-y-4">
+          <h2 className="text-lg">Enrolled Courses : </h2>
+          <DataTable data={enrolledCoursesData} columns={columns} />
         </div>
       )}
     </div>

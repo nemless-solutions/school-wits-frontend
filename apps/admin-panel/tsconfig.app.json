@@ -4,9 +4,7 @@
     "outDir": "../../dist/apps/admin-panel",
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
     "jsx": "react-jsx",
-    "lib": [
-      "dom"
-    ],
+    "lib": ["dom"],
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
@@ -30,24 +28,16 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "include": [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../../libs/hooks"
+      "path": "../../libs/validations/tsconfig.lib.json"
     },
     {
-      "path": "../../libs/ui"
+      "path": "../../libs/utils/tsconfig.lib.json"
     },
     {
-      "path": "../../libs/utils"
-    },
-    {
-      "path": "../../libs/validations"
+      "path": "../../libs/ui/tsconfig.lib.json"
     }
   ]
 }
