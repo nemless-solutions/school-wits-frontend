@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
+import { jwtDecode } from "jwt-decode";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -15,4 +16,13 @@ export function getAbbreviation(input: string | undefined | null, length = 2) {
     .map((word) => word[0])
     .join("")
     .toUpperCase();
+}
+
+export function isJwtExpired(token: string) {
+  const { exp } = jwtDecode(token); // in seconds
+  const now = Math.floor(Date.now() / 1000); // converting from milliseconds to seconds dividing by 1000
+
+  if (!exp) return false;
+
+  return now > exp;
 }

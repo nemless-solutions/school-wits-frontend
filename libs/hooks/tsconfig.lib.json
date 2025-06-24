@@ -8,10 +8,13 @@
       "@nx/react/typings/image.d.ts",
       "vite/client"
     ],
+    "lib": [
+      "dom",
+      "ES2015"
+    ],
     "rootDir": "src",
     "jsx": "react-jsx",
-    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
-    "lib": ["dom", "ES2015"]
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
   },
   "exclude": [
     "out-tsc",
@@ -23,15 +26,15 @@
     "**/*.spec.js",
     "**/*.test.js",
     "**/*.spec.jsx",
-    "**/*.test.jsx"
+    "**/*.test.jsx",
+    "eslint.config.js",
+    "eslint.config.cjs",
+    "eslint.config.mjs"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
-  "references": [
-    {
-      "path": "../hooks/tsconfig.lib.json"
-    },
-    {
-      "path": "../utils/tsconfig.lib.json"
-    }
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }
