@@ -3,65 +3,83 @@
 import { lessonHighlights } from "@/constants";
 import { useState } from "react";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  MotionDiv,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
 } from "../client-ui";
 import { YtPlayer } from "../YtPlayer/YtPlayer";
 
 export function LessonHighlights() {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+
   return (
-    <section className="py-16 bg-primary overflow-x-clip">
+    <section className="my-8 pb-10">
       <div className="main-container">
-        <h2 className="text-3xl md:text-4xl font-bold text-neutral-50 text-center">
-          Lesson Highlights <br />{" "}
-          <span className="text-2xl md:text-3xl text-neutral-300">
-            What We Teach
-          </span>
-        </h2>
-        <Carousel
-          className="w-full"
-          opts={{
-            loop: true,
-            align: "start",
-          }}
-        >
-          <CarouselContent className="select-none">
-            {lessonHighlights.map((item, index) => (
-              <CarouselItem
-                className="md:basis-1/2 lg:basis-1/3 my-20"
-                key={index}
-              >
-                <div className="p-4 bg-neutral-100 border-2 border-white/20 rounded-lg shadow-[0px_8px_8px_0px_rgba(0,0,0,0.2)]">
-                  <p className="text-sm text-primary/80 font-bold text-center uppercase line-clamp-1">
+        <div className="max-w-[1080px] mx-auto">
+          <div className="text-center">
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, easings: "easeInOut" }}
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              <p className="px-4 py-1 md:px-6 md:py-2 text-sm md:text-lg font-semibold bg-secondary/10 w-fit mx-auto rounded-full mb-3">
+                What We Teach
+              </p>
+              <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize mb-10">
+                Lesson Highlights
+              </h2>
+            </MotionDiv>
+          </div>
+          <MotionDiv
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, easings: "easeInOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <Tabs defaultValue="Mathematics">
+              <TabsList className="md:grid md:grid-cols-5 flex gap-2 mx-auto bg-neutral-200 overflow-x-auto no-scrollbar w-full">
+                {lessonHighlights.map((item) => (
+                  <TabsTrigger
+                    className="bg-white data-[state=active]:bg-primary cursor-pointer max-[500px]:first:ml-16 max-[450px]:first:ml-24 max-[400px]:first:ml-40"
+                    key={item.subject}
+                    value={item.subject}
+                  >
                     {item.subject}
-                  </p>
-                  <div className="relative w-full aspect-video my-4">
-                    <YtPlayer
-                      url={item.videoLink}
-                      isPlaying={playingIndex === index}
-                      onPlay={() => setPlayingIndex(index)}
-                      onPause={() => setPlayingIndex(null)}
-                    />
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              {lessonHighlights.map((item, index) => (
+                <TabsContent
+                  key={item.subject}
+                  value={item.subject}
+                  className="mt-8"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12">
+                    <div className="relative w-full aspect-video rounded-2xl overflow-clip">
+                      <YtPlayer
+                        url={item.videoLink}
+                        isPlaying={playingIndex === index}
+                        onPlay={() => setPlayingIndex(index)}
+                        onPause={() => setPlayingIndex(null)}
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <h2 className="text-2xl text-center sm:text-3xl md:text-start md:text-[40px] font-semibold">
+                        {item.title}
+                      </h2>
+                      <p className="text-sm text-center md:text-start md:text-base">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-primary line-clamp-1">
-                      {item.title}
-                    </h2>
-                    <p className="text-secondary line-clamp-4 leading-tight">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="max-[1200px]:left-0" />
-          <CarouselNext className="max-[1200px]:right-0" />
-        </Carousel>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </MotionDiv>
+        </div>
       </div>
     </section>
   );

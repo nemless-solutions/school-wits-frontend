@@ -1,4 +1,6 @@
+import { FAQ } from "@/components/FAQ/FAQ";
 import { Feedbacks } from "@/components/Feedbacks/Feedbacks";
+import { GetInTouch } from "@/components/GetInTouch/GetInTouch";
 import { GradeCards } from "@/components/GradeCards/GradeCards";
 import { Hero } from "@/components/Hero/Hero";
 import { LessonHighlights } from "@/components/LessonHighlights/LessonHighlights";
@@ -10,10 +12,12 @@ export default function Home() {
     <>
       <Hero />
       <GradeCards />
-      <LessonHighlights />
       <Promo />
+      <LessonHighlights />
       <WhyChooseUs />
       <Feedbacks />
+      <FAQ />
+      <GetInTouch />
     </>
   );
 }

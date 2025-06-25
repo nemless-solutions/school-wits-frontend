@@ -3,15 +3,27 @@
 @source "../../../../libs/ui/src/**/*.{ts,tsx,js,jsx}";
 
 .main-container {
-  @apply max-w-[1228px] mx-auto px-6;
+  @apply max-w-[1248px] mx-auto px-6;
 }
 
 @theme inline {
-  --color-primary: #004958;
-  --color-secondary: #1c1f41;
-  --color-secondary-foreground: #f5f5f5;
+  --color-primary: #c5e57e;
+  --color-secondary: #6648ff;
+  --color-secondary-foreground: #ffffff;
   --font-roboto-slab: var(--font-roboto-slab);
   --font-ibm-plex: var(--font-ibm-plex);
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 .bg-classroom {

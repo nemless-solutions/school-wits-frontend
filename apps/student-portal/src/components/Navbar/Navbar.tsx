@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button } from "../client-ui";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
@@ -29,7 +28,7 @@ export function Navbar({ session }: { session: Session | null }) {
   }, [showNav]);
 
   return (
-    <nav className="fixed top-0 left-0 py-4 md:py-0 z-[999] w-full bg-blue-50 border-b border-slate-600 md:border-none md:bg-neutral-100/80 md:backdrop-blur-lg">
+    <nav className="fixed top-0 left-0 py-4 md:py-0 z-[999] w-full bg-white border-b border-neutral-200">
       <div className="main-container">
         <div className="flex items-center w-full justify-between">
           <Link href="/">
@@ -47,12 +46,12 @@ export function Navbar({ session }: { session: Session | null }) {
             setSidebarOpen={setShowNav}
           />
           <div
-            className={`fixed right-0 top-0 h-screen w-[320px] bg-neutral-100/40 backdrop-blur-xl md:bg-transparent md:backdrop-blur-none duration-200 md:static md:h-auto md:w-auto md:translate-x-0 md:justify-end md:pl-12 md:text-start ${
+            className={`fixed right-0 top-0 h-screen w-[320px] bg-white duration-200 md:static md:h-auto md:w-auto md:translate-x-0 md:justify-end md:pl-12 md:text-start ${
               showNav ? "translate-x-0" : "translate-x-full"
             }`}
           >
             <div className="md:flex items-center gap-x-4">
-              <ul className="flex flex-col gap-x-4 mt-20 md:mt-0 md:flex-row">
+              <ul className="flex flex-col gap-x-2 lg:gap-x-4 mt-20 md:mt-0 md:flex-row">
                 {navItems.map((item, index) =>
                   item.type === "link" ? (
                     <NavItem
@@ -73,16 +72,35 @@ export function Navbar({ session }: { session: Session | null }) {
                   )
                 )}
               </ul>
-              {session?.user ? (
-                <UserMenu session={session} onClick={setShowNav} />
-              ) : (
-                <div className="pl-20 md:pl-0 mt-4 md:mt-0">
-                  <Button asChild>
-                    <Link href="/sign-in">Log In</Link>
-                  </Button>
-                </div>
-              )}
+              <div className="md:hidden">
+                {session?.user ? (
+                  <UserMenu session={session} onClick={setShowNav} />
+                ) : (
+                  <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                    <Link
+                      className="bg-white border-neutral-200 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                      href="/sign-in"
+                    >
+                      Log In
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
+          </div>
+          <div className="hidden md:block">
+            {session?.user ? (
+              <UserMenu session={session} onClick={setShowNav} />
+            ) : (
+              <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                <Link
+                  className="bg-white border-neutral-200 border-1 min-[814px]:px-10 px-2 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                  href="/sign-in"
+                >
+                  Log In
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

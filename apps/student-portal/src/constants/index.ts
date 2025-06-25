@@ -57,35 +57,23 @@ export const navItems: NavItem[] = [
 export const grades = [
   {
     grade: "VI",
+    classes: 12,
     illustration: backpack,
-    gradient: {
-      from: "#b1e3fa",
-      to: "#38bdf8",
-    },
   },
   {
     grade: "VII",
+    classes: 18,
     illustration: pencilRuler,
-    gradient: {
-      from: "#8cedbf",
-      to: "#18a864",
-    },
   },
   {
     grade: "VIII",
+    classes: 32,
     illustration: openBook,
-    gradient: {
-      from: "#b1cdfa",
-      to: "#3b82f6",
-    },
   },
   {
-    grade: "O",
+    grade: "IX - X",
+    classes: 25,
     illustration: graduationCap,
-    gradient: {
-      from: "#e0d9ff",
-      to: "#5a3bd7",
-    },
   },
 ];
 
@@ -119,7 +107,7 @@ export const lessonHighlights = [
     videoLink: "https://youtu.be/ecijTio-ZzU",
   },
   {
-    subject: "Additional Mathematics",
+    subject: "Additional Math",
     title: "Challenge your mind beyond the basics.",
     description:
       "Additional Mathematics deepens your understanding of functions, calculus, and algebra. Ideal for advanced learners ready to tackle higher-level math with clarity and confidence.",
@@ -173,42 +161,72 @@ export const feedbacks = [
     quote:
       "I like how Sir breaks down each lecture and delivers it to us students. Especially the way he explains each lecture in a different and easier way every time — both elaborately and simply, depending on the student who is struggling.",
     name: "Arshiya Azeen Athir",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "I really like how supportive and friendly the teacher is. He made sure everyone understood the lessons and was always ready to help. It made learning enjoyable and boosted my confidence a lot.",
     name: "Anonymous",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "School wits did a really great job. They are very patient. They teach a student until they understood properly.",
     name: "Ravid Yusuf",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "Due to the teacher , we rarely forget any answers because he tends to repeat the answers until we are fully aware of it.",
     name: "Anonymous",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "Through out the year it was very nice experience with School wits one thing I really liked was the friendly and the helpful  teacher he really made learning easier.",
     name: "Shazia Noor",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "Everything, including lecture videos, offline lectures were really great and comfortable, really got so much help from our Sir, thanks for a nice session.",
     name: "Anonymous",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote: "Takes more classes and gives time.",
     name: "Tasfia Akter",
-    title: "Grade: VII",
+    grade: "VII",
+  },
+];
+
+export const faq = [
+  {
+    question: 'What is the "Beyond the Bell" program?',
+    answer:
+      "It's a comprehensive academic support program beyond a student's regular school hour, designed to foster confidence and mastery through dynamic, engaging, and relevant learning experiences",
+  },
+  {
+    question: "Which subjects are offered for each grade level?",
+    answer:
+      "Grade VI & VII: Mathematics, Physics, Chemistry, Biology. Grade VIII & IX/X: Mathematics (Syllabus D), Additional Mathematics, Physics.",
+  },
+  {
+    question:
+      "What's the core difference between In-Person and Online learning programs?",
+    answer:
+      "In-person offers personalized, tech-enabled classroom learning with remedial sessions. Online is a self-paced digital program, available if in-person batches are full. Both include digital study materials.",
+  },
+  {
+    question: "What is School Wits' core teaching philosophy?",
+    answer:
+      "Our philosophy is to spark curiosity, not stress. We achieve this through personalized attention, dynamic tech-integrated lessons, and a focus on discovery and critical thinking, building confidence beyond textbooks.",
+  },
+  {
+    question:
+      "Will School Wits offer other subjects besides the current core sciences and math?",
+    answer:
+      "Yes, we plan to introduce additional courses, such as English Language and Computer Programming, at a later stage. Please stay tuned to our announcements for updates.",
   },
 ];
 
