@@ -1,5 +1,7 @@
 import { faq } from "@/constants";
+import { cn } from "@school-wits/utils";
 import { IoIosArrowDown } from "react-icons/io";
+import SquareGroup from "../../../public/graphics/square-group.svg";
 import {
   Collapsible,
   CollapsibleContent,
@@ -7,18 +9,31 @@ import {
   MotionDiv,
 } from "../client-ui";
 
-export function FAQ() {
+export function FAQ({
+  sectionBg,
+  groupSquareColor,
+}: {
+  sectionBg?: string;
+  groupSquareColor?: string;
+}) {
   return (
-    <section className="my-6 md:my-20">
+    <section className={cn("py-6 md:py-20", sectionBg)}>
       <div className="main-container">
-        <div className="grid md:grid-cols-3 gap-y-6">
+        <div className="grid md:grid-cols-3 gap-y-6 relative">
+          <SquareGroup
+            className={cn(
+              "absolute w-[40px] text-secondary/20 top-3 right-0 sm:right-8 md:hidden",
+              groupSquareColor
+            )}
+          />
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, easings: "easeInOut" }}
             viewport={{ once: true, amount: 0.5 }}
+            className="md:text-start text-center"
           >
-            <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize mb-4">
+            <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize mb-4 font-recoleta">
               Your Questions, <br />{" "}
               <span className="text-secondary">Answered</span>
             </h2>
@@ -27,6 +42,12 @@ export function FAQ() {
               answer you&apos;re looking for, feel free to reach out, we&apos;re
               here to help.
             </p>
+            <SquareGroup
+              className={cn(
+                "w-[80px] text-secondary/20 ml-10 mt-10 hidden md:block",
+                groupSquareColor
+              )}
+            />
           </MotionDiv>
           <div className="md:col-span-2">
             <MotionDiv

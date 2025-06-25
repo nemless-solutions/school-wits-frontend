@@ -1,78 +1,61 @@
-import { Button } from "@/components/client-ui";
+import { MotionDiv } from "@/components/client-ui";
+import { FAQ } from "@/components/FAQ/FAQ";
+import { LocationMap } from "@/components/LocationMap/LocationMap";
+import { PageHeader } from "@/components/PageHeader/PageHeader";
+import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
 import { contactUs } from "@/constants";
+import Image from "next/image";
 
 export default function ContactUs() {
-  const { contacts, socials } = contactUs;
+  const { contacts } = contactUs;
   return (
     <div>
-      <section className="bg-primary pt-28 pb-24">
-        <div className="main-container">
-          <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-semibold text-neutral-50">
-              Get in Touch
-            </h1>
-            <p className="text-neutral-200 md:text-lg max-w-[420px] mx-auto mt-4">
-              We are here to help and answer any questions you might have. We
-              look forward to hearing from you!
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-16 mt-10 relative">
+      <PageHeader
+        header="Contact Us"
+        subheader="We are here to help and answer any questions you might have. We look forward to hearing from you"
+      />
+      <section className="py-16 relative overflow-clip">
+        <div className="absolute -top-20 -right-20 w-xl aspect-square bg-primary/25 rounded-full blur-[100px]"></div>
+        <div className="absolute top-1/3 -left-20 -translate-y-1/2 w-xs aspect-square bg-secondary/20 rounded-full blur-[100px]"></div>
+        <div className="main-container relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {contacts.map((c, i) => (
-              <div
+              <MotionDiv
                 key={i}
-                className="text-center space-y-2 p-4 rounded-lg shadow-[5px_8px_15px_0px_rgba(0,0,0,0.6)] bg-white/75 text-primary"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.3,
+                  easings: "easeInOut",
+                  delay: i * 0.1,
+                }}
+                viewport={{ once: true, amount: 0.5 }}
               >
-                <c.Icon className="text-4xl mx-auto" />
-                <p className="text-secondary text-lg font-semibold">
-                  {c.title}
-                </p>
-                <p className="text-xl my-4">{c.description}</p>
-                <Button asChild size="lg" className="min-w-[200px]">
-                  <a href={c.link}>{c.button}</a>
-                </Button>
-              </div>
-            ))}
-            <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-neutral-400 select-none">
-              OR
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="pt-20 pb-28">
-        <div className="main-container">
-          <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-primary">
-              Follow Us <br />
-              <span className="text-xl md:text-2xl text-secondary">
-                On Social Media
-              </span>
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 mt-10">
-            {socials.map((s, i) => (
-              <div
-                key={i}
-                className="text-center space-y-2 p-8 rounded-lg shadow-[5px_8px_10px_0px_rgba(0,0,0,0.4)] bg-primary text-neutral-50"
-              >
-                <s.Icon className="text-4xl mx-auto" />
-                <p className="text-neutral-200 text-lg font-semibold">
-                  {s.title}
-                </p>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="w-full text-primary font-semibold mt-6"
-                >
-                  <a href={s.link} target="_blank" rel="noopener noreferrer">
-                    {s.button}
-                  </a>
-                </Button>
-              </div>
+                <div className="p-5 bg-white border border-neutral-200 rounded-2xl shadow-md">
+                  <div className="h-14 w-14 bg-[#F3F1FA] flex items-center justify-center rounded-full">
+                    <Image src={c.icon} alt={c.title} width={28} height={28} />
+                  </div>
+                  <p className="text-sm mt-3 mb-1 pl-1">{c.title}</p>
+                  <h4 className="md:text-xl font-semibold pl-1">
+                    {c.description}
+                  </h4>
+                </div>
+              </MotionDiv>
             ))}
           </div>
+          <MotionDiv
+            className="flex justify-center mt-14"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, easings: "easeInOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <SocialLinks iconSize={32} />
+          </MotionDiv>
         </div>
       </section>
+      <FAQ sectionBg="bg-primary" groupSquareColor="text-white" />
+      <LocationMap />
     </div>
   );
 }

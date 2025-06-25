@@ -2,6 +2,7 @@
 
 import { lessonHighlights } from "@/constants";
 import { useState } from "react";
+import SquareGroupIcon from "../../../public/graphics/square-group.svg";
 import {
   MotionDiv,
   Tabs,
@@ -17,7 +18,8 @@ export function LessonHighlights() {
   return (
     <section className="my-8 pb-10">
       <div className="main-container">
-        <div className="max-w-[1080px] mx-auto">
+        <div className="max-w-[1080px] mx-auto relative">
+          <SquareGroupIcon className="h-10 w-10 md:h-16 md:w-16 absolute bottom-[calc(100%-20px)] right-[calc(100%-40px)] md:bottom-0 md:right-1/5 text-secondary/20 -rotate-[23.35deg]" />
           <div className="text-center">
             <MotionDiv
               initial={{ opacity: 0, x: -20 }}
@@ -28,7 +30,7 @@ export function LessonHighlights() {
               <p className="px-4 py-1 md:px-6 md:py-2 text-sm md:text-lg font-semibold bg-secondary/10 w-fit mx-auto rounded-full mb-3">
                 What We Teach
               </p>
-              <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize mb-10">
+              <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize mb-10 font-recoleta">
                 Lesson Highlights
               </h2>
             </MotionDiv>
@@ -66,8 +68,8 @@ export function LessonHighlights() {
                         onPause={() => setPlayingIndex(null)}
                       />
                     </div>
-                    <div className="space-y-4">
-                      <h2 className="text-2xl text-center sm:text-3xl md:text-start md:text-[40px] font-semibold">
+                    <div className="space-y-4 relative">
+                      <h2 className="text-2xl text-center sm:text-3xl md:text-start md:text-[40px] font-semibold font-recoleta">
                         {item.title}
                       </h2>
                       <p className="text-sm text-center md:text-start md:text-base">

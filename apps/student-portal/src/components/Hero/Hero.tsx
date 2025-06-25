@@ -50,7 +50,7 @@ export function Hero() {
               Enroll before <span className="font-semibold">30 June, 2025</span>{" "}
               - Seats are limited!
             </p>
-            <h1 className="text-center md:leading-16 text-4xl sm:text-5xl md:text-[64px] font-semibold text-black">
+            <h1 className="text-center md:leading-16 text-4xl sm:text-5xl md:text-[64px] font-semibold text-black font-recoleta">
               Let&apos;s Make Studying Less &quot;Meh&quot;
             </h1>
             <p className="md:px-8 my-8 text-sm md:text-base text-gray-800">
@@ -67,9 +67,9 @@ export function Hero() {
             <Button
               variant="secondary"
               size="lg"
-              className="text-base md:text-lg font-semibold"
+              className="text-base md:text-lg font-semibold h-14 px-8"
             >
-              Get Started
+              Start Learning
             </Button>
           </MotionDiv>
         </div>

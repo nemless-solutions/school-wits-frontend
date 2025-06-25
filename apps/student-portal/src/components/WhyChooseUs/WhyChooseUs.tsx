@@ -1,23 +1,27 @@
 import { whyChooseUs } from "@/constants";
-import { FaRandom } from "react-icons/fa";
+import Image from "next/image";
+import CurvedLine from "../../../public/graphics/curve-line.svg";
 import { MotionDiv } from "../client-ui";
 
 export function WhyChooseUs() {
   return (
     <section className="my-6 md:my-20">
-      <div className="bg-secondary mx-3 md:mx-8 py-6 sm:py-10 md:py-20 rounded-[12px] sm:rounded-2xl md:rounded-4xl">
-        <div className="main-container">
-          <div>
+      <div className="bg-secondary mx-3 md:mx-8 py-6 sm:py-10 md:py-20 rounded-[12px] sm:rounded-2xl md:rounded-4xl relative overflow-clip">
+        <div className="bg-primary absolute -bottom-14 -left-4 w-[100px] h-[120px] md:w-[171px] md:h-[210px] rounded-xl rotate-[168deg]" />
+        <div className="bg-primary absolute top-1/2 right-[-50px] md:-top-[150px] md:right-1/2 w-[100px] h-[120px] md:w-[171px] md:h-[210px] rounded-xl rotate-[168deg]" />
+        <CurvedLine className="absolute top-0 right-0 text-primary w-[120px] md:w-[260px]" />
+        <div className="main-container relative z-10">
+          <div className="text-center md:text-start">
             <MotionDiv
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, easings: "easeInOut" }}
               viewport={{ once: true, amount: 0.5 }}
             >
-              <p className="bg-white px-6 py-2 rounded-full text-sm sm:text-base md:text-lg font-semibold w-fit mb-6">
+              <p className="bg-white px-6 py-2 rounded-full text-sm sm:text-base md:text-lg font-semibold w-fit mb-6 md:mx-0 mx-auto">
                 Our Values
               </p>
-              <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-white capitalize">
+              <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-white capitalize font-recoleta">
                 Why Choose Us ?
               </h2>
             </MotionDiv>
@@ -38,7 +42,11 @@ export function WhyChooseUs() {
               >
                 <div className="md:text-center">
                   <div className="w-12 md:w-16 aspect-square md:mx-auto bg-slate-200 rounded-full flex items-center justify-center">
-                    <FaRandom />
+                    <Image
+                      className="w-6 md:w-8"
+                      src={item.icon}
+                      alt={item.title}
+                    />
                   </div>
                   <h3 className="text-lg md:text-xl font-semibold mt-4 md:mt-5 mb-1.5">
                     {item.title}

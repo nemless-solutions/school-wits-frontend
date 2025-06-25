@@ -51,7 +51,7 @@ export function Navbar({ session }: { session: Session | null }) {
             }`}
           >
             <div className="md:flex items-center gap-x-4">
-              <ul className="flex flex-col gap-x-2 lg:gap-x-4 mt-20 md:mt-0 md:flex-row">
+              <ul className="flex flex-col gap-x-1 lg:gap-x-4 mt-20 md:mt-0 md:flex-row">
                 {navItems.map((item, index) =>
                   item.type === "link" ? (
                     <NavItem
@@ -94,7 +94,7 @@ export function Navbar({ session }: { session: Session | null }) {
             ) : (
               <div className="pl-20 md:pl-0 mt-4 md:mt-0">
                 <Link
-                  className="bg-white border-neutral-200 border-1 min-[814px]:px-10 px-2 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                  className="bg-white border-neutral-200 border-1 min-[850px]:px-10 px-1 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
                   href="/sign-in"
                 >
                   Log In

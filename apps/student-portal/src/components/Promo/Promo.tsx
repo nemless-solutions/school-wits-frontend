@@ -11,7 +11,7 @@ export function Promo() {
             transition={{ duration: 0.5, easings: "easeInOut" }}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <h2 className="text-black text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold capitalize">
+            <h2 className="text-black text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold capitalize font-recoleta">
               <span className="text-secondary">Revolutionising</span> Learning
               with <span className="text-secondary">Digital Tools</span>
             </h2>

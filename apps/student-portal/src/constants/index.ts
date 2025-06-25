@@ -1,17 +1,19 @@
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import fileDownload from "../../public/icons/file-download.png";
-import graph from "../../public/icons/graph.png";
-import growth from "../../public/icons/growth.png";
-import lightbulb from "../../public/icons/lightbulb.png";
-import mentor from "../../public/icons/mentor.png";
-import mission from "../../public/icons/mission.png";
+import GradeVIIcon from "../../public/graphics/circle-group-1.svg";
+import GradeVIIIIcon from "../../public/graphics/circle-group-2.svg";
+import OLevelIcon from "../../public/graphics/circle-group-3.svg";
+import GradeVIIIcon from "../../public/graphics/square-group.svg";
+import analytics from "../../public/icons/analytics-up.png";
+import callIcon from "../../public/icons/call.png";
+import video from "../../public/icons/computer-video.png";
+import facebookIcon from "../../public/icons/facebook.png";
+import instagramIcon from "../../public/icons/instagram.png";
+import liveStreaming from "../../public/icons/live-streaming.png";
+import locationIcon from "../../public/icons/location.png";
+import emailIcon from "../../public/icons/mail.png";
 import quiz from "../../public/icons/quiz.png";
-import target from "../../public/icons/targeting.png";
-import test from "../../public/icons/test.png";
-import videoPlayer from "../../public/icons/video-player.png";
-import webinar from "../../public/icons/webinar.png";
+import teacher from "../../public/icons/teacher.png";
+import userGroup from "../../public/icons/user-group.png";
+import youtubeIcon from "../../public/icons/youtube.png";
 import backpack from "../../public/images/backpack.png";
 import graduationCap from "../../public/images/graduation-cap.png";
 import openBook from "../../public/images/open-book.png";
@@ -57,23 +59,27 @@ export const navItems: NavItem[] = [
 export const grades = [
   {
     grade: "VI",
+    link: "/grades/vi",
     classes: 12,
-    illustration: backpack,
+    Icon: GradeVIIcon,
   },
   {
     grade: "VII",
+    link: "/grades/vii",
     classes: 18,
-    illustration: pencilRuler,
+    Icon: GradeVIIIcon,
   },
   {
     grade: "VIII",
+    link: "/grades/viii",
     classes: 32,
-    illustration: openBook,
+    Icon: GradeVIIIIcon,
   },
   {
     grade: "IX - X",
+    link: "/grades/o",
     classes: 25,
-    illustration: graduationCap,
+    Icon: OLevelIcon,
   },
 ];
 
@@ -119,7 +125,7 @@ export const promoVideoLink = "https://youtu.be/J-lW0RyWgVg";
 
 export const whyChooseUs = [
   {
-    icon: videoPlayer,
+    icon: video,
     title: "Binge-Worthy Lessons",
     description:
       "Engaging video lessons designed to alleviate online learning monotony while ensuring balanced screen time.",
@@ -131,25 +137,25 @@ export const whyChooseUs = [
       "Interactive quizzes to reinforce learning and assess comprehension.",
   },
   {
-    icon: test,
+    icon: liveStreaming,
     title: "Ready for the Real Thing",
     description:
       "Evaluation after completion of each topic with exam-style questions.",
   },
   {
-    icon: fileDownload,
+    icon: userGroup,
     title: "Your Learning, On Your Terms",
     description:
       "Downloadable course contents for convenient review and self-paced learning.",
   },
   {
-    icon: mentor,
+    icon: teacher,
     title: "Mentors Who Go All In",
     description:
       "Passionate educators with extensive expertise to guide the student every step of the way.",
   },
   {
-    icon: graph,
+    icon: analytics,
     title: "Track It. Smash It. Repeat.",
     description:
       "Prompt feedback and regular performance metrics for self-assessment and targeted enhancement, ensuring continual progress.",
@@ -548,32 +554,32 @@ export const terms = [
 
 export const aboutUs = [
   {
-    icon: lightbulb,
+    icon: quiz,
     header: "It All Started With a Question...",
     subHeader: "What if learning could spark curiosity, not stress?",
     description:
       "That simple question became the foundation of School Wits. We recognized how traditional education often left students feeling overwhelmed, disengaged, or uninspired. We set out to bridge the gap between rigid systems and the dynamic potential of digital learning.",
   },
   {
-    icon: webinar,
+    icon: quiz,
     header: "How Our Classes Work ?",
     description:
       "Our in-person classes offer a focused, tech-enabled environment - with limited seats to ensure personalized attention. Classrooms are equipped with modern tools like interactive flat panels, projectors, and integrated video lessons - making every learning experience dynamic, visual, and engaging. Students benefit from regular performance insights, helping them stay aware of their progress and continuously improve - while also allowing parents to stay informed and actively involved in their learning journey.",
   },
   {
-    icon: growth,
+    icon: quiz,
     header: "How Are We Different ?",
     description:
       "School Wits isn't just a typical learning platform - it's a school of wits, where sharp minds grow sharper, and creativity leads the way. Here, learning isn't about cramming facts it's about discovering ideas, asking the right questions, and building the confidence to explore beyond textbooks.",
   },
   {
-    icon: mission,
+    icon: quiz,
     header: "Our Mission",
     description:
       "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
   },
   {
-    icon: target,
+    icon: quiz,
     header: "Our Vision",
     description:
       "Our vision is to build a trusted global platform where students can unlock their full potential through personalized learning experiences and innovative teaching methods. We envision establishing Bangladesh as a global hub for quality education, shaping a generation of confident, skilled, and future-ready learners through cutting-edge digital schooling.",
@@ -583,38 +589,37 @@ export const aboutUs = [
 export const contactUs = {
   contacts: [
     {
-      Icon: MdEmail,
-      title: "Reach Out Via Email",
-      link: "mailto:support@schoolwits.com",
-      description: "support@schoolwits.com",
-      button: "Send Email",
+      icon: callIcon,
+      title: "Call Us",
+      description: "+880-1898-898984",
     },
     {
-      Icon: BsFillTelephoneFill,
-      title: "Speak With Us Directly",
-      link: "tel:+8801898898984",
-      description: "+880-1898-898984",
-      button: "Call Us",
+      icon: emailIcon,
+      title: "Email Us",
+      description: "support@schoolwits.com",
+    },
+
+    {
+      icon: locationIcon,
+      title: "Visit Us",
+      description: "Gulshan - 1, Dhaka",
     },
   ],
   socials: [
     {
-      Icon: FaFacebookF,
+      icon: facebookIcon,
       title: "Facebook",
       link: "https://www.facebook.com/share/16Wg6y8ELd/",
-      button: "Like",
     },
     {
-      Icon: FaInstagram,
+      icon: instagramIcon,
       title: "Instagram",
       link: "https://www.instagram.com/schoolwits?igsh=dDQ3MzY0OXZ4b2hr",
-      button: "Follow",
     },
     {
-      Icon: FaYoutube,
+      icon: youtubeIcon,
       title: "YouTube",
       link: "https://youtube.com/@schoolwits?feature=shared",
-      button: "Subscribe",
     },
   ],
 };
