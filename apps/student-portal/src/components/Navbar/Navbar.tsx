@@ -46,7 +46,7 @@ export function Navbar({ session }: { session: Session | null }) {
             setSidebarOpen={setShowNav}
           />
           <div
-            className={`fixed right-0 top-0 h-screen w-[320px] bg-white duration-200 md:static md:h-auto md:w-auto md:translate-x-0 md:justify-end md:pl-12 md:text-start ${
+            className={`fixed right-0 top-0 h-screen w-[320px] bg-white/10 backdrop-blur-3xl duration-200 md:static md:h-auto md:w-auto md:translate-x-0 md:justify-end md:pl-12 md:text-start ${
               showNav ? "translate-x-0" : "translate-x-full"
             }`}
           >

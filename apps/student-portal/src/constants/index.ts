@@ -3,14 +3,20 @@ import GradeVIIIIcon from "../../public/graphics/circle-group-2.svg";
 import OLevelIcon from "../../public/graphics/circle-group-3.svg";
 import GradeVIIIcon from "../../public/graphics/square-group.svg";
 import analytics from "../../public/icons/analytics-up.png";
+import muscle from "../../public/icons/body-part-muscle.png";
+import brain from "../../public/icons/brain.png";
 import callIcon from "../../public/icons/call.png";
 import video from "../../public/icons/computer-video.png";
 import facebookIcon from "../../public/icons/facebook.png";
+import webSearch from "../../public/icons/global-search.png";
+import idea from "../../public/icons/idea.png";
 import instagramIcon from "../../public/icons/instagram.png";
 import liveStreaming from "../../public/icons/live-streaming.png";
 import locationIcon from "../../public/icons/location.png";
 import emailIcon from "../../public/icons/mail.png";
+import puzzle from "../../public/icons/puzzle.png";
 import quiz from "../../public/icons/quiz.png";
+import search from "../../public/icons/search.png";
 import teacher from "../../public/icons/teacher.png";
 import userGroup from "../../public/icons/user-group.png";
 import youtubeIcon from "../../public/icons/youtube.png";
@@ -552,40 +558,6 @@ export const terms = [
   "Fees must be paid in full upfront, inclusive of bank charges for online transactions.",
 ];
 
-export const aboutUs = [
-  {
-    icon: quiz,
-    header: "It All Started With a Question...",
-    subHeader: "What if learning could spark curiosity, not stress?",
-    description:
-      "That simple question became the foundation of School Wits. We recognized how traditional education often left students feeling overwhelmed, disengaged, or uninspired. We set out to bridge the gap between rigid systems and the dynamic potential of digital learning.",
-  },
-  {
-    icon: quiz,
-    header: "How Our Classes Work ?",
-    description:
-      "Our in-person classes offer a focused, tech-enabled environment - with limited seats to ensure personalized attention. Classrooms are equipped with modern tools like interactive flat panels, projectors, and integrated video lessons - making every learning experience dynamic, visual, and engaging. Students benefit from regular performance insights, helping them stay aware of their progress and continuously improve - while also allowing parents to stay informed and actively involved in their learning journey.",
-  },
-  {
-    icon: quiz,
-    header: "How Are We Different ?",
-    description:
-      "School Wits isn't just a typical learning platform - it's a school of wits, where sharp minds grow sharper, and creativity leads the way. Here, learning isn't about cramming facts it's about discovering ideas, asking the right questions, and building the confidence to explore beyond textbooks.",
-  },
-  {
-    icon: quiz,
-    header: "Our Mission",
-    description:
-      "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
-  },
-  {
-    icon: quiz,
-    header: "Our Vision",
-    description:
-      "Our vision is to build a trusted global platform where students can unlock their full potential through personalized learning experiences and innovative teaching methods. We envision establishing Bangladesh as a global hub for quality education, shaping a generation of confident, skilled, and future-ready learners through cutting-edge digital schooling.",
-  },
-];
-
 export const contactUs = {
   contacts: [
     {
@@ -623,3 +595,42 @@ export const contactUs = {
     },
   ],
 };
+
+export const howAreWeDifferent = [
+  {
+    icon: idea,
+    title: "A School of Wits",
+    description:
+      "School Wits sharpens minds through creativity and critical thinking",
+  },
+  {
+    icon: brain,
+    title: "Fostering Creativity",
+    description:
+      "Creativity drives learning, helping students think beyond conventional boundaries",
+  },
+  {
+    icon: search,
+    title: "Discover, Not Memorize",
+    description:
+      "Learning at School Wits is about discovering ideas rather than simply cramming facts",
+  },
+  {
+    icon: puzzle,
+    title: "Encouraging Curiosity",
+    description:
+      "Students are encouraged to ask the right questions and explore new concepts",
+  },
+  {
+    icon: muscle,
+    title: "Building Confidence",
+    description:
+      "The platform helps students build the confidence to think critically and independently",
+  },
+  {
+    icon: webSearch,
+    title: "Beyond Textbooks",
+    description:
+      "At School Wits, the focus is on exploring ideas beyond the limits of traditional textbooks",
+  },
+];
