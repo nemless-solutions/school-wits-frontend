@@ -4,7 +4,7 @@ import { SocialLinks } from "../SocialLinks/SocialLinks";
 
 export function Footer() {
   return (
-    <div className="bg-white pt-10 pb-2 relative z-50">
+    <div className="bg-white pt-10 pb-2 relative z-50 shadow-[0px_-6px_12px_0px_rgba(0,0,0,0.05)]">
       <div className="mx-4 md:mx-12">
         <div className="flex flex-col md:flex-row items-center text-center md:text-start justify-between pb-8">
           <div className="mb-8">

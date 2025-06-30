@@ -12,7 +12,7 @@ export default function ContactUs() {
     <div>
       <PageHeader
         header="Contact Us"
-        subheader="We are here to help and answer any questions you might have. We look forward to hearing from you"
+        description="We are here to help and answer any questions you might have. We look forward to hearing from you"
       />
       <section className="py-16 relative overflow-clip">
         <div className="absolute -top-20 -right-20 w-xl aspect-square bg-primary/25 rounded-full blur-[100px]"></div>

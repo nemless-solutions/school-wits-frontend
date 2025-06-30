@@ -20,7 +20,7 @@ export default function AboutUs() {
     <div>
       <PageHeader
         header="About Us"
-        subheader="School Wits, English-medium edtech with holistic CAIE curriculum"
+        description="School Wits, English-medium edtech with holistic CAIE curriculum"
       />
       <section className="py-16 relative overflow-clip">
         <div className="absolute -top-20 -right-20 w-xl aspect-square bg-secondary/10 rounded-full blur-[100px]"></div>

@@ -45,9 +45,9 @@ export function GradeCards() {
                         <div className="text-lg font-semibold md:font-bold md:text-3xl flex gap-2 md:block">
                           <p>Grade</p>
                           <p className="truncate">
-                            {grade.grade}{" "}
+                            {grade.title}{" "}
                             <span className="hidden md:inline">
-                              {grade.grade === "IX - X" && "(O Level)"}
+                              {grade.title === "IX - X" && "(O Level)"}
                             </span>
                           </p>
                         </div>

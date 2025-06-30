@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import atom from "../../../public/gifs/atom.gif";
 import calculator from "../../../public/gifs/calculator.gif";
 import graph from "../../../public/gifs/graph.gif";
@@ -68,8 +69,9 @@ export function Hero() {
               variant="secondary"
               size="lg"
               className="text-base md:text-lg font-semibold h-14 px-8"
+              asChild
             >
-              Start Learning
+              <Link href="/courses/all">Start Learning</Link>
             </Button>
           </MotionDiv>
         </div>

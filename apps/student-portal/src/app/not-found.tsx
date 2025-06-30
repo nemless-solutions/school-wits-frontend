@@ -1,35 +1,49 @@
-import { Button } from "@/components/client-ui";
-import Image from "next/image";
+import { PageHeader } from "@/components/PageHeader/PageHeader";
+import { Button, MotionDiv } from "@/components/client-ui";
 import Link from "next/link";
-import notFoundImage from "../../public/images/page-not-found.png";
 
 export default function NotFound() {
   return (
-    <div className="main-container">
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center -mt-20 space-y-6">
-          <p className="text-xl md:text-2xl text-primary/60">
-            You look a little lost...
-          </p>
-          <h1 className="text-7xl md:text-8xl text-primary font-bold tracking-widest">
-            404
-          </h1>
-          <Image
-            className="mx-auto"
-            src={notFoundImage}
-            alt="Page Not Found"
-            height={200}
-            width={200}
-          />
-          <h2 className="text-3xl md:text-4xl font-bold text-primary/80">
-            Oops! Page not found
-          </h2>
-          <p className="text-xl md:text-2xl text-primary/75">
-            The page your are looking for could not be found
-          </p>
-          <Button asChild size="lg">
-            <Link href="/">Return Home</Link>
-          </Button>
+    <div className="flex flex-col min-h-screen">
+      <PageHeader header="Not Found" />
+      <div className="relative overflow-clip grow">
+        <div className="absolute top-1/3 -right-20 w-[400px] md:w-xl aspect-square bg-secondary/15 rounded-full blur-[100px]"></div>
+        <div className="absolute top-1/3 -left-20 -translate-y-1/2 w-xs aspect-square bg-primary/35 rounded-full blur-[120px]"></div>
+        <div className="main-container relative z-10">
+          <div className="text-center space-y-4 py-16">
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, easings: "easeInOut", delay: 0.3 }}
+            >
+              <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-destructive capitalize font-recoleta">
+                404
+              </h2>
+            </MotionDiv>
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, easings: "easeInOut", delay: 0.6 }}
+            >
+              <p className="text-lg md:text-xl font-semibold capitalize text-destructive mb-8">
+                Could not find the page that you are looking for.
+              </p>
+            </MotionDiv>
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, easings: "easeInOut", delay: 0.9 }}
+            >
+              <Button
+                variant="secondary"
+                size="lg"
+                className="text-base md:text-lg font-semibold h-14 px-8"
+                asChild
+              >
+                <Link href="/">Back to Home</Link>
+              </Button>
+            </MotionDiv>
+          </div>
         </div>
       </div>
     </div>

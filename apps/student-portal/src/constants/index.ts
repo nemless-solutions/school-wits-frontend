@@ -26,6 +26,8 @@ import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
 import { Course, NavItem } from "../../types";
 
+export const baseUrl = process.env.BASE_URL;
+
 export const navItems: NavItem[] = [
   { type: "link", title: "Home", link: "/" },
   {
@@ -64,25 +66,29 @@ export const navItems: NavItem[] = [
 
 export const grades = [
   {
-    grade: "VI",
+    grade: "vi",
+    title: "VI",
     link: "/grades/vi",
     classes: 12,
     Icon: GradeVIIcon,
   },
   {
-    grade: "VII",
+    grade: "vii",
+    title: "VII",
     link: "/grades/vii",
     classes: 18,
     Icon: GradeVIIIcon,
   },
   {
-    grade: "VIII",
+    grade: "viii",
+    title: "VIII",
     link: "/grades/viii",
     classes: 32,
     Icon: GradeVIIIIcon,
   },
   {
-    grade: "IX - X",
+    grade: "o",
+    title: "IX - X",
     link: "/grades/o",
     classes: 25,
     Icon: OLevelIcon,
