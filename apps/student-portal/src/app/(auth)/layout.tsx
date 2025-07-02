@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../public/images/logo-primary.png";
+import logoHorizontal from "../../../public/images/logo-horizontal.png";
 
 export default function AuthLayout({
   children,
@@ -7,18 +7,18 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="bg-classroom h-screen overflow-y-clip flex items-center justify-center">
-      <div className="main-container max-h-[90vh] bg-white/70 backdrop-blur-xl overflow-y-auto rounded-lg">
+    <main className="bg-classroom h-screen overflow-y-hidden flex items-center justify-center">
+      <div className="main-container max-h-[90vh] bg-white overflow-y-auto rounded-lg">
         <div className="flex justify-center">
-          <div className="py-10">
+          <div className="py-8">
             <Image
-              className="mx-auto"
-              src={logo}
+              className="mx-auto w-[200px]"
+              src={logoHorizontal}
               alt="logo"
               width={200}
               height={200}
             />
-            <div className="mt-8">{children}</div>
+            <div className="mt-3">{children}</div>
           </div>
         </div>
       </div>

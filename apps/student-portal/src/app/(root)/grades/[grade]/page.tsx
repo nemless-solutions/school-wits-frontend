@@ -1,6 +1,5 @@
 import { MotionDiv } from "@/components/client-ui";
 import { CourseCard } from "@/components/CourseCard/CourseCard";
-import { CourseModeSwitcher } from "@/components/Switcher/CourseModeSwitcher";
 import { baseUrl, grades } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
 import { notFound } from "next/navigation";
@@ -37,14 +36,14 @@ export default async function Grade({
           Courses
         </h2>
       </MotionDiv>
-      <MotionDiv
+      {/* <MotionDiv
         className="my-6 md:my-10"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, easings: "easeInOut", delay: 0.6 }}
       >
         <CourseModeSwitcher currentType={mode} />
-      </MotionDiv>
+      </MotionDiv> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {courses.map((course, index) => (
           <MotionDiv

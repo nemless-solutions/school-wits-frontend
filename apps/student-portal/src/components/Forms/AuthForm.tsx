@@ -81,7 +81,7 @@ export function AuthForm<T extends FieldValues>({
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-semibold text-primary text-center">
+      <h1 className="text-xl font-semibold text-neutral-800 text-center font-recoleta md:text-2xl">
         {isSignUp ? "Create your free account" : "Welcome back to School Wits"}
       </h1>
       {isSignUp && (
@@ -273,6 +273,7 @@ export function AuthForm<T extends FieldValues>({
             <Button
               type="button"
               size="lg"
+              variant="secondary"
               className={isSignUp ? "mt-6" : "w-full"}
               asChild
             >
@@ -286,7 +287,7 @@ export function AuthForm<T extends FieldValues>({
         {isSignUp ? "Already have an account?" : "New to School Wits?"}{" "}
         <Link
           href={isSignUp ? "/sign-in" : "/sign-up"}
-          className="font-bold text-primary"
+          className="font-bold text-secondary"
         >
           {isSignUp ? "Sign in" : "Create an account"}
         </Link>

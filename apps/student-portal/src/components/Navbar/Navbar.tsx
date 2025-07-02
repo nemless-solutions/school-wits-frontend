@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import logoHorizontal from "../../../public/images/logo-horizontal.png";
+import logoIcon from "../../../public/images/logo-icon.png";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
@@ -32,7 +34,7 @@ export function Navbar({ session }: { session: Session | null }) {
       {showNav && (
         <div
           onClick={() => setShowNav(false)}
-          className="fixed h-full w-full bg-black/40 z-[998] backdrop-blur-[3px]"
+          className="fixed h-full w-full bg-black/70 z-[998] backdrop-blur-[3px]"
         />
       )}
       <nav className="fixed top-0 left-0 py-4 md:py-0 z-[999] w-full bg-white border-b border-neutral-200">
@@ -40,11 +42,18 @@ export function Navbar({ session }: { session: Session | null }) {
           <div className="flex items-center w-full justify-between">
             <Link href="/">
               <Image
-                className="w-[100px] md:w-[180px] object-cover"
-                src="/images/logo-primary.png"
+                className="hidden md:block md:w-[180px] object-cover"
+                src={logoHorizontal}
                 alt="logo"
-                width="100"
-                height="25"
+                width="1200"
+                height="270"
+              />
+              <Image
+                className="md:hidden w-[52px] object-cover"
+                src={logoIcon}
+                alt="logo"
+                width="500"
+                height="500"
               />
             </Link>
             <ToggleButton
@@ -53,7 +62,7 @@ export function Navbar({ session }: { session: Session | null }) {
               setSidebarOpen={setShowNav}
             />
             <div
-              className={`fixed right-0 top-0 h-screen w-[320px] bg-white/50 backdrop-blur-3xl duration-200 md:static md:h-auto md:w-auto md:translate-x-0 md:justify-end md:pl-12 md:text-start ${
+              className={`fixed right-0 top-0 h-screen w-[300px] bg-white duration-200 md:static md:h-auto md:w-auto md:translate-x-0 md:justify-end md:pl-12 md:text-start ${
                 showNav ? "translate-x-0" : "translate-x-full"
               }`}
             >
@@ -85,7 +94,7 @@ export function Navbar({ session }: { session: Session | null }) {
                   ) : (
                     <div className="pl-20 md:pl-0 mt-4 md:mt-0">
                       <Link
-                        className="bg-white border-neutral-200 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                        className="bg-white border-neutral-300 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
                         href="/sign-in"
                       >
                         Log In
@@ -101,7 +110,7 @@ export function Navbar({ session }: { session: Session | null }) {
               ) : (
                 <div className="pl-20 md:pl-0 mt-4 md:mt-0">
                   <Link
-                    className="bg-white border-neutral-200 border-1 min-[850px]:px-10 px-1 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                    className="bg-white border-neutral-300 border-1 min-[850px]:px-10 px-1 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
                     href="/sign-in"
                   >
                     Log In

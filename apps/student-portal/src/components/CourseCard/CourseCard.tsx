@@ -114,14 +114,14 @@ export function CourseCard({ course }: { course: Course }) {
           </p>
           <div>
             <div className="flex gap-2">
-              <p className="text-xs md:text-sm text-neutral-500 line-through mt-1">
+              {/* <p className="text-xs md:text-sm text-neutral-500 line-through mt-1">
                 Tk. 5,000
-              </p>
+              </p> */}
               <div>
                 <p className="md:text-lg font-semibold">Tk. {course.fee}</p>
-                <p className="text-xs text-neutral-500">
+                {/* <p className="text-xs text-neutral-500">
                   Before <span className="font-semibold">10 July</span>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

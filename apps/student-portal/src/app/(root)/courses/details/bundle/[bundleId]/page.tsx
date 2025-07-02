@@ -6,7 +6,7 @@ import { baseUrl } from "@/constants";
 import { courseBundleFetcher } from "@/libs/courseBundleFethcer";
 import { fetcher } from "@/libs/fetcher";
 import Image from "next/image";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import books from "../../../../../../../public/icons/books.png";
 import cells from "../../../../../../../public/icons/cells.png";
 import check from "../../../../../../../public/icons/check.png";
@@ -42,6 +42,8 @@ export default async function CourseDetails({
   const courseDetails = await fetcher<CourseDetails>(
     `${baseUrl}/course_information/${id}`
   );
+
+  notFound();
 
   return (
     <div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { signUp } from "@/actions/auth";
-import { AuthForm } from "@/components/AuthForm/AuthForm";
+import { AuthForm } from "@/components/Forms/AuthForm";
 import { signUpSchema } from "@school-wits/validations";
 
 export default function SignUp() {
@@ -18,7 +18,7 @@ export default function SignUp() {
         motherName: "",
         guardianEmail: "",
         guardianContact: "",
-       currentSchool: "",
+        currentSchool: "",
         curriculum: "CAMBRIDGE",
         grade: "VI",
       }}

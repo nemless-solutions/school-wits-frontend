@@ -1,4 +1,5 @@
 import Image from "next/image";
+import logoVertical from "../../../public/images/logo-vertical.png";
 import { Separator } from "../client-ui";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
 
@@ -9,19 +10,21 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center text-center md:text-start justify-between pb-8">
           <div className="mb-8">
             <Image
-              className="w-[210px] h-[60px] rounded-xs mx-auto md:mx-0"
-              src="/images/logo-primary.png"
+              className="w-[130px] md:w-[180px] mx-auto md:mx-0"
+              src={logoVertical}
               alt="logo"
-              width={100}
-              height={100}
+              width={400}
+              height={240}
             />
-            <p>Your best online academic success assistant</p>
+            <p className="text-lg font-medium text-neutral-800 mt-3 ml-2">
+              Quality education at your fingertips!
+            </p>
           </div>
           <div className="flex flex-col md:flex-row gap-6 md:gap-16">
             <div>
               <h3 className="font-semibold mb-2 md:mb-6">Contact Us</h3>
-              <p>+880 1898-898984</p>
-              <p>support@schoolwits.com</p>
+              {/*  <p>+880 1898-898984</p> */}
+              <p>query@schoolwits.com </p>
             </div>
             <SocialLinks />
           </div>

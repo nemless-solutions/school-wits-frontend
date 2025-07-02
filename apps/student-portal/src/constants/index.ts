@@ -277,6 +277,7 @@ export const FIELD_NAMES = {
   guardianEmail: "Guardian's email",
   guardianContact: "Guardian's contact",
   currentSchool: "Current School Name",
+  message: "Message",
   curriculum: "Curriculum",
   grade: "Grade",
   dateOfBirth: "Date of birth",
@@ -309,9 +310,8 @@ export const contactUs = {
     {
       icon: emailIcon,
       title: "Email Us",
-      description: "support@schoolwits.com",
+      description: "query@schoolwits.com",
     },
-
     {
       icon: locationIcon,
       title: "Visit Us",

@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../hooks"
+    },
+    {
+      "path": "../utils"
+    },
+    {
       "path": "./tsconfig.lib.json"
     }
   ],

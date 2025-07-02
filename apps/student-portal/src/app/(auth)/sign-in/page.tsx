@@ -1,7 +1,7 @@
 "use client";
 
 import { signInWithCredentials } from "@/actions/auth";
-import { AuthForm } from "@/components/AuthForm/AuthForm";
+import { AuthForm } from "@/components/Forms/AuthForm";
 import { signInSchema } from "@school-wits/validations";
 
 export default function SignIn() {

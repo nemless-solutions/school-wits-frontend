@@ -18,3 +18,10 @@ export const signUpSchema = z.object({
   grade: z.enum(["VI", "VII", "VIII", "IX", "X"]),
   dateOfBirth: z.date(),
 });
+
+export const appointmentSchema = z.object({
+  fullName: z.string().min(3),
+  email: z.string().email(),
+  contact: z.string(),
+  message: z.string().min(10),
+});
