@@ -11,11 +11,11 @@ export function CourseModeSwitcher({
   const router = useRouter();
 
   return (
-    <div className="grid grid-cols-2 max-w-[400px] bg-neutral-100 p-1.5 gap-2 rounded-[8px]">
+    <div className="grid grid-cols-2 max-w-[400px] bg-neutral-100 p-1 md:p-1.5 gap-2 rounded-[8px]">
       <button
         onClick={() => router.replace("?mode=in-person", { scroll: false })}
         className={cn(
-          "text-center p-1.5 rounded-[6px] font-semibold cursor-pointer",
+          "text-sm md:text-base text-center p-1 md:p-1.5 rounded-[6px] font-semibold cursor-pointer",
           currentType === "in-person" ? "bg-primary" : "bg-white"
         )}
       >
@@ -24,7 +24,7 @@ export function CourseModeSwitcher({
       <button
         onClick={() => router.replace("?mode=online", { scroll: false })}
         className={cn(
-          "text-center p-1.5 rounded-[6px] font-semibold cursor-pointer",
+          "text-sm md:text-base text-center p-1 md:p-1.5 rounded-[6px] font-semibold cursor-pointer",
           currentType === "online" ? "bg-primary" : "bg-white"
         )}
       >

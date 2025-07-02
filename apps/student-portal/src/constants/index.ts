@@ -24,7 +24,7 @@ import backpack from "../../public/images/backpack.png";
 import graduationCap from "../../public/images/graduation-cap.png";
 import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
-import { Course, NavItem } from "../../types";
+import { NavItem } from "../../types";
 
 export const baseUrl = process.env.BASE_URL;
 
@@ -55,7 +55,7 @@ export const navItems: NavItem[] = [
       {
         type: "link",
         icon: graduationCap,
-        title: "O Levels [Grade IX & X]",
+        title: "O Levels [IX & X]",
         link: "/grades/o",
       },
     ],
@@ -248,271 +248,6 @@ export const faq = [
   },
 ];
 
-export const courses: Record<string, Course[]> = {
-  "vi-vii": [
-    {
-      type: "current",
-      title: "Must-Know Concepts of Mathematics",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person",
-      schedule: "10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "This foundational course focuses on essential mathematics concepts that build a strong base for advanced topics.",
-      topics: [
-        "Algebra and Algebraic Equations",
-        "Directed Numbers",
-        "Prime Factorization",
-        "LCM & HCF",
-        "Word Problem Applications",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Basics of Computer Programming with Python",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: "Online | Requires a computer",
-      schedule: "10 sessions | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "A beginner-friendly course designed to introduce students to fundamental programming logic and Python syntax.",
-      topics: [
-        "Algorithms, Flowcharts, Pseudocode",
-        "Variables, Input/Output",
-        "Conditional & Looping Structures (if-else, for, while)",
-      ],
-      features: [
-        "10 Class Recordings",
-        "20+ Practice Problems",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "regular",
-      title: " Beyond the Bell: Study Support",
-      session: "2025-2026",
-      duration: "5 July - 18 December 2025",
-      mode: "In-person | 4 classes/week | 70 minutes each",
-      fees: "BDT 10,000/month (Total: BDT 60,000)",
-      earlyBird: "BDT 2,000 off in July (if registered before 30 June)",
-      subjects: ["Mathematics", "Physics", "Chemistry", "Biology"],
-      features: [
-        "Structured Lecture notes & Videos lessons",
-        "Worksheets & Quizzes",
-        "Remedial sessions & Topic-end assessments with Exam-style questions",
-      ],
-    },
-  ],
-  viii: [
-    {
-      type: "current",
-      title: "Must-Know Concepts of Mathematics - Syllabus D (4024)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "This course is designed to solidify fundamental math skills needed for higher-level topics.",
-      topics: [
-        "Using a calculator-dos and don'ts",
-        "Inequality",
-        "Surds",
-        "Bearings",
-        "Vectors",
-        "Probability",
-        "Statistics (Mean, Median, Mode)",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Must-Know Concepts of Additional Mathematics (4037)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "This course covers essential math concepts that lay the groundwork for advanced learning.",
-      topics: [
-        "Division of polynomials",
-        "Factor theorem",
-        "Modulus functions",
-        "Quadratic and Cubic inequalities- their moduli and graphs",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Basics of Computer Programming with Python",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: "Online live session | Requires a computer",
-      schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "An easy-to-follow course that introduces students to basic programming logic and Python syntax",
-      topics: [
-        "Algorithms, Flowcharts, Pseudocode",
-        "Variables, Input/Output",
-        "Conditional & Looping Structures (if-else, for, while)",
-      ],
-      features: [
-        "10 Class Recordings",
-        "20+ Practice Problems",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "regular",
-      title: "Beyond the Bell: Study Support",
-      session: "2025-2026",
-      duration: "5 July - 18 December 2025",
-      mode: "In-person | 3 classes/week per subject | 70 minutes each",
-      fees: "BDT 4,000/month per subject",
-      earlyBird: "BDT 1,000 off/subject in July (if registered before 30 June)",
-      subjects: [
-        "Mathematics-Syllabus D (4024)",
-        "Additional Mathematics (4037)",
-        "Physics (5054)",
-      ],
-      features: [
-        "Structured Lecture notes & Videos lessons",
-        "Worksheets & Quizzes",
-        "Remedial sessions & Topic-end assessments with Exam-style questions",
-      ],
-    },
-  ],
-  o: [
-    {
-      type: "current",
-      title: " Must-Know Concepts of Mathematics - Syllabus D (4024)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "Builds essential math skills that support deeper understanding in Syllabus D and beyond.",
-      topics: [
-        "Interpreting Distance-time and Speed-time graphs",
-        "Trigonometry-3D problems",
-        "Sine, cosine and tangent for any angle",
-        "The sine rule",
-        "The cosine rule",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Must-Know Concepts of Additional Mathematics (4037)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "Prepares students for the analytical depth and challenges of Additional Mathematics.",
-      topics: [
-        "First order derivative rules",
-        "Derivatives of exponential, logarithmic and trigonometric functions",
-        "Applications of differentiation in kinematics",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Basics of Computer Programming with Python",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: "Online live session | Requires a computer",
-      schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "A step-by-step course guiding students from basic programming logic to advanced Python skills.",
-      topics: [
-        "Algorithms, Flowcharts, Pseudocode",
-        "Variables, Input/Output",
-        "Conditional & Looping Structures (if-else, for, while)",
-      ],
-      features: [
-        "10 Class Recordings",
-        "20+ Practice Problems",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "regular",
-      title: "Beyond the Bell: Study Support",
-      session: "2025-2026",
-      duration: "5 July - 18 December 2025",
-      mode: "In-person | 3 classes/week per subject | 70 minutes each",
-      fees: "BDT 4,000/month per subject",
-      earlyBird: "BDT 1,000 off/subject in July (if registered before 30 June)",
-      note: "Covers half of the CAIE O-Level syllabus, to be completed in full by July 2026",
-      subjects: [
-        "Mathematics-Syllabus D (4024)",
-        "Additional Mathematics (4037)",
-        "Physics (5054)",
-      ],
-      features: [
-        "Structured Lecture notes & Videos lessons",
-        "Worksheets & Quizzes",
-        "Remedial sessions & Topic-end assessments with Exam-style questions",
-      ],
-    },
-  ],
-};
-
 export const curriculums = [
   {
     title: "Cambridge IGCSE (CAIE)",
@@ -639,4 +374,17 @@ export const howAreWeDifferent = [
     description:
       "At School Wits, the focus is on exploring ideas beyond the limits of traditional textbooks",
   },
+];
+
+export const graphBarColors = [
+  "#2FBC88",
+  "#7C60DE",
+  "#F7485F",
+  "#FFA528",
+  "#F774A5",
+  "#1E3A8A",
+  "#D97706",
+  "#047857",
+  "#9D174D",
+  "#6B7280",
 ];

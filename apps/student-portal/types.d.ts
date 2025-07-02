@@ -1,19 +1,3 @@
-export type Course = {
-  type: "regular" | "current";
-  title: string;
-  session: string;
-  duration: string;
-  schedule?: string;
-  note?: string;
-  mode: string;
-  fees: string;
-  earlyBird?: string;
-  overview?: string;
-  topics?: string[];
-  subjects?: string[];
-  features: string[];
-};
-
 export type NavItem =
   | {
       type: "link";
@@ -30,6 +14,8 @@ export type NavItem =
       link?: never;
     };
 
+export type Grade = "VI" | "VII" | "VIII" | "IX" | "X";
+
 interface AuthCredentials {
   email: string;
   password: string;
@@ -40,6 +26,55 @@ interface AuthCredentials {
   guardianContact: string;
   currentSchool: string;
   curriculum: "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
-  grade: "VI" | "VII" | "VIII" | "IX" | "X";
+  grade: Grade;
   dateOfBirth: Date;
 }
+
+export type Course = {
+  id: number;
+  uid: string;
+  grade: Grade;
+  title: string;
+  description: string;
+  mode: "IN_PERSON" | "ONLINE";
+  type: "SHORT" | "LONG";
+  fee: number;
+  numberOfLessons: number;
+  numberOfNotes: number;
+  numberOfWorksheet: number;
+  numberOfQuizzes: number;
+  numberOfExams: number;
+  numberOfSession: number;
+  academicSession: string;
+  sessionDuration: string;
+  createdAt: string;
+};
+
+export type CourseBundle = {
+  id: number;
+  grade: Grade;
+  courses: Course[];
+};
+
+export type CourseDetails = {
+  id: number;
+  course: Course;
+  title: string;
+  description: string;
+  learningContentTitle: string;
+  learningContentList: string;
+  chartValues: Record<string, number>;
+  assessment: string;
+  academicPlan: string;
+  coursePlanInformation: {
+    id: number;
+    weeks: {
+      id: number;
+      text: string;
+      weekDetails: {
+        id: number;
+        text: string;
+      }[];
+    }[];
+  };
+};

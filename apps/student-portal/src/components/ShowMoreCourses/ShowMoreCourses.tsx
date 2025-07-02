@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { Course } from "../../../types";
 import { MotionDiv } from "../client-ui";
 import { CourseCard } from "../CourseCard/CourseCard";
 
-export function ShowMore({ moreContents }: { moreContents: any[] }) {
+export function ShowMoreCourses({ moreCourses }: { moreCourses: Course[] }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <div className="flex flex-col items-center mb-8">
       {showMore ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {moreContents.map((_, index) => (
+          {moreCourses.map((course, index) => (
             <MotionDiv
               key={index}
               initial={{ opacity: 0, x: -20 }}
@@ -22,7 +23,7 @@ export function ShowMore({ moreContents }: { moreContents: any[] }) {
               }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <CourseCard />
+              <CourseCard course={course} />
             </MotionDiv>
           ))}
         </div>
