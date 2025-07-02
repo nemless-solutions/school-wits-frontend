@@ -10,7 +10,7 @@ const _links = [
   { title: "Grade VI", link: "vi" },
   { title: "Grade VII", link: "vii" },
   { title: "Grade VIII", link: "viii" },
-  { title: "Grade IX-X", link: "o" },
+  { title: "O Levels [IX & X]", link: "o" },
 ];
 
 export function CourseGradeSwitcher() {

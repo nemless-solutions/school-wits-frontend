@@ -32,7 +32,7 @@ export function YtPlayer({
       playIcon={
         <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center bg-black/40">
           <div className="p-4 rounded-full bg-white/50">
-            <FaPlayCircle className="text-5xl text-primary bg-red-400 rounded-full" />
+            <FaPlayCircle className="text-5xl text-white bg-secondary rounded-full" />
           </div>
         </div>
       }

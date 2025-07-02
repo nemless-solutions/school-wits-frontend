@@ -28,12 +28,14 @@ export function ShowMoreCourses({ moreCourses }: { moreCourses: Course[] }) {
           ))}
         </div>
       ) : (
-        <button
-          onClick={() => setShowMore(true)}
-          className="px-6 py-3 font-semibold bg-white text-secondary border border-secondary rounded-[8px] cursor-pointer hover:text-white hover:bg-secondary duration-300"
-        >
-          Show More
-        </button>
+        moreCourses.length > 0 && (
+          <button
+            onClick={() => setShowMore(true)}
+            className="px-6 py-3 font-semibold bg-white text-secondary border border-secondary rounded-[8px] cursor-pointer hover:text-white hover:bg-secondary duration-300"
+          >
+            Show More
+          </button>
+        )
       )}
     </div>
   );

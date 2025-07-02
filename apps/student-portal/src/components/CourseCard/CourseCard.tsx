@@ -97,14 +97,14 @@ export function CourseCard({ course }: { course: Course }) {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-1 bg-neutral-100 rounded-[12px] p-3 text-xs md:text-sm mt-5">
+        <div className="flex justify-between gap-1 bg-neutral-100 rounded-[12px] p-3 text-xs md:text-sm mt-5">
           <div>
             <p className="text-neutral-600">Session</p>
             <p className="font-medium">{course.academicSession}</p>
           </div>
-          <div>
+          <div className="">
             <p className="text-neutral-600">Duration</p>
-            <p className="font-medium">{course.sessionDuration}</p>
+            <p className="font-medium">5 July, 2025 - 30 June , 2026</p>
           </div>
         </div>
         <div className="h-px w-full bg-neutral-200 my-5" />
@@ -114,14 +114,14 @@ export function CourseCard({ course }: { course: Course }) {
           </p>
           <div>
             <div className="flex gap-2">
-              {/* <p className="text-xs md:text-sm text-neutral-500 line-through mt-1">
+              <p className="text-xs md:text-sm text-neutral-500 line-through mt-1">
                 Tk. 5,000
-              </p> */}
+              </p>
               <div>
                 <p className="md:text-lg font-semibold">Tk. {course.fee}</p>
-                {/* <p className="text-xs text-neutral-500">
+                <p className="text-xs text-neutral-500">
                   Before <span className="font-semibold">10 July</span>
-                </p> */}
+                </p>
               </div>
             </div>
           </div>

@@ -49,7 +49,7 @@ export function Navbar({ session }: { session: Session | null }) {
                 height="270"
               />
               <Image
-                className="md:hidden w-[52px] object-cover"
+                className="md:hidden w-[40px] object-cover"
                 src={logoIcon}
                 alt="logo"
                 width="500"

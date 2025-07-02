@@ -1,4 +1,7 @@
+"use client";
+
 import { feedbacks } from "@/constants";
+import Autoplay from "embla-carousel-autoplay";
 import CurvedLine from "../../../public/graphics/curve-line-2.svg";
 import QuoteIcon from "../../../public/graphics/quote.svg";
 import {
@@ -37,6 +40,7 @@ export function Feedbacks() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <Carousel
+            plugins={[Autoplay({ delay: 5000, stopOnMouseEnter: true })]}
             opts={{
               loop: true,
             }}
