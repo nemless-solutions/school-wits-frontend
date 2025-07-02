@@ -15,10 +15,10 @@ export default async function Grade({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const grade = (await params).grade.toLowerCase();
-  const search = await searchParams;
+  /*   const search = await searchParams;
 
   const mode: "in-person" | "online" =
-    search.mode === "online" ? "online" : "in-person";
+    search.mode === "online" ? "online" : "in-person"; */
 
   if (!_grades.includes(grade)) notFound();
 
