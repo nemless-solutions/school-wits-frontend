@@ -7,7 +7,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="bg-classroom h-screen overflow-y-hidden flex items-center justify-center bg-pink-400">
+    <main className="bg-classroom h-screen overflow-y-hidden flex items-center justify-center">
       <div className="main-container max-h-[90svh] bg-white overflow-y-auto rounded-lg">
         <div className="flex justify-center">
           <div className="py-8">
