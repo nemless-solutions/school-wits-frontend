@@ -68,7 +68,7 @@ export function GetInTouch() {
               viewport={{ once: true, amount: 0.5 }}
             >
               <p className="text-white font-medium my-4">
-                Meet out expert to get consultation for FREE
+                Meet our expert to get consultation for FREE
               </p>
             </MotionDiv>
 

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export function CourseModeSwitcher({
   currentType,
 }: {
-  currentType: "in-person" | "online";
+  currentType: "IN_PERSON" | "ONLINE";
 }) {
   const router = useRouter();
 
@@ -16,7 +16,7 @@ export function CourseModeSwitcher({
         onClick={() => router.replace("?mode=in-person", { scroll: false })}
         className={cn(
           "text-sm md:text-base text-center p-1 md:p-1.5 rounded-[6px] font-semibold cursor-pointer",
-          currentType === "in-person" ? "bg-primary" : "bg-white"
+          currentType === "IN_PERSON" ? "bg-primary" : "bg-white"
         )}
       >
         In Person
@@ -25,7 +25,7 @@ export function CourseModeSwitcher({
         onClick={() => router.replace("?mode=online", { scroll: false })}
         className={cn(
           "text-sm md:text-base text-center p-1 md:p-1.5 rounded-[6px] font-semibold cursor-pointer",
-          currentType === "online" ? "bg-primary" : "bg-white"
+          currentType === "ONLINE" ? "bg-primary" : "bg-white"
         )}
       >
         Online

@@ -4,6 +4,7 @@ import { ShowMoreCourses } from "@/components/ShowMoreCourses/ShowMoreCourses";
 import { CourseGradeSwitcher } from "@/components/Switcher/CourseGradeSwticher";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
+import Link from "next/link";
 import SquareGroup from "../../../../../../public/graphics/square-group.svg";
 import { Course } from "../../../../../../types";
 
@@ -13,7 +14,7 @@ export default async function AllCourses() {
   const gradeCourses = await Promise.all(
     _gradesEndpoint.map(async (grade) => {
       const courses = await fetcher<Course[]>(
-        `${baseUrl}/course/grade/${grade}`
+        `${baseUrl}/course/grade/${grade}?mode=`
       );
 
       return { grade, courses };
@@ -54,7 +55,14 @@ export default async function AllCourses() {
                     }}
                     viewport={{ once: true, amount: 0.3 }}
                   >
-                    <CourseCard course={course} />
+                    <div className="hidden md:block">
+                      <Link href={`/courses/details/${course.id}`}>
+                        <CourseCard course={course} />
+                      </Link>
+                    </div>
+                    <div className="md:hidden">
+                      <CourseCard course={course} showButton />
+                    </div>
                   </MotionDiv>
                 ))}
               </div>

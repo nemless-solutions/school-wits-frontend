@@ -3,6 +3,7 @@ import { CourseCard } from "@/components/CourseCard/CourseCard";
 import { CourseGradeSwitcher } from "@/components/Switcher/CourseGradeSwticher";
 import { baseUrl, grades } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import SquareGroup from "../../../../../../public/graphics/square-group.svg";
 import { Course } from "../../../../../../types";
@@ -19,7 +20,7 @@ export default async function GradeWiseCourses({
   if (!_grades.includes(gradeSlug)) notFound();
 
   const courses = await fetcher<Course[]>(
-    `${baseUrl}/course/grade/${gradeSlug === "o" ? "ix_x" : gradeSlug}`
+    `${baseUrl}/course/grade/${gradeSlug === "o" ? "ix_x" : gradeSlug}?mode=`
   );
 
   return (
@@ -54,7 +55,14 @@ export default async function GradeWiseCourses({
                   }}
                   viewport={{ once: true, amount: 0.3 }}
                 >
-                  <CourseCard course={course} />
+                  <div className="hidden md:block">
+                    <Link href={`/courses/details/${course.id}`}>
+                      <CourseCard course={course} />
+                    </Link>
+                  </div>
+                  <div className="md:hidden">
+                    <CourseCard course={course} showButton />
+                  </div>
                 </MotionDiv>
               ))}
             </div>

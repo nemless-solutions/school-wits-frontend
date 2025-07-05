@@ -166,7 +166,7 @@ export default function AboutUs() {
               <div className="md:col-span-2 max-w-[600px] md:ml-auto md:mr-8 space-y-8 relative z-10 mt-4 md:mt-0">
                 <div>
                   <h4 className="text-base sm:text-xl md:text-3xl font-bold text-secondary mb-3">
-                    Our Mission
+                    Our Vision
                   </h4>
                   <p className="text-sm sm:text-lg md:text-2xl">
                     At School Wits, we make e-learning accessible, engaging, and

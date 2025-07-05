@@ -18,13 +18,13 @@ export function CourseGradeSwitcher() {
 
   return (
     <MotionDiv className="my-10 main-container overflow-x-auto w-full no-scrollbar relative z-10">
-      <div className="grid grid-cols-5 max-w-[940px] min-w-[650px] bg-neutral-100 p-1.5 gap-2 rounded-[8px]">
+      <div className="grid grid-cols-5 max-w-[940px] min-w-[800px] bg-neutral-100 p-1.5 gap-2 rounded-[8px]">
         {_links.map((link) => (
           <Link
             key={link.link}
             href={link.link}
             className={cn(
-              "text-center p-1.5 rounded-[6px] font-semibold cursor-pointer",
+              "text-center p-1.5 rounded-[6px] font-semibold cursor-pointer text-nowrap",
               grade === link.link ? "bg-primary" : "bg-white"
             )}
           >
