@@ -1,7 +1,7 @@
 export default async function Profile() {
   return (
     <div>
-      <section className="bg-primary pt-32 pb-20">
+      <section className="bg-secondary pt-32 pb-20">
         <div className="main-container">
           <h1 className="text-center text-3xl md:text-4xl font-semibold text-neutral-50">
             Dashboard
