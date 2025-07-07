@@ -30,20 +30,18 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ZodType } from "zod";
-import { curriculums, FIELD_NAMES, FIELD_TYPES, grades } from "../../constants";
+import { FIELD_NAMES, FIELD_TYPES, grades } from "../../constants";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
   defaultValues: T;
   onSubmit: (data: T) => void;
-  type: "SIGN_IN" | "SIGN_UP";
   isLoading?: boolean;
   onCancel?: () => void;
   submitText?: string;
 }
 
-export function AuthForm<T extends FieldValues>({
-  type,
+export function CourseForm<T extends FieldValues>({
   schema,
   defaultValues,
   onSubmit,
@@ -51,8 +49,6 @@ export function AuthForm<T extends FieldValues>({
   onCancel,
   submitText = "Submit",
 }: Props<T>) {
-  const isSignUp = type === "SIGN_UP";
-
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
@@ -69,7 +65,7 @@ export function AuthForm<T extends FieldValues>({
           onSubmit={form.handleSubmit(handleSubmit)}
           className="w-full space-y-6 mt-6 "
         >
-          <div className={isSignUp ? "grid md:grid-cols-2 gap-6" : "space-y-6"}>
+          <div className="grid md:grid-cols-2 gap-6">
             {Object.keys(defaultValues).map((field) => (
               <FormField
                 key={field}
@@ -80,7 +76,7 @@ export function AuthForm<T extends FieldValues>({
                     <FormLabel className="capitalize font-semibold">
                       {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                     </FormLabel>
-                    {field.name === "curriculum" ? (
+                    {field.name === "mode" ? (
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -91,11 +87,23 @@ export function AuthForm<T extends FieldValues>({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {curriculums.map((c, i) => (
-                            <SelectItem key={i} value={c.value}>
-                              {c.title}
-                            </SelectItem>
-                          ))}
+                          <SelectItem value="IN_PERSON">In Person</SelectItem>
+                          <SelectItem value="ONLINE">Online</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    ) : field.name === "type" ? (
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full bg-white/40">
+                            <SelectValue placeholder="Select a verified email to display" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="LONG">Long</SelectItem>
+                          <SelectItem value="SHORT">Short</SelectItem>
                         </SelectContent>
                       </Select>
                     ) : field.name === "grade" ? (
@@ -123,7 +131,7 @@ export function AuthForm<T extends FieldValues>({
                           ))}
                         </SelectContent>
                       </Select>
-                    ) : field.name === "dateOfBirth" ? (
+                    ) : field.name === "discountLastDate" ? (
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -148,9 +156,7 @@ export function AuthForm<T extends FieldValues>({
                             mode="single"
                             selected={field.value}
                             onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1990-01-01")
-                            }
+                            disabled={(date) => date < new Date("1990-01-01")}
                             initialFocus
                             captionLayout="dropdown"
                             fromYear={1990}
@@ -163,7 +169,6 @@ export function AuthForm<T extends FieldValues>({
                         <FormControl>
                           <Input
                             className="bg-white/40 focus:bg-white/80"
-                            required
                             type={
                               FIELD_TYPES[
                                 field.name as keyof typeof FIELD_TYPES

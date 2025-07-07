@@ -1,5 +1,6 @@
 import { Button } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
+import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../api/api-calls";
@@ -8,48 +9,42 @@ import { TableSkeleton } from "../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
   id: z.number(),
-  uid: z.string(),
-  fullName: z.string(),
-  email: z.string(),
-  grade: z.string(),
+  title: z.string(),
+  details: z.string(),
 });
 
-export function Enrolment() {
+export function Notices() {
   const columns: ColumnDef<z.infer<typeof schema>>[] = [
     {
       accessorKey: "id",
       header: "ID",
     },
     {
-      accessorKey: "uid",
-      header: "UID",
+      accessorKey: "title",
+      header: "Title",
     },
     {
-      accessorKey: "fullName",
-      header: "Name",
-    },
-    {
-      accessorKey: "grade",
-      header: "Grade",
-    },
-    {
-      accessorKey: "email",
-      header: "Email",
-    },
-    {
-      id: "actions",
-      cell: ({ row }) => (
-        <Button asChild variant="secondary">
-          <Link to={`${row.original.id}`}>Manage</Link>
-        </Button>
-      ),
+      accessorKey: "details",
+      header: "Details",
     },
   ];
 
-  const { data, isSuccess, isFetching } = useGet("user?roleName=ROLE_STUDENT");
+  const { data, isSuccess, isFetching } = useGet("notice/admin");
 
   return (
     <div>
+      <div className="flex justify-end mb-2 md:mb-4">
+        <Button asChild className="hidden md:flex items-center">
+          <Link to="add">
+            <FaPlus /> Add Notice
+          </Link>
+        </Button>
+        <Button asChild size="icon" className="md:hidden">
+          <Link to="add">
+            <FaPlus />
+          </Link>
+        </Button>
+      </div>
       {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (

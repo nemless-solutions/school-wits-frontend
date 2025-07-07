@@ -25,3 +25,27 @@ export const appointmentSchema = z.object({
   contact: z.string(),
   message: z.string().min(10),
 });
+
+export const courseSchema = z.object({
+  uid: z.string(),
+  grade: z.enum(["VI", "VII", "VIII", "IX", "X"]),
+  mode: z.enum(["IN_PERSON", "ONLINE"]),
+  type: z.enum(["SHORT", "LONG"]),
+  title: z.string().min(3),
+  description: z.string().min(10),
+  fee: z.coerce.number().min(1, { message: "Fee must be greater than 0" }),
+  discountedFee: z.coerce.number().optional(),
+  discountLastDate: z.date().optional(),
+});
+
+export const topicSchema = z.object({
+  title: z.string().min(3),
+  description: z.string().min(10),
+});
+
+export const noticeSchema = z.object({
+  title: z.string().min(3),
+  details: z.string().min(10),
+  grade: z.enum(["VI", "VII", "VIII", "IX", "X"]),
+  notifyAll: z.boolean(),
+});

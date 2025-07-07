@@ -3,9 +3,16 @@ import { Route, Routes } from "react-router-dom";
 import { AppSidebar } from "../components/Sidebar/AppSidebar";
 import { SiteHeader } from "../components/SiteHeader/SiteHeader";
 import { NotFound } from "../pages/error/NotFound";
+import { Courses } from "../pages/internal/courses/courses/Courses";
+import { CreateCourse } from "../pages/internal/courses/courses/CreateCourse";
+import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
+import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
+import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
 import { Enrolment } from "../pages/internal/enrolment/Enrolment";
 import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
 import { Home } from "../pages/internal/Home";
+import { CreateNotice } from "../pages/internal/notices/CreateNotice";
+import { Notices } from "../pages/internal/notices/Notices";
 import { CreateStudent } from "../pages/internal/students/CreateStudent";
 import { EditStudent } from "../pages/internal/students/EditStudent";
 import { Students } from "../pages/internal/students/Students";
@@ -38,6 +45,13 @@ export default function Page() {
                   path="/enrolments/:userId"
                   element={<ManageEnrolment />}
                 />
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/add" element={<CreateCourse />} />
+                <Route path="/courses/:id" element={<EditCourse />} />
+                <Route path="/topics" element={<CourseTopics />} />
+                <Route path="/topics/add" element={<CreateTopic />} />
+                <Route path="/notices" element={<Notices />} />
+                <Route path="/notices/add" element={<CreateNotice />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
