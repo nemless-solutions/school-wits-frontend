@@ -43,9 +43,20 @@ export const topicSchema = z.object({
   description: z.string().min(10),
 });
 
+export const fileSchema = z.object({
+  title: z.string().min(3),
+  description: z.string().min(10),
+});
+
+export const quizSchema = z.object({
+  title: z.string().min(3),
+  questionMark: z.coerce.number(),
+  duration: z.coerce.number(),
+});
+
 export const noticeSchema = z.object({
   title: z.string().min(3),
   details: z.string().min(10),
   grade: z.enum(["VI", "VII", "VIII", "IX", "X"]),
-  notifyAll: z.boolean(),
+  userId: z.number(),
 });

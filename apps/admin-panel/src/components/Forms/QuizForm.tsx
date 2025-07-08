@@ -30,7 +30,7 @@ interface Props<T extends FieldValues> {
   submitText?: string;
 }
 
-export function NoticeForm<T extends FieldValues>({
+export function QuizForm<T extends FieldValues>({
   schema,
   defaultValues,
   onSubmit,
@@ -54,7 +54,7 @@ export function NoticeForm<T extends FieldValues>({
           onSubmit={form.handleSubmit(handleSubmit)}
           className="w-full space-y-6 mt-6 "
         >
-          <div className="space-y-6">
+          <div className="space-y-2">
             {Object.keys(defaultValues).map((field) => (
               <FormField
                 key={field}
@@ -65,19 +65,17 @@ export function NoticeForm<T extends FieldValues>({
                     <FormLabel className="capitalize font-semibold">
                       {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                     </FormLabel>
-
-                    <>
-                      <FormControl>
-                        <Input
-                          className="bg-white/40 focus:bg-white/80"
-                          type={
-                            FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
-                          }
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </>
+                    <FormControl>
+                      <Input
+                        className="bg-white/40 focus:bg-white/80"
+                        type={
+                          FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
+                        }
+                        {...field}
+                        min={1}
+                      />
+                    </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />

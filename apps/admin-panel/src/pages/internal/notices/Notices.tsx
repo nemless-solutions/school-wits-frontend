@@ -33,17 +33,27 @@ export function Notices() {
 
   return (
     <div>
-      <div className="flex justify-end mb-2 md:mb-4">
-        <Button asChild className="hidden md:flex items-center">
-          <Link to="add">
-            <FaPlus /> Add Notice
-          </Link>
-        </Button>
-        <Button asChild size="icon" className="md:hidden">
-          <Link to="add">
-            <FaPlus />
-          </Link>
-        </Button>
+      <div className="flex items-center flex-col sm:flex-row gap-4 justify-between mb-2 md:mb-4">
+        <div>
+          <p className="font-semibold text-xl">Send Notice To: </p>
+        </div>
+        <div className="flex justify-end gap-2 items-center">
+          <Button asChild className="flex items-center">
+            <Link to="send/all">
+              <FaPlus /> All
+            </Link>
+          </Button>
+          <Button asChild className="flex items-center">
+            <Link to="send/group">
+              <FaPlus /> Group
+            </Link>
+          </Button>
+          <Button asChild className="flex items-center">
+            <Link to="send/individual">
+              <FaPlus /> Individual
+            </Link>
+          </Button>
+        </div>
       </div>
       {isFetching ? (
         <TableSkeleton />

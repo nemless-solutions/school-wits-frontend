@@ -1,37 +1,32 @@
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@school-wits/ui";
+import { Button } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import { useState } from "react";
-import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../../api/api-calls";
 import { DataTable } from "../../../../components/DataTable/DataTable";
 import { CourseSelect } from "../../../../components/Selects/CourseSelect";
+import { TopicSelect } from "../../../../components/Selects/TopicSelect";
 import { TableSkeleton } from "../../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
   id: z.number(),
   title: z.string(),
+  type: z.string(),
   description: z.string(),
 });
 
-export function CourseTopics() {
+export function CourseFiles() {
   const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
+  const [selectedTopicId, setSelectedTopicId] = useState<number | null>(null);
 
   return (
     <div>
       <div className="flex justify-end mb-2 md:mb-4">
         <Button asChild className="hidden md:flex items-center">
           <Link to="add">
-            <FaPlus /> Add Topic
+            <FaPlus /> Add File
           </Link>
         </Button>
         <Button asChild size="icon" className="md:hidden">
@@ -40,9 +35,15 @@ export function CourseTopics() {
           </Link>
         </Button>
       </div>
-      <CourseSelect setSelectedCourseId={setSelectedCourseId} />
+      <CourseSelect
+        setSelectedCourseId={setSelectedCourseId}
+        setSelectedTopicId={setSelectedTopicId}
+      />
       {selectedCourseId ? (
-        <TopicTable courseId={selectedCourseId} />
+        <TopicSelect
+          courseId={selectedCourseId}
+          setSelectedTopicId={setSelectedTopicId}
+        />
       ) : (
         <div className="flex items-center justify-center mt-20">
           <p className="text-2xl font-bold text-neutral-400">
@@ -50,11 +51,22 @@ export function CourseTopics() {
           </p>
         </div>
       )}
+      {selectedTopicId ? (
+        <div className="mb-4">
+          <FilesTable topicId={selectedTopicId} />
+        </div>
+      ) : selectedCourseId ? (
+        <div className="flex items-center justify-center mt-20">
+          <p className="text-2xl font-bold text-neutral-400">
+            Please Select A Topic
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }
 
-const TopicTable = function ({ courseId }: { courseId: number }) {
+const FilesTable = function ({ topicId }: { topicId: number }) {
   const columns: ColumnDef<z.infer<typeof schema>>[] = [
     {
       accessorKey: "id",
@@ -69,43 +81,12 @@ const TopicTable = function ({ courseId }: { courseId: number }) {
       header: "Description",
     },
     {
-      id: "actions",
-      cell: ({ row }) => (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
-              size="icon"
-            >
-              <HiOutlineDotsVertical />
-              <span className="sr-only">Open menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-32">
-            <DropdownMenuItem asChild className="flex items-center gap-2">
-              <Link to={`${row.original.id}`}>
-                <FaEdit />
-                Edit
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              variant="destructive"
-              className="flex items-center gap-2"
-            >
-              <FaTrashAlt />
-              Delete
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      ),
+      accessorKey: "type",
+      header: "Type",
     },
   ];
 
-  const { data, isSuccess, isFetching } = useGet(
-    `course_topic/course/${courseId}`
-  );
+  const { data, isSuccess, isFetching } = useGet(`course_file/${topicId}`);
 
   return (
     <div>

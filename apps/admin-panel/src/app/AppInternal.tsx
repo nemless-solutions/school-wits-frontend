@@ -6,13 +6,18 @@ import { NotFound } from "../pages/error/NotFound";
 import { Courses } from "../pages/internal/courses/courses/Courses";
 import { CreateCourse } from "../pages/internal/courses/courses/CreateCourse";
 import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
+import { CourseFiles } from "../pages/internal/courses/files/CourseFiles";
+import { CreateFile } from "../pages/internal/courses/files/CreateFile";
+import { CreateQuiz } from "../pages/internal/courses/quiz/CreateQuiz";
+import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
 import { Enrolment } from "../pages/internal/enrolment/Enrolment";
 import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
 import { Home } from "../pages/internal/Home";
-import { CreateNotice } from "../pages/internal/notices/CreateNotice";
 import { Notices } from "../pages/internal/notices/Notices";
+import { SendNotice } from "../pages/internal/notices/SendNotice";
+import { SendNoticeToIndividual } from "../pages/internal/notices/SendNoticeToIndividual";
 import { CreateStudent } from "../pages/internal/students/CreateStudent";
 import { EditStudent } from "../pages/internal/students/EditStudent";
 import { Students } from "../pages/internal/students/Students";
@@ -50,8 +55,27 @@ export default function Page() {
                 <Route path="/courses/:id" element={<EditCourse />} />
                 <Route path="/topics" element={<CourseTopics />} />
                 <Route path="/topics/add" element={<CreateTopic />} />
+                <Route path="/files" element={<CourseFiles />} />
+                <Route path="/files/add" element={<CreateFile />} />
+                <Route path="/quiz" element={<Quiz />} />
+                <Route path="/quiz/add" element={<CreateQuiz />} />
                 <Route path="/notices" element={<Notices />} />
-                <Route path="/notices/add" element={<CreateNotice />} />
+                <Route
+                  path="/notices/send/all"
+                  element={<SendNotice to="all" />}
+                />
+                <Route
+                  path="/notices/send/group"
+                  element={<SendNotice to="group" />}
+                />
+                <Route
+                  path="/notices/send/individual"
+                  element={<SendNoticeToIndividual />}
+                />
+                <Route
+                  path="/notices/send/individual/:userId"
+                  element={<SendNotice />}
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

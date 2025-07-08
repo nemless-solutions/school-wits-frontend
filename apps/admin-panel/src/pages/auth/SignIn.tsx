@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usePost } from "../../api/api-calls";
-import logo from "../../assets/logo-black.png";
+import logo from "../../assets/logo-horizontal.png";
 import { Input } from "../../components/Input/Input";
 import { useAuth } from "../../contexts/AuthContext";
 

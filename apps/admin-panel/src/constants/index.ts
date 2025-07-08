@@ -38,6 +38,14 @@ export const sidebarLinks: SidebarLink[] = [
         name: "Topics",
         link: "/topics",
       },
+      {
+        name: "Files",
+        link: "/files",
+      },
+      {
+        name: "Quiz",
+        link: "/quiz",
+      },
     ],
   },
   {
@@ -89,6 +97,9 @@ export const FIELD_NAMES = {
   discountedFee: "Discounted fee",
   discountLastDate: "Discount last date",
   description: "Description",
+  questionMark: "Question Mark",
+  duration: "Duration (in minutes)",
+  details: "Details",
 };
 
 export const FIELD_TYPES = {
@@ -97,4 +108,7 @@ export const FIELD_TYPES = {
   password: "password",
   fee: "number",
   discountedFee: "number",
+  file: "file",
+  questionMark: "number",
+  duration: "number",
 };

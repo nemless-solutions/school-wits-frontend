@@ -1,42 +1,17 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Skeleton,
-} from "@school-wits/ui";
 import { topicSchema } from "@school-wits/validations";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useGet, usePost } from "../../../../api/api-calls";
+import { usePost } from "../../../../api/api-calls";
 import { TopicForm } from "../../../../components/Forms/TopicForm";
+import { CourseSelect } from "../../../../components/Selects/CourseSelect";
 
 export function CreateTopic() {
   const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
-  const { data, isFetching } = useGet("course");
 
   return (
     <div>
-      <div className="mb-4">
-        {isFetching ? (
-          <Skeleton className="w-[180px] h-10" />
-        ) : (
-          <Select onValueChange={(value) => setSelectedCourseId(+value)}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select A Course" />
-            </SelectTrigger>
-            <SelectContent>
-              {data.map((course: { id: number; uid: string }) => (
-                <SelectItem key={course.id} value={`${course.id}`}>
-                  {course.uid}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
-      </div>
+      <CourseSelect setSelectedCourseId={setSelectedCourseId} />
       {selectedCourseId ? (
         <TopicCreateForm courseId={selectedCourseId} />
       ) : (
