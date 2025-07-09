@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <PageHeader header="Not Found" />
-      <div className="relative overflow-clip grow">
+      <div className="relative overflow-clip">
         <div className="absolute top-1/3 -right-20 w-[400px] md:w-xl aspect-square bg-secondary/15 rounded-full blur-[100px]"></div>
         <div className="absolute top-1/3 -left-20 -translate-y-1/2 w-xs aspect-square bg-primary/35 rounded-full blur-[120px]"></div>
         <div className="main-container relative z-10">
@@ -46,6 +46,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

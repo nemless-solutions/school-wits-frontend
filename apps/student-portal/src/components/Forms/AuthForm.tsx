@@ -81,9 +81,6 @@ export function AuthForm<T extends FieldValues>({
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-semibold text-neutral-800 text-center font-recoleta md:text-2xl">
-        {isSignUp ? "Create your free account" : "Welcome back to School Wits"}
-      </h1>
       {isSignUp && (
         <div className="text-netral-600 space-y-3 max-w-[720px]">
           <p>
@@ -98,7 +95,6 @@ export function AuthForm<T extends FieldValues>({
           </p>
         </div>
       )}
-
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}

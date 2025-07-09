@@ -42,7 +42,9 @@ export function EditStudent() {
       ) : (
         <AuthForm
           type="SIGN_UP"
-          schema={signUpSchema.omit({ password: true }).partial()}
+          schema={signUpSchema
+            .omit({ password: true, confirmPassword: true })
+            .partial()}
           defaultValues={{
             email: data.email,
             fullName: data.fullName,

@@ -270,6 +270,7 @@ export const curriculums = [
 export const FIELD_NAMES = {
   email: "Email",
   password: "Password",
+  confirmPassword: "Confirm Password",
   fullName: "Full name",
   contact: "Contact Number",
   fatherName: "Father's name",
@@ -287,6 +288,7 @@ export const FIELD_TYPES = {
   fullName: "text",
   email: "email",
   password: "password",
+  confirmPassword: "password",
 };
 
 export const terms = [
