@@ -1,11 +1,24 @@
-import { Button } from "@school-wits/ui";
-import { ColumnDef } from "@tanstack/react-table";
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@school-wits/ui";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { MdOutlineFindInPage, MdOutlineQuiz } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../../api/api-calls";
-import { DataTable } from "../../../../components/DataTable/DataTable";
 import { CourseSelect } from "../../../../components/Selects/CourseSelect";
 import { TopicSelect } from "../../../../components/Selects/TopicSelect";
 import { VideoSelect } from "../../../../components/Selects/VideoSelect";
@@ -82,29 +95,66 @@ export function Quiz() {
 }
 
 const QuizTable = function ({ videoId }: { videoId: number }) {
-  const columns: ColumnDef<z.infer<typeof schema>>[] = [
-    {
-      accessorKey: "id",
-      header: "ID",
-    },
-    {
-      accessorKey: "title",
-      header: "Title",
-    },
-    {
-      accessorKey: "details",
-      header: "Details",
-    },
-  ];
-
   const { data, isSuccess, isFetching } = useGet(`quiz/${videoId}`);
+  console.log(data);
 
   return (
     <div>
       {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (
-        <DataTable data={data} columns={columns} />
+        <div className="overflow-hidden rounded-lg border">
+          <Table>
+            <TableHeader className="bg-muted sticky top-0 z-10">
+              <TableRow>
+                <TableHead className="w-[25%]">ID</TableHead>
+                <TableHead className="w-[25%]">Mark</TableHead>
+                <TableHead className="w-[25%]">Duration (in Minutes)</TableHead>
+                <TableHead className="w-[25%]"></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>{data.id}</TableCell>
+                <TableCell>{data.questionMark}</TableCell>
+                <TableCell>{data.duration}</TableCell>
+                <TableCell className="flex justify-center">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
+                        size="icon"
+                      >
+                        <HiOutlineDotsVertical />
+                        <span className="sr-only">Open menu</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-40">
+                      <DropdownMenuItem
+                        asChild
+                        className="flex items-center gap-2"
+                      >
+                        <Link to={`question/${data.id}`}>
+                          <MdOutlineQuiz /> Add Questions
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        asChild
+                        className="flex items-center gap-2"
+                      >
+                        <Link to={`answer/${data.id}`}>
+                          <MdOutlineFindInPage /> Add Answers
+                        </Link>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
       ) : (
         <div className="text-center text-2xl text-destructive font-bold mt-10">
           Something Went Wrong

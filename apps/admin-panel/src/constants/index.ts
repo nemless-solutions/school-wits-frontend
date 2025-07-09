@@ -2,6 +2,7 @@ import { LucideBookPlus } from "lucide-react";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaChalkboardTeacher, FaRegBell } from "react-icons/fa";
 import { FiBook } from "react-icons/fi";
+import { MdOutlineChecklist } from "react-icons/md";
 import { PiStudentDuotone } from "react-icons/pi";
 import { SidebarLink } from "../../types";
 
@@ -47,6 +48,11 @@ export const sidebarLinks: SidebarLink[] = [
         link: "/quiz",
       },
     ],
+  },
+  {
+    name: "Attendances",
+    icon: MdOutlineChecklist,
+    link: "/attendances",
   },
   {
     name: "Notices",
@@ -100,6 +106,7 @@ export const FIELD_NAMES = {
   questionMark: "Question Mark",
   duration: "Duration (in minutes)",
   details: "Details",
+  correct: "Set as Correct Answer",
 };
 
 export const FIELD_TYPES = {

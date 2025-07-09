@@ -55,6 +55,15 @@ export const quizSchema = z.object({
   duration: z.coerce.number(),
 });
 
+export const quizQuestionSchema = z.object({
+  title: z.string().min(3),
+});
+
+export const quizAnswerSchema = z.object({
+  title: z.string().min(3),
+  correct: z.boolean(),
+});
+
 export const noticeSchema = z.object({
   title: z.string().min(3),
   details: z.string().min(10),

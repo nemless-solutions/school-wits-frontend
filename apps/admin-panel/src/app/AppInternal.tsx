@@ -9,6 +9,8 @@ import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
 import { CourseFiles } from "../pages/internal/courses/files/CourseFiles";
 import { CreateFile } from "../pages/internal/courses/files/CreateFile";
 import { CreateQuiz } from "../pages/internal/courses/quiz/CreateQuiz";
+import { CreateQuizAnswer } from "../pages/internal/courses/quiz/CreateQuizAnswer";
+import { CreateQuizQuestion } from "../pages/internal/courses/quiz/CreateQuizQuestion";
 import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
@@ -59,6 +61,14 @@ export default function Page() {
                 <Route path="/files/add" element={<CreateFile />} />
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/quiz/add" element={<CreateQuiz />} />
+                <Route
+                  path="/quiz/question/:quizId"
+                  element={<CreateQuizQuestion />}
+                />
+                <Route
+                  path="/quiz/answer/:quizId"
+                  element={<CreateQuizAnswer />}
+                />
                 <Route path="/notices" element={<Notices />} />
                 <Route
                   path="/notices/send/all"

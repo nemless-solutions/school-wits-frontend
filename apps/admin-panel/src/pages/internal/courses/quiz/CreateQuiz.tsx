@@ -1,6 +1,7 @@
 import { quizSchema } from "@school-wits/validations";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { z } from "zod";
 import { usePost } from "../../../../api/api-calls";
 import { QuizForm } from "../../../../components/Forms/QuizForm";
@@ -67,8 +68,18 @@ export function CreateQuiz() {
 }
 
 const QuizForma = function ({ videoId }: { videoId: number }) {
-  const { isPending } = usePost("quiz");
+  const { mutate, isPending, isError, isSuccess } = usePost("quiz");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isError) {
+      toast.error("Something went wrong. Please try again.");
+    } else if (isSuccess) {
+      toast.success("Quiz Created.");
+      navigate(-1);
+    }
+  });
+
   return (
     <QuizForm
       schema={quizSchema}
@@ -78,10 +89,10 @@ const QuizForma = function ({ videoId }: { videoId: number }) {
         duration: 1,
       }}
       onSubmit={(data) => {
-        console.log({ ...data, videoId });
+        mutate({ ...data, videoId });
       }}
       isLoading={isPending}
-      onCancel={() => navigate("/courses")}
+      onCancel={() => navigate(-1)}
       submitText="Create"
     />
   );
