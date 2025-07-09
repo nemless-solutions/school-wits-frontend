@@ -43,7 +43,7 @@ export const signUp = async (params: AuthCredentials) => {
   } = params;
 
   try {
-    await fetch(`${base_url}/auth/register`, {
+    const res = await fetch(`${base_url}/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,6 +62,8 @@ export const signUp = async (params: AuthCredentials) => {
         dateOfBirth,
       }),
     });
+
+    if (!res.ok) throw new Error("Signup error");
 
     await signInWithCredentials({ email, password });
 

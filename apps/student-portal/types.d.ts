@@ -15,6 +15,7 @@ export type NavItem =
     };
 
 export type Grade = "VI" | "VII" | "VIII" | "IX" | "X";
+export type Curriculum = "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
 
 interface AuthCredentials {
   email: string;
@@ -25,15 +26,32 @@ interface AuthCredentials {
   guardianEmail: string;
   guardianContact: string;
   currentSchool: string;
-  curriculum: "CAMBRIDGE" | "OXFORD" | "PEARSON" | "IB";
+  curriculum: Curriculum;
   grade: Grade;
   dateOfBirth: Date;
 }
 
+export type User = {
+  id: number;
+  uid: string;
+  email: string;
+  fullName: string;
+  currentSchool: string;
+  fatherName: string;
+  motherName: string;
+  guardianEmail: string;
+  guardianContact: string;
+  curriculum: Curriculum;
+  grade: Grade;
+  dateOfBirth: Date;
+  lastSeenNotice: Date;
+  createdAt: Date;
+};
+
 export type Course = {
   id: number;
   uid: string;
-  grade: Grade;
+  grade: "VI" | "VII" | "VIII" | "IX_X";
   title: string;
   description: string;
   mode: "IN_PERSON" | "ONLINE";
@@ -52,8 +70,15 @@ export type Course = {
 
 export type CourseBundle = {
   id: number;
-  grade: Grade;
+  grade: "VI" | "VII" | "VIII" | "IX_X";
   courses: Course[];
+};
+
+export type EnrolledCourse = {
+  id: number;
+  course: Course;
+  createdAt: Date;
+  paid: boolean;
 };
 
 export type CourseDetails = {

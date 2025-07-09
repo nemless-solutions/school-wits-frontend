@@ -58,12 +58,12 @@ export function UserMenu({ session, onClick }: UserMenuProps) {
             <div className="flex items-center gap-2">
               <Avatar>
                 <AvatarImage src={session.user?.image || undefined} />
-                <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                <AvatarFallback className="bg-secondary text-secondary-foreground font-semibold">
                   {getAbbreviation(session.user?.name)}
                 </AvatarFallback>
               </Avatar>
               <p className="font-semibold">
-                {session.user?.name?.split(" ")[0]}
+                {session.user?.name?.split(" ").slice(0, 2).join(" ")}
               </p>
             </div>
           </NavigationMenuTrigger>
