@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
 import { notFound } from "next/navigation";
-import { EnrolledCourse, User } from "../../../../../../types";
+import { EnrolledCourse } from "../../../../../../types";
 
 export default async function CourseContent({
   params,
@@ -15,7 +15,7 @@ export default async function CourseContent({
 
   if (!session?.token) notFound();
 
-  const user = await fetcher<User>(`${baseUrl}/auth`, session?.token);
+  // const user = await fetcher<User>(`${baseUrl}/auth`, session?.token);
   const enrolledCourses = await fetcher<EnrolledCourse[]>(
     `${baseUrl}/enrolled_course`,
     session?.token
