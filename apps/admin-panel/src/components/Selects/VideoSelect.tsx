@@ -11,11 +11,13 @@ import { useGet } from "../../api/api-calls";
 
 interface CourseSelectProps {
   topicId: number;
+  videoId?: number;
   setSelectedVideoId: Dispatch<React.SetStateAction<number | null>>;
 }
 
 export function VideoSelect({
   topicId,
+  videoId,
   setSelectedVideoId,
 }: CourseSelectProps) {
   const { data, isFetching } = useGet(`course_file/${topicId}`);
@@ -34,6 +36,7 @@ export function VideoSelect({
         <Skeleton className="w-[280px] h-10" />
       ) : (
         <Select
+          value={videoId?.toLocaleString()}
           onValueChange={(value) => {
             setSelectedVideoId(+value);
           }}

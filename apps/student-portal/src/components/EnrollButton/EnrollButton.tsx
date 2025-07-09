@@ -5,7 +5,7 @@ import { Loader2Icon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { EnrolledCourse, User } from "../../../types";
+import { EnrolledCourse, Grade, User } from "../../../types";
 import {
   Button,
   Dialog,
@@ -19,7 +19,7 @@ import {
 
 interface EnrollButtonProps {
   baseUrl: string;
-  courseGrade: "VI" | "VII" | "VIII" | "IX_X";
+  courseGrade: Grade;
   courseId: number;
   token: string | undefined;
 }
@@ -30,6 +30,7 @@ export function EnrollButton({
   courseId,
   token,
 }: EnrollButtonProps) {
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [enrolledCourses, setEnrolledCourses] = useState<
@@ -57,7 +58,7 @@ export function EnrollButton({
 
   const isCompatible =
     user?.grade === "IX" || user?.grade === "X"
-      ? courseGrade === "IX_X"
+      ? courseGrade === "X" || courseGrade === "IX"
       : courseGrade === user?.grade;
 
   const enrolledCourse = enrolledCourses?.filter((enrolledCourse) => {
@@ -80,6 +81,7 @@ export function EnrollButton({
       if (!res.ok) throw new Error("Something went wrong");
 
       toast.success("Course Enrolled Successfully");
+      setOpen(false);
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
@@ -104,7 +106,7 @@ export function EnrollButton({
           )}
         </Button>
       ) : (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button
               variant="secondary"

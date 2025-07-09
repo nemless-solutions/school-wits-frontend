@@ -13,7 +13,7 @@ export function CreateCourse() {
     if (isError) {
       toast.error("Something went wrong. Please try again.");
     } else if (isSuccess) {
-      toast.success("Student Created.");
+      toast.success("Course Created.");
       navigate("/students");
     }
   });
@@ -37,7 +37,10 @@ export function CreateCourse() {
           const cleanedData = Object.fromEntries(
             Object.entries(data).filter(([_, value]) => value !== undefined)
           );
-          mutate(cleanedData);
+          mutate({
+            ...cleanedData,
+            grade: cleanedData.grade === "X" ? "IX" : cleanedData.grade,
+          });
         }}
         isLoading={isPending}
         onCancel={() => navigate("/courses")}

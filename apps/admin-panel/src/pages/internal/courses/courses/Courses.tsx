@@ -37,8 +37,15 @@ export function Courses() {
       header: "Name",
     },
     {
-      accessorKey: "grade",
+      id: "grade",
       header: "Grade",
+      cell: ({ row }) => (
+        <span>
+          {row.original.grade === "IX" || row.original.grade === "X"
+            ? "O Levels"
+            : `Grade ${row.original.grade}`}
+        </span>
+      ),
     },
     {
       id: "actions",
@@ -94,7 +101,10 @@ export function Courses() {
       {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (
-        <DataTable data={data} columns={columns} />
+        <DataTable
+          data={data.filter((item: { grade: string }) => item.grade !== "X")}
+          columns={columns}
+        />
       ) : (
         <div className="text-center text-2xl text-destructive font-bold mt-10">
           Something Went Wrong

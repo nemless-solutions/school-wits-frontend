@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { Button, MotionDiv } from "@/components/client-ui";
+import { MotionDiv } from "@/components/client-ui";
 import CourseDetailsGraph from "@/components/CourseDetailsGraph/CourseDetailsGraph";
 import { EnrollButton } from "@/components/EnrollButton/EnrollButton";
 import { Icon } from "@/components/Icon/Icon";
@@ -54,7 +54,12 @@ export default async function CourseDetails({
   return (
     <div>
       <PageHeader
-        header={`${courseDetails.course.title} (Grade ${courseDetails.course.grade})`}
+        header={`${courseDetails.course.title} ${
+          courseDetails.course.grade === "IX" ||
+          courseDetails.course.grade === "X"
+            ? "(O Levels)"
+            : `(Grade ${courseDetails.course.grade})`
+        }`}
       />
       <div className="relative overflow-x-clip">
         <div className="absolute -top-20 -left-20 w-[200px] md:w-[400px] aspect-square bg-primary/20 rounded-full blur-[120px]"></div>
@@ -70,7 +75,10 @@ export default async function CourseDetails({
           >
             <div className="flex justify-between mt-10">
               <h2 className="font-recoleta font-semibold text-2xl sm:text-3xl md:text-5xl">
-                Grade {courseDetails.course.grade}
+                {courseDetails.course.grade === "IX" ||
+                courseDetails.course.grade === "X"
+                  ? "O Levels"
+                  : `Grade ${courseDetails.course.grade}`}
               </h2>
               <div className="flex-col items-end hidden md:flex">
                 <div className="flex flex-col md:flex-row gap-x-2">
@@ -109,14 +117,12 @@ export default async function CourseDetails({
                 </p>
               </div>
             </div>
-            <Button
-              disabled
-              variant="secondary"
-              size="lg"
-              className="md:mt-4 md:h-12 md:text-lg font-semibold"
-            >
-              Enroll Now
-            </Button>
+            <EnrollButton
+              baseUrl={baseUrl || ""}
+              courseGrade={courseDetails.course.grade}
+              courseId={courseDetails.course.id}
+              token={session?.token}
+            />
           </div>
           <div className="h-px w-full bg-neutral-300 mt-6 mb-8" />
           <div>

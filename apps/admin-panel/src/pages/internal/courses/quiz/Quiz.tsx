@@ -50,11 +50,13 @@ export function Quiz() {
         </Button>
       </div>
       <CourseSelect
+        courseId={selectedCourseId || undefined}
         setSelectedCourseId={setSelectedCourseId}
         setSelectedTopicId={setSelectedTopicId}
       />
       {selectedCourseId ? (
         <TopicSelect
+          topicId={selectedTopicId || undefined}
           courseId={selectedCourseId}
           setSelectedTopicId={setSelectedTopicId}
         />
@@ -69,6 +71,7 @@ export function Quiz() {
         <div className="mb-4">
           <VideoSelect
             topicId={selectedTopicId}
+            videoId={selectedVideoId || undefined}
             setSelectedVideoId={setSelectedVideoId}
           />
         </div>
@@ -96,7 +99,6 @@ export function Quiz() {
 
 const QuizTable = function ({ videoId }: { videoId: number }) {
   const { data, isSuccess, isFetching } = useGet(`quiz/${videoId}`);
-  console.log(data);
 
   return (
     <div>

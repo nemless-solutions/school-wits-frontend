@@ -123,7 +123,9 @@ export function CourseCard({ course, showButton = false }: CourseCardProps) {
               Tk. 5,000
             </p>
             <div>
-              <p className="md:text-lg font-semibold">Tk. {course.fee}</p>
+              <p className="md:text-lg font-semibold">
+                Tk. {course.fee.toLocaleString()}
+              </p>
               <p className="text-xs text-neutral-500">
                 Before <span className="font-semibold">10 July</span>
               </p>

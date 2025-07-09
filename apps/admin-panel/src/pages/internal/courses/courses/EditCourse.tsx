@@ -28,7 +28,7 @@ export function EditCourse() {
         <div>
           <div className="grid md:grid-cols-2 gap-6">
             {[...Array(10)].map((_, i) => (
-              <div className="space-y-2">
+              <div key={i} className="space-y-2">
                 <Skeleton className="w-[100px] h-8" />
                 <Skeleton className="w-full h-6" />
               </div>

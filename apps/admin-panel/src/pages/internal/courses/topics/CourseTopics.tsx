@@ -40,7 +40,10 @@ export function CourseTopics() {
           </Link>
         </Button>
       </div>
-      <CourseSelect setSelectedCourseId={setSelectedCourseId} />
+      <CourseSelect
+        courseId={selectedCourseId || undefined}
+        setSelectedCourseId={setSelectedCourseId}
+      />
       {selectedCourseId ? (
         <TopicTable courseId={selectedCourseId} />
       ) : (

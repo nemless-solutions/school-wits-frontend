@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
+import { UnAuthorized } from "@/components/UnAuthorized/UnAuthorized";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
 import { notFound } from "next/navigation";
@@ -21,12 +22,19 @@ export default async function CourseContent({
     session?.token
   );
 
-  const enrolledCourse = enrolledCourses.find((course) => course.id === +id);
+  const enrolledCourse = enrolledCourses.find(
+    (course) => course.course.id === +id
+  );
 
-  if (!enrolledCourse || enrolledCourse.paid === false)
-    return <div className="py-20 text-2xl">Un Authorized</div>;
+  if (!enrolledCourse || enrolledCourse.paid === false) return <UnAuthorized />;
 
   const course = enrolledCourse.course;
+  const courseTopics = await fetcher(
+    `${baseUrl}/course_topic/course/${id}`,
+    session.token
+  );
+
+  console.log(courseTopics);
 
   return (
     <div>

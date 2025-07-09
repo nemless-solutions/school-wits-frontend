@@ -56,7 +56,7 @@ export default async function CourseDetails({
         <div className="flex justify-between mt-10">
           <div>
             <h2 className="font-recoleta font-semibold text-2xl sm:text-3xl md:text-5xl">
-              Grade
+              Grade {courseDetails.course.grade}
             </h2>
             <div className="md:text-lg flex items-center gap-3 mt-3">
               {courseBundle.courses
@@ -71,8 +71,8 @@ export default async function CourseDetails({
                 ))}
             </div>
           </div>
-          <div className="flex flex-col items-end">
-            <div className="flex gap-2">
+          <div className="flex-col items-end hidden md:flex">
+            <div className="flex flex-col md:flex-row gap-x-2">
               <p className="text-sm md:text-lg text-neutral-500 line-through">
                 Tk. 5,000
               </p>
@@ -95,6 +95,28 @@ export default async function CourseDetails({
           </div>
         </div>
       </MotionDiv>
+      <div className="fixed bottom-0 left-0 w-full z-[999] bg-white p-4 flex justify-between items-center shadow-[0px_-6px_12px_0px_rgba(0,0,0,0.05)] md:hidden">
+        <div className="flex flex-col md:flex-row gap-x-2">
+          <p className="text-sm md:text-lg text-neutral-500 line-through">
+            Tk. 5,000
+          </p>
+          <div>
+            <p className="text-lg md:text-2xl font-semibold">
+              Tk. {courseDetails.course.fee.toLocaleString()}
+            </p>
+            <p className="text-sm md:text-base text-neutral-500">
+              Before <span className="font-semibold">10 July</span>
+            </p>
+          </div>
+        </div>
+        <EnrollBundleButton
+          courseBundle={courseBundle}
+          baseUrl={baseUrl || ""}
+          token={session?.token}
+          bundleId={+bundleId}
+          courseGrade={courseBundle.courses[0].grade}
+        />
+      </div>
       <div className="h-px w-full bg-neutral-300 mt-6 mb-8" />
       <MotionDiv
         initial={{ opacity: 0, x: -20 }}

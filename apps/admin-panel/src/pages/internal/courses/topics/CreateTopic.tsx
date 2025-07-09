@@ -11,7 +11,10 @@ export function CreateTopic() {
 
   return (
     <div>
-      <CourseSelect setSelectedCourseId={setSelectedCourseId} />
+      <CourseSelect
+        courseId={selectedCourseId || undefined}
+        setSelectedCourseId={setSelectedCourseId}
+      />
       {selectedCourseId ? (
         <TopicCreateForm courseId={selectedCourseId} />
       ) : (

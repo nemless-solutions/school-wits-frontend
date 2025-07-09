@@ -8,7 +8,7 @@ import Link from "next/link";
 import SquareGroup from "../../../../../../public/graphics/square-group.svg";
 import { Course } from "../../../../../../types";
 
-const _gradesEndpoint = ["vi", "vii", "viii", "ix_x"];
+const _gradesEndpoint = ["vi", "vii", "viii", "ix"];
 
 export default async function AllCourses() {
   const gradeCourses = await Promise.all(
@@ -17,7 +17,7 @@ export default async function AllCourses() {
         `${baseUrl}/course/grade/${grade}?mode=`
       );
 
-      return { grade, courses };
+      return { grade: grade.toUpperCase(), courses };
     })
   );
 
@@ -40,7 +40,9 @@ export default async function AllCourses() {
                 transition={{ duration: 0.5, easings: "easeInOut" }}
               >
                 <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize font-recoleta">
-                  Grade {gradeCourse.grade.split("_").join("-").toUpperCase()}
+                  {gradeCourse.grade === "IX" || gradeCourse.grade === "X"
+                    ? "O Level"
+                    : `Grade ${gradeCourse.grade.toUpperCase()}`}
                 </h2>
               </MotionDiv>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">

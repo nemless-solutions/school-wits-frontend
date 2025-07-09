@@ -9,20 +9,27 @@ import {
 import { Dispatch } from "react";
 import { useGet } from "../../api/api-calls";
 
+interface TopicSelectProps {
+  courseId: number;
+  topicId?: number;
+  setSelectedTopicId: Dispatch<React.SetStateAction<number | null>>;
+}
+
 export function TopicSelect({
+  topicId,
   courseId,
   setSelectedTopicId,
-}: {
-  courseId: number;
-  setSelectedTopicId: Dispatch<React.SetStateAction<number | null>>;
-}) {
+}: TopicSelectProps) {
   const { data, isFetching } = useGet(`course_topic/course/${courseId}`);
   return (
     <div className="mb-4">
       {isFetching ? (
         <Skeleton className="w-[280px] h-10" />
       ) : (
-        <Select onValueChange={(value) => setSelectedTopicId(+value)}>
+        <Select
+          value={topicId?.toLocaleString()}
+          onValueChange={(value) => setSelectedTopicId(+value)}
+        >
           <SelectTrigger className="w-[280px]">
             <SelectValue placeholder="Select A Topic" />
           </SelectTrigger>

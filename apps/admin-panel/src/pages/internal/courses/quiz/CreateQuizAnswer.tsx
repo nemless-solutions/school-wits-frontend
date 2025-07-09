@@ -74,7 +74,7 @@ export function CreateQuizAnswer() {
                     )?.[0]
                     ?.answers?.map(
                       (answer: { title: string }, index: number) => (
-                        <p>
+                        <p key={index}>
                           {index + 1}. {answer.title}{" "}
                         </p>
                       )

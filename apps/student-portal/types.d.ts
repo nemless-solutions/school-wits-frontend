@@ -51,7 +51,7 @@ export type User = {
 export type Course = {
   id: number;
   uid: string;
-  grade: "VI" | "VII" | "VIII" | "IX_X";
+  grade: Grade;
   title: string;
   description: string;
   mode: "IN_PERSON" | "ONLINE";
@@ -70,7 +70,7 @@ export type Course = {
 
 export type CourseBundle = {
   id: number;
-  grade: "VI" | "VII" | "VIII" | "IX_X";
+  grade: Grade;
   courses: Course[];
 };
 
@@ -102,4 +102,11 @@ export type CourseDetails = {
       }[];
     }[];
   };
+};
+
+export type Notice = {
+  id: number;
+  title: string;
+  details: string;
+  createdAt: Date;
 };

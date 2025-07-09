@@ -4,7 +4,6 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import { FaUserGraduate } from "react-icons/fa";
-import { IoMdNotifications } from "react-icons/io";
 import { MdDashboard } from "react-icons/md";
 import {
   Avatar,
@@ -36,12 +35,6 @@ const userMenuItems = [
     label: "Dashboard",
     link: "/dashboard",
     color: "#6366f1",
-  },
-  {
-    Icon: IoMdNotifications,
-    label: "Notices",
-    link: "/notices",
-    color: "#f97316",
   },
 ];
 

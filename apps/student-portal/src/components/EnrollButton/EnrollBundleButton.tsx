@@ -5,7 +5,7 @@ import { Loader2Icon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { CourseBundle, EnrolledCourse, User } from "../../../types";
+import { CourseBundle, EnrolledCourse, Grade, User } from "../../../types";
 import {
   Button,
   Dialog,
@@ -20,7 +20,7 @@ import {
 
 interface EnrollButtonProps {
   baseUrl: string;
-  courseGrade: "VI" | "VII" | "VIII" | "IX_X";
+  courseGrade: Grade;
   bundleId: number;
   token: string | undefined;
   courseBundle: CourseBundle;
@@ -61,7 +61,7 @@ export function EnrollBundleButton({
 
   const isCompatible =
     user?.grade === "IX" || user?.grade === "X"
-      ? courseGrade === "IX_X"
+      ? courseGrade === "X" || courseGrade === "IX"
       : courseGrade === user?.grade;
 
   const getIds = (arr: { id: number }[] | null) =>

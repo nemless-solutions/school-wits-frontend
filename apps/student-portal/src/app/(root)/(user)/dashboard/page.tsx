@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { MotionDiv } from "@/components/client-ui";
 import { CourseHorizontalCard } from "@/components/CourseCard/CourseHorizontalCard";
+import { NoticeModal } from "@/components/NoticeModal/NoticeModal";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
@@ -8,16 +9,13 @@ import { getAbbreviation } from "@school-wits/utils";
 import Image from "next/image";
 import Link from "next/link";
 import logoHorizontal from "../../../../../public/images/logo-horizontal.png";
-import { Course, EnrolledCourse, User } from "../../../../../types";
+import { Course, EnrolledCourse, Notice, User } from "../../../../../types";
 
-export default async function Profile() {
+export default async function Dashboard() {
   const session = await auth();
   const user = await fetcher<User>(`${baseUrl}/auth`, session?.token);
 
-  const gradeName =
-    user.grade === "IX" || user.grade === "X"
-      ? "ix_x"
-      : user.grade.toLowerCase();
+  const gradeName = user.grade === "X" ? "ix" : user.grade.toLowerCase();
 
   const enrolledCourses = await fetcher<EnrolledCourse[]>(
     `${baseUrl}/enrolled_course`,
@@ -26,12 +24,12 @@ export default async function Profile() {
   const courses = await fetcher<Course[]>(
     `${baseUrl}/course/grade/${gradeName}?mode=`
   );
-
   const suggestedCourses = courses.filter((course) => {
     return !enrolledCourses.some((enrolledCourse) => {
       return enrolledCourse.course.id === course.id;
     });
   });
+  const notices = await fetcher<Notice[]>(`${baseUrl}/notice`, session?.token);
 
   return (
     <div>
@@ -40,32 +38,34 @@ export default async function Profile() {
         <div className="main-container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-2 order-1 lg:-order-1 space-y-4">
-              <div className="border border-neutral-200 rounded-lg shadow-md">
-                <h4 className="md:text-xl font-semibold text-center border-b border-neutral-200 px-4 py-6">
-                  Enrolled Courses
-                </h4>
-                <div className="py-4">
-                  {enrolledCourses?.length > 0 ? (
-                    <div className="mt-4 space-y-4 p-4">
-                      {enrolledCourses.map((course) => (
-                        <MotionDiv key={course.id}>
-                          <Link href={`/courses/content/${course.id}`}>
-                            <CourseHorizontalCard
-                              course={course.course}
-                              status={course.paid}
-                              showStatus
-                            />
-                          </Link>
-                        </MotionDiv>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center h-[160px] text-xl md:text-2xl font-semibold text-neutral-400">
-                      No enrolled course
-                    </div>
-                  )}
+              <MotionDiv initial>
+                <div className="border border-neutral-200 rounded-lg shadow-md">
+                  <h4 className="md:text-xl font-semibold text-center border-b border-neutral-200 px-4 py-6">
+                    Enrolled Courses
+                  </h4>
+                  <div className="py-4">
+                    {enrolledCourses?.length > 0 ? (
+                      <div className="mt-4 space-y-4 p-4">
+                        {enrolledCourses.map((course) => (
+                          <MotionDiv key={course.id}>
+                            <Link href={`/courses/content/${course.id}`}>
+                              <CourseHorizontalCard
+                                course={course.course}
+                                status={course.paid}
+                                showStatus
+                              />
+                            </Link>
+                          </MotionDiv>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center h-[160px] text-xl md:text-2xl font-semibold text-neutral-400">
+                        No enrolled course
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </MotionDiv>
               <div className="border border-neutral-200 rounded-lg shadow-md">
                 <h4 className="md:text-xl font-semibold text-center border-b border-neutral-200 px-4 py-6">
                   Suggested Courses
@@ -139,16 +139,7 @@ export default async function Profile() {
                   </Link>
                 </div>
               </div>
-              <div className="bg-white w-full max-w-[450px] mx-auto rounded-lg border border-neutral-200 shadow-md">
-                <div className="p-4">
-                  <p className="text-lg text-center">
-                    Total Enrolled Courses:{" "}
-                    <span className="font-semibold">
-                      {enrolledCourses?.length}
-                    </span>
-                  </p>
-                </div>
-              </div>
+              <NoticeModal notices={notices} />
             </div>
           </div>
         </div>

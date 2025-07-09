@@ -20,7 +20,7 @@ export default async function GradeWiseCourses({
   if (!_grades.includes(gradeSlug)) notFound();
 
   const courses = await fetcher<Course[]>(
-    `${baseUrl}/course/grade/${gradeSlug === "o" ? "ix_x" : gradeSlug}?mode=`
+    `${baseUrl}/course/grade/${gradeSlug === "o" ? "ix" : gradeSlug}?mode=`
   );
 
   return (
@@ -39,7 +39,9 @@ export default async function GradeWiseCourses({
               transition={{ duration: 0.5, easings: "easeInOut" }}
             >
               <h2 className="text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold text-neutral-800 capitalize font-recoleta">
-                Grade {gradeSlug === "o" ? "IX-X" : gradeSlug.toUpperCase()}
+                {gradeSlug === "o"
+                  ? "O Levels"
+                  : `Grade ${gradeSlug.toUpperCase()}`}
               </h2>
             </MotionDiv>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">

@@ -25,7 +25,7 @@ export default async function Grade({
   if (!_grades.includes(grade)) notFound();
 
   const courses = await fetcher<Course[]>(
-    `${baseUrl}/course/grade/${grade === "o" ? "ix_x" : grade}?mode=${mode}`
+    `${baseUrl}/course/grade/${grade === "o" ? "ix" : grade}?mode=${mode}`
   );
 
   return (
