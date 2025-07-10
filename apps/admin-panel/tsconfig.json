@@ -3,13 +3,10 @@
   "include": [],
   "references": [
     {
-      "path": "../../libs/validations"
+      "path": "../../libs/ui"
     },
     {
       "path": "../../libs/utils"
-    },
-    {
-      "path": "../../libs/ui"
     },
     {
       "path": "./tsconfig.app.json"

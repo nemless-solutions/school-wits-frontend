@@ -1,40 +1,29 @@
 import { topicSchema } from "@school-wits/validations";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usePost } from "../../../../api/api-calls";
 import { TopicForm } from "../../../../components/Forms/TopicForm";
-import { CourseSelect } from "../../../../components/Selects/CourseSelect";
 
 export function CreateTopic() {
-  const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
+  const { courseId } = useParams();
 
   return (
     <div>
-      <CourseSelect
-        courseId={selectedCourseId || undefined}
-        setSelectedCourseId={setSelectedCourseId}
-      />
-      {selectedCourseId ? (
-        <TopicCreateForm courseId={selectedCourseId} />
-      ) : (
-        <div className="flex items-center justify-center mt-20">
-          <p className="text-2xl font-bold text-neutral-400">
-            Please Select A Course First
-          </p>
-        </div>
-      )}
+      <TopicCreateForm courseId={courseId || ""} />
     </div>
   );
 }
 
-const TopicCreateForm = function ({ courseId }: { courseId: number }) {
+const TopicCreateForm = function ({ courseId }: { courseId: string | number }) {
   const navigate = useNavigate();
-  const { mutate, isPending, isError, isSuccess } = usePost("course_topic");
+  const { mutate, isPending, isError, isSuccess, fetchError } =
+    usePost("course_topic");
 
   useEffect(() => {
     if (isError) {
       toast.error("Something went wrong. Please try again.");
+      console.error(fetchError);
     } else if (isSuccess) {
       toast.success("Course Topic Created.");
       navigate(-1);

@@ -2,7 +2,6 @@ import { LucideBookPlus } from "lucide-react";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaChalkboardTeacher, FaRegBell } from "react-icons/fa";
 import { FiBook } from "react-icons/fi";
-import { MdOutlineChecklist } from "react-icons/md";
 import { PiStudentDuotone } from "react-icons/pi";
 import { SidebarLink } from "../../types";
 
@@ -49,11 +48,11 @@ export const sidebarLinks: SidebarLink[] = [
       },
     ],
   },
-  {
+  /* {
     name: "Attendances",
     icon: MdOutlineChecklist,
     link: "/attendances",
-  },
+  }, */
   {
     name: "Notices",
     icon: FaRegBell,

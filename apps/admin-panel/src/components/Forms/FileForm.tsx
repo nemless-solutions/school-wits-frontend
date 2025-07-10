@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { usePost } from "../../api/api-calls";
 
 interface FileFormProps {
-  topicId: number;
+  topicId: number | string;
 }
 
 export function FileForm({ topicId }: FileFormProps) {

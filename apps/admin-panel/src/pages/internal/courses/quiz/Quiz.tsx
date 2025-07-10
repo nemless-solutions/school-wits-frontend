@@ -12,16 +12,12 @@ import {
   TableHeader,
   TableRow,
 } from "@school-wits/ui";
-import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { MdOutlineFindInPage, MdOutlineQuiz } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../../api/api-calls";
-import { CourseSelect } from "../../../../components/Selects/CourseSelect";
-import { TopicSelect } from "../../../../components/Selects/TopicSelect";
-import { VideoSelect } from "../../../../components/Selects/VideoSelect";
 import { TableSkeleton } from "../../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
@@ -31,9 +27,7 @@ export const schema = z.object({
 });
 
 export function Quiz() {
-  const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
-  const [selectedTopicId, setSelectedTopicId] = useState<number | null>(null);
-  const [selectedVideoId, setSelectedVideoId] = useState<number | null>(null);
+  const { videoId } = useParams();
 
   return (
     <div>
@@ -49,55 +43,12 @@ export function Quiz() {
           </Link>
         </Button>
       </div>
-      <CourseSelect
-        courseId={selectedCourseId || undefined}
-        setSelectedCourseId={setSelectedCourseId}
-        setSelectedTopicId={setSelectedTopicId}
-      />
-      {selectedCourseId ? (
-        <TopicSelect
-          topicId={selectedTopicId || undefined}
-          courseId={selectedCourseId}
-          setSelectedTopicId={setSelectedTopicId}
-        />
-      ) : (
-        <div className="flex items-center justify-center mt-20">
-          <p className="text-2xl font-bold text-neutral-400">
-            Please Select A Course First
-          </p>
-        </div>
-      )}
-      {selectedTopicId ? (
-        <div className="mb-4">
-          <VideoSelect
-            topicId={selectedTopicId}
-            videoId={selectedVideoId || undefined}
-            setSelectedVideoId={setSelectedVideoId}
-          />
-        </div>
-      ) : selectedCourseId ? (
-        <div className="flex items-center justify-center mt-20">
-          <p className="text-2xl font-bold text-neutral-400">
-            Please Select A Topic
-          </p>
-        </div>
-      ) : null}
-      {selectedVideoId ? (
-        <div className="mb-4">
-          <QuizTable videoId={selectedVideoId} />
-        </div>
-      ) : selectedCourseId && selectedTopicId ? (
-        <div className="flex items-center justify-center mt-20">
-          <p className="text-2xl font-bold text-neutral-400">
-            Please Select A Video
-          </p>
-        </div>
-      ) : null}
+      <QuizTable videoId={videoId || ""} />
     </div>
   );
 }
 
-const QuizTable = function ({ videoId }: { videoId: number }) {
+const QuizTable = function ({ videoId }: { videoId: number | string }) {
   const { data, isSuccess, isFetching } = useGet(`quiz/${videoId}`);
 
   return (
@@ -158,8 +109,8 @@ const QuizTable = function ({ videoId }: { videoId: number }) {
           </Table>
         </div>
       ) : (
-        <div className="text-center text-2xl text-destructive font-bold mt-10">
-          Something Went Wrong
+        <div className="text-center text-2xl text-neutral-700 font-bold mt-10">
+          No Data Found
         </div>
       )}
     </div>

@@ -1,5 +1,8 @@
 import { SidebarInset, SidebarProvider } from "@school-wits/ui";
 import { Route, Routes } from "react-router-dom";
+import { CourseList } from "../components/Lists/CourseList";
+import { TopicList } from "../components/Lists/TopicList";
+import { VideoList } from "../components/Lists/VideoList";
 import { AppSidebar } from "../components/Sidebar/AppSidebar";
 import { SiteHeader } from "../components/SiteHeader/SiteHeader";
 import { NotFound } from "../pages/error/NotFound";
@@ -9,8 +12,6 @@ import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
 import { CourseFiles } from "../pages/internal/courses/files/CourseFiles";
 import { CreateFile } from "../pages/internal/courses/files/CreateFile";
 import { CreateQuiz } from "../pages/internal/courses/quiz/CreateQuiz";
-import { CreateQuizAnswer } from "../pages/internal/courses/quiz/CreateQuizAnswer";
-import { CreateQuizQuestion } from "../pages/internal/courses/quiz/CreateQuizQuestion";
 import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
@@ -55,19 +56,32 @@ export default function Page() {
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/courses/add" element={<CreateCourse />} />
                 <Route path="/courses/:id" element={<EditCourse />} />
-                <Route path="/topics" element={<CourseTopics />} />
-                <Route path="/topics/add" element={<CreateTopic />} />
-                <Route path="/files" element={<CourseFiles />} />
-                <Route path="/files/add" element={<CreateFile />} />
-                <Route path="/quiz" element={<Quiz />} />
-                <Route path="/quiz/add" element={<CreateQuiz />} />
+                <Route path="/topics" element={<CourseList />} />
+                <Route path="/topics/:courseId" element={<CourseTopics />} />
+                <Route path="/topics/:courseId/add" element={<CreateTopic />} />
+                <Route path="/files" element={<CourseList />} />
+                <Route path="/files/:courseId" element={<TopicList />} />
                 <Route
-                  path="/quiz/question/:quizId"
-                  element={<CreateQuizQuestion />}
+                  path="/files/:courseId/:topicId"
+                  element={<CourseFiles />}
                 />
                 <Route
-                  path="/quiz/answer/:quizId"
-                  element={<CreateQuizAnswer />}
+                  path="/files/:courseId/:topicId/add"
+                  element={<CreateFile />}
+                />
+                <Route path="/quiz" element={<CourseList />} />
+                <Route path="/quiz/:courseId" element={<TopicList />} />
+                <Route
+                  path="/quiz/:courseId/:topicId"
+                  element={<VideoList />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId"
+                  element={<Quiz />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/add"
+                  element={<CreateQuiz />}
                 />
                 <Route path="/notices" element={<Notices />} />
                 <Route
