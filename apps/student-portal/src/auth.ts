@@ -1,3 +1,4 @@
+import { jwtDecode } from "jwt-decode";
 import NextAuth, { NextAuthResult, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -7,6 +8,7 @@ declare module "next-auth" {
   }
   interface Session {
     token?: string;
+    exp?: number;
   }
 }
 
@@ -54,6 +56,7 @@ const nextAuthResult = NextAuth({
         token.id = user.id;
         token.name = user.name;
         token.jwt = user.token;
+        token.exp = jwtDecode(user.token || "").exp;
       }
 
       return token;
@@ -63,6 +66,7 @@ const nextAuthResult = NextAuth({
         session.user.id = token.id as string;
         session.user.name = token.name as string;
         session.token = token.jwt as string;
+        session.exp = token.exp as number;
       }
 
       return session;

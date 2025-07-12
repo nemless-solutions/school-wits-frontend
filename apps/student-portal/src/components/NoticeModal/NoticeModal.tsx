@@ -1,7 +1,10 @@
 "use client";
 
-import { getTimeDistanceFromNow } from "@school-wits/utils";
-import { useState } from "react";
+import { baseUrl } from "@/constants";
+import { fetcher } from "@/libs/fetcher";
+import { getTimeDistanceFromNow, isJwtExpired } from "@school-wits/utils";
+import { useSession } from "next-auth/react";
+import { ReactNode, useEffect, useState } from "react";
 import { IoMdNotifications } from "react-icons/io";
 import { Notice } from "../../../types";
 import {
@@ -18,19 +21,40 @@ import {
 
 interface NoticeModalProps {
   notices: Notice[];
+  noticeTrigger?: ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export function NoticeModal({ notices }: NoticeModalProps) {
+export function NoticeModal({
+  noticeTrigger,
+  open,
+  onOpenChange,
+}: NoticeModalProps) {
   const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
+  const [notices, setNotices] = useState<Notice[]>([]);
+
+  const { data } = useSession();
+
+  useEffect(() => {
+    (async () => {
+      if (isJwtExpired(data?.token)) return;
+      const notices = await fetcher<Notice[]>(`${baseUrl}/notice`, data?.token);
+      setNotices(notices);
+    })();
+  }, [data?.token]);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        <div className="flex gap-x-4 w-full select-none items-center justify-center rounded-lg p-4 bg-white border border-neutral-200 shadow-md cursor-pointer">
-          <div className="p-3.5 rounded-full bg-[#f9731633]">
-            <IoMdNotifications className="scale-[1.35] text-[#f97316]" />
+        {noticeTrigger || (
+          <div className="flex gap-x-4 w-full select-none items-center justify-center rounded-lg p-4 bg-white border border-neutral-200 shadow-md cursor-pointer">
+            <div className="p-3.5 rounded-full bg-[#f9731633]">
+              <IoMdNotifications className="scale-[1.35] text-[#f97316]" />
+            </div>
+            <span className="text-lg font-semibold">Notices</span>
           </div>
-          <span className="text-lg font-semibold">Notices</span>
-        </div>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

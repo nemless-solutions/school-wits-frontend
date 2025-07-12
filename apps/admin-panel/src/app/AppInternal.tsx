@@ -12,6 +12,8 @@ import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
 import { CourseFiles } from "../pages/internal/courses/files/CourseFiles";
 import { CreateFile } from "../pages/internal/courses/files/CreateFile";
 import { CreateQuiz } from "../pages/internal/courses/quiz/CreateQuiz";
+import { CreateQuizQuestion } from "../pages/internal/courses/quiz/CreateQuizQuestion";
+import { Questions } from "../pages/internal/courses/quiz/Questions";
 import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
@@ -25,6 +27,7 @@ import { CreateStudent } from "../pages/internal/students/CreateStudent";
 import { EditStudent } from "../pages/internal/students/EditStudent";
 import { Students } from "../pages/internal/students/Students";
 import { Teachers } from "../pages/internal/teachers/Teachers";
+import { CreateQuizAnswer } from "../pages/internal/courses/quiz/CreateQuizAnswer";
 
 export default function Page() {
   return (
@@ -82,6 +85,18 @@ export default function Page() {
                 <Route
                   path="/quiz/:courseId/:topicId/:videoId/add"
                   element={<CreateQuiz />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId"
+                  element={<Questions />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/add"
+                  element={<CreateQuizQuestion />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/:questionId"
+                  element={<CreateQuizAnswer />}
                 />
                 <Route path="/notices" element={<Notices />} />
                 <Route

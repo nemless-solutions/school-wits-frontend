@@ -14,7 +14,7 @@ export const schema = z.object({
   duration: z.number(),
 });
 
-export function Quiz() {
+export function Questions() {
   const columns: ColumnDef<z.infer<typeof schema>>[] = [
     {
       accessorKey: "id",
@@ -22,39 +22,29 @@ export function Quiz() {
     },
     {
       accessorKey: "title",
-      header: "Title",
-    },
-    {
-      accessorKey: "questionMark",
-      header: "Marks",
-    },
-    {
-      accessorKey: "duration",
-      header: "Duration",
+      header: "Question",
     },
     {
       id: "actions",
       cell: ({ row }) => (
         <div className="flex justify-center">
           <Button asChild variant="secondary">
-            <Link to={`${row.original.id}`}>Manage</Link>
+            <Link to={`${row.original.id}`}>Add Answer</Link>
           </Button>
         </div>
       ),
     },
   ];
 
-  const { videoId } = useParams();
-  const { data, isSuccess, isFetching } = useGet(`quiz/${videoId}`);
-
-  console.log(data);
+  const { quizId } = useParams();
+  const { data, isSuccess, isFetching } = useGet(`quiz_question/${quizId}`);
 
   return (
     <div>
       <div className="flex justify-end mb-2 md:mb-4">
         <Button asChild className="hidden md:flex items-center">
           <Link to="add">
-            <FaPlus /> Add Quiz
+            <FaPlus /> Add Question
           </Link>
         </Button>
         <Button asChild size="icon" className="md:hidden">

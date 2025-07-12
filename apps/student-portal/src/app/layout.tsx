@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { Footer } from "@/components/Footer/Footer";
 import { Navbar } from "@/components/Navbar/Navbar";
+import SessionGuard from "@/components/SessionGuard/SessionGuard";
 import { SessionProvider } from "next-auth/react";
 import localfont from "next/font/local";
 import { ToastContainer } from "react-toastify";
@@ -75,25 +76,27 @@ export default async function RootLayout({
       className={`${recoleta.variable} ${heronew.className} antialiased`}
     >
       <SessionProvider>
-        <body>
-          <ToastContainer
-            position="top-center"
-            autoClose={4000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss={false}
-            theme="light"
-          />
-          <header>
-            <Navbar session={session} />
-          </header>
-          <main>{children}</main>
-          <footer>
-            <Footer />
-          </footer>
-        </body>
+        <SessionGuard>
+          <body>
+            <ToastContainer
+              position="top-center"
+              autoClose={4000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss={false}
+              theme="light"
+            />
+            <header>
+              <Navbar session={session} />
+            </header>
+            <main>{children}</main>
+            <footer>
+              <Footer />
+            </footer>
+          </body>
+        </SessionGuard>
       </SessionProvider>
     </html>
   );

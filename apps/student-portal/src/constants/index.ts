@@ -26,7 +26,7 @@ import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
 import { NavItem } from "../../types";
 
-export const baseUrl = process.env.BASE_URL;
+export const baseUrl = process.env.BASE_URL || "https://backend.schoolwits.com";
 
 export const navItems: NavItem[] = [
   { type: "link", title: "Home", link: "/" },
