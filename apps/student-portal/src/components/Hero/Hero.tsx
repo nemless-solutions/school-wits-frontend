@@ -5,7 +5,7 @@ import calculator from "../../../public/gifs/calculator.gif";
 import graph from "../../../public/gifs/graph.gif";
 import pendulam from "../../../public/gifs/pendulam.gif";
 import test from "../../../public/gifs/test.gif";
-import { Button, MotionDiv } from "../client-ui";
+import { Button } from "../client-ui";
 
 export function Hero() {
   return (
@@ -42,11 +42,7 @@ export function Hero() {
           alt="Calculator"
         />
         <div className="text-center max-w-[600px] mx-auto relative z-10">
-          <MotionDiv
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, easings: "easeInOut" }}
-          >
+          <div>
             <p className="border border-primary w-fit p-2 rounded-lg mx-auto bg-primary/20 text-sm mb-5">
               Spots fill fast—get started while seats last!
             </p>
@@ -57,12 +53,8 @@ export function Hero() {
               Smart learning, guided by educators who care. From day one to
               every milestone—clear lessons, real growth, no fluff.
             </p>
-          </MotionDiv>
-          <MotionDiv
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, easings: "easeInOut", delay: 0.3 }}
-          >
+          </div>
+          <div>
             <Button
               variant="secondary"
               size="lg"
@@ -71,7 +63,7 @@ export function Hero() {
             >
               <Link href="/courses/all">Start Learning</Link>
             </Button>
-          </MotionDiv>
+          </div>
         </div>
       </div>
     </section>
