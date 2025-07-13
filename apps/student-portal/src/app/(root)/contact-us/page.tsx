@@ -1,6 +1,7 @@
 import { MotionDiv } from "@/components/client-ui";
 import { FAQ } from "@/components/FAQ/FAQ";
 import { GetInTouch } from "@/components/GetInTouch/GetInTouch";
+import { LocationMap } from "@/components/LocationMap/LocationMap";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
 import { contactUs } from "@/constants";
@@ -66,7 +67,7 @@ export default function ContactUs() {
           <GetInTouch />
         </div>
         <FAQ sectionBg="bg-primary" groupSquareColor="text-white" />
-        {/* <LocationMap /> */}
+        <LocationMap />
       </div>
     </div>
   );

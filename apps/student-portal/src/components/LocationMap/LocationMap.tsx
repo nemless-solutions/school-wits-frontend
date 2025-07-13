@@ -24,7 +24,7 @@ export function LocationMap() {
         >
           <iframe
             className="w-full aspect-[1312/600] rounded-2xl"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0431906694207!2d90.41430681188126!3d23.78147627856007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c78335e95bcf%3A0x3957abf4987a0ac6!2s1%20Gulshan%20Ave%2C%20Dhaka%201212!5e0!3m2!1sen!2sbd!4v1750852328769!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3649.9363868975497!2d90.432707!3d23.820860999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDQ5JzE1LjEiTiA5MMKwMjUnNTcuOCJF!5e0!3m2!1sen!2sbd!4v1752412012048!5m2!1sen!2sbd"
             style={{ border: 0 }}
             allowFullScreen={false}
             loading="lazy"
