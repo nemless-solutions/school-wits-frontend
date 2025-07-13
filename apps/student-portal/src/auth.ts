@@ -73,11 +73,6 @@ const nextAuthResult = NextAuth({
       return session;
     },
   },
-  trustedHosts: [
-    "localhost:3000", // dev
-    "schoolwits.com", // prod (change to exact domain used in browser)
-    "www.schoolwits.com", // include www version too if used
-  ],
 });
 
 // to avoid auth type can not infer issue
