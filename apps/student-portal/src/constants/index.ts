@@ -5,7 +5,6 @@ import GradeVIIIcon from "../../public/graphics/square-group.svg";
 import analytics from "../../public/icons/analytics-up.png";
 import muscle from "../../public/icons/body-part-muscle.png";
 import brain from "../../public/icons/brain.png";
-import callIcon from "../../public/icons/call.png";
 import video from "../../public/icons/computer-video.png";
 import facebookIcon from "../../public/icons/facebook.png";
 import webSearch from "../../public/icons/global-search.png";
@@ -304,11 +303,11 @@ export const terms = [
 
 export const contactUs = {
   contacts: [
-    {
+    /* {
       icon: callIcon,
       title: "Call Us",
       description: "+880-1898-898984",
-    },
+    }, */
     {
       icon: emailIcon,
       title: "Email Us",
@@ -317,7 +316,7 @@ export const contactUs = {
     {
       icon: locationIcon,
       title: "Visit Us",
-      description: "Gulshan - 1, Dhaka",
+      description: "Block F, Road 7, Bashundhara R/A, Dhaka",
     },
   ],
   socials: [

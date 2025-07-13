@@ -45,7 +45,7 @@ export function LessonHighlights() {
               <TabsList className="md:grid md:grid-cols-5 flex gap-2 mx-auto bg-neutral-200 overflow-x-auto no-scrollbar w-full">
                 {lessonHighlights.map((item) => (
                   <TabsTrigger
-                    className="bg-white data-[state=active]:bg-primary cursor-pointer max-[500px]:first:ml-16 max-[450px]:first:ml-24 max-[400px]:first:ml-40"
+                    className="bg-white data-[state=active]:bg-primary cursor-pointer max-[560px]:first:ml-16 max-[450px]:first:ml-24 max-[400px]:first:ml-40"
                     key={item.subject}
                     value={item.subject}
                   >

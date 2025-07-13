@@ -38,7 +38,7 @@ export function NoticeModal({
 
   useEffect(() => {
     (async () => {
-      if (isJwtExpired(data?.token)) return;
+      if (!data?.token || isJwtExpired(data?.token)) return;
       const notices = await fetcher<Notice[]>(`${baseUrl}/notice`, data?.token);
       setNotices(notices);
     })();
