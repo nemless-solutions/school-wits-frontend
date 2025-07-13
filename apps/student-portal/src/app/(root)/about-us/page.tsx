@@ -166,24 +166,29 @@ export default function AboutUs() {
               <div className="md:col-span-2 max-w-[600px] md:ml-auto md:mr-8 space-y-8 relative z-10 mt-4 md:mt-0">
                 <div>
                   <h4 className="text-base sm:text-xl md:text-3xl font-bold text-secondary mb-3">
-                    Our Vision
+                    Our Mission
                   </h4>
                   <p className="text-sm sm:text-lg md:text-2xl">
-                    At School Wits, we make e-learning accessible, engaging, and
-                    effective, nurturing curiosity and building foundational
-                    skills through interactive digital learning that blends
-                    academics with real-world relevance.
+                    At School Wits, our mission is to make e-learning
+                    accessible, engaging, and effective for every aspiring young
+                    mind. We aim to nurture curiosity, build goal-driven
+                    foundational skills, and empower students through
+                    interactive digital learning that blends academic excellence
+                    with real-world relevance.
                   </p>
                 </div>
                 <div>
                   <h4 className="text-base sm:text-xl md:text-3xl font-bold text-secondary mb-3">
-                    Our Mission
+                    Our Vision
                   </h4>
                   <p className="text-sm sm:text-lg md:text-2xl">
-                    At School Wits, we make e-learning accessible, engaging, and
-                    effective, nurturing curiosity and building foundational
-                    skills through interactive digital learning that blends
-                    academics with real-world relevance.
+                    Our vision is to build a trusted global platform where
+                    students can unlock their full potential through
+                    personalized learning experiences and innovative teaching
+                    methods. We envision establishing Bangladesh as a global hub
+                    for quality education, shaping a generation of confident,
+                    skilled, and future-ready learners through cutting-edge
+                    digital schooling.
                   </p>
                 </div>
               </div>
