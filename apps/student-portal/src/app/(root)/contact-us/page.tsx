@@ -14,7 +14,7 @@ export default function ContactUs() {
     <div>
       <PageHeader
         header="Contact Us"
-        description="We are here to help and answer any questions you might have. We look forward to hearing from you"
+        description="You're welcome to explore our learning environment, meet our educators, and experience the space where students grow with care and clarity. Schedule a visit and take the first step toward a smarter, more meaningful learning journey."
       />
       <div className="relative overflow-clip">
         <section className="py-16 relative">

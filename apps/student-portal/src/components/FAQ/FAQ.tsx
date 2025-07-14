@@ -38,9 +38,8 @@ export function FAQ({
               <span className="text-secondary">Answered</span>
             </h2>
             <p>
-              We&apos;re launching something new. If you don&apos;t find the
-              answer you&apos;re looking for, feel free to reach out, we&apos;re
-              here to help.
+              Learning is a journey—and questions are part of it. Here are some
+              quick answers to guide you along the way.
             </p>
             <SquareGroup
               className={cn(

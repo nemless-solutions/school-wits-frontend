@@ -87,7 +87,8 @@ export default async function CourseDetails({
                   </p>
                   <div>
                     <p className="text-lg md:text-2xl font-semibold">
-                      Tk. {courseDetails.course.fee.toLocaleString()}
+                      Tk. {courseDetails.course.fee.toLocaleString()}{" "}
+                      <span className="text-sm text-neutral-600">/ month</span>
                     </p>
                     <p className="text-sm md:text-base text-neutral-500">
                       Before <span className="font-semibold">10 July</span>
@@ -110,7 +111,8 @@ export default async function CourseDetails({
               </p>
               <div>
                 <p className="text-lg md:text-2xl font-semibold">
-                  Tk. {courseDetails.course.fee.toLocaleString()}
+                  Tk. {courseDetails.course.fee.toLocaleString()}{" "}
+                  <span className="text-sm text-neutral-600">/ month</span>
                 </p>
                 <p className="text-sm md:text-base text-neutral-500">
                   Before <span className="font-semibold">10 July</span>
@@ -179,32 +181,34 @@ export default async function CourseDetails({
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, easings: "easeInOut", delay: 0.9 }}
-                className="flex flex-col md:flex-row gap-4 bg-white border border-[#e5e5e5] rounded-[16px] p-4 md:p-6"
+                className="bg-white border border-[#e5e5e5] rounded-[16px] p-4 md:p-6"
               >
-                <div>
-                  <Icon src={books} alt="books" />
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div>
+                    <Icon src={books} alt="books" />
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="md:text-lg font-semibold">
+                      Learning Area Coverage
+                    </h4>
+                    <p className="text-gray-600 text-sm md:text-base">
+                      {courseDetails.learningContentTitle}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="md:text-lg font-semibold">
-                    Learning Area Coverage
-                  </h4>
-                  <p className="text-gray-600 text-sm md:text-base">
-                    {courseDetails.learningContentTitle}
-                  </p>
-                  <div className="mt-4 md:mt-8">
-                    <div className="hidden md:block">
-                      <CourseDetailsGraph
-                        chartValues={courseDetails.chartValues}
-                      />
-                    </div>
-                    <div className="md:hidden">
-                      <CourseDetailsGraph
-                        chartValues={courseDetails.chartValues}
-                        height={400}
-                        barSize={30}
-                        barGap={10}
-                      />
-                    </div>
+                <div className="mt-4 md:mt-8">
+                  <div className="hidden md:block">
+                    <CourseDetailsGraph
+                      chartValues={courseDetails.chartValues}
+                    />
+                  </div>
+                  <div className="md:hidden">
+                    <CourseDetailsGraph
+                      chartValues={courseDetails.chartValues}
+                      height={400}
+                      barSize={30}
+                      barGap={10}
+                    />
                   </div>
                 </div>
               </MotionDiv>

@@ -2,19 +2,26 @@ import { MotionDiv } from "@/components/client-ui";
 import { CourseCard } from "@/components/CourseCard/CourseCard";
 import { ShowMoreCourses } from "@/components/ShowMoreCourses/ShowMoreCourses";
 import { CourseGradeSwitcher } from "@/components/Switcher/CourseGradeSwticher";
+import { CourseModeSwitcher } from "@/components/Switcher/CourseModeSwitcher";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
-import Link from "next/link";
 import SquareGroup from "../../../../../../public/graphics/square-group.svg";
 import { Course } from "../../../../../../types";
 
 const _gradesEndpoint = ["vi", "vii", "viii", "ix"];
 
-export default async function AllCourses() {
+export default async function AllCourses({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const mode =
+    (await searchParams).mode === "in-person" ? "IN_PERSON" : "ONLINE";
+
   const gradeCourses = await Promise.all(
     _gradesEndpoint.map(async (grade) => {
       const courses = await fetcher<Course[]>(
-        `${baseUrl}/course/grade/${grade}?mode=`
+        `${baseUrl}/course/grade/${grade}?mode=${mode}`
       );
 
       return { grade: grade.toUpperCase(), courses };
@@ -24,6 +31,9 @@ export default async function AllCourses() {
   return (
     <>
       <CourseGradeSwitcher />
+      <div className="main-container">
+        <CourseModeSwitcher currentType={mode} />
+      </div>
       <div className="relative overflow-x-clip">
         <SquareGroup className="absolute w-10 md:w-16 text-primary right-1/6 -top-4 lg:-top-20 rotate-45" />
         <div className="absolute -top-20 -left-20 w-[400px] aspect-square bg-primary/20 rounded-full blur-[120px]"></div>
@@ -45,30 +55,31 @@ export default async function AllCourses() {
                     : `Grade ${gradeCourse.grade.toUpperCase()}`}
                 </h2>
               </MotionDiv>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {gradeCourse.courses.slice(0, 3).map((course, i) => (
-                  <MotionDiv
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.3,
-                      easings: "easeInOut",
-                    }}
-                    viewport={{ once: true, amount: 0.3 }}
-                  >
-                    <div className="hidden md:block">
-                      <Link href={`/courses/details/${course.id}`}>
+              {gradeCourse.courses.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    {gradeCourse.courses.slice(0, 3).map((course, i) => (
+                      <MotionDiv
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          easings: "easeInOut",
+                        }}
+                        viewport={{ once: true, amount: 0.3 }}
+                      >
                         <CourseCard course={course} />
-                      </Link>
-                    </div>
-                    <div className="md:hidden">
-                      <CourseCard course={course} showButton />
-                    </div>
-                  </MotionDiv>
-                ))}
-              </div>
-              <ShowMoreCourses moreCourses={gradeCourse.courses.slice(3)} />
+                      </MotionDiv>
+                    ))}
+                  </div>
+                  <ShowMoreCourses moreCourses={gradeCourse.courses.slice(3)} />
+                </>
+              ) : (
+                <div className="text-center font-semibold text-lg md:text-2xl py-16 text-neutral-400">
+                  No Courses Found
+                </div>
+              )}
             </div>
           ))}
         </div>

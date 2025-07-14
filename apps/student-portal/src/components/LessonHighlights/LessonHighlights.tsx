@@ -1,19 +1,15 @@
 "use client";
 
 import { lessonHighlights } from "@/constants";
+import { cn } from "@school-wits/utils";
 import { useState } from "react";
 import SquareGroupIcon from "../../../public/graphics/square-group.svg";
-import {
-  MotionDiv,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "../client-ui";
+import { MotionDiv } from "../client-ui";
 import { YtPlayer } from "../YtPlayer/YtPlayer";
 
 export function LessonHighlights() {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [currentSubject, setCurrentSubject] = useState("Mathematics");
 
   return (
     <section className="my-8 pb-10">
@@ -41,45 +37,51 @@ export function LessonHighlights() {
             transition={{ duration: 0.5, easings: "easeInOut" }}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <Tabs defaultValue="Mathematics">
-              <TabsList className="md:grid md:grid-cols-5 flex gap-2 mx-auto bg-neutral-200 overflow-x-auto no-scrollbar w-full">
-                {lessonHighlights.map((item) => (
-                  <TabsTrigger
-                    className="bg-white data-[state=active]:bg-primary cursor-pointer max-[560px]:first:ml-16 max-[450px]:first:ml-24 max-[400px]:first:ml-40"
-                    key={item.subject}
-                    value={item.subject}
+            <div className="my-10 overflow-x-auto w-full no-scrollbar relative z-10">
+              <div className="grid grid-cols-5 mx-auto max-w-[940px] min-w-[720px] bg-neutral-100 p-1.5 gap-2 rounded-[8px]">
+                {lessonHighlights.map((lesson) => (
+                  <button
+                    onClick={() => setCurrentSubject(lesson.subject)}
+                    key={lesson.subject}
+                    className={cn(
+                      "text-center p-1.5 rounded-[6px] text-sm md:text-base font-semibold cursor-pointer text-nowrap",
+                      currentSubject === lesson.subject
+                        ? "bg-primary"
+                        : "bg-white"
+                    )}
                   >
-                    {item.subject}
-                  </TabsTrigger>
+                    {lesson.subject}
+                  </button>
                 ))}
-              </TabsList>
-              {lessonHighlights.map((item, index) => (
-                <TabsContent
-                  key={item.subject}
-                  value={item.subject}
-                  className="mt-8"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12">
-                    <div className="relative w-full aspect-video rounded-2xl overflow-clip">
-                      <YtPlayer
-                        url={item.videoLink}
-                        isPlaying={playingIndex === index}
-                        onPlay={() => setPlayingIndex(index)}
-                        onPause={() => setPlayingIndex(null)}
-                      />
+              </div>
+            </div>
+            <div>
+              {lessonHighlights.map(
+                (lesson, index) =>
+                  currentSubject === lesson.subject && (
+                    <div key={lesson.subject}>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12">
+                        <div className="relative w-full aspect-video rounded-2xl overflow-clip">
+                          <YtPlayer
+                            url={lesson.videoLink}
+                            isPlaying={playingIndex === index}
+                            onPlay={() => setPlayingIndex(index)}
+                            onPause={() => setPlayingIndex(null)}
+                          />
+                        </div>
+                        <div className="space-y-4 relative">
+                          <h2 className="text-2xl text-center sm:text-3xl md:text-start md:text-[40px] font-semibold font-recoleta">
+                            {lesson.title}
+                          </h2>
+                          <p className="text-sm text-center md:text-start md:text-base">
+                            {lesson.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-4 relative">
-                      <h2 className="text-2xl text-center sm:text-3xl md:text-start md:text-[40px] font-semibold font-recoleta">
-                        {item.title}
-                      </h2>
-                      <p className="text-sm text-center md:text-start md:text-base">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </TabsContent>
-              ))}
-            </Tabs>
+                  )
+              )}
+            </div>
           </MotionDiv>
         </div>
       </div>
