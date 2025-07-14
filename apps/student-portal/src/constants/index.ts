@@ -59,8 +59,8 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  { type: "link", title: "Contact Us", link: "/contact-us" },
   { type: "link", title: "About Us", link: "/about-us" },
+  { type: "link", title: "Contact Us", link: "/contact-us" },
 ];
 
 export const grades = [

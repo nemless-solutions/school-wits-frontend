@@ -1,6 +1,7 @@
 import { MotionDiv } from "@/components/client-ui";
 import { FAQ } from "@/components/FAQ/FAQ";
 import { GetInTouch } from "@/components/GetInTouch/GetInTouch";
+import { LocationMap } from "@/components/LocationMap/LocationMap";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
 import { contactUs } from "@/constants";
@@ -13,7 +14,7 @@ export default function ContactUs() {
     <div>
       <PageHeader
         header="Contact Us"
-        description="We are here to help and answer any questions you might have. We look forward to hearing from you"
+        description="You're welcome to explore our learning environment, meet our educators, and experience the space where students grow with care and clarity. Schedule a visit and take the first step toward a smarter, more meaningful learning journey."
       />
       <div className="relative overflow-clip">
         <section className="py-16 relative">
@@ -66,7 +67,7 @@ export default function ContactUs() {
           <GetInTouch />
         </div>
         <FAQ sectionBg="bg-primary" groupSquareColor="text-white" />
-        {/* <LocationMap /> */}
+        <LocationMap />
       </div>
     </div>
   );

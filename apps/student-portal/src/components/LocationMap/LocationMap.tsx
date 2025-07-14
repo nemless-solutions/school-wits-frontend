@@ -11,9 +11,21 @@ export function LocationMap() {
           viewport={{ once: true, amount: 0.5 }}
           className="md:text-start text-center"
         >
-          <h2 className="text-[28px] sm:text-4xl md:text-[54px] text-center leading-[100%] md:leading-[64px] font-semibold text-secondary capitalize mb-8 font-recoleta">
-            We Are <span className="text-black">On</span> Map
+          <h2 className="text-[28px] sm:text-4xl md:text-[54px] text-center leading-[100%] md:leading-[64px] font-semibold text-secondary capitalize mb-2 font-recoleta">
+            Find Us on the Map
           </h2>
+        </MotionDiv>
+        <MotionDiv
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, easings: "easeInOut" }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="md:text-start text-center"
+        >
+          <p className="max-w-[800px] mx-auto mb-8 text-center">
+            We&apos;re right here—easy to find and happy to welcome you!
+            Schedule a time and drop by to meet our team in person.
+          </p>
         </MotionDiv>
         <MotionDiv
           initial={{ opacity: 0, x: -20 }}
@@ -24,7 +36,7 @@ export function LocationMap() {
         >
           <iframe
             className="w-full aspect-[1312/600] rounded-2xl"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0431906694207!2d90.41430681188126!3d23.78147627856007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c78335e95bcf%3A0x3957abf4987a0ac6!2s1%20Gulshan%20Ave%2C%20Dhaka%201212!5e0!3m2!1sen!2sbd!4v1750852328769!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3649.9363868975497!2d90.432707!3d23.820860999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDQ5JzE1LjEiTiA5MMKwMjUnNTcuOCJF!5e0!3m2!1sen!2sbd!4v1752412012048!5m2!1sen!2sbd"
             style={{ border: 0 }}
             allowFullScreen={false}
             loading="lazy"
