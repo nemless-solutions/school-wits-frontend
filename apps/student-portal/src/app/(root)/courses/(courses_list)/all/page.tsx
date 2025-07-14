@@ -15,8 +15,7 @@ export default async function AllCourses({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const mode =
-    (await searchParams).mode === "in-person" ? "IN_PERSON" : "ONLINE";
+  const mode = (await searchParams).mode === "online" ? "ONLINE" : "IN_PERSON";
 
   const gradeCourses = await Promise.all(
     _gradesEndpoint.map(async (grade) => {
@@ -73,7 +72,24 @@ export default async function AllCourses({
                       </MotionDiv>
                     ))}
                   </div>
-                  <ShowMoreCourses moreCourses={gradeCourse.courses.slice(3)} />
+                  <ShowMoreCourses
+                    showButton={gradeCourse.courses.slice(3).length > 0}
+                  >
+                    {gradeCourse.courses.slice(3).map((course, index) => (
+                      <MotionDiv
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          easings: "easeInOut",
+                        }}
+                        viewport={{ once: true, amount: 0.3 }}
+                      >
+                        <CourseCard course={course} />
+                      </MotionDiv>
+                    ))}
+                  </ShowMoreCourses>
                 </>
               ) : (
                 <div className="text-center font-semibold text-lg md:text-2xl py-16 text-neutral-400">
