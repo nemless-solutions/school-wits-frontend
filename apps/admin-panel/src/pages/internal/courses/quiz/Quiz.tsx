@@ -47,8 +47,6 @@ export function Quiz() {
   const { videoId } = useParams();
   const { data, isSuccess, isFetching } = useGet(`quiz/${videoId}`);
 
-  console.log(data);
-
   return (
     <div>
       <div className="flex justify-end mb-2 md:mb-4">
