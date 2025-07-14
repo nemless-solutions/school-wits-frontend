@@ -27,7 +27,7 @@ export function CreateStudent() {
     <div>
       <AuthForm
         type="SIGN_UP"
-        schema={signUpSchema}
+        schema={signUpSchema.omit({ confirmPassword: true })}
         defaultValues={{
           email: "",
           password: "",

@@ -1,6 +1,5 @@
 import { Button } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../api/api-calls";
@@ -51,18 +50,6 @@ export function Enrolment() {
 
   return (
     <div>
-      <div className="flex justify-end mb-2 md:mb-4">
-        <Button asChild className="hidden md:flex items-center">
-          <Link to="add">
-            <FaPlus /> Add Student
-          </Link>
-        </Button>
-        <Button asChild size="icon" className="md:hidden">
-          <Link to="add">
-            <FaPlus />
-          </Link>
-        </Button>
-      </div>
       {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (

@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import { PageHeader } from "@/components/PageHeader/PageHeader";
 
 export default async function Profile() {
   const session = await auth();
@@ -15,21 +16,15 @@ export default async function Profile() {
 
   return (
     <div>
-      <section className="bg-primary pt-32 pb-20">
-        <div className="main-container">
-          <h1 className="text-center text-3xl md:text-4xl font-semibold text-neutral-50">
-            My Profile
-          </h1>
-        </div>
-      </section>
+      <PageHeader header="Profile" />
       <section className="bg-neutral-100 py-20">
         <div className="main-container">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg overflow-clip shadow-md/20 text-primary p-4">
-              <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-8">
+            <div className="bg-white rounded-lg overflow-clip shadow-md/20 text-seconbg-secondary p-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-seconbg-secondary mb-8">
                 Personal Information
               </h2>
-              <div className="text-lg md:text-xl text-primary space-y-2 font-semibold">
+              <div className="text-lg md:text-xl text-seconbg-secondary space-y-2 font-semibold">
                 <p>ID: {userInfo.uid}</p>
                 <p>Name: {userInfo.fullName}</p>
                 <p>Email: {userInfo.email}</p>
@@ -38,11 +33,11 @@ export default async function Profile() {
                 <p>Date of Birth: {userInfo.dateOfBirth}</p>
               </div>
             </div>
-            <div className="bg-white rounded-lg overflow-clip shadow-md/20 text-primary p-4">
-              <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-8">
+            <div className="bg-white rounded-lg overflow-clip shadow-md/20 text-seconbg-secondary p-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-seconbg-secondary mb-8">
                 Guardian&apos;s Information
               </h2>
-              <div className="text-lg md:text-xl text-primary font-semibold space-y-2">
+              <div className="text-lg md:text-xl text-seconbg-secondary font-semibold space-y-2">
                 <p>Father&apos;s Name: {userInfo.fatherName}</p>
                 <p>Mother&apos;s Name: {userInfo.motherName}</p>
                 <p>Guardian&apos;s Email: {userInfo.guardianEmail}</p>

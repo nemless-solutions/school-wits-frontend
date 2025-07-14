@@ -1,23 +1,42 @@
+import { MotionDiv } from "../client-ui";
+
 export function Promo() {
   return (
-    <section className="py-28 overflow-x-clip">
+    <section className="my-20">
       <div className="main-container">
-        <div className="grid md:grid-cols-5 gap-x-4 gap-y-16 items-center">
-          <div className="text-primary col-span-2">
-            <h2 className="text-2xl md:text-3xl font-semibold">
-              Transforming Learning Experience with Cutting-Edge Digital Tools.
+        <div className="max-w-[650px] mx-auto text-center space-y-3">
+          <MotionDiv
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, easings: "easeInOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <h2 className="text-black text-[28px] sm:text-4xl md:text-[54px] leading-[100%] md:leading-[64px] font-semibold capitalize font-recoleta">
+              <span className="text-secondary">Revolutionising</span> Learning
+              with <span className="text-secondary">Digital Tools</span>
             </h2>
-            <p className="md:text-lg mt-4 md:mt-10 text-secondary font-medium">
+          </MotionDiv>
+          <MotionDiv
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, easings: "easeInOut", delay: 0.3 }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <p className="text-sm sm:text-base md:text-lg text-neutral-800">
               School Wits is a school of wits, where curiosity meets clarity,
-              and learning goes far beyond textbooks.
+              and learning goes far beyond textbooks
             </p>
-          </div>
-          <div className="relative col-span-3">
-            <div className="absolute -top-6 -left-6 w-20 aspect-square bg-primary rounded-full"></div>
-            <div className="absolute -bottom-10 -right-10 w-28 aspect-square bg-primary rounded-full"></div>
-            <div></div>
+          </MotionDiv>
+        </div>
+        <div className="mt-8">
+          <MotionDiv
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, easings: "easeInOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <iframe
-              className="w-full aspect-video rounded-xl relative z-10"
+              className="w-full aspect-video rounded-xl"
               src="https://www.youtube.com/embed/PXOJTvJ0-GA?si=qvk7SMS5o3sNFKN_"
               title="YouTube video player"
               frameBorder="0"
@@ -25,7 +44,7 @@ export function Promo() {
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             ></iframe>
-          </div>
+          </MotionDiv>
         </div>
       </div>
     </section>

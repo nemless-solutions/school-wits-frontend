@@ -30,7 +30,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ZodType } from "zod";
-import { curriculums, FIELD_NAMES, FIELD_TYPES } from "../../constants";
+import { curriculums, FIELD_NAMES, FIELD_TYPES, grades } from "../../constants";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -41,8 +41,6 @@ interface Props<T extends FieldValues> {
   onCancel?: () => void;
   submitText?: string;
 }
-
-const _grades = ["VI", "VII", "VIII", "IX", "X"];
 
 export function AuthForm<T extends FieldValues>({
   type,
@@ -114,7 +112,7 @@ export function AuthForm<T extends FieldValues>({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {_grades.map((g, i) => (
+                          {grades.map((g, i) => (
                             <SelectItem
                               key={i}
                               value={g}

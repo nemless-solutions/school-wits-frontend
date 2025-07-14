@@ -1,22 +1,31 @@
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import fileDownload from "../../public/icons/file-download.png";
-import graph from "../../public/icons/graph.png";
-import growth from "../../public/icons/growth.png";
-import lightbulb from "../../public/icons/lightbulb.png";
-import mentor from "../../public/icons/mentor.png";
-import mission from "../../public/icons/mission.png";
+import GradeVIIcon from "../../public/graphics/circle-group-1.svg";
+import GradeVIIIIcon from "../../public/graphics/circle-group-2.svg";
+import OLevelIcon from "../../public/graphics/circle-group-3.svg";
+import GradeVIIIcon from "../../public/graphics/square-group.svg";
+import analytics from "../../public/icons/analytics-up.png";
+import muscle from "../../public/icons/body-part-muscle.png";
+import brain from "../../public/icons/brain.png";
+import video from "../../public/icons/computer-video.png";
+import facebookIcon from "../../public/icons/facebook.png";
+import webSearch from "../../public/icons/global-search.png";
+import idea from "../../public/icons/idea.png";
+import instagramIcon from "../../public/icons/instagram.png";
+import liveStreaming from "../../public/icons/live-streaming.png";
+import locationIcon from "../../public/icons/location.png";
+import emailIcon from "../../public/icons/mail.png";
+import puzzle from "../../public/icons/puzzle.png";
 import quiz from "../../public/icons/quiz.png";
-import target from "../../public/icons/targeting.png";
-import test from "../../public/icons/test.png";
-import videoPlayer from "../../public/icons/video-player.png";
-import webinar from "../../public/icons/webinar.png";
+import search from "../../public/icons/search.png";
+import teacher from "../../public/icons/teacher.png";
+import userGroup from "../../public/icons/user-group.png";
+import youtubeIcon from "../../public/icons/youtube.png";
 import backpack from "../../public/images/backpack.png";
 import graduationCap from "../../public/images/graduation-cap.png";
 import openBook from "../../public/images/open-book.png";
 import pencilRuler from "../../public/images/pencil-ruler.png";
-import { Course, NavItem } from "../../types";
+import { NavItem } from "../../types";
+
+export const baseUrl = process.env.BASE_URL || "https://backend.schoolwits.com";
 
 export const navItems: NavItem[] = [
   { type: "link", title: "Home", link: "/" },
@@ -45,47 +54,43 @@ export const navItems: NavItem[] = [
       {
         type: "link",
         icon: graduationCap,
-        title: "O Levels [Grade IX & X]",
+        title: "O Levels [IX & X]",
         link: "/grades/o",
       },
     ],
   },
-  { type: "link", title: "Contact Us", link: "/contact-us" },
   { type: "link", title: "About Us", link: "/about-us" },
+  { type: "link", title: "Contact Us", link: "/contact-us" },
 ];
 
 export const grades = [
   {
-    grade: "VI",
-    illustration: backpack,
-    gradient: {
-      from: "#b1e3fa",
-      to: "#38bdf8",
-    },
+    grade: "vi",
+    title: "VI",
+    link: "/grades/vi",
+    classes: 12,
+    Icon: GradeVIIcon,
   },
   {
-    grade: "VII",
-    illustration: pencilRuler,
-    gradient: {
-      from: "#8cedbf",
-      to: "#18a864",
-    },
+    grade: "vii",
+    title: "VII",
+    link: "/grades/vii",
+    classes: 18,
+    Icon: GradeVIIIcon,
   },
   {
-    grade: "VIII",
-    illustration: openBook,
-    gradient: {
-      from: "#b1cdfa",
-      to: "#3b82f6",
-    },
+    grade: "viii",
+    title: "VIII",
+    link: "/grades/viii",
+    classes: 32,
+    Icon: GradeVIIIIcon,
   },
   {
-    grade: "O",
-    illustration: graduationCap,
-    gradient: {
-      from: "#e0d9ff",
-      to: "#5a3bd7",
-    },
+    grade: "o",
+    title: "IX - X",
+    link: "/grades/o",
+    classes: 25,
+    Icon: OLevelIcon,
   },
 ];
 
@@ -119,7 +124,7 @@ export const lessonHighlights = [
     videoLink: "https://youtu.be/ecijTio-ZzU",
   },
   {
-    subject: "Additional Mathematics",
+    subject: "Additional Math",
     title: "Challenge your mind beyond the basics.",
     description:
       "Additional Mathematics deepens your understanding of functions, calculus, and algebra. Ideal for advanced learners ready to tackle higher-level math with clarity and confidence.",
@@ -131,7 +136,7 @@ export const promoVideoLink = "https://youtu.be/J-lW0RyWgVg";
 
 export const whyChooseUs = [
   {
-    icon: videoPlayer,
+    icon: video,
     title: "Binge-Worthy Lessons",
     description:
       "Engaging video lessons designed to alleviate online learning monotony while ensuring balanced screen time.",
@@ -143,25 +148,25 @@ export const whyChooseUs = [
       "Interactive quizzes to reinforce learning and assess comprehension.",
   },
   {
-    icon: test,
+    icon: liveStreaming,
     title: "Ready for the Real Thing",
     description:
       "Evaluation after completion of each topic with exam-style questions.",
   },
   {
-    icon: fileDownload,
+    icon: userGroup,
     title: "Your Learning, On Your Terms",
     description:
       "Downloadable course contents for convenient review and self-paced learning.",
   },
   {
-    icon: mentor,
+    icon: teacher,
     title: "Mentors Who Go All In",
     description:
       "Passionate educators with extensive expertise to guide the student every step of the way.",
   },
   {
-    icon: graph,
+    icon: analytics,
     title: "Track It. Smash It. Repeat.",
     description:
       "Prompt feedback and regular performance metrics for self-assessment and targeted enhancement, ensuring continual progress.",
@@ -173,309 +178,74 @@ export const feedbacks = [
     quote:
       "I like how Sir breaks down each lecture and delivers it to us students. Especially the way he explains each lecture in a different and easier way every time — both elaborately and simply, depending on the student who is struggling.",
     name: "Arshiya Azeen Athir",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "I really like how supportive and friendly the teacher is. He made sure everyone understood the lessons and was always ready to help. It made learning enjoyable and boosted my confidence a lot.",
     name: "Anonymous",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "School wits did a really great job. They are very patient. They teach a student until they understood properly.",
     name: "Ravid Yusuf",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "Due to the teacher , we rarely forget any answers because he tends to repeat the answers until we are fully aware of it.",
     name: "Anonymous",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "Through out the year it was very nice experience with School wits one thing I really liked was the friendly and the helpful  teacher he really made learning easier.",
     name: "Shazia Noor",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote:
       "Everything, including lecture videos, offline lectures were really great and comfortable, really got so much help from our Sir, thanks for a nice session.",
     name: "Anonymous",
-    title: "Grade: VIII",
+    grade: "VIII",
   },
   {
     quote: "Takes more classes and gives time.",
     name: "Tasfia Akter",
-    title: "Grade: VII",
+    grade: "VII",
   },
 ];
 
-export const courses: Record<string, Course[]> = {
-  "vi-vii": [
-    {
-      type: "current",
-      title: "Must-Know Concepts of Mathematics",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person",
-      schedule: "10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "This foundational course focuses on essential mathematics concepts that build a strong base for advanced topics.",
-      topics: [
-        "Algebra and Algebraic Equations",
-        "Directed Numbers",
-        "Prime Factorization",
-        "LCM & HCF",
-        "Word Problem Applications",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Basics of Computer Programming with Python",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: "Online | Requires a computer",
-      schedule: "10 sessions | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "A beginner-friendly course designed to introduce students to fundamental programming logic and Python syntax.",
-      topics: [
-        "Algorithms, Flowcharts, Pseudocode",
-        "Variables, Input/Output",
-        "Conditional & Looping Structures (if-else, for, while)",
-      ],
-      features: [
-        "10 Class Recordings",
-        "20+ Practice Problems",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "regular",
-      title: " Beyond the Bell: Study Support",
-      session: "2025-2026",
-      duration: "5 July - 18 December 2025",
-      mode: "In-person | 4 classes/week | 70 minutes each",
-      fees: "BDT 10,000/month (Total: BDT 60,000)",
-      earlyBird: "BDT 2,000 off in July (if registered before 30 June)",
-      subjects: ["Mathematics", "Physics", "Chemistry", "Biology"],
-      features: [
-        "Structured Lecture notes & Videos lessons",
-        "Worksheets & Quizzes",
-        "Remedial sessions & Topic-end assessments with Exam-style questions",
-      ],
-    },
-  ],
-  viii: [
-    {
-      type: "current",
-      title: "Must-Know Concepts of Mathematics - Syllabus D (4024)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "This course is designed to solidify fundamental math skills needed for higher-level topics.",
-      topics: [
-        "Using a calculator-dos and don'ts",
-        "Inequality",
-        "Surds",
-        "Bearings",
-        "Vectors",
-        "Probability",
-        "Statistics (Mean, Median, Mode)",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Must-Know Concepts of Additional Mathematics (4037)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "This course covers essential math concepts that lay the groundwork for advanced learning.",
-      topics: [
-        "Division of polynomials",
-        "Factor theorem",
-        "Modulus functions",
-        "Quadratic and Cubic inequalities- their moduli and graphs",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Basics of Computer Programming with Python",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: "Online live session | Requires a computer",
-      schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "An easy-to-follow course that introduces students to basic programming logic and Python syntax",
-      topics: [
-        "Algorithms, Flowcharts, Pseudocode",
-        "Variables, Input/Output",
-        "Conditional & Looping Structures (if-else, for, while)",
-      ],
-      features: [
-        "10 Class Recordings",
-        "20+ Practice Problems",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "regular",
-      title: "Beyond the Bell: Study Support",
-      session: "2025-2026",
-      duration: "5 July - 18 December 2025",
-      mode: "In-person | 3 classes/week per subject | 70 minutes each",
-      fees: "BDT 4,000/month per subject",
-      earlyBird: "BDT 1,000 off/subject in July (if registered before 30 June)",
-      subjects: [
-        "Mathematics-Syllabus D (4024)",
-        "Additional Mathematics (4037)",
-        "Physics (5054)",
-      ],
-      features: [
-        "Structured Lecture notes & Videos lessons",
-        "Worksheets & Quizzes",
-        "Remedial sessions & Topic-end assessments with Exam-style questions",
-      ],
-    },
-  ],
-  o: [
-    {
-      type: "current",
-      title: " Must-Know Concepts of Mathematics - Syllabus D (4024)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "Builds essential math skills that support deeper understanding in Syllabus D and beyond.",
-      topics: [
-        "Interpreting Distance-time and Speed-time graphs",
-        "Trigonometry-3D problems",
-        "Sine, cosine and tangent for any angle",
-        "The sine rule",
-        "The cosine rule",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Must-Know Concepts of Additional Mathematics (4037)",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: " In-person | 10 classes | 60 minutes each",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "Prepares students for the analytical depth and challenges of Additional Mathematics.",
-      topics: [
-        "First order derivative rules",
-        "Derivatives of exponential, logarithmic and trigonometric functions",
-        "Applications of differentiation in kinematics",
-      ],
-      features: [
-        "10 Lecture Notes",
-        "10 Video Lessons",
-        "5 Worksheets",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "current",
-      title: "Basics of Computer Programming with Python",
-      session: "2025-2026",
-      duration: "15 June - 28 June 2025",
-      mode: "Online live session | Requires a computer",
-      schedule: " 10 sessions | 60 minutes each | Up to 15 students only",
-      fees: "BDT 5,000",
-      earlyBird: "BDT 4,500 before 10 June",
-      overview:
-        "A step-by-step course guiding students from basic programming logic to advanced Python skills.",
-      topics: [
-        "Algorithms, Flowcharts, Pseudocode",
-        "Variables, Input/Output",
-        "Conditional & Looping Structures (if-else, for, while)",
-      ],
-      features: [
-        "10 Class Recordings",
-        "20+ Practice Problems",
-        "5 Quizzes",
-        "2 Exams",
-        "1 Remedial Session",
-      ],
-    },
-    {
-      type: "regular",
-      title: "Beyond the Bell: Study Support",
-      session: "2025-2026",
-      duration: "5 July - 18 December 2025",
-      mode: "In-person | 3 classes/week per subject | 70 minutes each",
-      fees: "BDT 4,000/month per subject",
-      earlyBird: "BDT 1,000 off/subject in July (if registered before 30 June)",
-      note: "Covers half of the CAIE O-Level syllabus, to be completed in full by July 2026",
-      subjects: [
-        "Mathematics-Syllabus D (4024)",
-        "Additional Mathematics (4037)",
-        "Physics (5054)",
-      ],
-      features: [
-        "Structured Lecture notes & Videos lessons",
-        "Worksheets & Quizzes",
-        "Remedial sessions & Topic-end assessments with Exam-style questions",
-      ],
-    },
-  ],
-};
+export const faq = [
+  {
+    question: 'What is the "Beyond the Bell" program?',
+    answer:
+      "It's a comprehensive academic support program beyond a student's regular school hour, designed to foster confidence and mastery through dynamic, engaging, and relevant learning experiences",
+  },
+  {
+    question: "Which subjects are offered for each grade level?",
+    answer:
+      "Grade VI & VII: Mathematics, Physics, Chemistry, Biology. Grade VIII & IX/X: Mathematics (Syllabus D), Additional Mathematics, Physics.",
+  },
+  {
+    question:
+      "What's the core difference between In-Person and Online learning programs?",
+    answer:
+      "In-person offers personalized, tech-enabled classroom learning with remedial sessions. Online is a self-paced digital program, available if in-person batches are full. Both include digital study materials.",
+  },
+  {
+    question: "What is School Wits' core teaching philosophy?",
+    answer:
+      "Our philosophy is to spark curiosity, not stress. We achieve this through personalized attention, dynamic tech-integrated lessons, and a focus on discovery and critical thinking, building confidence beyond textbooks.",
+  },
+  {
+    question:
+      "Will School Wits offer other subjects besides the current core sciences and math?",
+    answer:
+      "Yes, we plan to introduce additional courses, such as English Language and Computer Programming, at a later stage. Please stay tuned to our announcements for updates.",
+  },
+];
 
 export const curriculums = [
   {
@@ -499,6 +269,7 @@ export const curriculums = [
 export const FIELD_NAMES = {
   email: "Email",
   password: "Password",
+  confirmPassword: "Confirm Password",
   fullName: "Full name",
   contact: "Contact Number",
   fatherName: "Father's name",
@@ -506,6 +277,7 @@ export const FIELD_NAMES = {
   guardianEmail: "Guardian's email",
   guardianContact: "Guardian's contact",
   currentSchool: "Current School Name",
+  message: "Message",
   curriculum: "Curriculum",
   grade: "Grade",
   dateOfBirth: "Date of birth",
@@ -515,6 +287,7 @@ export const FIELD_TYPES = {
   fullName: "text",
   email: "email",
   password: "password",
+  confirmPassword: "password",
 };
 
 export const terms = [
@@ -528,75 +301,91 @@ export const terms = [
   "Fees must be paid in full upfront, inclusive of bank charges for online transactions.",
 ];
 
-export const aboutUs = [
-  {
-    icon: lightbulb,
-    header: "It All Started With a Question...",
-    subHeader: "What if learning could spark curiosity, not stress?",
-    description:
-      "That simple question became the foundation of School Wits. We recognized how traditional education often left students feeling overwhelmed, disengaged, or uninspired. We set out to bridge the gap between rigid systems and the dynamic potential of digital learning.",
-  },
-  {
-    icon: webinar,
-    header: "How Our Classes Work ?",
-    description:
-      "Our in-person classes offer a focused, tech-enabled environment - with limited seats to ensure personalized attention. Classrooms are equipped with modern tools like interactive flat panels, projectors, and integrated video lessons - making every learning experience dynamic, visual, and engaging. Students benefit from regular performance insights, helping them stay aware of their progress and continuously improve - while also allowing parents to stay informed and actively involved in their learning journey.",
-  },
-  {
-    icon: growth,
-    header: "How Are We Different ?",
-    description:
-      "School Wits isn't just a typical learning platform - it's a school of wits, where sharp minds grow sharper, and creativity leads the way. Here, learning isn't about cramming facts it's about discovering ideas, asking the right questions, and building the confidence to explore beyond textbooks.",
-  },
-  {
-    icon: mission,
-    header: "Our Mission",
-    description:
-      "At School Wits, our mission is to make e-learning accessible, engaging, and effective for every aspiring young mind. We aim to nurture curiosity, build goal-driven foundational skills, and empower students through interactive digital learning that blends academic excellence with real-world relevance.",
-  },
-  {
-    icon: target,
-    header: "Our Vision",
-    description:
-      "Our vision is to build a trusted global platform where students can unlock their full potential through personalized learning experiences and innovative teaching methods. We envision establishing Bangladesh as a global hub for quality education, shaping a generation of confident, skilled, and future-ready learners through cutting-edge digital schooling.",
-  },
-];
-
 export const contactUs = {
   contacts: [
+    /* {
+      icon: callIcon,
+      title: "Call Us",
+      description: "+880-1898-898984",
+    }, */
     {
-      Icon: MdEmail,
-      title: "Reach Out Via Email",
-      link: "mailto:support@schoolwits.com",
-      description: "support@schoolwits.com",
-      button: "Send Email",
+      icon: emailIcon,
+      title: "Email Us",
+      description: "query@schoolwits.com",
     },
     {
-      Icon: BsFillTelephoneFill,
-      title: "Speak With Us Directly",
-      link: "tel:+8801898898984",
-      description: "+880-1898-898984",
-      button: "Call Us",
+      icon: locationIcon,
+      title: "Visit Us",
+      description: "Block F, Road 7, Bashundhara R/A, Dhaka",
     },
   ],
   socials: [
     {
-      Icon: FaFacebookF,
+      icon: facebookIcon,
       title: "Facebook",
       link: "https://www.facebook.com/share/16Wg6y8ELd/",
-      button: "Like",
     },
     {
-      Icon: FaInstagram,
+      icon: instagramIcon,
       title: "Instagram",
       link: "https://www.instagram.com/schoolwits?igsh=dDQ3MzY0OXZ4b2hr",
-      button: "Follow",
     },
     {
-      Icon: FaYoutube,
+      icon: youtubeIcon,
       title: "YouTube",
       link: "https://youtube.com/@schoolwits?feature=shared",
-      button: "Subscribe",
     },
   ],
 };
+
+export const howAreWeDifferent = [
+  {
+    icon: idea,
+    title: "A School of Wits",
+    description:
+      "School Wits sharpens minds through creativity and critical thinking",
+  },
+  {
+    icon: brain,
+    title: "Fostering Creativity",
+    description:
+      "Creativity drives learning, helping students think beyond conventional boundaries",
+  },
+  {
+    icon: search,
+    title: "Discover, Not Memorize",
+    description:
+      "Learning at School Wits is about discovering ideas rather than simply cramming facts",
+  },
+  {
+    icon: puzzle,
+    title: "Encouraging Curiosity",
+    description:
+      "Students are encouraged to ask the right questions and explore new concepts",
+  },
+  {
+    icon: muscle,
+    title: "Building Confidence",
+    description:
+      "The platform helps students build the confidence to think critically and independently",
+  },
+  {
+    icon: webSearch,
+    title: "Beyond Textbooks",
+    description:
+      "At School Wits, the focus is on exploring ideas beyond the limits of traditional textbooks",
+  },
+];
+
+export const graphBarColors = [
+  "#2FBC88",
+  "#7C60DE",
+  "#F7485F",
+  "#FFA528",
+  "#F774A5",
+  "#1E3A8A",
+  "#D97706",
+  "#047857",
+  "#9D174D",
+  "#6B7280",
+];

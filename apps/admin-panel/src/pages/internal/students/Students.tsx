@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
+import { BsSendExclamation } from "react-icons/bs";
 import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -64,6 +65,13 @@ export function Students() {
               <Link to={`${row.original.id}`}>
                 <FaEdit />
                 Edit
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild className="flex items-center gap-2">
+              <Link to={`/notices/send/individual/${row.original.id}`}>
+                <BsSendExclamation />
+                Send Notice
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

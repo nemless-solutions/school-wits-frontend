@@ -9,7 +9,7 @@ import {
 } from "@school-wits/ui";
 import * as React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo-black.png";
+import logo from "../../assets/logo-horizontal.png";
 import { sidebarLinks } from "../../constants";
 import { useAuth } from "../../contexts/AuthContext";
 import { MainMenu } from "./MainMenu";
@@ -35,7 +35,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <Link to="/">
-                <img className="w-30" src={logo} alt="Logo" />
+                <img className="w-[160px]" src={logo} alt="Logo" />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

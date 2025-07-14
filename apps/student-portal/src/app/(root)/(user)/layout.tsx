@@ -8,7 +8,7 @@ export default async function UserLayout({
 }) {
   const session = await auth();
 
-  if (!session) {
+  if (!session?.token) {
     return notFound();
   }
 

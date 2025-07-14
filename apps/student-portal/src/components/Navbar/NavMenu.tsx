@@ -31,7 +31,7 @@ export function NavMenu({ title, content, onClick }: NavMenuProps) {
                 <li key={index}>
                   <NavigationMenuLink asChild>
                     <Link href={item?.link || "/"}>
-                      <div className="flex h-full gap-x-2 w-full select-none items-center rounded-md bg-gradient-to-b from-muted/50 to-muted px-6 py-1 no-underline outline-none focus:shadow-md text-secondary">
+                      <div className="flex h-full gap-x-2 w-full select-none items-center rounded-md bg-gradient-to-b from-muted/10 to-muted px-6 py-1 no-underline outline-none focus:shadow-md text-black">
                         <Image
                           className="block w-10 object-cover"
                           src={item?.icon || ""}
@@ -39,9 +39,7 @@ export function NavMenu({ title, content, onClick }: NavMenuProps) {
                           height={50}
                           alt={item.title}
                         />
-                        <span className="font-roboto-slab text-primary font-semibold">
-                          {item.title}
-                        </span>
+                        <span>{item.title}</span>
                       </div>
                     </Link>
                   </NavigationMenuLink>

@@ -1,6 +1,7 @@
 import { LucideBookPlus } from "lucide-react";
 import { AiOutlineHome } from "react-icons/ai";
-import { FaChalkboardTeacher } from "react-icons/fa";
+import { FaChalkboardTeacher, FaRegBell } from "react-icons/fa";
+import { FiBook } from "react-icons/fi";
 import { PiStudentDuotone } from "react-icons/pi";
 import { SidebarLink } from "../../types";
 
@@ -25,6 +26,38 @@ export const sidebarLinks: SidebarLink[] = [
     icon: LucideBookPlus,
     link: "/enrolments",
   },
+  {
+    name: "Courses",
+    icon: FiBook,
+    sublinks: [
+      {
+        name: "Courses",
+        link: "/courses",
+      },
+      {
+        name: "Topics",
+        link: "/topics",
+      },
+      {
+        name: "Files",
+        link: "/files",
+      },
+      {
+        name: "Quiz",
+        link: "/quiz",
+      },
+    ],
+  },
+  /* {
+    name: "Attendances",
+    icon: MdOutlineChecklist,
+    link: "/attendances",
+  }, */
+  {
+    name: "Notices",
+    icon: FaRegBell,
+    link: "/notices",
+  },
 ];
 
 export const curriculums = [
@@ -46,6 +79,8 @@ export const curriculums = [
   },
 ];
 
+export const grades = ["VI", "VII", "VIII", "IX", "X"];
+
 export const FIELD_NAMES = {
   email: "Email",
   password: "Password",
@@ -59,10 +94,27 @@ export const FIELD_NAMES = {
   curriculum: "Curriculum",
   grade: "Grade",
   dateOfBirth: "Date of birth",
+  title: "Title",
+  mode: "Mode",
+  type: "Type",
+  uid: "UID",
+  fee: "Fee",
+  discountedFee: "Discounted fee",
+  discountLastDate: "Discount last date",
+  description: "Description",
+  questionMark: "Question Mark",
+  duration: "Duration (in minutes)",
+  details: "Details",
+  correct: "Set as Correct Answer",
 };
 
 export const FIELD_TYPES = {
   fullName: "text",
   email: "email",
   password: "password",
+  fee: "number",
+  discountedFee: "number",
+  file: "file",
+  questionMark: "number",
+  duration: "number",
 };

@@ -15,7 +15,7 @@ export const ToggleButton = ({
         e.stopPropagation();
         setSidebarOpen(!sidebarOpen);
       }}
-      className="block rounded-sm p-1.5 shadow-sm md:hidden z-[9999]"
+      className="block rounded-sm p-1.5 shadow-sm md:hidden z-[9999] bg-white/50"
     >
       <span className="relative block h-6 w-6 cursor-pointer">
         <span className="block absolute right-0 h-full w-full">

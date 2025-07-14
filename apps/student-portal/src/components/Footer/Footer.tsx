@@ -1,61 +1,38 @@
-import { contactUs } from "@/constants";
 import Image from "next/image";
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
+import logoVertical from "../../../public/images/logo-vertical.png";
+import { Separator } from "../client-ui";
+import { SocialLinks } from "../SocialLinks/SocialLinks";
 
 export function Footer() {
   return (
-    <div className="bg-slate-900 py-20">
-      <div className="main-container">
-        <div className="flex justify-center">
-          <div>
+    <div className="bg-white pt-10 pb-2 relative z-50 shadow-[0px_-6px_12px_0px_rgba(0,0,0,0.05)]">
+      <div className="mx-4 md:mx-12">
+        <div className="flex flex-col md:flex-row items-center text-center md:text-start justify-between pb-8">
+          <div className="mb-8">
             <Image
-              className="p-2 w-[210px] h-[60px] rounded-xs"
-              src="/images/logo-white.png"
+              className="w-[130px] md:w-[180px] mx-auto md:mx-0"
+              src={logoVertical}
               alt="logo"
-              width={100}
-              height={100}
+              width={400}
+              height={240}
             />
+            <p className="text-lg font-medium text-neutral-800 mt-3 ml-2">
+              Quality education at your fingertips!
+            </p>
           </div>
-        </div>
-        <div className="mt-12 text-neutral-300">
-          <h3 className="text-center text-xl font-semibold mb-3">
-            Contact Us Via
-          </h3>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="flex items-center gap-2">
-              <MdEmail className="text-xl" />
-              <a href="mailto:support@schoolwits.com">support@schoolwits.com</a>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-16">
+            <div>
+              <h3 className="font-semibold mb-2 md:mb-6">Contact Us</h3>
+              {/*  <p>+880 1898-898984</p> */}
+              <p>query@schoolwits.com </p>
             </div>
-            <div className="h-6 w-0.5 bg-white/40 sm:block hidden"></div>
-            <div className="flex items-center gap-2">
-              <BsFillTelephoneFill className="text-xl" />
-              <a href="tel:+8801898-898984">+880 1898-898984</a>
-            </div>
+            <SocialLinks />
           </div>
         </div>
-        <div className="mt-12 text-neutral-300">
-          <h3 className="text-center text-xl font-semibold mb-4">
-            Follow Us On
-          </h3>
-          <div className="flex items-center justify-center gap-8">
-            {contactUs.socials.map((s, i) => (
-              <div key={i}>
-                <a
-                  className="text-3xl text-neutral-400 hover:text-white"
-                  href={s.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <s.Icon />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="text-center text-neutral-200/30 mt-16">
-          <p>© 2025 School Wits. All rights reserved</p>
-        </div>
+        <Separator />
+        <p className="py-8 text-center">
+          © 2025 School Wits. All rights reserved
+        </p>
       </div>
     </div>
   );

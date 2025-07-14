@@ -1,15 +1,33 @@
 import { SidebarInset, SidebarProvider } from "@school-wits/ui";
 import { Route, Routes } from "react-router-dom";
+import { CourseList } from "../components/Lists/CourseList";
+import { TopicList } from "../components/Lists/TopicList";
+import { VideoList } from "../components/Lists/VideoList";
 import { AppSidebar } from "../components/Sidebar/AppSidebar";
 import { SiteHeader } from "../components/SiteHeader/SiteHeader";
 import { NotFound } from "../pages/error/NotFound";
+import { Courses } from "../pages/internal/courses/courses/Courses";
+import { CreateCourse } from "../pages/internal/courses/courses/CreateCourse";
+import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
+import { CourseFiles } from "../pages/internal/courses/files/CourseFiles";
+import { CreateFile } from "../pages/internal/courses/files/CreateFile";
+import { CreateQuiz } from "../pages/internal/courses/quiz/CreateQuiz";
+import { CreateQuizQuestion } from "../pages/internal/courses/quiz/CreateQuizQuestion";
+import { Questions } from "../pages/internal/courses/quiz/Questions";
+import { Quiz } from "../pages/internal/courses/quiz/Quiz";
+import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
+import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
 import { Enrolment } from "../pages/internal/enrolment/Enrolment";
 import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
 import { Home } from "../pages/internal/Home";
+import { Notices } from "../pages/internal/notices/Notices";
+import { SendNotice } from "../pages/internal/notices/SendNotice";
+import { SendNoticeToIndividual } from "../pages/internal/notices/SendNoticeToIndividual";
 import { CreateStudent } from "../pages/internal/students/CreateStudent";
 import { EditStudent } from "../pages/internal/students/EditStudent";
 import { Students } from "../pages/internal/students/Students";
 import { Teachers } from "../pages/internal/teachers/Teachers";
+import { CreateQuizAnswer } from "../pages/internal/courses/quiz/CreateQuizAnswer";
 
 export default function Page() {
   return (
@@ -37,6 +55,65 @@ export default function Page() {
                 <Route
                   path="/enrolments/:userId"
                   element={<ManageEnrolment />}
+                />
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/add" element={<CreateCourse />} />
+                <Route path="/courses/:id" element={<EditCourse />} />
+                <Route path="/topics" element={<CourseList />} />
+                <Route path="/topics/:courseId" element={<CourseTopics />} />
+                <Route path="/topics/:courseId/add" element={<CreateTopic />} />
+                <Route path="/files" element={<CourseList />} />
+                <Route path="/files/:courseId" element={<TopicList />} />
+                <Route
+                  path="/files/:courseId/:topicId"
+                  element={<CourseFiles />}
+                />
+                <Route
+                  path="/files/:courseId/:topicId/add"
+                  element={<CreateFile />}
+                />
+                <Route path="/quiz" element={<CourseList />} />
+                <Route path="/quiz/:courseId" element={<TopicList />} />
+                <Route
+                  path="/quiz/:courseId/:topicId"
+                  element={<VideoList />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId"
+                  element={<Quiz />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/add"
+                  element={<CreateQuiz />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId"
+                  element={<Questions />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/add"
+                  element={<CreateQuizQuestion />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/:questionId"
+                  element={<CreateQuizAnswer />}
+                />
+                <Route path="/notices" element={<Notices />} />
+                <Route
+                  path="/notices/send/all"
+                  element={<SendNotice to="all" />}
+                />
+                <Route
+                  path="/notices/send/group"
+                  element={<SendNotice to="group" />}
+                />
+                <Route
+                  path="/notices/send/individual"
+                  element={<SendNoticeToIndividual />}
+                />
+                <Route
+                  path="/notices/send/individual/:userId"
+                  element={<SendNotice />}
                 />
                 <Route path="*" element={<NotFound />} />
               </Routes>
