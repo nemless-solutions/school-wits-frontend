@@ -18,8 +18,7 @@ export default async function GradeWiseCourses({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const gradeSlug = (await params).grade.toLowerCase();
-  const mode =
-    (await searchParams).mode === "in-person" ? "IN_PERSON" : "ONLINE";
+  const mode = (await searchParams).mode === "online" ? "ONLINE" : "IN_PERSON";
 
   if (!_grades.includes(gradeSlug)) notFound();
 

@@ -12,7 +12,7 @@ export function LocationMap() {
           className="md:text-start text-center"
         >
           <h2 className="text-[28px] sm:text-4xl md:text-[54px] text-center leading-[100%] md:leading-[64px] font-semibold text-secondary capitalize mb-2 font-recoleta">
-            We Are <span className="text-black">On</span> Map
+            Find Us on the Map
           </h2>
         </MotionDiv>
         <MotionDiv

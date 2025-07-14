@@ -81,9 +81,6 @@ export default async function CourseDetails({
                   Tk. {courseDetails.course.fee.toLocaleString()}{" "}
                   <span className="text-sm text-neutral-600">/ month</span>
                 </p>
-                <p className="text-sm md:text-base text-neutral-500">
-                  Before <span className="font-semibold">10 July</span>
-                </p>
               </div>
             </div>
             <EnrollBundleButton
@@ -105,9 +102,6 @@ export default async function CourseDetails({
             <p className="text-lg md:text-2xl font-semibold">
               Tk. {courseDetails.course.fee.toLocaleString()}{" "}
               <span className="text-sm text-neutral-600">/ month</span>
-            </p>
-            <p className="text-xs md:text-base text-neutral-500">
-              Before <span className="font-semibold">10 July</span>
             </p>
           </div>
         </div>
