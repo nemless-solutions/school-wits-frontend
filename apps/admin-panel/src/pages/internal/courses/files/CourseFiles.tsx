@@ -1,6 +1,13 @@
-import { Button } from "@school-wits/ui";
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { FaPlus } from "react-icons/fa";
+import { FaEdit, FaPlus } from "react-icons/fa";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link, useParams } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../../api/api-calls";
@@ -31,6 +38,44 @@ export function CourseFiles() {
     {
       accessorKey: "type",
       header: "Type",
+    },
+    {
+      id: "actions",
+      cell: ({ row }) => (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
+              size="icon"
+            >
+              <HiOutlineDotsVertical />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-32">
+            <DropdownMenuItem asChild className="flex items-center gap-2">
+              <Link to={`${row.original.id}`}>
+                <FaEdit />
+                Edit
+              </Link>
+            </DropdownMenuItem>
+            {/* <DropdownMenuSeparator />
+            <DropdownMenuItem asChild variant="destructive">
+              <button
+                className="flex items-center gap-2 w-full"
+                onClick={() => {
+                  setId(row.original.id);
+                  setAlertOpen(true);
+                }}
+              >
+                <FaTrashAlt />
+                Delete
+              </button>
+            </DropdownMenuItem> */}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ),
     },
   ];
 

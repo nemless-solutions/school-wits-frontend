@@ -1,34 +1,76 @@
-import { Skeleton } from "@school-wits/ui";
-import { useParams } from "react-router-dom";
+import { Button, Skeleton } from "@school-wits/ui";
+import { useEffect, useState } from "react";
+import { FaPlus } from "react-icons/fa";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGet } from "../../../../api/api-calls";
 import { QuizAnswerForm } from "../../../../components/Forms/QuizAnswerForm";
 
 export function CreateQuizAnswer() {
-  const { questionId } = useParams();
+  const { quizId, questionId } = useParams();
+  const navigate = useNavigate();
 
-  const { data, isFetching } = useGet(`quiz_answer/${questionId}`);
+  const {
+    data: questionData,
+    isFetching,
+    refetch,
+  } = useGet(`quiz_question/${quizId}`);
+
+  const quiz = questionData?.find(
+    (quiz: { id: number }) => quiz.id === Number(quizId)
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [answersArray, setAnswersArray] = useState<any>([]);
+
+  useEffect(() => {
+    setAnswersArray([...(quiz?.answers || []), { title: "", correct: false }]);
+  }, [isFetching, quiz?.answers]);
 
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-8">Quiz Answers</h2>
       {isFetching ? (
-        <div className="space-y-4">
-          <Skeleton className="h-8 w-[600px]" />
-          <Skeleton className="h-8 w-[600px]" />
-          <Skeleton className="h-8 w-[600px]" />
-          <Skeleton className="h-8 w-[600px]" />
-        </div>
-      ) : data?.length > 0 ? (
-        <div className="space-y-4 text-lg">
-          {data.map((answer: { title: string }, index: number) => (
-            <p key={index}>
-              {index + 1}. {answer.title}
-            </p>
-          ))}
+        <div className="space-y-8 mt-4">
+          <Skeleton className="h-8 w-full max-w-[800px]" />
+          <Skeleton className="h-8 w-full max-w-[800px]" />
+          <Skeleton className="h-8 w-full max-w-[800px]" />
+          <Skeleton className="h-8 w-full max-w-[800px]" />
         </div>
       ) : (
         <div>
-          <QuizAnswerForm />
+          <div className="max-w-[700px] space-y-4">
+            {answersArray.length > 0 &&
+              answersArray.map(
+                (
+                  answer: { id: number; title: string; correct: boolean },
+                  index: number
+                ) => (
+                  <QuizAnswerForm
+                    questionId={Number(questionId)}
+                    quizAnswerId={answer.id}
+                    key={index}
+                    serial={index + 1}
+                    defaultValues={answer}
+                    onSuccess={() => refetch()}
+                  />
+                )
+              )}
+            <button
+              onClick={() =>
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                setAnswersArray((cur: any) => [
+                  ...cur,
+                  { title: "", correct: false },
+                ])
+              }
+              className="my-10 w-1/2 mx-auto min-w-[200px] border border-dashed border-neutral-300 p-2 rounded-md flex items-center justify-center text-neutral-400 gap-2 cursor-pointer hover:border-neutral-500 hover:text-neutral-500 duration-200"
+            >
+              <FaPlus /> Add Answer
+            </button>
+          </div>
+          <Button variant="destructive" onClick={() => navigate(-1)}>
+            Go Back
+          </Button>
         </div>
       )}
     </div>

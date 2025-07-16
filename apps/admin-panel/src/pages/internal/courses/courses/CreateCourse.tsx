@@ -14,7 +14,7 @@ export function CreateCourse() {
       toast.error("Something went wrong. Please try again.");
     } else if (isSuccess) {
       toast.success("Course Created.");
-      navigate("/students");
+      navigate(-1);
     }
   });
 

@@ -30,7 +30,7 @@ interface Props<T extends FieldValues> {
   submitText?: string;
 }
 
-export function NoticeForm<T extends FieldValues>({
+export function FileEditForm<T extends FieldValues>({
   schema,
   defaultValues,
   onSubmit,

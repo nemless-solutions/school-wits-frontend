@@ -35,8 +35,8 @@ export const courseSchema = z.object({
   title: z.string().min(3),
   description: z.string().min(10),
   fee: z.coerce.number().min(1, { message: "Fee must be greater than 0" }),
-  discountedFee: z.coerce.number().optional(),
-  discountLastDate: z.date().optional(),
+  discountedFee: z.coerce.number().optional().nullable(),
+  discountLastDate: z.date().optional().nullable(),
 });
 
 export const topicSchema = z.object({

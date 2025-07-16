@@ -108,8 +108,13 @@ export function FileForm({ topicId }: FileFormProps) {
           <p className="text-sm text-destructive">{errorMsg.file}</p>
         )}
       </div>
-      <div className="space-x-3 mt-8 pb-8">
-        <Button type="submit" size="lg" className="w-[100px]">
+      <div className="flex items-center gap-3 mt-8 pb-8">
+        <Button
+          type="submit"
+          disabled={isPending}
+          size="lg"
+          className="w-[100px]"
+        >
           {isPending ? (
             <Loader2Icon className="animate-spin scale-150" />
           ) : (

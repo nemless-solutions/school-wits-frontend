@@ -7,12 +7,14 @@ import {
   DropdownMenuTrigger,
 } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
+import { useState } from "react";
 import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link, useParams } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../../api/api-calls";
 import { DataTable } from "../../../../components/DataTable/DataTable";
+import { DeleteAlert } from "../../../../components/DeleteAlert/DeleteAlert";
 import { TableSkeleton } from "../../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
@@ -57,12 +59,17 @@ export function CourseTopics() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              variant="destructive"
-              className="flex items-center gap-2"
-            >
-              <FaTrashAlt />
-              Delete
+            <DropdownMenuItem asChild variant="destructive">
+              <button
+                className="flex items-center gap-2 w-full"
+                onClick={() => {
+                  setId(row.original.id);
+                  setAlertOpen(true);
+                }}
+              >
+                <FaTrashAlt />
+                Delete
+              </button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -71,10 +78,13 @@ export function CourseTopics() {
   ];
 
   const { courseId } = useParams();
-  const { data, isSuccess, isFetching } = useGet(
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [id, setId] = useState<number | null>(null);
+
+  const { data, isSuccess, isFetching, refetch } = useGet(
     `course_topic/course/${courseId}`
   );
-  const { data: courseData } = useGet(`course/${courseId}`);
+  const { data: courseData } = useGet(`course_topic/${courseId}`);
 
   return (
     <div>
@@ -102,6 +112,12 @@ export function CourseTopics() {
           </div>
         )}
       </div>
+      <DeleteAlert
+        open={alertOpen}
+        onOpenChange={setAlertOpen}
+        url={`course/${id}`}
+        onSuccess={() => refetch()}
+      />
     </div>
   );
 }

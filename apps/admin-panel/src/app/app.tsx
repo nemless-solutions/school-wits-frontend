@@ -17,6 +17,7 @@ export default function App() {
         newestOnTop={false}
         closeOnClick
         rtl={false}
+        pauseOnFocusLoss={false}
       />
       {/* checks for user ad token existence, token expiry and user permission */}
       {user && token && !isJwtExpired(token) ? (

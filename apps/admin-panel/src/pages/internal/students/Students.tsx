@@ -8,7 +8,7 @@ import {
 } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import { BsSendExclamation } from "react-icons/bs";
-import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaPlus } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -74,14 +74,14 @@ export function Students() {
                 Send Notice
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
+            {/* <DropdownMenuSeparator />
             <DropdownMenuItem
               variant="destructive"
               className="flex items-center gap-2"
             >
               <FaTrashAlt />
               Delete
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       ),
