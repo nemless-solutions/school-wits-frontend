@@ -106,6 +106,7 @@ export const FIELD_NAMES = {
   duration: "Duration (in minutes)",
   details: "Details",
   correct: "Set as Correct Answer",
+  locked: "Locked",
 };
 
 export const FIELD_TYPES = {
@@ -117,4 +118,5 @@ export const FIELD_TYPES = {
   file: "file",
   questionMark: "number",
   duration: "number",
+  locked: "checkbox",
 };

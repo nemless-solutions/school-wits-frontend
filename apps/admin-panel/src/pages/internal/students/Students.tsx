@@ -103,7 +103,9 @@ export function Students() {
   const [searchId, setSearchId] = useState<string | number>("");
 
   const { data, isSuccess, isFetching } = useGet(
-    `user/search?userId=${searchIdDebounced || ""}&name=${searchNameDebounced}`
+    `user/search?roleName=ROLE_STUDENT&userId=${
+      searchIdDebounced || ""
+    }&name=${searchNameDebounced}`
   );
 
   return (

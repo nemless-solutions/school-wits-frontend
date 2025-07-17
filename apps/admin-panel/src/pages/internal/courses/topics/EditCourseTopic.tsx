@@ -51,6 +51,7 @@ export function EditCourseTopic() {
           defaultValues={{
             title: data?.title || "",
             description: data?.description || "",
+            locked: data?.locked,
           }}
           onSubmit={(data) => {
             mutate(data);
