@@ -83,7 +83,7 @@ export function SignUpForm() {
       toast.success(`Successfully signed up`);
 
       setTimeout(() => {
-        router.push("/profile");
+        router.push("/dashboard");
       }, 1000);
     } else {
       toast.error(`Sign up failed. Please try again.`);

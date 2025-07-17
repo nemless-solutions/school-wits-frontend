@@ -4,11 +4,14 @@ import { UnAuthorized } from "@/components/UnAuthorized/UnAuthorized";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
 import { notFound } from "next/navigation";
+import { ReactNode } from "react";
 import { EnrolledCourse } from "../../../../../../types";
 
-export default async function CourseContent({
+export default async function CourseContentLayout({
+  children,
   params,
 }: {
+  children: ReactNode;
   params: Promise<{ id: string }>;
 }) {
   const id = (await params).id;

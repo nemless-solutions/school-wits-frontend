@@ -3,6 +3,7 @@
 import { fetcher } from "@/libs/fetcher";
 import { Loader2Icon } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { EnrolledCourse, Grade, User } from "../../../types";
@@ -30,6 +31,8 @@ export function EnrollButton({
   courseId,
   token,
 }: EnrollButtonProps) {
+  const router = useRouter();
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -82,6 +85,7 @@ export function EnrollButton({
 
       toast.success("Course Enrolled Successfully");
       setOpen(false);
+      router.push("/dashboard");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);

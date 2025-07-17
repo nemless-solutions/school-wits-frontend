@@ -41,7 +41,7 @@ export function SignInForm() {
 
     if (result.success) {
       toast.success(`Successfully signed in`);
-      router.push("/profile");
+      router.push("/dashboard");
     } else {
       toast.error(`Sign in failed. Please try again.`);
     }

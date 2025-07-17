@@ -48,7 +48,7 @@ export default async function Dashboard() {
                       <div className="mt-4 space-y-4 p-4">
                         {enrolledCourses.map((course) => (
                           <MotionDiv key={course.id}>
-                            <Link href={`/courses/content/${course.id}`}>
+                            <Link href={`/courses/content/${course.course.id}`}>
                               <CourseHorizontalCard
                                 course={course.course}
                                 status={course.paid}
