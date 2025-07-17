@@ -40,6 +40,7 @@ const UserAccess = ({
   return (
     <div className="py-2">
       <Switch
+        className="cursor-pointer"
         disabled={grantPending || revokePending}
         checked={isChecked}
         onCheckedChange={(checked) => {

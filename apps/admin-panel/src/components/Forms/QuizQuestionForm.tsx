@@ -54,7 +54,7 @@ export function QuizQuestionForm<T extends FieldValues>({
           onSubmit={form.handleSubmit(handleSubmit)}
           className="w-full space-y-6 mt-6 "
         >
-          <div className="space-y-2">
+          <div className="space-y-6">
             {Object.keys(defaultValues).map((field) => (
               <FormField
                 key={field}
