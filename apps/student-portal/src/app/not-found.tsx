@@ -26,7 +26,8 @@ export default function NotFound() {
               transition={{ duration: 0.5, easings: "easeInOut", delay: 0.6 }}
             >
               <p className="text-lg md:text-xl font-semibold capitalize text-destructive mb-8">
-                Could not find the page that you are looking for.
+                Could not find the page that you are looking for. Or you are not
+                logged in.
               </p>
             </MotionDiv>
             <MotionDiv

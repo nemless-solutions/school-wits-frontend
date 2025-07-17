@@ -15,16 +15,19 @@ export function CreateQuizAnswer() {
     refetch,
   } = useGet(`quiz_question/${quizId}`);
 
-  const quiz = questionData?.find(
-    (quiz: { id: number }) => quiz.id === Number(quizId)
+  const question = questionData?.find(
+    (question: { id: number }) => question.id === Number(questionId)
   );
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [answersArray, setAnswersArray] = useState<any>([]);
 
   useEffect(() => {
-    setAnswersArray([...(quiz?.answers || []), { title: "", correct: false }]);
-  }, [isFetching, quiz?.answers]);
+    setAnswersArray([
+      ...(question?.answers || []),
+      { title: "", correct: false },
+    ]);
+  }, [isFetching, question?.answers]);
 
   return (
     <div>

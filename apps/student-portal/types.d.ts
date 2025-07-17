@@ -110,3 +110,25 @@ export type Notice = {
   details: string;
   createdAt: Date;
 };
+
+export type CourseTopic = {
+  id: number;
+  title: string;
+  locked: boolean;
+};
+
+export type CourseFile = {
+  id: number;
+  type: string;
+  title: string;
+  description: string;
+  fileName: string;
+  fileUid: string;
+};
+
+export type Quiz = {
+  id: 1;
+  title: string;
+  duration: number;
+  questionMark: number;
+};

@@ -40,7 +40,7 @@ const TopicCreateForm = function ({ courseId }: { courseId: string | number }) {
           locked: true,
         }}
         onSubmit={(data) => {
-          mutate({ ...data, courseId });
+          mutate({ ...data, courseId, isLocked: data.locked });
         }}
         isLoading={isPending}
         onCancel={() => navigate(-1)}

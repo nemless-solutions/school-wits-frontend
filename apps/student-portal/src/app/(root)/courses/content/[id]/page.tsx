@@ -1,51 +1,9 @@
-import { auth } from "@/auth";
-import { PageHeader } from "@/components/PageHeader/PageHeader";
-import { UnAuthorized } from "@/components/UnAuthorized/UnAuthorized";
-import { baseUrl } from "@/constants";
-import { fetcher } from "@/libs/fetcher";
-import { notFound } from "next/navigation";
-import { EnrolledCourse } from "../../../../../../types";
-
-export default async function CourseContent({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const id = (await params).id;
-  const session = await auth();
-
-  if (!session?.token) notFound();
-
-  // const user = await fetcher<User>(`${baseUrl}/auth`, session?.token);
-  const enrolledCourses = await fetcher<EnrolledCourse[]>(
-    `${baseUrl}/enrolled_course`,
-    session?.token
-  );
-
-  const enrolledCourse = enrolledCourses.find(
-    (course) => course?.course?.id == +id
-  );
-
-  if (!enrolledCourse || enrolledCourse.paid === false) return <UnAuthorized />;
-
-  const course = enrolledCourse.course;
-  const courseTopics = await fetcher(
-    `${baseUrl}/course_topic/course/${id}`,
-    session.token
-  );
-
-  const res = await fetch(`${baseUrl}/course_file/download/3`, {
-    headers: {
-      Authorization: `Bearer ${session.token}`,
-    },
-  });
-
-  console.log(res.body);
-
+export default async function Content() {
   return (
-    <div>
-      <PageHeader header={`${course.title} (Grade ${course.grade})`} />
-      <div className="main-container py-20 text-2xl">Content Page</div>
+    <div className="h-full flex items-center justify-center p-4 border border-neutral-200 shadow-md rounded-lg">
+      <h3 className="font-semibold text-2xl text-neutral-400">
+        Pick a topic to get started
+      </h3>
     </div>
   );
 }
