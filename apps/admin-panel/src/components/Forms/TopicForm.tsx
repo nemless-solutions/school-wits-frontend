@@ -9,6 +9,7 @@ import {
   FormMessage,
   Input,
 } from "@school-wits/ui";
+import { cn } from "@school-wits/utils";
 import { Loader2Icon } from "lucide-react";
 import {
   DefaultValues,
@@ -54,7 +55,7 @@ export function TopicForm<T extends FieldValues>({
           onSubmit={form.handleSubmit(handleSubmit)}
           className="w-full space-y-6 mt-6 "
         >
-          <div className="space-y-2">
+          <div className="space-y-6">
             {Object.keys(defaultValues).map((field) => (
               <FormField
                 key={field}
@@ -67,9 +68,16 @@ export function TopicForm<T extends FieldValues>({
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-white/40 focus:bg-white/80"
+                        className={cn(
+                          "bg-white/40 focus:bg-white/80",
+                          field.name === "locked" &&
+                            "w-[24px] h-[24px] mt-4 ml-2"
+                        )}
                         type={
                           FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
+                        }
+                        defaultChecked={
+                          field.name === "locked" ? defaultValues.locked : false
                         }
                         {...field}
                       />
@@ -80,8 +88,13 @@ export function TopicForm<T extends FieldValues>({
               />
             ))}
           </div>
-          <div className="space-x-3 mt-8 pb-8">
-            <Button type="submit" size="lg" className="w-[100px]">
+          <div className="flex items-center gap-4 mt-8 pb-8">
+            <Button
+              disabled={isLoading}
+              type="submit"
+              size="lg"
+              className="w-[100px]"
+            >
               {isLoading ? (
                 <Loader2Icon className="animate-spin scale-150" />
               ) : (

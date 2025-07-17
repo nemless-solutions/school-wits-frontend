@@ -37,6 +37,7 @@ const TopicCreateForm = function ({ courseId }: { courseId: string | number }) {
         defaultValues={{
           title: "",
           description: "",
+          locked: true,
         }}
         onSubmit={(data) => {
           mutate({ ...data, courseId });

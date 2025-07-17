@@ -184,7 +184,7 @@ export function useDelete(uri: string, options?: AxiosRequestConfig) {
   } = useMutation({
     mutationKey: [uri],
     mutationFn: async (id) => {
-      const res = await axios.delete(`${baseUrl}/${uri}/${id}`, {
+      const res = await axios.delete(`${baseUrl}/${uri}`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
         ...options,

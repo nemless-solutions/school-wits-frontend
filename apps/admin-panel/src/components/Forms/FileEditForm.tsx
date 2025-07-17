@@ -30,7 +30,7 @@ interface Props<T extends FieldValues> {
   submitText?: string;
 }
 
-export function QuizQuestionForm<T extends FieldValues>({
+export function FileEditForm<T extends FieldValues>({
   schema,
   defaultValues,
   onSubmit,
@@ -63,20 +63,21 @@ export function QuizQuestionForm<T extends FieldValues>({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="capitalize font-semibold">
-                      {field.name === "title"
-                        ? "Question"
-                        : FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
+                      {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        className="bg-white/40 focus:bg-white/80"
-                        type={
-                          FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
-                        }
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
+
+                    <>
+                      <FormControl>
+                        <Input
+                          className="bg-white/40 focus:bg-white/80"
+                          type={
+                            FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </>
                   </FormItem>
                 )}
               />
@@ -85,8 +86,8 @@ export function QuizQuestionForm<T extends FieldValues>({
           <div className="flex items-center gap-3 mt-8 pb-8">
             <Button
               type="submit"
-              size="lg"
               disabled={isLoading}
+              size="lg"
               className="w-[100px]"
             >
               {isLoading ? (

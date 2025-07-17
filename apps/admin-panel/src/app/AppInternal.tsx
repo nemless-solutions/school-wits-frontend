@@ -11,12 +11,17 @@ import { CreateCourse } from "../pages/internal/courses/courses/CreateCourse";
 import { EditCourse } from "../pages/internal/courses/courses/EditCourse";
 import { CourseFiles } from "../pages/internal/courses/files/CourseFiles";
 import { CreateFile } from "../pages/internal/courses/files/CreateFile";
+import { EditCourseFile } from "../pages/internal/courses/files/EditCourseFile";
 import { CreateQuiz } from "../pages/internal/courses/quiz/CreateQuiz";
+import { CreateQuizAnswer } from "../pages/internal/courses/quiz/CreateQuizAnswer";
 import { CreateQuizQuestion } from "../pages/internal/courses/quiz/CreateQuizQuestion";
+import { EditQuiz } from "../pages/internal/courses/quiz/EditQuiz";
+import { EditQuizQuestion } from "../pages/internal/courses/quiz/EditQuizQuestion";
 import { Questions } from "../pages/internal/courses/quiz/Questions";
 import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
+import { EditCourseTopic } from "../pages/internal/courses/topics/EditCourseTopic";
 import { Enrolment } from "../pages/internal/enrolment/Enrolment";
 import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
 import { Home } from "../pages/internal/Home";
@@ -27,7 +32,6 @@ import { CreateStudent } from "../pages/internal/students/CreateStudent";
 import { EditStudent } from "../pages/internal/students/EditStudent";
 import { Students } from "../pages/internal/students/Students";
 import { Teachers } from "../pages/internal/teachers/Teachers";
-import { CreateQuizAnswer } from "../pages/internal/courses/quiz/CreateQuizAnswer";
 
 export default function Page() {
   return (
@@ -62,6 +66,10 @@ export default function Page() {
                 <Route path="/topics" element={<CourseList />} />
                 <Route path="/topics/:courseId" element={<CourseTopics />} />
                 <Route path="/topics/:courseId/add" element={<CreateTopic />} />
+                <Route
+                  path="/topics/:courseId/:topicId"
+                  element={<EditCourseTopic />}
+                />
                 <Route path="/files" element={<CourseList />} />
                 <Route path="/files/:courseId" element={<TopicList />} />
                 <Route
@@ -71,6 +79,10 @@ export default function Page() {
                 <Route
                   path="/files/:courseId/:topicId/add"
                   element={<CreateFile />}
+                />
+                <Route
+                  path="/files/:courseId/:topicId/:fileId"
+                  element={<EditCourseFile />}
                 />
                 <Route path="/quiz" element={<CourseList />} />
                 <Route path="/quiz/:courseId" element={<TopicList />} />
@@ -88,14 +100,22 @@ export default function Page() {
                 />
                 <Route
                   path="/quiz/:courseId/:topicId/:videoId/:quizId"
+                  element={<EditQuiz />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/questions"
                   element={<Questions />}
                 />
                 <Route
-                  path="/quiz/:courseId/:topicId/:videoId/:quizId/add"
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/questions/add"
                   element={<CreateQuizQuestion />}
                 />
                 <Route
-                  path="/quiz/:courseId/:topicId/:videoId/:quizId/:questionId"
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/questions/:questionId"
+                  element={<EditQuizQuestion />}
+                />
+                <Route
+                  path="/quiz/:courseId/:topicId/:videoId/:quizId/questions/:questionId/answers"
                   element={<CreateQuizAnswer />}
                 />
                 <Route path="/notices" element={<Notices />} />

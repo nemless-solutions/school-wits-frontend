@@ -83,8 +83,13 @@ export function NoticeForm<T extends FieldValues>({
               />
             ))}
           </div>
-          <div className="space-x-3 mt-8 pb-8">
-            <Button type="submit" size="lg" className="w-[100px]">
+          <div className="flex items-center gap-3 mt-8 pb-8">
+            <Button
+              type="submit"
+              disabled={isLoading}
+              size="lg"
+              className="w-[100px]"
+            >
               {isLoading ? (
                 <Loader2Icon className="animate-spin scale-150" />
               ) : (

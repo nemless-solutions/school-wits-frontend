@@ -1,144 +1,101 @@
-import { Button, Checkbox, Input } from "@school-wits/ui";
+import { Button, Input, Label } from "@school-wits/ui";
 import { Loader2Icon } from "lucide-react";
-import { FormEvent, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { baseUrl } from "../../api/api-calls";
-import { useAuth } from "../../contexts/AuthContext";
+import { usePost, usePut } from "../../api/api-calls";
 
-type Answer = { title: string; correct: boolean };
+type FormData = { correct: boolean; title: string };
 
-export function QuizAnswerForm() {
-  const { token } = useAuth();
+interface QuizFormProps {
+  serial?: number;
+  defaultValues: FormData;
+  questionId: number;
+  quizAnswerId: number;
+  onSuccess?: () => void;
+}
 
-  const navigate = useNavigate();
-  const { questionId } = useParams();
+export function QuizAnswerForm({
+  serial,
+  defaultValues,
+  questionId,
+  quizAnswerId,
+  onSuccess,
+}: QuizFormProps) {
+  const [values, setValues] = useState<FormData>({ title: "", correct: false });
+  const {
+    mutate: create,
+    isPending: createPending,
+    isError: isCreateError,
+    isSuccess: isCreateSuccess,
+    fetchError: createError,
+  } = usePost("quiz_answer");
+  const {
+    mutate: update,
+    isPending: updatePending,
+    isError: isUpdateError,
+    isSuccess: isUpdateSuccess,
+    fetchError: updateError,
+  } = usePut(`quiz_answer/${quizAnswerId}`);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [validation, setValidation] = useState({ valid: true, error: "" });
-  const [answers, setAnswers] = useState<Answer[]>(
-    Array.from({ length: 4 }, () => ({ title: "", correct: false }))
-  );
-
-  const handleTitleChange = (index: number, value: string) => {
-    setAnswers((prev) =>
-      prev.map((item, i) => (i === index ? { ...item, title: value } : item))
-    );
-    setValidation({ valid: true, error: "" });
-  };
-
-  const handleIsOkChange = (index: number) => {
-    setAnswers((prev) =>
-      prev.map((item, i) => ({
-        ...item,
-        correct: i === index,
-      }))
-    );
-    setValidation({ valid: true, error: "" });
-  };
-
-  const validateAnswers = (answers: Answer[]) => {
-    const hasCorrect = answers.some((ans) => ans.correct);
-    const allTitlesFilled = answers.every((ans) => ans.title.trim() !== "");
-
-    if (!hasCorrect) {
-      setValidation({
-        valid: false,
-        error: "At least one answer must be marked as correct.",
-      });
-      return false;
-    }
-    if (!allTitlesFilled) {
-      setValidation({
-        valid: false,
-        error: "Answers can not be empty",
-      });
-      return false;
-    }
-
-    setValidation({ valid: true, error: "" });
-    return true;
-  };
-
-  const handleSubmit = async function (e: FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!validateAnswers(answers)) return;
+    if (!values.title || !questionId) return;
 
-    try {
-      setIsLoading(true);
-      const res = await Promise.all(
-        answers.map((answer) =>
-          fetch(`${baseUrl}/quiz_answer?questionId=${questionId}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-
-            body: JSON.stringify({
-              ...answer,
-              questionId,
-            }),
-          })
-        )
-      );
-
-      if (res.map((res) => !res.ok).includes(true))
-        throw new Error("Something went wrong");
-
-      toast.success("Answers added successfully");
-      navigate(-1);
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    } finally {
-      setIsLoading(false);
+    if (!defaultValues.title) {
+      create({ ...values, questionId });
+    } else {
+      update({ ...values, questionId });
     }
   };
 
+  useEffect(() => {
+    if (isCreateError || isUpdateError) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(createError || updateError);
+    }
+    if (isCreateSuccess || isUpdateSuccess) {
+      onSuccess && onSuccess();
+    }
+  }, [
+    createError,
+    isCreateError,
+    isCreateSuccess,
+    isUpdateError,
+    isUpdateSuccess,
+    onSuccess,
+    updateError,
+  ]);
+
+  useEffect(() => {
+    setValues(defaultValues);
+  }, [defaultValues]);
+
   return (
-    <form className="space-y-4 max-w-[600px]" onSubmit={handleSubmit}>
-      {answers.map((answer, index) => (
-        <div key={index} className="flex gap-6 items-center">
-          <div className="flex items-center gap-1">
-            <Checkbox
-              className="cursor-pointer"
-              checked={answer.correct}
-              onCheckedChange={() => handleIsOkChange(index)}
-            />
-          </div>
-          <Input
-            type="text"
-            value={answer.title}
-            onChange={(e) => handleTitleChange(index, e.target.value)}
-            placeholder={`Answer ${index + 1}`}
-          />
-        </div>
-      ))}
-      <div className="h-10">
-        {!validation.valid && (
-          <p className="text-destructive ml-8 font-semibold">
-            {validation.error}
-          </p>
-        )}
-      </div>
-      <div className="space-x-3 mt-8 pb-8">
-        <Button type="submit" size="lg" className="w-[100px]">
-          {isLoading ? (
+    <form onSubmit={handleSubmit}>
+      <div className="flex items-center gap-3">
+        <Label className="w-[20px] text-lg mr-2">{serial || 1}.</Label>
+        <input
+          checked={values.correct || false}
+          onChange={(e) =>
+            setValues((cur) => ({ ...cur, correct: e.target.checked }))
+          }
+          type="checkbox"
+          className="h-5 w-5 cursor-pointer"
+        />
+        <Input
+          className="flex-1"
+          value={values.title || ""}
+          onChange={(e) =>
+            setValues((cur) => ({ ...cur, title: e.target.value }))
+          }
+        />
+        <Button disabled={createPending || updatePending} className="w-[60px]">
+          {createPending || updatePending ? (
             <Loader2Icon className="animate-spin scale-150" />
           ) : (
-            "Submit"
+            "Save"
           )}
-        </Button>
-        <Button
-          onClick={() => navigate(-1)}
-          type="button"
-          variant="destructive"
-          size="lg"
-          className="w-[100px]"
-        >
-          Cancel
         </Button>
       </div>
     </form>

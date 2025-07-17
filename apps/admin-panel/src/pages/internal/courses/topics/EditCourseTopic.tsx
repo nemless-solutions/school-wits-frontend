@@ -1,22 +1,28 @@
 import { Skeleton } from "@school-wits/ui";
-import { courseSchema } from "@school-wits/validations";
+import { topicSchema } from "@school-wits/validations";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useGet, usePut } from "../../../../api/api-calls";
-import { CourseForm } from "../../../../components/Forms/CourseForm";
+import { TopicForm } from "../../../../components/Forms/TopicForm";
 
-export function EditCourse() {
-  const { id } = useParams();
+export function EditCourseTopic() {
+  const { topicId } = useParams();
   const navigate = useNavigate();
-  const { mutate, isPending, isError, isSuccess } = usePut(`course/${id}`);
-  const { refetch, data, isPending: isPendingGet } = useGet(`course/${id}`);
+  const { mutate, isPending, isError, isSuccess } = usePut(
+    `course_topic/${topicId}`
+  );
+  const {
+    refetch,
+    data,
+    isPending: isPendingGet,
+  } = useGet(`course_topic/${topicId}`);
 
   useEffect(() => {
     if (isError) {
       toast.error("Something went wrong. Please try again later.");
     } else if (isSuccess) {
-      toast.success("Course successfully updated.");
+      toast.success("Course Topic successfully updated.");
       refetch();
       navigate(-1);
     }
@@ -40,27 +46,18 @@ export function EditCourse() {
           </div>
         </div>
       ) : (
-        <CourseForm
-          schema={courseSchema}
+        <TopicForm
+          schema={topicSchema}
           defaultValues={{
-            uid: data.uid,
-            grade: data.grade,
-            mode: data.mode,
-            type: data.type,
-            title: data.title,
-            description: data.description,
-            fee: data.fee,
-            discountedFee: data.discountedFee,
-            discountLastDate: data.discountLastDate,
+            title: data?.title || "",
+            description: data?.description || "",
+            locked: data?.locked,
           }}
           onSubmit={(data) => {
-            const cleanedData = Object.fromEntries(
-              Object.entries(data).filter(([_, value]) => value !== undefined)
-            );
-            mutate(cleanedData);
+            mutate(data);
           }}
           isLoading={isPending}
-          onCancel={() => navigate("/courses")}
+          onCancel={() => navigate(-1)}
           submitText="Update"
         />
       )}
