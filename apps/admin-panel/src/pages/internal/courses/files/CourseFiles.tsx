@@ -1,3 +1,4 @@
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import {
   Button,
   DropdownMenu,
@@ -6,12 +7,14 @@ import {
   DropdownMenuTrigger,
 } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { FaEdit, FaPlus } from "react-icons/fa";
+import { useState } from "react";
+import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link, useParams } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../../api/api-calls";
 import { DataTable } from "../../../../components/DataTable/DataTable";
+import { DeleteAlert } from "../../../../components/DeleteAlert/DeleteAlert";
 import { TableSkeleton } from "../../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
@@ -60,7 +63,7 @@ export function CourseFiles() {
                 Edit
               </Link>
             </DropdownMenuItem>
-            {/* <DropdownMenuSeparator />
+            <DropdownMenuSeparator />
             <DropdownMenuItem asChild variant="destructive">
               <button
                 className="flex items-center gap-2 w-full"
@@ -72,15 +75,20 @@ export function CourseFiles() {
                 <FaTrashAlt />
                 Delete
               </button>
-            </DropdownMenuItem> */}
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ),
     },
   ];
 
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [id, setId] = useState<number | null>(null);
+
   const { topicId } = useParams();
-  const { data, isSuccess, isFetching } = useGet(`course_file/${topicId}`);
+  const { data, isSuccess, isFetching, refetch } = useGet(
+    `course_file/${topicId}`
+  );
 
   return (
     <div>
@@ -107,6 +115,12 @@ export function CourseFiles() {
           </div>
         )}
       </div>
+      <DeleteAlert
+        open={alertOpen}
+        onOpenChange={setAlertOpen}
+        url={`course/${id}`}
+        onSuccess={() => refetch()}
+      />
     </div>
   );
 }

@@ -30,7 +30,11 @@ export function TopicList() {
         <span>
           {row.original.grade === "IX" || row.original.grade === "X"
             ? "O Levels"
-            : `Grade ${row.original.grade}`}
+            : row.original.grade === "VI"
+            ? "Grade VI"
+            : row.original.grade === "VII"
+            ? "Grade VII"
+            : "Grade VIII"}
         </span>
       ),
     },
