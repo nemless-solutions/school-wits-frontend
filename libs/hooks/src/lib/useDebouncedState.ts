@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 
-function useDebouncedState<T>(
+export function useDebouncedState<T>(
   initialValue: T,
   delay = 500
 ): [T, (value: T) => void] {
@@ -22,5 +22,3 @@ function useDebouncedState<T>(
 
   return [state, setDebouncedState];
 }
-
-export default useDebouncedState;

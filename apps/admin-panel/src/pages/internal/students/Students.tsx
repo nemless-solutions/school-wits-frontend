@@ -1,3 +1,4 @@
+import { useDebouncedState } from "@school-wits/hooks";
 import {
   Button,
   DropdownMenu,
@@ -14,7 +15,6 @@ import { FaEdit, FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import useDebouncedState from "../../../../../../libs/hooks/src/lib/useDebouncedState";
 import { useGet } from "../../../api/api-calls";
 import { DataTable } from "../../../components/DataTable/DataTable";
 import { TableSkeleton } from "../../../components/TableSkeleton/TableSkeleton";
