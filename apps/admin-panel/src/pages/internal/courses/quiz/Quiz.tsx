@@ -94,7 +94,9 @@ export function Quiz() {
   const [alertOpen, setAlertOpen] = useState(false);
   const [id, setId] = useState<number | null>(null);
 
-  const { data, isSuccess, isFetching, refetch } = useGet(`quiz/${videoId}`);
+  const { data, isSuccess, isFetching, refetch } = useGet(
+    `quiz/video/${videoId}`
+  );
 
   return (
     <div>

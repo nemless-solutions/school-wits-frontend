@@ -1,8 +1,9 @@
 import { Button } from "@/components/client-ui";
+import { courseImages } from "@/constants";
 import { courseBundleFetcher } from "@/libs/courseBundleFethcer";
 import Image from "next/image";
 import Link from "next/link";
-import courseImage from "../../../public/images/course-card-dummy-image.png";
+import courseBackupImage from "../../../public/images/course-card-dummy-image.png";
 import { Course, CourseBundle } from "../../../types";
 
 interface CourseCardProps {
@@ -10,10 +11,12 @@ interface CourseCardProps {
 }
 
 export async function CourseCard({ course }: CourseCardProps) {
-  const courseBundle = await courseBundleFetcher<CourseBundle>(course.grade);
-
-  const href = courseBundle?.courses.map((c) => c.id).includes(course.id)
-    ? `/courses/details/bundle/${courseBundle.id}/${courseBundle.courses[0].id}`
+  const courseBundles = await courseBundleFetcher<CourseBundle[]>(course.grade);
+  const matchingBundle = courseBundles?.find((bundle) =>
+    bundle.courses.some((c) => c.id === course.id)
+  );
+  const href = matchingBundle?.courses.map((c) => c.id).includes(course.id)
+    ? `/courses/details/bundle/${matchingBundle.id}/${matchingBundle.courses[0].id}`
     : `/courses/details/${course.id}`;
 
   return (
@@ -37,13 +40,17 @@ function CardBody({
   href: string;
   showButton?: boolean;
 }) {
+  const cousreGrade =
+    course.grade === "X" || course.grade === "IX" ? "O" : course.grade;
+  const courseImage = courseImages?.[cousreGrade]?.[course.title.toLowerCase()];
+
   return (
     <div className="bg-white rounded-[12px] p-4 shadow-[1px_1px_15px_0px_rgba(0,0,0,0.2)] hover:shadow-[1px_4px_15px_0px_rgba(0,0,0,0.4)] duration-200">
       <div className="overflow-hidden">
         <Image
-          src={courseImage}
+          src={courseImage || courseBackupImage}
           alt="Course Image"
-          className="w-full rounded-[8px]"
+          className="w-full aspect-[352/225] object-cover rounded-[8px]"
         />
       </div>
       <h2 className="text-black text-lg md:text-xl font-semibold my-4">

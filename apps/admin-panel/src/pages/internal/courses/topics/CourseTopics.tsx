@@ -37,7 +37,7 @@ const TopicAccess = ({ topic }: { topic: z.infer<typeof schema> }) => {
         disabled={isPending}
         onCheckedChange={(checked) => {
           setIsChecked(checked);
-          mutate({ locked: checked });
+          mutate({ isLocked: checked });
         }}
       />
     </div>

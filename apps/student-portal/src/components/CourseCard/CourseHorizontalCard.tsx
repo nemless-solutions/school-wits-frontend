@@ -1,3 +1,4 @@
+import { courseImages } from "@/constants";
 import { cn } from "@school-wits/utils";
 import Image from "next/image";
 import dummyCourseImage from "../../../public/images/course-card-dummy-image.png";
@@ -14,13 +15,17 @@ export function CourseHorizontalCard({
   status,
   showStatus = false,
 }: CourseHorizontalCardProps) {
+  const cousreGrade =
+    course.grade === "X" || course.grade === "IX" ? "O" : course.grade;
+  const courseImage = courseImages?.[cousreGrade]?.[course.title.toLowerCase()];
+
   return (
     <div className="border border-neutral-200 rounded-lg p-4 hover:outline-2 outline-neutral-300">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <Image
-          src={dummyCourseImage}
+          src={courseImage || dummyCourseImage}
           alt={course?.title}
-          className="w-full sm:w-[160px] rounded-lg"
+          className="w-full sm:w-[160px] aspect-video rounded-lg"
         />
         <div className="grow">
           <div className="flex justify-between gap-2 items-center">
@@ -43,6 +48,12 @@ export function CourseHorizontalCard({
               <p className="text-neutral-600">Grade</p>
               <p className="font-medium">
                 {course?.grade?.split("_").join(" & ")}
+              </p>
+            </div>
+            <div>
+              <p className="text-neutral-600">Mode</p>
+              <p className="font-medium">
+                {course?.mode?.split("_")?.join(" ")}
               </p>
             </div>
             <div>

@@ -43,9 +43,9 @@ export function QuizAnswerForm({
     if (!values.title || !questionId) return;
 
     if (!defaultValues.title) {
-      create({ ...values, questionId });
+      create({ ...values, isCorrect: values?.correct || false, questionId });
     } else {
-      update({ ...values, questionId });
+      update({ ...values, isCorrect: values?.correct || false });
     }
   };
 

@@ -42,7 +42,7 @@ export function Navbar({ session }: { session: Session | null }) {
           <div className="flex items-center w-full justify-between">
             <Link href="/">
               <Image
-                className="hidden md:block md:w-[180px] object-cover"
+                className="hidden md:block md:w-[200px] object-cover"
                 src={logoHorizontal}
                 alt="logo"
                 width="1200"

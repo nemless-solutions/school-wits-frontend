@@ -6,9 +6,7 @@ import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
 import { getAbbreviation } from "@school-wits/utils";
-import Image from "next/image";
 import Link from "next/link";
-import logoHorizontal from "../../../../../public/images/logo-horizontal.png";
 import { Course, EnrolledCourse, Notice, User } from "../../../../../types";
 
 export default async function Dashboard() {
@@ -48,7 +46,7 @@ export default async function Dashboard() {
                       <div className="mt-4 space-y-4 p-4">
                         {enrolledCourses.map((course) => (
                           <MotionDiv key={course.id}>
-                            <Link href={`/courses/content/${course.id}`}>
+                            <Link href={`/courses/content/${course.course.id}`}>
                               <CourseHorizontalCard
                                 course={course.course}
                                 status={course.paid}
@@ -91,14 +89,10 @@ export default async function Dashboard() {
             </div>
             <div className="space-y-4">
               <div className="bg-white w-full max-w-[450px] mx-auto rounded-lg border border-neutral-200 shadow-md">
-                <div className="py-4">
-                  <Image
-                    className="w-[200px] object-cover mx-auto"
-                    src={logoHorizontal}
-                    alt="logo"
-                    width="1200"
-                    height="270"
-                  />
+                <div className="p-4">
+                  <h3 className="text-center font-semibold text-xl">
+                    Student Identity
+                  </h3>
                 </div>
                 <div className="h-px w-full bg-neutral-200 mb-2" />
                 <div className="sm:grid grid-cols-4 gap-4 p-4 items-center">

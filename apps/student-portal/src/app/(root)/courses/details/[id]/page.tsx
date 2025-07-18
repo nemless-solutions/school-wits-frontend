@@ -5,10 +5,8 @@ import { EnrollButton } from "@/components/EnrollButton/EnrollButton";
 import { Icon } from "@/components/Icon/Icon";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { baseUrl } from "@/constants";
-import { courseBundleFetcher } from "@/libs/courseBundleFethcer";
 import { fetcher } from "@/libs/fetcher";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import SquareGroup from "../../../../../../public/graphics/square-group.svg";
 import books from "../../../../../../public/icons/books.png";
 import cells from "../../../../../../public/icons/cells.png";
@@ -16,11 +14,7 @@ import check from "../../../../../../public/icons/check.png";
 import library from "../../../../../../public/icons/library.png";
 import note from "../../../../../../public/icons/note-02.png";
 import sparkles from "../../../../../../public/icons/sparkles.png";
-import {
-  Course,
-  CourseBundle,
-  type CourseDetails,
-} from "../../../../../../types";
+import { type CourseDetails } from "../../../../../../types";
 
 const dummyCourseStructureOverView = [
   { title: "9 Core Module", description: "Coverage of all mathematical area" },
@@ -37,14 +31,6 @@ export default async function CourseDetails({
   params: Promise<{ id: string }>;
 }) {
   const id = (await params).id;
-  const course = await fetcher<Course>(`${baseUrl}/course/${id}`);
-  const courseBundle = await courseBundleFetcher<CourseBundle>(course.grade);
-
-  if (courseBundle)
-    redirect(
-      `/courses/details/bundle/${courseBundle.id}/${courseBundle.courses[0].id}`
-    );
-
   const session = await auth();
 
   const courseDetails = await fetcher<CourseDetails>(

@@ -54,7 +54,7 @@ export function EditCourseTopic() {
             locked: data?.locked,
           }}
           onSubmit={(data) => {
-            mutate(data);
+            mutate({ ...data, isLocked: data.locked });
           }}
           isLoading={isPending}
           onCancel={() => navigate(-1)}
