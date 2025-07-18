@@ -43,7 +43,7 @@ export default async function CourseContentLayout({
       <PageHeader header={`${course.title} (Grade ${course.grade})`} />
       <div className="main-container py-20">
         <div className="grid grid-cols-3 gap-3">
-          <div className="col-span-2">{children}</div>
+          <div className="col-span-2 min-h-[300px]">{children}</div>
           <div className="bg-white border relative border-neutral-200 shadow-md rounded-lg">
             <div className="sticky top-0 left-0 bg-white shadow-sm">
               <h3 className="p-4 text-xl font-semibold">Course Topics</h3>

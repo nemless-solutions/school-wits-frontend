@@ -37,6 +37,9 @@ export function CourseFiles() {
     {
       accessorKey: "description",
       header: "Description",
+      cell: ({ row }) => (
+        <p className="truncate max-w-[600px]">{row.original.description}</p>
+      ),
     },
     {
       accessorKey: "type",

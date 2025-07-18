@@ -1,5 +1,8 @@
-import { Button } from "@school-wits/ui";
+import { useDebouncedState } from "@school-wits/hooks";
+import { Button, Input } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
+import { useState } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../api/api-calls";
@@ -46,10 +49,72 @@ export function Enrolment() {
     },
   ];
 
-  const { data, isSuccess, isFetching } = useGet("user?roleName=ROLE_STUDENT");
+  const [searchNameDebounced, setSearchNameDebounced] = useDebouncedState(
+    "",
+    500
+  );
+  const [searchName, setSearchName] = useState("");
+
+  const [searchIdDebounced, setSearchIdDebounced] = useDebouncedState<
+    number | string
+  >("", 500);
+  const [searchId, setSearchId] = useState<string | number>("");
+
+  const { data, isSuccess, isFetching } = useGet(
+    `user/search?roleName=ROLE_STUDENT&userId=${
+      searchIdDebounced || ""
+    }&name=${searchNameDebounced}`
+  );
 
   return (
     <div>
+      <div className="flex mb-4 gap-20">
+        <div className="flex items-center gap-3 max-w-[120px]">
+          <Input
+            className="flex-1"
+            value={searchId || ""}
+            onChange={(e) => {
+              setSearchId(Number(e.target.value));
+              setSearchIdDebounced(Number(e.target.value));
+            }}
+            type="number"
+            placeholder="ID"
+          />
+          <Button
+            size="icon"
+            variant="secondary"
+            className="size-8"
+            onClick={() => {
+              setSearchId("");
+              setSearchIdDebounced("");
+            }}
+          >
+            <FaRegTrashAlt />
+          </Button>
+        </div>
+        <div className="flex max-w-[250px] gap-3 items-center">
+          <Input
+            value={searchName}
+            placeholder="Name"
+            className="flex-1"
+            onChange={(e) => {
+              setSearchName(e.target.value);
+              setSearchNameDebounced(e.target.value);
+            }}
+          />
+          <Button
+            size="icon"
+            variant="secondary"
+            className="size-8"
+            onClick={() => {
+              setSearchName("");
+              setSearchNameDebounced("");
+            }}
+          >
+            <FaRegTrashAlt />
+          </Button>
+        </div>
+      </div>
       {isFetching ? (
         <TableSkeleton />
       ) : isSuccess ? (

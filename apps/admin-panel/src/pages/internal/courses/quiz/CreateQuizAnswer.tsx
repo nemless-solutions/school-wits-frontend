@@ -6,28 +6,17 @@ import { useGet } from "../../../../api/api-calls";
 import { QuizAnswerForm } from "../../../../components/Forms/QuizAnswerForm";
 
 export function CreateQuizAnswer() {
-  const { quizId, questionId } = useParams();
+  const { questionId } = useParams();
   const navigate = useNavigate();
 
-  const {
-    data: questionData,
-    isFetching,
-    refetch,
-  } = useGet(`quiz_question/${quizId}`);
-
-  const question = questionData?.find(
-    (question: { id: number }) => question.id === Number(questionId)
-  );
+  const { data, isFetching, refetch } = useGet(`quiz_answer/${questionId}`);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [answersArray, setAnswersArray] = useState<any>([]);
 
   useEffect(() => {
-    setAnswersArray([
-      ...(question?.answers || []),
-      { title: "", correct: false },
-    ]);
-  }, [isFetching, question?.answers]);
+    setAnswersArray([...(data || []), { title: "", correct: false }]);
+  }, [isFetching, data]);
 
   return (
     <div>

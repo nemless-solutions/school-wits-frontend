@@ -46,6 +46,8 @@ export default async function CourseDetails({
     `${baseUrl}/course_information/${id}`
   );
 
+  console.log(session?.token);
+
   return (
     <div>
       <MotionDiv
@@ -58,12 +60,12 @@ export default async function CourseDetails({
             <h2 className="font-recoleta font-semibold text-2xl sm:text-3xl md:text-5xl">
               Grade {courseDetails.course.grade}
             </h2>
-            <div className="md:text-lg flex items-center gap-3 mt-3">
+            <div className="md:text-lg flex items-center gap-3 mt-3 flex-wrap">
               {courseBundle.courses
                 .map((c) => c.title)
                 .map((t, i) => (
-                  <div key={t} className="flex items-center gap-3">
-                    <p key={t}>{t}</p>
+                  <div key={i} className="flex items-center gap-3">
+                    <p>{t}</p>
                     {i < courseBundle.courses.length - 1 && (
                       <span className="h-2 w-2 inline-block bg-neutral-300 rounded-full" />
                     )}

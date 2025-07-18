@@ -6,20 +6,12 @@ import { toast } from "react-toastify";
 import { useGet, usePut } from "../../../../api/api-calls";
 import { QuizForm } from "../../../../components/Forms/QuizForm";
 
-/* export const schema = z.object({
-  id: z.number(),
-  title: z.string(),
-  details: z.string(),
-});
- */
 export function EditQuiz() {
-  const { videoId, quizId } = useParams();
+  const { quizId } = useParams();
   const navigate = useNavigate();
 
   const { mutate, isPending, isError, isSuccess } = usePut(`quiz/${quizId}`);
-  const { data, isFetching } = useGet(`quiz/${videoId}`);
-
-  const quiz = data?.find((quiz: { id: number }) => quiz.id === Number(quizId));
+  const { data, isFetching } = useGet(`quiz/${quizId}`);
 
   useEffect(() => {
     if (isError) {
@@ -51,9 +43,9 @@ export function EditQuiz() {
         <QuizForm
           schema={quizSchema}
           defaultValues={{
-            title: quiz?.title || "",
-            questionMark: quiz?.questionMark || 1,
-            duration: quiz?.duration || 1,
+            title: data?.title || "",
+            questionMark: data?.questionMark || 1,
+            duration: data?.duration || 1,
           }}
           onSubmit={(data) => {
             mutate(data);

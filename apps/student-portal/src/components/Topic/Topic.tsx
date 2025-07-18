@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaVideo } from "react-icons/fa";
+import { FaLock, FaVideo } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { PiNotepadFill } from "react-icons/pi";
 import { CourseFile, CourseTopic } from "../../../types";
@@ -45,9 +45,16 @@ export function Topic({ topic, isLast = false }: TopicProps) {
 
   return (
     <div key={topic.id}>
-      <Collapsible open={open} onOpenChange={setOpen}>
+      <Collapsible
+        open={open}
+        onOpenChange={setOpen}
+        className={cn(topic.locked && "opacity-30")}
+      >
         <CollapsibleTrigger className="p-4 pb-0 w-full text-start flex items-center justify-between cursor-pointer">
-          <div className="text-lg font-semibold">{topic.title}</div>
+          <div className="flex items-center gap-3">
+            {topic.locked && <FaLock />}
+            <div className="text-lg font-medium">{topic.title}</div>
+          </div>
           <IoIosArrowDown className={cn("text-xl", open && "rotate-180")} />
         </CollapsibleTrigger>
         <CollapsibleContent className="mt-4">
@@ -55,7 +62,9 @@ export function Topic({ topic, isLast = false }: TopicProps) {
             files.map((file) => (
               <div key={file.id}>
                 <Link
-                  href={`/courses/content/${id}/file/${file.id}`}
+                  href={
+                    topic.locked ? "" : `/courses/content/${id}/file/${file.id}`
+                  }
                   className="flex items-center gap-4 hover:bg-neutral-100 px-4 py-3 duration-150"
                 >
                   {file.type === "VIDEO" ? (
@@ -70,7 +79,11 @@ export function Topic({ topic, isLast = false }: TopicProps) {
                   <div>{file.title}</div>
                 </Link>
                 {file.type === "VIDEO" && (
-                  <QuizLink videoId={file.type === "VIDEO" ? file.id : null} />
+                  <QuizLink
+                    id={Number(id)}
+                    locked={topic.locked}
+                    videoId={file.type === "VIDEO" ? file.id : null}
+                  />
                 )}
               </div>
             ))

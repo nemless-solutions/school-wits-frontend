@@ -1,3 +1,18 @@
+import { StaticImageData } from "next/image";
+import gradeVIBiologyImage from "../../public/course-images/grade-vi-biology.jpg";
+import gradeVIChemistryImage from "../../public/course-images/grade-vi-chemistry.jpg";
+import gradeVImathematicsImage from "../../public/course-images/grade-vi-math.jpg";
+import gradeVIPhycisImage from "../../public/course-images/grade-vi-physics.jpg";
+import gradeVIIBiologyImage from "../../public/course-images/grade-vii-biology.jpg";
+import gradeVIIChemistryImage from "../../public/course-images/grade-vii-chemistry.jpg";
+import gradeVIImathematicsImage from "../../public/course-images/grade-vii-math.jpg";
+import gradeVIIPhycisImage from "../../public/course-images/grade-vii-physics.jpg";
+import gradeVIIIadditionalMathematicsImage from "../../public/course-images/grade-viii-additional-math.jpg";
+import gradeVIIIMathematcisImage from "../../public/course-images/grade-viii-math.jpg";
+import gradeVIIIPhysicsImage from "../../public/course-images/grade-viii-physics.jpg";
+import oLeveladditionalMathematicsImage from "../../public/course-images/o-level-additional-math.jpg";
+import oLevelMathematcisImage from "../../public/course-images/o-level-math.jpg";
+import oLevelPhysicsImage from "../../public/course-images/o-level-physics.jpg";
 import GradeVIIcon from "../../public/graphics/circle-group-1.svg";
 import GradeVIIIIcon from "../../public/graphics/circle-group-2.svg";
 import OLevelIcon from "../../public/graphics/circle-group-3.svg";
@@ -389,3 +404,36 @@ export const graphBarColors = [
   "#9D174D",
   "#6B7280",
 ];
+
+type Grade = "VI" | "VII" | "VIII" | "O";
+
+type CourseImages = {
+  [grade in Grade]?: {
+    [subject in string]?: StaticImageData;
+  };
+};
+
+export const courseImages: CourseImages = {
+  VI: {
+    chemistry: gradeVIChemistryImage,
+    mathematics: gradeVImathematicsImage,
+    biology: gradeVIBiologyImage,
+    physics: gradeVIPhycisImage,
+  },
+  VII: {
+    chemistry: gradeVIIChemistryImage,
+    mathematics: gradeVIImathematicsImage,
+    biology: gradeVIIBiologyImage,
+    physics: gradeVIIPhycisImage,
+  },
+  VIII: {
+    "additional mathematics": gradeVIIIadditionalMathematicsImage,
+    mathematics: gradeVIIIMathematcisImage,
+    physics: gradeVIIIPhysicsImage,
+  },
+  O: {
+    "additional mathematics": oLeveladditionalMathematicsImage,
+    mathematics: oLevelMathematcisImage,
+    physics: oLevelPhysicsImage,
+  },
+};

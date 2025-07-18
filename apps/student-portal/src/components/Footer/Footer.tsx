@@ -10,15 +10,12 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center text-center md:text-start justify-between pb-8">
           <div className="mb-8">
             <Image
-              className="w-[130px] md:w-[180px] mx-auto md:mx-0"
+              className="w-[140px] sm:w-[180px] md:w-[260px] mx-auto md:mx-0"
               src={logoVertical}
               alt="logo"
               width={400}
               height={240}
             />
-            <p className="text-lg font-medium text-neutral-800 mt-3 ml-2">
-              Quality education at your fingertips!
-            </p>
           </div>
           <div className="flex flex-col md:flex-row gap-6 md:gap-16">
             <div>
