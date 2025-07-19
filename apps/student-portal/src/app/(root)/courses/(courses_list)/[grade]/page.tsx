@@ -66,7 +66,7 @@ export default async function GradeWiseCourses({
                     }}
                     viewport={{ once: true, amount: 0.3 }}
                   >
-                    <CourseCard course={course} />
+                    <CourseCard course={course} courseMode={mode} />
                   </MotionDiv>
                 ))}
               </div>

@@ -54,22 +54,20 @@ export function Enrolment() {
     500
   );
   const [searchName, setSearchName] = useState("");
-
+  /* 
   const [searchIdDebounced, setSearchIdDebounced] = useDebouncedState<
     number | string
   >("", 500);
-  const [searchId, setSearchId] = useState<string | number>("");
+  const [searchId, setSearchId] = useState<string | number>(""); */
 
   const { data, isSuccess, isFetching } = useGet(
-    `user/search?roleName=ROLE_STUDENT&userId=${
-      searchIdDebounced || ""
-    }&name=${searchNameDebounced}`
+    `user/search?roleName=ROLE_STUDENT&name=${searchNameDebounced}`
   );
 
   return (
     <div>
       <div className="flex mb-4 gap-20">
-        <div className="flex items-center gap-3 max-w-[120px]">
+        {/* <div className="flex items-center gap-3 max-w-[120px]">
           <Input
             className="flex-1"
             value={searchId || ""}
@@ -91,8 +89,8 @@ export function Enrolment() {
           >
             <FaRegTrashAlt />
           </Button>
-        </div>
-        <div className="flex max-w-[250px] gap-3 items-center">
+        </div> */}
+        <div className="flex w-full max-w-[300px] gap-3 items-center">
           <Input
             value={searchName}
             placeholder="Name"
@@ -105,13 +103,13 @@ export function Enrolment() {
           <Button
             size="icon"
             variant="secondary"
-            className="size-8"
+            className="size-7 opacity-70"
             onClick={() => {
               setSearchName("");
               setSearchNameDebounced("");
             }}
           >
-            <FaRegTrashAlt />
+            <FaRegTrashAlt className="text-sm" />
           </Button>
         </div>
       </div>
