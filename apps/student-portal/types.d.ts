@@ -126,9 +126,21 @@ export type CourseFile = {
   fileUid: string;
 };
 
+export type QuizAnswer = {
+  id: number;
+  title: string;
+};
+
+export type QuizQuestion = {
+  id: number;
+  title: string;
+  answers: QuizAnswer[];
+};
+
 export type Quiz = {
-  id: 1;
+  id: number;
   title: string;
   duration: number;
   questionMark: number;
+  questions: QuizQuestion[];
 };

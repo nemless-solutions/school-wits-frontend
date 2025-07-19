@@ -23,7 +23,7 @@ export function QuizLink({
       if (!data?.token || !videoId) return;
 
       const quizData = await fetcher<Quiz[]>(
-        `${baseUrl}/quiz/${videoId}`,
+        `${baseUrl}/quiz/video/${videoId}`,
         data?.token
       );
 
@@ -33,7 +33,7 @@ export function QuizLink({
 
   return (
     <div className="">
-      {quizzes.map((quiz) => (
+      {quizzes?.map((quiz) => (
         <Link
           key={quiz.id}
           href={locked ? "" : `/courses/content/${id}/quiz/${quiz.id}`}

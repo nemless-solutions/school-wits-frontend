@@ -29,9 +29,7 @@ export function CreateCourse() {
           type: "LONG",
           title: "",
           description: "",
-          fee: 0,
-          discountedFee: undefined,
-          discountLastDate: undefined,
+          fee: 1,
         }}
         onSubmit={(data) => {
           const cleanedData = Object.fromEntries(
