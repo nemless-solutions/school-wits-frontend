@@ -27,11 +27,16 @@ const dummyCourseStructureOverView = [
 
 export default async function CourseDetails({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const id = (await params).id;
   const session = await auth();
+  const search = await searchParams;
+  const mode: "IN_PERSON" | "ONLINE" =
+    search.mode === "online" ? "ONLINE" : "IN_PERSON";
 
   const courseDetails = await fetcher<CourseDetails>(
     `${baseUrl}/course_information/${id}`
@@ -69,11 +74,20 @@ export default async function CourseDetails({
               <div className="flex-col items-end hidden md:flex">
                 <div className="flex flex-col md:flex-row gap-x-2">
                   <p className="text-sm md:text-lg text-neutral-500 line-through">
-                    Tk. 5,000
+                    {mode === "ONLINE"
+                      ? null
+                      : courseDetails.course.grade === "VIII"
+                      ? "Tk. 4,000"
+                      : "Tk. 4,500"}
                   </p>
                   <div>
                     <p className="text-lg md:text-2xl font-semibold">
-                      Tk. {courseDetails.course.fee.toLocaleString()}{" "}
+                      Tk.{" "}
+                      {mode === "ONLINE"
+                        ? "2,500"
+                        : courseDetails.course.grade === "VIII"
+                        ? "3,500"
+                        : "4,000"}
                       <span className="text-sm text-neutral-600">/ month</span>
                     </p>
                   </div>
