@@ -8,34 +8,47 @@ import { Course, CourseBundle } from "../../../types";
 
 interface CourseCardProps {
   course: Course;
+  courseMode: "ONLINE" | "IN_PERSON";
 }
 
-export async function CourseCard({ course }: CourseCardProps) {
+export async function CourseCard({ course, courseMode }: CourseCardProps) {
   const courseBundles = await courseBundleFetcher<CourseBundle[]>(course.grade);
   const matchingBundle = courseBundles?.find((bundle) =>
     bundle.courses.some((c) => c.id === course.id)
   );
   const href = matchingBundle?.courses.map((c) => c.id).includes(course.id)
-    ? `/courses/details/bundle/${matchingBundle.id}/${matchingBundle.courses[0].id}`
-    : `/courses/details/${course.id}`;
+    ? `/courses/details/bundle/${matchingBundle.id}/${
+        matchingBundle.courses[0].id
+      }?mode=${courseMode.toLowerCase().split("_").join("-")}`
+    : `/courses/details/${course.id}?mode=${courseMode
+        .toLowerCase()
+        .split("_")
+        .join("-")}`;
 
   return (
     <>
       <Link href={href} className="hidden md:block">
-        <CardBody course={course} href={href} />
+        <CardBody courseMode={courseMode} course={course} href={href} />
       </Link>
       <div className="md:hidden">
-        <CardBody course={course} href={href} showButton />
+        <CardBody
+          courseMode={courseMode}
+          course={course}
+          href={href}
+          showButton
+        />
       </div>
     </>
   );
 }
 
 function CardBody({
+  courseMode,
   course,
   href,
   showButton = false,
 }: {
+  courseMode: "ONLINE" | "IN_PERSON";
   course: Course;
   href: string;
   showButton?: boolean;
@@ -43,6 +56,37 @@ function CardBody({
   const cousreGrade =
     course.grade === "X" || course.grade === "IX" ? "O" : course.grade;
   const courseImage = courseImages?.[cousreGrade]?.[course.title.toLowerCase()];
+
+  const getCoursePrice = function () {
+    const price: { discountedFee: number | null; regularFee: number | null } = {
+      discountedFee: null,
+      regularFee: null,
+    };
+
+    const grade = course.grade;
+
+    if (courseMode === "ONLINE") {
+      price.discountedFee = 0;
+      if (grade === "VI" || grade === "VII") {
+        price.regularFee = 1250;
+      } else if (grade === "VIII" || grade === "IX" || grade === "X") {
+        price.regularFee = 2500;
+      }
+    } else if (courseMode === "IN_PERSON") {
+      if (grade === "VI" || grade === "VII") {
+        price.discountedFee = 2500;
+        price.regularFee = 3000;
+      } else if (grade === "VIII") {
+        price.discountedFee = 3500;
+        price.regularFee = 4000;
+      } else if (grade === "IX") {
+        price.discountedFee = 4000;
+        price.regularFee = 4500;
+      }
+    }
+
+    return { ...price };
+  };
 
   return (
     <div className="bg-white rounded-[12px] p-4 shadow-[1px_1px_15px_0px_rgba(0,0,0,0.2)] hover:shadow-[1px_4px_15px_0px_rgba(0,0,0,0.4)] duration-200">
@@ -143,16 +187,21 @@ function CardBody({
       <div className="h-px w-full bg-neutral-200 my-5" />
       <div className="flex justify-between items-center">
         <p className="px-3 py-2 text-xs md:text-sm font-semibold rounded-[8px] bg-neutral-100 capitalize">
-          {course.mode.split("_").join(" ").toLowerCase()}
+          {courseMode?.split("_").join(" ")?.toLowerCase()}
         </p>
         <div>
           <div className="flex gap-2">
-            {/* <p className="text-xs md:text-sm text-neutral-500 line-through mt-1">
-                Tk. 5,000
-              </p> */}
+            {getCoursePrice().discountedFee ? (
+              <p className="text-xs md:text-sm text-neutral-500 line-through mt-1">
+                Tk. {getCoursePrice().regularFee?.toLocaleString()}
+              </p>
+            ) : null}
             <div>
               <p className="md:text-lg font-semibold">
-                Tk. {course.fee.toLocaleString()}{" "}
+                Tk.{" "}
+                {(
+                  getCoursePrice().discountedFee || getCoursePrice().regularFee
+                )?.toLocaleString()}{" "}
                 <span className="text-xs md:text-sm text-neutral-600">
                   / month
                 </span>

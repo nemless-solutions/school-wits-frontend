@@ -112,7 +112,10 @@ export function Courses() {
         <TableSkeleton />
       ) : isSuccess ? (
         <DataTable
-          data={data.filter((item: { grade: string }) => item.grade !== "X")}
+          data={data.filter(
+            (item: { mode: string; grade: string }) =>
+              item.mode === "ONLINE" && item.grade !== "X"
+          )}
           columns={columns}
         />
       ) : (

@@ -30,11 +30,17 @@ const dummyCourseStructureOverView = [
 
 export default async function CourseDetails({
   params,
+  searchParams,
 }: {
   params: Promise<{ courseId: string; bundleId: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const id = (await params).courseId;
   const bundleId = (await params).bundleId;
+  const search = await searchParams;
+
+  const mode: "IN_PERSON" | "ONLINE" =
+    search.mode === "online" ? "ONLINE" : "IN_PERSON";
 
   const session = await auth();
 
@@ -74,11 +80,11 @@ export default async function CourseDetails({
           <div className="flex-col items-end hidden md:flex">
             <div className="flex flex-col md:flex-row gap-x-2">
               <p className="text-sm md:text-lg text-neutral-500 line-through">
-                Tk. {courseBundle.discountedFee.toLocaleString()}
+                {mode === "IN_PERSON" ? "TK. 12,000" : null}
               </p>
               <div>
                 <p className="text-lg md:text-2xl font-semibold">
-                  Tk. {courseBundle.fee.toLocaleString()}{" "}
+                  Tk. {mode === "IN_PERSON" ? "10,000" : "5,000"}
                   <span className="text-sm text-neutral-600">/ month</span>
                 </p>
               </div>
@@ -96,11 +102,11 @@ export default async function CourseDetails({
       <div className="fixed bottom-0 left-0 w-full z-[999] bg-white p-4 flex justify-between items-center shadow-[0px_-6px_12px_0px_rgba(0,0,0,0.05)] md:hidden">
         <div className="flex flex-col md:flex-row gap-x-2">
           <p className="text-sm md:text-lg text-neutral-500 line-through">
-            Tk. {courseBundle.fee.toLocaleString()}
+            Tk. {mode === "IN_PERSON" ? "12,000" : null}
           </p>
           <div>
             <p className="text-lg md:text-2xl font-semibold">
-              Tk. {courseBundle.fee.toLocaleString()}{" "}
+              Tk. {mode === "IN_PERSON" ? "10,000" : "5,000"}
               <span className="text-sm text-neutral-600">/ month</span>
             </p>
           </div>
@@ -129,7 +135,9 @@ export default async function CourseDetails({
           {courseBundle.courses.map((course) => (
             <Link
               key={course.id}
-              href={`/courses/details/bundle/${bundleId}/${course.id}`}
+              href={`/courses/details/bundle/${bundleId}/${
+                course.id
+              }?mode=${mode.toLowerCase().split("_").join("-")}`}
               className={cn(
                 "text-center p-1.5 rounded-[6px] font-semibold cursor-pointer text-nowrap",
                 course.id === +id ? "bg-primary" : "bg-white"

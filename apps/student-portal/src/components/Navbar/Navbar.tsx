@@ -7,7 +7,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import logoHorizontal from "../../../public/images/logo-horizontal.png";
-import logoIcon from "../../../public/images/logo-icon.png";
 import { NavItem } from "./NavItem";
 import { NavMenu } from "./NavMenu";
 import { ToggleButton } from "./ToggleButton";
@@ -42,19 +41,19 @@ export function Navbar({ session }: { session: Session | null }) {
           <div className="flex items-center w-full justify-between">
             <Link href="/">
               <Image
-                className="hidden md:block md:w-[200px] object-cover"
+                className="w-[160px] md:w-[200px] object-cover"
                 src={logoHorizontal}
                 alt="logo"
                 width="1200"
                 height="270"
               />
-              <Image
+              {/* <Image
                 className="md:hidden w-[40px] object-cover"
                 src={logoIcon}
                 alt="logo"
                 width="500"
                 height="500"
-              />
+              /> */}
             </Link>
             <ToggleButton
               activeLink={activeLink}

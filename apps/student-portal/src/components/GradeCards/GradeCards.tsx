@@ -44,16 +44,16 @@ export function GradeCards() {
                       <div>
                         <div className="text-lg font-semibold md:font-bold md:text-3xl flex gap-2 md:block">
                           <p>Grade</p>
-                          <p className="truncate">
+                          <p className="truncate mb-4">
                             {grade.title}{" "}
                             <span className="hidden md:inline">
                               {grade.title === "IX - X" && "(O Level)"}
                             </span>
                           </p>
                         </div>
-                        <p className="mt-1 md:mt-4 md:mb-8 text-sm sm:text-base md:text-xl font-medium">
+                        {/* <p className="mt-1 md:mt-4 md:mb-8 text-sm sm:text-base md:text-xl font-medium">
                           {grade.classes} Classes
-                        </p>
+                        </p> */}
                       </div>
                       <div className="flex justify-between items-end md:mt-8">
                         <div className="w-10 h-10 flex justify-center items-center bg-neutral-100 rounded-full">

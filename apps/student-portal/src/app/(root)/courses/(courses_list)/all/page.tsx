@@ -68,7 +68,7 @@ export default async function AllCourses({
                         }}
                         viewport={{ once: true, amount: 0.3 }}
                       >
-                        <CourseCard course={course} />
+                        <CourseCard course={course} courseMode={mode} />
                       </MotionDiv>
                     ))}
                   </div>
@@ -86,7 +86,7 @@ export default async function AllCourses({
                         }}
                         viewport={{ once: true, amount: 0.3 }}
                       >
-                        <CourseCard course={course} />
+                        <CourseCard course={course} courseMode={mode} />
                       </MotionDiv>
                     ))}
                   </ShowMoreCourses>

@@ -24,7 +24,7 @@ export default async function Grade({
   if (!_grades.includes(grade)) notFound();
 
   const courses = await fetcher<Course[]>(
-    `${baseUrl}/course/grade/${grade === "o" ? "ix" : grade}?mode=${mode}`
+    `${baseUrl}/course/grade/${grade === "o" ? "ix" : grade}?mode=ONLINE`
   );
 
   return (
@@ -61,7 +61,7 @@ export default async function Grade({
               }}
               viewport={{ once: true, amount: 0.1 }}
             >
-              <CourseCard course={course} />
+              <CourseCard course={course} courseMode={mode} />
             </MotionDiv>
           ))}
         </div>
