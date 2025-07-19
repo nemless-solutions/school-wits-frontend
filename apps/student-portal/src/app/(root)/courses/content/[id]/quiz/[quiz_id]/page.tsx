@@ -2,57 +2,7 @@ import { auth } from "@/auth";
 import { Quiz } from "@/components/Quiz/Quiz";
 import { baseUrl } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
-import { Quiz as QuizType } from "../../../../../../../../types";
-
-const dummy = {
-  id: 1,
-  title: "Test Quiz",
-  questionMark: 10,
-  duration: 10,
-  questions: [
-    {
-      id: 1,
-      title: "Test quiz question 1",
-      answers: [
-        { id: 1, title: "Test Quiz Answer 1" },
-        { id: 2, title: "Test Quiz Answer 2" },
-        { id: 3, title: "Test Quiz Answer 3" },
-        { id: 4, title: "Test Quiz Answer 4" },
-      ],
-    },
-    {
-      id: 2,
-      title: "Test quiz question 1",
-      answers: [
-        { id: 1, title: "Test Quiz Answer 1" },
-        { id: 2, title: "Test Quiz Answer 2" },
-        { id: 3, title: "Test Quiz Answer 3" },
-        { id: 4, title: "Test Quiz Answer 4" },
-      ],
-    },
-    {
-      id: 3,
-      title: "Test quiz question 1",
-      answers: [
-        { id: 1, title: "Test Quiz Answer 1" },
-        { id: 2, title: "Test Quiz Answer 2" },
-        { id: 3, title: "Test Quiz Answer 3" },
-        { id: 4, title: "Test Quiz Answer 4" },
-      ],
-    },
-    {
-      id: 4,
-      title: "Test quiz question 1",
-      answers: [
-        { id: 1, title: "Test Quiz Answer 1" },
-        { id: 2, title: "Test Quiz Answer 2" },
-        { id: 3, title: "Test Quiz Answer 3" },
-        { id: 4, title: "Test Quiz Answer 4" },
-      ],
-    },
-  ],
-  createdAt: "2025-07-18T14:59:09.815+00:00",
-};
+import { QuizResult, Quiz as QuizType } from "../../../../../../../../types";
 
 export default async function QuizPage({
   params,
@@ -66,13 +16,29 @@ export default async function QuizPage({
     `${baseUrl}/quiz/${quizId}`,
     session?.token
   );
+  const quizResults = await fetcher<QuizResult[]>(
+    `${baseUrl}/quiz_result`,
+    session?.token
+  );
+  const quizResult = quizResults.find((result) => result?.quiz?.id == +quizId);
+
+  const totalQuestionsCount = quiz.questions.length;
+  const resultMark =
+    (Object.values(quizResult?.answers ?? {}).filter(Boolean)?.length /
+      totalQuestionsCount) *
+    quiz?.questionMark;
 
   return (
     <div className="p-4 bg-white border border-neutral-200 shadow-md rounded-lg">
-      <h2 className="text-2xl">Quiz: {dummy.title}</h2>
-      <p className="my-2">Mark: {dummy.questionMark}</p>
+      <h2 className="text-2xl">Quiz: {quiz.title}</h2>
+      {quizResult && (
+        <p className="my-3">
+          Result: {resultMark} / {quiz.questionMark}
+        </p>
+      )}
+
       <div>
-        <Quiz quiz={quiz} token={session?.token} />
+        <Quiz result={quizResult} quiz={quiz} token={session?.token} />
       </div>
     </div>
   );

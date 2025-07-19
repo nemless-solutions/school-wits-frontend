@@ -46,8 +46,6 @@ export default async function CourseDetails({
     `${baseUrl}/course_information/${id}`
   );
 
-  console.log(session?.token);
-
   return (
     <div>
       <MotionDiv
@@ -76,11 +74,11 @@ export default async function CourseDetails({
           <div className="flex-col items-end hidden md:flex">
             <div className="flex flex-col md:flex-row gap-x-2">
               <p className="text-sm md:text-lg text-neutral-500 line-through">
-                Tk. 5,000
+                Tk. {courseBundle.discountedFee.toLocaleString()}
               </p>
               <div>
                 <p className="text-lg md:text-2xl font-semibold">
-                  Tk. {courseDetails.course.fee.toLocaleString()}{" "}
+                  Tk. {courseBundle.fee.toLocaleString()}{" "}
                   <span className="text-sm text-neutral-600">/ month</span>
                 </p>
               </div>
@@ -98,11 +96,11 @@ export default async function CourseDetails({
       <div className="fixed bottom-0 left-0 w-full z-[999] bg-white p-4 flex justify-between items-center shadow-[0px_-6px_12px_0px_rgba(0,0,0,0.05)] md:hidden">
         <div className="flex flex-col md:flex-row gap-x-2">
           <p className="text-sm md:text-lg text-neutral-500 line-through">
-            Tk. 5,000
+            Tk. {courseBundle.fee.toLocaleString()}
           </p>
           <div>
             <p className="text-lg md:text-2xl font-semibold">
-              Tk. {courseDetails.course.fee.toLocaleString()}{" "}
+              Tk. {courseBundle.fee.toLocaleString()}{" "}
               <span className="text-sm text-neutral-600">/ month</span>
             </p>
           </div>

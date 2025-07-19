@@ -17,7 +17,7 @@ export function QuizAnswers({
   return (
     <div>
       <RadioGroup
-        value={selectedAnswerId}
+        value={selectedAnswerId || ""}
         onValueChange={onSelectAnswer}
         className="grid grid-cols-2 gap-4"
       >

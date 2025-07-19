@@ -1,53 +1,66 @@
 "use client";
 
+import { baseUrl } from "@/constants";
 import { useEffect, useRef, useState } from "react";
-import { type Quiz } from "../../../types";
+import { FaCheckCircle, FaTimes } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { QuizResult, type Quiz } from "../../../types";
 import { Button } from "../client-ui";
 import { QuizAnswers } from "./QuizAnswers";
 
 interface QuizProps {
   quiz: Quiz;
   token: string | undefined;
+  result?: QuizResult;
 }
 
-export function Quiz({ quiz, token }: QuizProps) {
+export function Quiz({ result, quiz, token }: QuizProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<string, string>
   >({});
   const [hasWarned, setHasWarned] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const tabSwitchedOnce = useRef(false);
 
   const handleAutoSubmit = () => {
+    if (result) return;
     if (!token) return;
 
-    if (!submitted) {
-      console.log("Submitting quiz due to tab switch...", selectedAnswers);
-      setSubmitted(true);
-    }
+    console.log("Submitting quiz due to tab switch...", selectedAnswers);
+    submitQuizAnswer();
   };
 
   const handleSubmit = async function () {
+    if (result) return;
     if (!token) return;
 
-    /* const rest = await fetch(`${baseUrl}/quiz_result`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        quizId: quiz.id,
-        questionAnswers: selectedAnswers,
-      }),
-    }); */
+    submitQuizAnswer();
+  };
+
+  const submitQuizAnswer = async function () {
+    if (result) return;
+    try {
+      const res = await fetch(`${baseUrl}/quiz_result`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          quizId: quiz.id,
+          questionAnswers: selectedAnswers,
+        }),
+      });
+      console.log(await res?.json());
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    }
   };
 
   useEffect(() => {
+    if (result) return;
     const handleVisibilityChange = () => {
       if (document.visibilityState === "hidden") {
-        // User switched tab or minimized
-
         if (!hasWarned) {
           alert(
             "Switching tabs is not allowed. If you leave again, your quiz will be submitted."
@@ -66,15 +79,22 @@ export function Quiz({ quiz, token }: QuizProps) {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasWarned, submitted]);
+  }, [hasWarned]);
 
   return (
     <div className="space-y-8">
       {quiz.questions.map((item, index) => (
         <div key={item.id}>
-          <h3 className="text-xl font-semibold mb-4">
-            {index + 1}. {item.title}
-          </h3>
+          <div className="flex items-center gap-4 flex-wrap mb-4">
+            <h3 className="text-xl font-semibold">
+              {index + 1}. {item.title}
+            </h3>
+            {result?.answers[item.id] ? (
+              <FaCheckCircle className="text-success" />
+            ) : (
+              <FaTimes className="text-red-500" />
+            )}
+          </div>
           <QuizAnswers
             questionId={item.id}
             answers={item.answers}
@@ -93,7 +113,7 @@ export function Quiz({ quiz, token }: QuizProps) {
         className="w-[100px] shadow-md"
         onClick={handleSubmit}
       >
-        Submit
+        {!result ? "Submit" : "Completed"}
       </Button>
     </div>
   );

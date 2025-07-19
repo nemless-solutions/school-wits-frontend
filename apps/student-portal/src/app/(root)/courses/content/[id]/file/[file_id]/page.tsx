@@ -13,8 +13,8 @@ export default async function Content({
   return (
     <div className="h-full">
       <FileViewer
+        session={session}
         fileUrl={`${baseUrl}/course_file/download/${file_id}`}
-        token={session?.token}
       />
     </div>
   );
