@@ -30,21 +30,21 @@ export default async function CourseContentLayout({
     (course) => course?.course?.id == +id
   );
 
-  if (!enrolledCourse || enrolledCourse.paid === false) return <UnAuthorized />;
-
-  const course = enrolledCourse.course;
+  const course = enrolledCourse?.course;
   const courseTopics = await fetcher<CourseTopic[]>(
     `${baseUrl}/course_topic/course/${id}`,
     session.token
   );
 
+  if (!enrolledCourse || enrolledCourse.paid === false) return <UnAuthorized />;
+
   return (
     <div>
-      <PageHeader header={`${course.title} (Grade ${course.grade})`} />
+      <PageHeader header={`${course?.title} (Grade ${course?.grade})`} />
       <div className="main-container py-20">
         <div className="grid grid-cols-3 gap-3">
           <div className="col-span-2 min-h-[300px]">{children}</div>
-          <div className="bg-white border relative border-neutral-200 shadow-md rounded-lg">
+          <div className="bg-white border relative border-neutral-200 shadow-md rounded-lg max-h-[580px]">
             <div className="sticky top-0 left-0 bg-white shadow-sm">
               <h3 className="p-4 text-xl font-semibold">Course Topics</h3>
               <div className="w-full h-px bg-neutral-200" />
@@ -52,6 +52,7 @@ export default async function CourseContentLayout({
             <div className="max-h-[500px] overflow-y-auto">
               {courseTopics.map((topic, index) => (
                 <Topic
+                token={session?.token}
                   key={topic?.id}
                   topic={topic}
                   isLast={index === courseTopics.length - 1}

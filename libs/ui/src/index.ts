@@ -17,6 +17,7 @@ export * from "./components/label";
 export * from "./components/motion-div";
 export * from "./components/navigation-menu";
 export * from "./components/popover";
+export * from "./components/radio-group";
 export * from "./components/scroll-area";
 export * from "./components/select";
 export * from "./components/seperator";

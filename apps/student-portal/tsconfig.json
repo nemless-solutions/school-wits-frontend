@@ -50,13 +50,13 @@
   ],
   "references": [
     {
-      "path": "../../libs/ui"
+      "path": "../../libs/validations"
     },
     {
       "path": "../../libs/utils"
     },
     {
-      "path": "../../libs/validations"
+      "path": "../../libs/ui"
     }
   ]
 }

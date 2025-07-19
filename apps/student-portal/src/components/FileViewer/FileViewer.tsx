@@ -1,6 +1,7 @@
 // app/course/[id]/FileViewer.tsx
 "use client";
 
+import { Session } from "next-auth";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
@@ -8,10 +9,10 @@ import logo from "../../../public/images/logo-icon.png";
 
 interface Props {
   fileUrl: string;
-  token: string | undefined;
+  session: Session | null;
 }
 
-export default function FileViewer({ fileUrl, token }: Props) {
+export default function FileViewer({ fileUrl, session }: Props) {
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [contentType, setContentType] = useState<string | null>(null);
 
@@ -20,7 +21,7 @@ export default function FileViewer({ fileUrl, token }: Props) {
       try {
         const res = await fetch(fileUrl, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${session?.token}`,
           },
         }); // this should hit your Java backend
 
@@ -65,7 +66,7 @@ export default function FileViewer({ fileUrl, token }: Props) {
 
   if (contentType.includes("video")) {
     return (
-      <div className="h-full flex items-center justify-center">
+      <div className="h-full flex items-center justify-center relative">
         <div className="w-full max-w-3xl aspect-video rounded-md overflow-clip">
           <ReactPlayer
             url={blobUrl}
@@ -75,9 +76,20 @@ export default function FileViewer({ fileUrl, token }: Props) {
             height="100%"
           />
         </div>
+        {/* <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
+          <Marquee speed={40} gradient={false} delay={2}>
+            <p className="text-white font-bold opacity-80 text-shadow mx-8">
+              {`User: ${session?.user?.name} | Email: ${
+                session?.user?.email
+              } | Accessed: ${new Date().toLocaleString()}`}
+            </p>
+          </Marquee>
+        </div> */}
       </div>
     );
   }
 
   return <p>Unsupported file type: {contentType}</p>;
 }
+
+/* `relative ${isFullscreen ? "fixed top-0 left-0 w-screen h-screen z-50 bg-black" : "w-full max-w-3xl aspect-video mx-auto"}` */

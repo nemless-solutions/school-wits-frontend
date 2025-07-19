@@ -72,6 +72,9 @@ export type CourseBundle = {
   id: number;
   grade: Grade;
   courses: Course[];
+  mode: "IN_PERSON" | "ONLINE";
+  discountedFee: number;
+  fee: number;
 };
 
 export type EnrolledCourse = {
@@ -126,9 +129,43 @@ export type CourseFile = {
   fileUid: string;
 };
 
+export type QuizAnswer = {
+  id: number;
+  title: string;
+};
+
+export type QuizQuestion = {
+  id: number;
+  title: string;
+  answers: QuizAnswer[];
+};
+
 export type Quiz = {
-  id: 1;
+  id: number;
   title: string;
   duration: number;
   questionMark: number;
+  questions: QuizQuestion[];
+};
+
+export type QuizResult = {
+  id: number;
+  quiz: {
+    id: number;
+    title: string;
+    questionMark: number;
+    duration: number;
+    questions: {
+      id: number;
+      title: string;
+      answers: {
+        id: number;
+        title: string;
+      }[];
+    }[];
+    createdAt: Date;
+  };
+  answers: {
+    [key: string]: boolean;
+  };
 };

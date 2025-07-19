@@ -50,8 +50,6 @@ export function EditCourse() {
             title: data.title,
             description: data.description,
             fee: data.fee,
-            discountedFee: data.discountedFee,
-            discountLastDate: data.discountLastDate,
           }}
           onSubmit={(data) => {
             const cleanedData = Object.fromEntries(

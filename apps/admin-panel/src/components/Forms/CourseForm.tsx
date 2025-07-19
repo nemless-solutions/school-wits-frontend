@@ -180,7 +180,7 @@ export function CourseForm<T extends FieldValues>({
                                 : ""
                             }
                             {...field}
-                            min={0}
+                            min={1}
                           />
                         </FormControl>
                         <FormMessage />
