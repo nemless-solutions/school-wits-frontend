@@ -20,7 +20,7 @@ export default async function Dashboard() {
     session?.token
   );
   const courses = await fetcher<Course[]>(
-    `${baseUrl}/course/grade/${gradeName}?mode=`
+    `${baseUrl}/course/grade/${gradeName}?mode=ONLINE`
   );
   const suggestedCourses = courses.filter((course) => {
     return !enrolledCourses.some((enrolledCourse) => {

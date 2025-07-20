@@ -20,6 +20,12 @@ export const signUpSchema = z.object({
   dateOfBirth: z.date(),
 });
 
+export const passwordChangeSchema = z.object({
+  currentPassword: z.string(),
+  newPassword: z.string().min(6),
+  confirmPassword: z.string().min(6),
+});
+
 export const appointmentSchema = z.object({
   fullName: z.string().min(3),
   email: z.string().email(),

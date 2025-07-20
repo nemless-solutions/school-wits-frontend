@@ -6,7 +6,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@school-wits/ui";
-import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import { NavItem } from "../../../types";
@@ -31,14 +30,14 @@ export function NavMenu({ title, content, onClick }: NavMenuProps) {
                 <li key={index}>
                   <NavigationMenuLink asChild>
                     <Link href={item?.link || "/"}>
-                      <div className="flex h-full gap-x-2 w-full select-none items-center rounded-md bg-gradient-to-b from-muted/10 to-muted px-6 py-1 no-underline outline-none focus:shadow-md text-black">
-                        <Image
+                      <div className="flex h-full gap-x-2 w-full select-none items-center rounded-md bg-gradient-to-b from-muted/10 to-muted px-6 py-3 no-underline outline-none focus:shadow-md text-black">
+                        {/* <Image
                           className="block w-10 object-cover"
                           src={item?.icon || ""}
                           width={50}
                           height={50}
                           alt={item.title}
-                        />
+                        /> */}
                         <span>{item.title}</span>
                       </div>
                     </Link>

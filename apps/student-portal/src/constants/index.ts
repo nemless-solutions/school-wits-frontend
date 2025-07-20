@@ -296,6 +296,8 @@ export const FIELD_NAMES = {
   curriculum: "Curriculum",
   grade: "Grade",
   dateOfBirth: "Date of birth",
+  currentPassword: "Current Password",
+  newPassword: "New Password",
 };
 
 export const FIELD_TYPES = {
@@ -303,6 +305,8 @@ export const FIELD_TYPES = {
   email: "email",
   password: "password",
   confirmPassword: "password",
+  currentPassword: "password",
+  newPassword: "password",
 };
 
 export const terms = [
