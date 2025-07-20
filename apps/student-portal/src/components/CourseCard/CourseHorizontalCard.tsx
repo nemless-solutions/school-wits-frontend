@@ -51,12 +51,6 @@ export function CourseHorizontalCard({
               </p>
             </div>
             <div>
-              <p className="text-neutral-600">Mode</p>
-              <p className="font-medium">
-                {course?.mode?.split("_")?.join(" ")}
-              </p>
-            </div>
-            <div>
               <p className="text-neutral-600">Session</p>
               <p className="font-medium">{course?.academicSession}</p>
             </div>
