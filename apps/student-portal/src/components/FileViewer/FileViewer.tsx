@@ -1,52 +1,51 @@
-// app/course/[id]/FileViewer.tsx
 "use client";
 
 import { Session } from "next-auth";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
 import logo from "../../../public/images/logo-icon.png";
+import { PdfViewer } from "./PdfViewer";
+import { VideoStream } from "./VideoStream";
 
 interface Props {
   fileUrl: string;
   session: Session | null;
+  fileId: string | number;
 }
 
-export default function FileViewer({ fileUrl, session }: Props) {
-  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+export default function FileViewer({ fileUrl, session, fileId }: Props) {
   const [contentType, setContentType] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchFile = async () => {
+    const fetchHeaders = async () => {
       try {
         const res = await fetch(fileUrl, {
+          method: "HEAD",
           headers: {
             Authorization: `Bearer ${session?.token}`,
           },
-        }); // this should hit your Java backend
+        });
 
-        if (!res.ok) throw new Error("Failed to fetch file");
+        if (!res.ok) throw new Error("Failed to fetch headers");
 
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        setBlobUrl(url);
-        setContentType(res.headers.get("Content-Type"));
+        const type = res.headers.get("Content-Type");
+        if (!type) throw new Error("No Content-Type");
+
+        setContentType(type);
       } catch (err) {
         console.error("Error loading file", err);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchFile();
+    fetchHeaders();
+  }, [fileUrl, session?.token]);
 
-    return () => {
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fileUrl]);
-
-  if (!blobUrl || !contentType)
+  if (loading) {
     return (
-      <div className="h-full aspect-video border border-neutral-200 shadow-md rounded-lg">
+      <div className="w-full aspect-video border border-neutral-200 shadow-md rounded-lg">
         <div className="flex flex-col gap-2 items-center justify-center h-full animate-pulse">
           <Image
             className="w-10 md:w-24 aspect-square"
@@ -59,37 +58,19 @@ export default function FileViewer({ fileUrl, session }: Props) {
         </div>
       </div>
     );
-
-  if (contentType.includes("pdf")) {
-    return <iframe src={blobUrl} className="w-full h-[600px] border" />;
   }
 
-  if (contentType.includes("video")) {
+  if (contentType?.includes("pdf")) {
+    return <PdfViewer fileUrl={fileUrl} token={session?.token} />;
+  }
+
+  if (contentType?.includes("video")) {
     return (
       <div className="h-full flex items-center justify-center relative">
-        <div className="w-full max-w-3xl aspect-video rounded-md overflow-clip">
-          <ReactPlayer
-            url={blobUrl}
-            controls
-            playing={false}
-            width="100%"
-            height="100%"
-          />
-        </div>
-        {/* <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
-          <Marquee speed={40} gradient={false} delay={2}>
-            <p className="text-white font-bold opacity-80 text-shadow mx-8">
-              {`User: ${session?.user?.name} | Email: ${
-                session?.user?.email
-              } | Accessed: ${new Date().toLocaleString()}`}
-            </p>
-          </Marquee>
-        </div> */}
+        <VideoStream fileId={fileId} token={session?.token} />
       </div>
     );
   }
 
   return <p>Unsupported file type: {contentType}</p>;
 }
-
-/* `relative ${isFullscreen ? "fixed top-0 left-0 w-screen h-screen z-50 bg-black" : "w-full max-w-3xl aspect-video mx-auto"}` */

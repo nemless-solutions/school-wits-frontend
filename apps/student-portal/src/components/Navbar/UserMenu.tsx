@@ -44,7 +44,7 @@ export function UserMenu({ session, onClick }: UserMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSignout = async function () {
-    await signOut({ redirectTo: "/" });
+    await signOut({ redirect: true, redirectTo: "https://schoolwits.com" });
   };
 
   return (

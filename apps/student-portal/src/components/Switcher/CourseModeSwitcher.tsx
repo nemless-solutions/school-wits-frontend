@@ -11,7 +11,7 @@ export function CourseModeSwitcher({
   const router = useRouter();
 
   return (
-    <div className="grid grid-cols-2 max-w-[400px] bg-neutral-100 p-1 md:p-1.5 gap-2 rounded-[8px]">
+    <div className="grid grid-cols-2 max-w-[400px] bg-neutral-100 p-1 md:p-1.5 gap-2 rounded-[8px] relative z-[100]">
       <button
         onClick={() => router.replace("?mode=in-person", { scroll: false })}
         className={cn(
