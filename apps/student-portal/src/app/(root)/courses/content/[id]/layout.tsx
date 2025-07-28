@@ -42,8 +42,8 @@ export default async function CourseContentLayout({
     <div>
       <PageHeader header={`${course?.title} (Grade ${course?.grade})`} />
       <div className="main-container py-20">
-        <div className="grid grid-cols-3 gap-3">
-          <div className="col-span-2 min-h-[300px]">{children}</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="md:col-span-2 min-h-[300px]">{children}</div>
           <div className="bg-white border relative border-neutral-200 shadow-md rounded-lg max-h-[580px]">
             <div className="sticky top-0 left-0 bg-white shadow-sm">
               <h3 className="p-4 text-xl font-semibold">Course Topics</h3>
@@ -52,7 +52,7 @@ export default async function CourseContentLayout({
             <div className="max-h-[500px] overflow-y-auto">
               {courseTopics.map((topic, index) => (
                 <Topic
-                token={session?.token}
+                  token={session?.token}
                   key={topic?.id}
                   topic={topic}
                   isLast={index === courseTopics.length - 1}

@@ -15,6 +15,7 @@ export default async function Content({
       <FileViewer
         session={session}
         fileUrl={`${baseUrl}/course_file/download/${file_id}`}
+        fileId={file_id}
       />
     </div>
   );

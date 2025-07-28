@@ -82,18 +82,19 @@ export function Quiz({ result, quiz, token }: QuizProps) {
   }, [hasWarned]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mt-8">
       {quiz.questions.map((item, index) => (
         <div key={item.id}>
           <div className="flex items-center gap-4 flex-wrap mb-4">
             <h3 className="text-xl font-semibold">
               {index + 1}. {item.title}
             </h3>
-            {result?.answers[item.id] ? (
-              <FaCheckCircle className="text-success" />
-            ) : (
-              <FaTimes className="text-red-500" />
-            )}
+            {result &&
+              (result?.answers[item.id] ? (
+                <FaCheckCircle className="text-success" />
+              ) : (
+                <FaTimes className="text-red-500" />
+              ))}
           </div>
           <QuizAnswers
             questionId={item.id}

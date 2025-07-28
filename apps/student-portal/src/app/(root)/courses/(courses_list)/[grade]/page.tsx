@@ -32,7 +32,7 @@ export default async function GradeWiseCourses({
     <>
       <CourseGradeSwitcher />
       <div className="main-container">
-        <CourseModeSwitcher currentType={mode as "IN_PERSON" | "ONLINE"} />
+        <CourseModeSwitcher currentType={mode} />
       </div>
       <div className="relative overflow-x-clip">
         <SquareGroup className="absolute w-10 md:w-16 text-primary right-1/6 -top-4 lg:-top-20 rotate-45" />
