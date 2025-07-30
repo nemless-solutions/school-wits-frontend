@@ -1,10 +1,19 @@
-import { Button } from "@school-wits/ui";
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { FaPlus } from "react-icons/fa";
+import { useState } from "react";
+import { FaPlus, FaTrashAlt } from "react-icons/fa";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useGet } from "../../../api/api-calls";
 import { DataTable } from "../../../components/DataTable/DataTable";
+import { DeleteAlert } from "../../../components/DeleteAlert/DeleteAlert";
 import { TableSkeleton } from "../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
@@ -27,9 +36,43 @@ export function Notices() {
       accessorKey: "details",
       header: "Details",
     },
+    {
+      id: "actions",
+      cell: ({ row }) => (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
+              size="icon"
+            >
+              <HiOutlineDotsVertical />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-32">
+            <DropdownMenuItem asChild variant="destructive">
+              <button
+                className="flex items-center gap-2 w-full"
+                onClick={() => {
+                  setId(row.original.id);
+                  setAlertOpen(true);
+                }}
+              >
+                <FaTrashAlt />
+                Delete
+              </button>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ),
+    },
   ];
 
-  const { data, isSuccess, isFetching } = useGet("notice/admin");
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [id, setId] = useState<number | null>(null);
+
+  const { data, refetch, isSuccess, isFetching } = useGet("notice/admin");
 
   return (
     <div>
@@ -64,6 +107,12 @@ export function Notices() {
           Something Went Wrong
         </div>
       )}
+      <DeleteAlert
+        open={alertOpen}
+        onOpenChange={setAlertOpen}
+        url={`notice/${id}`}
+        onSuccess={() => refetch()}
+      />
     </div>
   );
 }

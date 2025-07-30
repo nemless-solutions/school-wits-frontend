@@ -1,10 +1,10 @@
 import { FAQ } from "@/components/FAQ/FAQ";
 import { Feedbacks } from "@/components/Feedbacks/Feedbacks";
-import { GetInTouch } from "@/components/GetInTouch/GetInTouch";
 import { GradeCards } from "@/components/GradeCards/GradeCards";
 import { Hero } from "@/components/Hero/Hero";
 import { LessonHighlights } from "@/components/LessonHighlights/LessonHighlights";
 import { Promo } from "@/components/Promo/Promo";
+import { WhatsAppButton } from "@/components/WhatsAppButton/WhatsAppButton";
 import { WhyChooseUs } from "@/components/WhyChooseUs/WhyChooseUs";
 
 export default function Home() {
@@ -17,7 +17,8 @@ export default function Home() {
       <WhyChooseUs />
       <Feedbacks />
       <FAQ />
-      <GetInTouch />
+      {/* <GetInTouch /> */}
+      <WhatsAppButton />
     </>
   );
 }

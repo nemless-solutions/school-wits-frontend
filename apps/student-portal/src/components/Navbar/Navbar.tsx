@@ -33,15 +33,15 @@ export function Navbar({ session }: { session: Session | null }) {
       {showNav && (
         <div
           onClick={() => setShowNav(false)}
-          className="fixed h-full w-full bg-black/70 z-[998] backdrop-blur-[3px]"
+          className="fixed h-full w-full bg-black/70 z-[9998] backdrop-blur-[3px]"
         />
       )}
-      <nav className="fixed top-0 left-0 py-4 md:py-0 z-[999] w-full bg-white border-b border-neutral-200">
+      <nav className="fixed top-0 left-0 py-4 md:py-0 z-[9999] w-full bg-white border-b border-neutral-200">
         <div className="main-container">
           <div className="flex items-center w-full justify-between">
             <Link href="/">
               <Image
-                className="w-[160px] md:w-[200px] object-cover"
+                className="w-[160px] min-[900px]:w-[200px] object-cover"
                 src={logoHorizontal}
                 alt="logo"
                 width="1200"
@@ -65,7 +65,7 @@ export function Navbar({ session }: { session: Session | null }) {
                 showNav ? "translate-x-0" : "translate-x-full"
               }`}
             >
-              <div className="md:flex items-center gap-x-4">
+              <div className="md:flex items-center gap-x-2 min-[950px]:gap-x-4">
                 <ul className="flex flex-col gap-x-1 lg:gap-x-4 mt-20 md:mt-0 md:flex-row">
                   {navItems.map((item, index) =>
                     item.type === "link" ? (
@@ -91,13 +91,23 @@ export function Navbar({ session }: { session: Session | null }) {
                   {session?.user ? (
                     <UserMenu session={session} onClick={setShowNav} />
                   ) : (
-                    <div className="pl-20 md:pl-0 mt-4 md:mt-0">
-                      <Link
-                        className="bg-white border-neutral-300 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
-                        href="/sign-in"
-                      >
-                        Log In
-                      </Link>
+                    <div className="flex flex-col items-start gap-4">
+                      <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                        <Link
+                          className="bg-white border-neutral-300 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                          href="/sign-in"
+                        >
+                          Log In
+                        </Link>
+                      </div>
+                      <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                        <Link
+                          className="bg-white border-neutral-300 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                          href="/sign-up"
+                        >
+                          Sign Up
+                        </Link>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -107,13 +117,23 @@ export function Navbar({ session }: { session: Session | null }) {
               {session?.user ? (
                 <UserMenu session={session} onClick={setShowNav} />
               ) : (
-                <div className="pl-20 md:pl-0 mt-4 md:mt-0">
-                  <Link
-                    className="bg-white border-neutral-300 border-1 min-[850px]:px-10 px-1 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
-                    href="/sign-in"
-                  >
-                    Log In
-                  </Link>
+                <div className="flex items-center text-sm min-[950px]:text-base min-[950px]:gap-3 gap-1">
+                  <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                    <Link
+                      className="bg-white border-neutral-300 border-1 min-[950px]:px-6 px-1 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                      href="/sign-in"
+                    >
+                      Log In
+                    </Link>
+                  </div>
+                  <div className="pl-20 md:pl-0 mt-4 md:mt-0">
+                    <Link
+                      className="bg-white border-neutral-300 border-1 min-[950px]:px-6 px-1 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
+                      href="/sign-up"
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>

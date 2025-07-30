@@ -84,7 +84,7 @@ export default async function CourseDetails({
               </p>
               <div>
                 <p className="text-lg md:text-2xl font-semibold">
-                  Tk. {mode === "IN_PERSON" ? "10,000" : "5,000"}
+                  Tk. {mode === "IN_PERSON" ? "9,000" : "5,000"}
                   <span className="text-sm text-neutral-600">/ month</span>
                 </p>
               </div>

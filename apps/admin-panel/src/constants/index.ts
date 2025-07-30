@@ -14,7 +14,16 @@ export const sidebarLinks: SidebarLink[] = [
   {
     name: "Students",
     icon: PiStudentDuotone,
-    link: "/students",
+    sublinks: [
+      {
+        name: "Students",
+        link: "/students",
+      },
+      {
+        name: "Enroll Requests",
+        link: "/enroll-requests",
+      },
+    ],
   },
   {
     name: "Teachers",

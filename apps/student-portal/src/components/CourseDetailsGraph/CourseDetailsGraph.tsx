@@ -77,7 +77,11 @@ export default function CourseDetailsGraph({
               },
             }}
           />
-          <YAxis type="category" dataKey="name" />
+          <YAxis
+            type="category"
+            dataKey="name"
+            tick={{ fontSize: 12, fontWeight: "600", fill: "#444" }}
+          />
           <Bar
             dataKey="value"
             name="Concepts"

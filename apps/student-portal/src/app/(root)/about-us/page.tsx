@@ -1,5 +1,6 @@
 import { HowWeDifferent } from "@/components/HowWeDifferent/HowWeDifferent";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
+import { WhatsAppButton } from "@/components/WhatsAppButton/WhatsAppButton";
 import { MotionDiv } from "@/components/client-ui";
 import Image from "next/image";
 import CircleGroup2 from "../../../../public/graphics/circle-group-2.svg";
@@ -196,6 +197,7 @@ export default function AboutUs() {
           </MotionDiv>
         </div>
       </section>
+      <WhatsAppButton />
     </div>
   );
 }
