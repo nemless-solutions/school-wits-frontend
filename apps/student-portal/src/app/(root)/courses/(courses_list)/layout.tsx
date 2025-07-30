@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/PageHeader/PageHeader";
+import { WhatsAppButton } from "@/components/WhatsAppButton/WhatsAppButton";
 
 export default async function CoursesListLayout({
   params,
@@ -11,6 +12,7 @@ export default async function CoursesListLayout({
     <>
       <PageHeader header="List Of Courses" showAnimation={false} />
       {children}
+      <WhatsAppButton />
     </>
   );
 }

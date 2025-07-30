@@ -5,6 +5,7 @@ import { baseUrl, grades } from "@/constants";
 import { fetcher } from "@/libs/fetcher";
 import { notFound } from "next/navigation";
 import { Course } from "../../../../../types";
+import { WhatsAppButton } from "@/components/WhatsAppButton/WhatsAppButton";
 
 const _grades = grades.map((grade) => grade.grade.toLowerCase());
 
@@ -72,6 +73,7 @@ export default async function Grade({
           </p>
         </div>
       )}
+      <WhatsAppButton />
     </div>
   );
 }

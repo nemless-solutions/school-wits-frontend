@@ -22,6 +22,7 @@ import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
 import { EditCourseTopic } from "../pages/internal/courses/topics/EditCourseTopic";
+import { EnrollRequests } from "../pages/internal/EnrollRequests/EnrollRequests";
 import { Enrolment } from "../pages/internal/enrolment/Enrolment";
 import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
 import { Home } from "../pages/internal/Home";
@@ -55,6 +56,11 @@ export default function Page() {
                 <Route path="/students/add" element={<CreateStudent />} />
                 <Route path="/students/:id" element={<EditStudent />} />
                 <Route path="/teachers" element={<Teachers />} />
+                <Route path="/enroll-requests" element={<EnrollRequests />} />
+                <Route
+                  path="/enroll-requests/:userId"
+                  element={<ManageEnrolment />}
+                />
                 <Route path="/enrolments" element={<Enrolment />} />
                 <Route
                   path="/enrolments/:userId"

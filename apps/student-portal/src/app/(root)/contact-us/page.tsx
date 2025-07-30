@@ -1,9 +1,9 @@
 import { MotionDiv } from "@/components/client-ui";
 import { FAQ } from "@/components/FAQ/FAQ";
-import { GetInTouch } from "@/components/GetInTouch/GetInTouch";
 import { LocationMap } from "@/components/LocationMap/LocationMap";
 import { PageHeader } from "@/components/PageHeader/PageHeader";
 import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
+import { WhatsAppButton } from "@/components/WhatsAppButton/WhatsAppButton";
 import { contactUs } from "@/constants";
 import Image from "next/image";
 
@@ -63,12 +63,13 @@ export default function ContactUs() {
             </MotionDiv>
           </div>
         </section>
-        <div className="-my-10 md:-my-32">
+        {/* <div className="-my-10 md:-my-32">
           <GetInTouch />
-        </div>
+        </div> */}
         <FAQ sectionBg="bg-primary" groupSquareColor="text-white" />
         <LocationMap />
       </div>
+      <WhatsAppButton />
     </div>
   );
 }

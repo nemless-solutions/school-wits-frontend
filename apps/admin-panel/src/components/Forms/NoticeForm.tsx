@@ -8,6 +8,11 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@school-wits/ui";
 import { Loader2Icon } from "lucide-react";
 import {
@@ -19,7 +24,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ZodType } from "zod";
-import { FIELD_NAMES, FIELD_TYPES } from "../../constants";
+import { FIELD_NAMES, FIELD_TYPES, grades } from "../../constants";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -65,19 +70,47 @@ export function NoticeForm<T extends FieldValues>({
                     <FormLabel className="capitalize font-semibold">
                       {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                     </FormLabel>
-
-                    <>
-                      <FormControl>
-                        <Input
-                          className="bg-white/40 focus:bg-white/80"
-                          type={
-                            FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
-                          }
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </>
+                    {field.name === "grade" ? (
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full font-roboto-slab font-bold bg-white/40">
+                            <SelectValue
+                              className="font-roboto-slab"
+                              placeholder="Select a verified email to display"
+                            />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {grades.map((g, i) => (
+                            <SelectItem
+                              key={i}
+                              value={g}
+                              className="font-roboto-slab font-bold"
+                            >
+                              Grade {g}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    ) : (
+                      <>
+                        <FormControl>
+                          <Input
+                            className="bg-white/40 focus:bg-white/80"
+                            type={
+                              FIELD_TYPES[
+                                field.name as keyof typeof FIELD_TYPES
+                              ]
+                            }
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </>
+                    )}
                   </FormItem>
                 )}
               />

@@ -74,7 +74,7 @@ function CardBody({
       }
     } else if (courseMode === "IN_PERSON") {
       if (grade === "VI" || grade === "VII") {
-        price.discountedFee = 2500;
+        price.discountedFee = 2250;
         price.regularFee = 3000;
       } else if (grade === "VIII") {
         price.discountedFee = 3500;

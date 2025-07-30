@@ -1,6 +1,7 @@
 "use client";
 
 import { baseUrl } from "@/constants";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -15,6 +16,8 @@ interface QuizProps {
 }
 
 export function Quiz({ result, quiz, token }: QuizProps) {
+  const router = useRouter();
+
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<string, string>
   >({});
@@ -50,7 +53,9 @@ export function Quiz({ result, quiz, token }: QuizProps) {
           questionAnswers: selectedAnswers,
         }),
       });
-      console.log(await res?.json());
+      if (res.ok) {
+        router.reload();
+      }
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
