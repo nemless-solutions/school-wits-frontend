@@ -80,15 +80,20 @@ export function Notices() {
         <div>
           <p className="font-semibold text-xl">Send Notice To: </p>
         </div>
-        <div className="flex justify-end gap-2 items-center">
+        <div className="flex justify-end gap-2 items-center flex-wrap">
           <Button asChild className="flex items-center">
             <Link to="send/all">
               <FaPlus /> All
             </Link>
           </Button>
           <Button asChild className="flex items-center">
-            <Link to="send/group">
-              <FaPlus /> Group
+            <Link to="send/grade">
+              <FaPlus /> Grade
+            </Link>
+          </Button>
+          <Button asChild className="flex items-center">
+            <Link to="send/course">
+              <FaPlus /> Course
             </Link>
           </Button>
           <Button asChild className="flex items-center">

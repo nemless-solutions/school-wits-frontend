@@ -5,7 +5,11 @@ import { toast } from "react-toastify";
 import { usePost } from "../../../api/api-calls";
 import { NoticeForm } from "../../../components/Forms/NoticeForm";
 
-export function SendNotice({ to = "all" }: { to?: "all" | "group" }) {
+export function SendNotice({
+  to = "all",
+}: {
+  to?: "all" | "grade" | "course";
+}) {
   const navigate = useNavigate();
   const { userId } = useParams();
   const { mutate, isPending, isError, isSuccess, fetchError } =
@@ -16,7 +20,7 @@ export function SendNotice({ to = "all" }: { to?: "all" | "group" }) {
       toast.error("Something went wrong. Please try again.");
       console.log(fetchError);
     } else if (isSuccess) {
-      toast.success("Notice Send to Everyone.");
+      toast.success("Notice Successfully Sent.");
       navigate("/notices");
     }
   });
@@ -41,7 +45,13 @@ export function SendNotice({ to = "all" }: { to?: "all" | "group" }) {
     <div>
       <h2 className="text-2xl font-medium mb-4">
         Send Notice to{" "}
-        {userId ? "an Individual" : to === "all" ? "Everyone" : "a Group"}
+        {userId
+          ? "an Individual"
+          : to === "all"
+          ? "Everyone"
+          : to === "course"
+          ? "a Course"
+          : "a Grade"}
       </h2>
       <NoticeForm
         schema={schema}

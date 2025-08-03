@@ -46,7 +46,9 @@ export function SendNoticeToIndividual() {
     },
   ];
 
-  const { data, isSuccess, isFetching } = useGet("user?roleName=ROLE_STUDENT");
+  const { data, isSuccess, isFetching } = useGet(
+    "user/search?roleName=ROLE_STUDENT"
+  );
 
   return (
     <div>

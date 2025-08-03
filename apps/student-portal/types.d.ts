@@ -94,6 +94,7 @@ export type CourseDetails = {
   chartValues: Record<string, number>;
   assessment: string;
   academicPlan: string;
+  coreLearningAreas: Record<string, string[]>;
   coursePlanInformation: {
     id: number;
     weeks: {

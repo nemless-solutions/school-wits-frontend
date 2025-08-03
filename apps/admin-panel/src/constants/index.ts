@@ -23,6 +23,10 @@ export const sidebarLinks: SidebarLink[] = [
         name: "Enroll Requests",
         link: "/enroll-requests",
       },
+      {
+        name: "Non Enrolled",
+        link: "/non-enrolled",
+      },
     ],
   },
   {

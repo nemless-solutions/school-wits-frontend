@@ -2,9 +2,9 @@ import { Button } from "@school-wits/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { useGet } from "../../../api/api-calls";
-import { DataTable } from "../../../components/DataTable/DataTable";
-import { TableSkeleton } from "../../../components/TableSkeleton/TableSkeleton";
+import { useGet } from "../../../../api/api-calls";
+import { DataTable } from "../../../../components/DataTable/DataTable";
+import { TableSkeleton } from "../../../../components/TableSkeleton/TableSkeleton";
 
 export const schema = z.object({
   id: z.number(),

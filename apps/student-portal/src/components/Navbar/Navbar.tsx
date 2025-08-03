@@ -91,7 +91,7 @@ export function Navbar({ session }: { session: Session | null }) {
                   {session?.user ? (
                     <UserMenu session={session} onClick={setShowNav} />
                   ) : (
-                    <div className="flex flex-col items-start gap-4">
+                    <div className="flex flex-col items-start gap-4 min-[900px]:text-base text-sm">
                       <div className="pl-20 md:pl-0 mt-4 md:mt-0">
                         <Link
                           className="bg-white border-neutral-300 border-1 px-10 py-2 rounded-lg text-neutral-900 font-medium hover:bg-neutral-100 duration-200"
