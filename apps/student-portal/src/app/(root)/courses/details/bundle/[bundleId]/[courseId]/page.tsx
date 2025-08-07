@@ -19,15 +19,6 @@ import {
   type CourseDetails,
 } from "../../../../../../../../types";
 
-const dummyCourseStructureOverView = [
-  { title: "9 Core Module", description: "Coverage of all mathematical area" },
-  { title: "48 Week Program", description: "Structured regular timeline " },
-  {
-    title: "Continues Assessment",
-    description: "Topic test & comprehensive exam",
-  },
-];
-
 export default async function CourseDetails({
   params,
   searchParams,
@@ -257,7 +248,7 @@ export default async function CourseDetails({
             viewport={{ once: true }}
           >
             <h4 className="text-lg md:text-2xl font-semibold mb-1">
-              Course Structure Overview
+              Core Learning Areas
             </h4>
             <p className="text-sm md:text-base">{courseDetails.academicPlan}</p>
           </MotionDiv>
@@ -268,7 +259,7 @@ export default async function CourseDetails({
             viewport={{ once: true }}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-              {dummyCourseStructureOverView.map((item, i) => (
+              {Object.keys(courseDetails?.coreLearningAreas)?.map((item, i) => (
                 <div
                   key={i}
                   className="bg-white rounded-[16px] px-7 py-8 flex flex-col items-start sm:items-center"
@@ -288,11 +279,13 @@ export default async function CourseDetails({
                     <Icon src={cells} alt="cells" containerRadius={64} />
                   </div>
                   <h5 className="font-semibold text-lg md:text-xl text-neutral-900 mt-6 mb-1">
-                    {item.title}
+                    {item}
                   </h5>
-                  <p className="text-neutral-600 text-sm md:text-base">
-                    {item.description}
-                  </p>
+                  <ul className="text-neutral-600 text-sm md:text-base space-y-3 mt-4 ml-2 list-disc">
+                    {courseDetails?.coreLearningAreas[item]?.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

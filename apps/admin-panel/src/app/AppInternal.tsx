@@ -22,16 +22,18 @@ import { Quiz } from "../pages/internal/courses/quiz/Quiz";
 import { CourseTopics } from "../pages/internal/courses/topics/CourseTopics";
 import { CreateTopic } from "../pages/internal/courses/topics/CreateTopic";
 import { EditCourseTopic } from "../pages/internal/courses/topics/EditCourseTopic";
-import { EnrollRequests } from "../pages/internal/EnrollRequests/EnrollRequests";
 import { Enrolment } from "../pages/internal/enrolment/Enrolment";
 import { ManageEnrolment } from "../pages/internal/enrolment/ManageEnrolment";
 import { Home } from "../pages/internal/Home";
 import { Notices } from "../pages/internal/notices/Notices";
 import { SendNotice } from "../pages/internal/notices/SendNotice";
+import { SendNoticeToCourse } from "../pages/internal/notices/SendNoticeToCourse";
 import { SendNoticeToIndividual } from "../pages/internal/notices/SendNoticeToIndividual";
-import { CreateStudent } from "../pages/internal/students/CreateStudent";
-import { EditStudent } from "../pages/internal/students/EditStudent";
-import { Students } from "../pages/internal/students/Students";
+import { EnrollRequests } from "../pages/internal/students/enroll-requests/EnrollRequests";
+import { NonEnrolled } from "../pages/internal/students/non-enrolled/NonEnrolled";
+import { CreateStudent } from "../pages/internal/students/students/CreateStudent";
+import { EditStudent } from "../pages/internal/students/students/EditStudent";
+import { Students } from "../pages/internal/students/students/Students";
 import { Teachers } from "../pages/internal/teachers/Teachers";
 
 export default function Page() {
@@ -57,6 +59,7 @@ export default function Page() {
                 <Route path="/students/:id" element={<EditStudent />} />
                 <Route path="/teachers" element={<Teachers />} />
                 <Route path="/enroll-requests" element={<EnrollRequests />} />
+                <Route path="/non-enrolled" element={<NonEnrolled />} />
                 <Route
                   path="/enroll-requests/:userId"
                   element={<ManageEnrolment />}
@@ -130,8 +133,12 @@ export default function Page() {
                   element={<SendNotice to="all" />}
                 />
                 <Route
-                  path="/notices/send/group"
-                  element={<SendNotice to="group" />}
+                  path="/notices/send/grade"
+                  element={<SendNotice to="grade" />}
+                />
+                <Route
+                  path="/notices/send/course"
+                  element={<SendNoticeToCourse />}
                 />
                 <Route
                   path="/notices/send/individual"

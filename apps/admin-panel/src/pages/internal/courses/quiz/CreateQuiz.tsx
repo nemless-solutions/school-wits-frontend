@@ -1,10 +1,9 @@
-import { quizSchema } from "@school-wits/validations";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
 import { usePost } from "../../../../api/api-calls";
-import { QuizForm } from "../../../../components/Forms/QuizForm";
+import { FullQuizForm } from "../../../../components/Forms/FullQuizForm";
 
 export const schema = z.object({
   id: z.number(),
@@ -16,7 +15,7 @@ export function CreateQuiz() {
   const { videoId } = useParams();
   const navigate = useNavigate();
 
-  const { mutate, isPending, isError, isSuccess } = usePost("quiz");
+  const { mutate, isPending, isError, isSuccess } = usePost("quiz/full");
 
   useEffect(() => {
     if (isError) {
@@ -29,19 +28,11 @@ export function CreateQuiz() {
 
   return (
     <div>
-      <QuizForm
-        schema={quizSchema}
-        defaultValues={{
-          title: "",
-          questionMark: 1,
-          duration: 1,
-        }}
-        onSubmit={(data) => {
-          mutate({ ...data, videoId });
-        }}
+      <FullQuizForm
+        onSubmit={(data) =>
+          mutate({ ...data, videoId, questionMark: 5, duration: 5 })
+        }
         isLoading={isPending}
-        onCancel={() => navigate(-1)}
-        submitText="Create"
       />
     </div>
   );

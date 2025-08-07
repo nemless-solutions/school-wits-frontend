@@ -21,7 +21,7 @@ export function NavMenu({ title, content, onClick }: NavMenuProps) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-semibold text-base text-black !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[150px] md:pr-0 cursor-pointer">
+          <NavigationMenuTrigger className="font-semibold text-black !bg-transparent h-full py-5 focus:!bg-transparent hover:!bg-transparent w-full ml-[45px] md:ml-0 pr-[185px] md:pr-0 cursor-pointer min-[900px]:text-base text-sm">
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent onClick={() => onClick && onClick(false)}>

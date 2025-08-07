@@ -66,7 +66,7 @@ export const quizQuestionSchema = z.object({
 
 export const quizAnswerSchema = z.object({
   title: z.string().min(3),
-  correct: z.boolean(),
+  isCorrect: z.boolean(),
 });
 
 export const noticeSchema = z.object({

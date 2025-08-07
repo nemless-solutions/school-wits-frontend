@@ -3,8 +3,8 @@ import { signUpSchema } from "@school-wits/validations";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useGet, usePut } from "../../../api/api-calls";
-import { AuthForm } from "../../../components/Forms/AuthForm";
+import { useGet, usePut } from "../../../../api/api-calls";
+import { AuthForm } from "../../../../components/Forms/AuthForm";
 
 export function EditStudent() {
   const { id } = useParams();

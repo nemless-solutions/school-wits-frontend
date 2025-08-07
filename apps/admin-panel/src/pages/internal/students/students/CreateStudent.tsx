@@ -3,8 +3,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { usePost } from "../../../api/api-calls";
-import { AuthForm } from "../../../components/Forms/AuthForm";
+import { usePost } from "../../../../api/api-calls";
+import { AuthForm } from "../../../../components/Forms/AuthForm";
 
 export function CreateStudent() {
   const navigate = useNavigate();
