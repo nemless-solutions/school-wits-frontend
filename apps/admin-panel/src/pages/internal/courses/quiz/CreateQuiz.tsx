@@ -15,7 +15,7 @@ export function CreateQuiz() {
   const { videoId } = useParams();
   const navigate = useNavigate();
 
-  const { mutate, isPending, isError, isSuccess } = usePost("quiz");
+  const { mutate, isPending, isError, isSuccess } = usePost("quiz/full");
 
   useEffect(() => {
     if (isError) {
@@ -28,27 +28,9 @@ export function CreateQuiz() {
 
   return (
     <div>
-      {/* <QuizForm
-        schema={fullQuizSchema}
-        defaultValues={{
-          title: "",
-          questionMark: 5,
-          duration: 5,
-          questions: [...Array(5)].map(() => ({
-            title: "",
-            answers: [...Array(4)].map(() => ({ title: "", isCorrect: false })),
-          })),
-        }}
-        onSubmit={(data) => {
-          mutate({ ...data, videoId });
-        }}
-        isLoading={isPending}
-        onCancel={() => navigate(-1)}
-        submitText="Create"
-      /> */}
       <FullQuizForm
         onSubmit={(data) =>
-          console.log({ ...data, videoId, questionMark: 5, duration: 5 })
+          mutate({ ...data, videoId, questionMark: 5, duration: 5 })
         }
         isLoading={isPending}
       />
