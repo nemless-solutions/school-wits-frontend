@@ -24,7 +24,7 @@ export function CreateQuiz() {
       toast.success("Quiz Created.");
       navigate(-1);
     }
-  });
+  }, [isError, isSuccess, navigate]);
 
   return (
     <div>
