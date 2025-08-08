@@ -19,7 +19,7 @@ export function EditQuiz() {
       toast.success("Quiz Updated.");
       navigate(-1);
     }
-  });
+  }, [isError, isSuccess, navigate]);
 
   return (
     <div>
